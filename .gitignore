@@ -1,0 +1,9 @@
+node_modules/
+.next/
+src/.next/
+.env
+.env.local
+*.pyc
+__pycache__/
+uploads/
+.playwright-mcp/
