@@ -571,23 +571,14 @@ export default function LandingPage() {
         <h2 style={{ fontFamily: "var(--font-display)" }} className="text-3xl md:text-5xl leading-snug mb-4">
           Miami <span style={{ color: accent }}>+</span> Houston
         </h2>
-        <p className="text-sm mb-8" style={{ color: muted }}>More destinations coming soon. Not in Miami or Houston? Join the waitlist and we&apos;ll let you know when we launch in your city.</p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link
-            href="/auth?mode=register"
-            className="inline-flex items-center justify-center px-10 py-4 text-sm tracking-wide font-medium transition-colors hover:opacity-90"
-            style={{ background: accent, color: "#fff" }}
-          >
-            JOIN PLUS+
-          </Link>
-          <Link
-            href="/waitlist"
-            className="inline-flex items-center justify-center px-10 py-4 text-sm tracking-wide font-medium transition-colors"
-            style={{ border: `1px solid ${cardBorder}`, color: fg }}
-          >
-            Join the waitlist &rarr;
-          </Link>
-        </div>
+        <p className="text-sm mb-8" style={{ color: muted }}>More destinations coming soon. Sign up now and be first when we arrive in your city.</p>
+        <Link
+          href="/auth?mode=register"
+          className="inline-flex items-center justify-center px-10 py-4 text-sm tracking-wide font-medium transition-colors hover:opacity-90"
+          style={{ background: accent, color: "#fff" }}
+        >
+          JOIN PLUS+
+        </Link>
       </section>
 
 

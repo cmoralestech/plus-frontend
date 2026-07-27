@@ -7,7 +7,7 @@ import NavBar from "@/components/NavBar";
 import { ToastContainer } from "@/components/Toast";
 import { useAuthStore } from "@/lib/store";
 import api from "@/lib/api";
-import { Mail, X, Crown, UserCircle } from "lucide-react";
+import { Mail, X, Crown, UserCircle, MapPin } from "lucide-react";
 
 function VerificationBanner() {
   const { user } = useAuthStore();
@@ -178,6 +178,63 @@ function ProfileCompletionBanner() {
   );
 }
 
+const LAUNCH_CITIES = ["miami", "houston"];
+
+function CityGrowthBanner() {
+  const { user } = useAuthStore();
+  const [dismissed, setDismissed] = useState(true);
+  const [userCity, setUserCity] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!user || !user.has_profile) return;
+
+    const wasDismissed = localStorage.getItem("city_growth_dismissed");
+    if (wasDismissed) {
+      const daysSince = (Date.now() - parseInt(wasDismissed, 10)) / (1000 * 60 * 60 * 24);
+      if (daysSince < 14) return;
+    }
+
+    (async () => {
+      try {
+        const { data } = await api.get("/api/profiles/me");
+        const city = (data.city || "").toLowerCase().trim();
+        setUserCity(data.city || "");
+        const isLaunchCity = LAUNCH_CITIES.some(
+          (lc) => city.includes(lc)
+        );
+        if (!isLaunchCity && city) {
+          setDismissed(false);
+        }
+      } catch {}
+    })();
+  }, [user]);
+
+  if (dismissed || !userCity) return null;
+  if (user && !user.is_verified) return null;
+
+  const handleDismiss = () => {
+    localStorage.setItem("city_growth_dismissed", Date.now().toString());
+    setDismissed(true);
+  };
+
+  return (
+    <div className="px-4 py-2.5 flex items-center justify-between gap-3" style={{ background: "rgba(139, 26, 26, 0.06)", borderBottom: "1px solid rgba(139, 26, 26, 0.12)" }}>
+      <div className="flex items-center gap-2 min-w-0">
+        <MapPin size={14} className="text-accent flex-shrink-0 opacity-70" />
+        <p className="text-xs text-muted">
+          Plus is growing city by city. You&apos;re early — invite friends in your area to unlock your city faster{" "}
+          <Link href="/referrals" className="text-accent font-medium hover:underline">
+            — Share your invite link
+          </Link>
+        </p>
+      </div>
+      <button onClick={handleDismiss} className="text-muted p-1 flex-shrink-0 hover:text-foreground transition-colors">
+        <X size={12} />
+      </button>
+    </div>
+  );
+}
+
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <AuthGuard>
@@ -201,6 +258,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <VerificationBanner />
         <UpgradeNudgeBanner />
         <ProfileCompletionBanner />
+        <CityGrowthBanner />
         {children}
       </main>
       <ToastContainer />
