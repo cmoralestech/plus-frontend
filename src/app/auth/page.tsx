@@ -160,12 +160,12 @@ function AuthForm() {
           {/* Heading */}
           <div className="mb-8 text-center">
             <h1 className="text-xl font-display mb-1">
-              {mode === "login" ? "Sign in to your account" : "Create your free account"}
+              {mode === "login" ? "Welcome back." : "Create your free account"}
             </h1>
             <p className="text-sm text-muted">
               {mode === "login"
-                ? "Enter your email and password to continue."
-                : "Takes less than 2 minutes. No credit card needed."}
+                ? "Sign in to pick up where you left off."
+                : "Now open in Miami + Houston. More cities coming soon."}
             </p>
           </div>
 
