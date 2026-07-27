@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/lib/store";
 import Link from "next/link";
+import PublicNav from "@/components/PublicNav";
+import PublicFooter from "@/components/PublicFooter";
 
 const bg = "#141210";
 const card = "#1e1b17";
@@ -68,40 +70,9 @@ export default function LandingPage() {
           <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, rgba(20,18,16,0.7) 0%, rgba(20,18,16,0.5) 50%, ${bg} 100%)` }} />
         </div>
 
-        {/* Nav */}
-        <nav className="relative z-10 flex items-center justify-between px-5 md:px-10 lg:px-16 py-5">
-          <Link href="/" className="flex items-baseline">
-            <span style={{ fontFamily: "var(--font-display)", fontSize: "1.5rem", fontWeight: 500, letterSpacing: "-0.02em", color: "#fff" }}>
-              PLUS
-            </span>
-            <span style={{ color: accent, fontSize: "1.5rem", fontWeight: 700 }}>+</span>
-          </Link>
-
-          <div className="hidden md:flex items-center gap-10">
-            {["Discover", "About", "Safety", "Journal"].map((item) => (
-              <Link
-                key={item}
-                href={item === "Journal" ? "/blog" : `/${item.toLowerCase()}`}
-                className="text-[13px] text-white/50 hover:text-white transition-colors"
-              >
-                {item}
-              </Link>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-5">
-            <Link href="/auth" className="hidden md:block text-[13px] text-white/50 hover:text-white transition-colors">
-              Sign In
-            </Link>
-            <Link
-              href="/auth?mode=register"
-              className="px-5 py-2.5 text-[13px] tracking-wide font-medium transition-colors hover:opacity-90"
-              style={{ background: accent, color: "#fff" }}
-            >
-              JOIN PLUS+
-            </Link>
-          </div>
-        </nav>
+        <div className="relative z-10">
+          <PublicNav transparent />
+        </div>
 
         {/* Hero content */}
         <div className="relative z-10 flex-1 flex items-end px-5 md:px-10 lg:px-16 pb-16 md:pb-24">
@@ -610,34 +581,7 @@ export default function LandingPage() {
       </section>
 
 
-      {/* ═══ FOOTER ═══ */}
-      <footer className="px-5 md:px-10 lg:px-16 py-10" style={{ borderTop: `1px solid ${cardBorder}` }}>
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <Link href="/" className="flex items-baseline">
-            <span style={{ fontFamily: "var(--font-display)", fontSize: "1.1rem", fontWeight: 500, color: fg }}>
-              PLUS
-            </span>
-            <span style={{ color: accent, fontSize: "1.1rem", fontWeight: 700 }}>+</span>
-          </Link>
-
-          <div className="flex items-center gap-6 flex-wrap justify-center">
-            {["About", "Safety", "Blog", "Terms", "Privacy", "Contact"].map((item) => (
-              <Link
-                key={item}
-                href={`/${item.toLowerCase()}`}
-                className="text-[12px] transition-colors"
-                style={{ color: muted }}
-              >
-                {item}
-              </Link>
-            ))}
-          </div>
-
-          <p className="text-[11px]" style={{ color: muted }}>
-            &copy; 2026 Plus
-          </p>
-        </div>
-      </footer>
+      <PublicFooter />
     </div>
   );
 }
