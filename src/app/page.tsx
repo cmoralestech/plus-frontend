@@ -69,8 +69,8 @@ export default function LandingPage() {
       <div className="relative min-h-[90vh] md:min-h-screen flex flex-col">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=1920&q=80&auto=format&fit=crop"
-            alt="Stylish woman in the city"
+            src="/hero.jpg"
+            alt="Couple enjoying luxury dating on a yacht"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, rgba(20,18,16,0.7) 0%, rgba(20,18,16,0.5) 50%, ${bg} 100%)` }} />
