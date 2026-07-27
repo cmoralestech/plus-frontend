@@ -173,14 +173,14 @@ export default function LandingPage() {
                     <div
                       className="px-4 py-2.5 max-w-[200px]"
                       style={{
-                        background: msg.sent ? accent : "rgba(255,255,255,0.08)",
-                        color: msg.sent ? "#fff" : fg,
+                        background: msg.sent ? "#007AFF" : "#E9E9EB",
+                        color: msg.sent ? "#fff" : "#1A1A1A",
                         borderRadius: msg.sent ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
-                        backdropFilter: msg.sent ? "none" : "blur(8px)",
+                        backdropFilter: "none",
                       }}
                     >
                       <p className="text-[13px] leading-snug">{msg.text}</p>
-                      <p className="text-[10px] mt-1" style={{ color: msg.sent ? "rgba(255,255,255,0.6)" : "rgba(255,255,255,0.3)" }}>
+                      <p className="text-[10px] mt-1" style={{ color: msg.sent ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.35)" }}>
                         {msg.time}
                       </p>
                     </div>
