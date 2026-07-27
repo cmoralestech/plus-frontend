@@ -143,8 +143,8 @@ export default function LandingPage() {
           {/* Right — hero image area */}
           <div className="relative hidden lg:block">
             <img
-              src="https://images.unsplash.com/photo-1529635649540-e0e60e2b3c5e?w=1200&q=80&auto=format&fit=crop"
-              alt="Women enjoying nightlife"
+              src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=1200&q=80&auto=format&fit=crop"
+              alt="Women enjoying sunset social scene"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(245,237,228,1) 0%, rgba(245,237,228,0.3) 15%, transparent 40%)" }} />
@@ -252,11 +252,11 @@ export default function LandingPage() {
                 className="relative overflow-hidden group cursor-pointer"
                 style={{ aspectRatio: "3/4", borderRadius: "4px" }}
               >
-                {/* Placeholder gradient for profile photo */}
+                {/* Profile photo placeholder */}
                 <div
                   className="absolute inset-0"
                   style={{
-                    background: `linear-gradient(${Math.random() * 360}deg, rgba(200,127,110,0.3), rgba(180,160,140,0.4), rgba(160,140,120,0.3))`,
+                    background: `linear-gradient(${135 + profiles.indexOf(p) * 45}deg, rgba(180,120,90,0.6), rgba(120,80,60,0.7), rgba(60,40,30,0.8))`,
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -409,10 +409,10 @@ export default function LandingPage() {
           {/* Lifestyle photo grid */}
           <div className="hidden lg:grid grid-cols-4 gap-2">
             {[
-              "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=300&fit=crop&q=80",
-              "https://images.unsplash.com/photo-1517263904808-5dc91e3e7044?w=400&h=300&fit=crop&q=80",
-              "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=300&fit=crop&q=80",
-              "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop&q=80",
+              "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=500&fit=crop&q=80",
+              "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=400&h=500&fit=crop&q=80",
+              "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&h=500&fit=crop&q=80",
+              "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=400&h=500&fit=crop&q=80",
             ].map((src, i) => (
               <div key={i} className="overflow-hidden" style={{ aspectRatio: "4/5", borderRadius: "4px" }}>
                 <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
