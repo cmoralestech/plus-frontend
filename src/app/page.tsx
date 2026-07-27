@@ -27,10 +27,10 @@ const values = [
 ];
 
 const profiles = [
-  { name: "MIA", age: 25, city: "Miami", online: true },
-  { name: "ALEX", age: 33, city: "New York", online: true },
-  { name: "LILY", age: 24, city: "London", online: true },
-  { name: "ADAM", age: 36, city: "Dallas", online: false },
+  { name: "MIA", age: 25, city: "Miami", online: true, img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=533&fit=crop&q=80" },
+  { name: "ALEX", age: 33, city: "New York", online: true, img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=533&fit=crop&q=80" },
+  { name: "LILY", age: 24, city: "London", online: true, img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=533&fit=crop&q=80" },
+  { name: "ADAM", age: 36, city: "Dallas", online: false, img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=533&fit=crop&q=80" },
 ];
 
 export default function LandingPage() {
@@ -143,7 +143,7 @@ export default function LandingPage() {
           {/* Right — hero image area */}
           <div className="relative hidden lg:block">
             <img
-              src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=1200&q=80&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1581044777550-4cfa60707998?w=1200&q=80&auto=format&fit=crop"
               alt="Women enjoying sunset social scene"
               className="absolute inset-0 w-full h-full object-cover"
             />
@@ -252,12 +252,11 @@ export default function LandingPage() {
                 className="relative overflow-hidden group cursor-pointer"
                 style={{ aspectRatio: "3/4", borderRadius: "4px" }}
               >
-                {/* Profile photo placeholder */}
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background: `linear-gradient(${135 + profiles.indexOf(p) * 45}deg, rgba(180,120,90,0.6), rgba(120,80,60,0.7), rgba(60,40,30,0.8))`,
-                  }}
+                <img
+                  src={p.img}
+                  alt={p.name}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-3">
@@ -281,7 +280,7 @@ export default function LandingPage() {
       </section>
 
       {/* ═══ PHONE MOCKUP — WHAT'S YOUR PLUS? ═══ */}
-      <section className="px-6 md:px-12 lg:px-16 py-16 md:py-24" style={{ background: cardBg }}>
+      <section className="px-6 md:px-12 lg:px-16 py-16 md:py-24" style={{ background: "#EDE4D9" }}>
         <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
           <div>
             <p className="text-xs tracking-[0.2em] uppercase mb-6" style={{ color: muted }}>
@@ -409,10 +408,10 @@ export default function LandingPage() {
           {/* Lifestyle photo grid */}
           <div className="hidden lg:grid grid-cols-4 gap-2">
             {[
-              "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=500&fit=crop&q=80",
-              "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=400&h=500&fit=crop&q=80",
-              "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&h=500&fit=crop&q=80",
-              "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=400&h=500&fit=crop&q=80",
+              "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=500&fit=crop&q=80",
+              "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop&q=80",
+              "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&h=500&fit=crop&q=80",
+              "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&h=500&fit=crop&q=80",
             ].map((src, i) => (
               <div key={i} className="overflow-hidden" style={{ aspectRatio: "4/5", borderRadius: "4px" }}>
                 <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
