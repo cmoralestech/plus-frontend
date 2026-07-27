@@ -155,7 +155,7 @@ function OnboardingForm() {
     try {
       const payload: Record<string, unknown> = {
         display_name: form.display_name,
-        date_of_birth: form.date_of_birth,
+        date_of_birth: user?.date_of_birth || form.date_of_birth,
         gender: form.gender,
         city: form.city || null,
         state: form.state || null,
@@ -194,7 +194,7 @@ function OnboardingForm() {
   }, [profileCreated, fetchPhotos]);
 
   const canProceed = () => {
-    if (step === 0) return form.display_name && form.date_of_birth && form.gender && form.city.trim();
+    if (step === 0) return form.display_name && form.gender && form.city.trim();
     return true;
   };
 
@@ -279,29 +279,15 @@ function OnboardingForm() {
                 </button>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label htmlFor="ob-dob" className="block text-sm font-medium mb-1.5">Birthday</label>
-                  <input
-                    id="ob-dob"
-                    type="date"
-                    value={form.date_of_birth}
-                    onChange={(e) => update("date_of_birth", e.target.value)}
-                    max={`${maxYear}-12-31`}
-                    min={`${minYear}-01-01`}
-                    className="w-full px-4 py-3 bg-background border border-card-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/50"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1.5">Gender</label>
-                  <div className="flex gap-1.5">
-                    {genders.map((g) => (
-                      <button key={g.value} type="button" onClick={() => update("gender", g.value)}
-                        className={`flex-1 py-3 rounded-lg border text-xs font-medium transition-colors ${
-                          form.gender === g.value ? "border-accent bg-accent/5 text-accent" : "border-card-border hover:border-muted"
-                        }`}>{g.label}</button>
-                    ))}
-                  </div>
+              <div>
+                <label className="block text-sm font-medium mb-1.5">Gender</label>
+                <div className="flex gap-1.5">
+                  {genders.map((g) => (
+                    <button key={g.value} type="button" onClick={() => update("gender", g.value)}
+                      className={`flex-1 py-3 rounded-lg border text-xs font-medium transition-colors ${
+                        form.gender === g.value ? "border-accent bg-accent/5 text-accent" : "border-card-border hover:border-muted"
+                      }`}>{g.label}</button>
+                  ))}
                 </div>
               </div>
             </div>
