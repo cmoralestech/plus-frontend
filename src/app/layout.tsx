@@ -19,27 +19,32 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Plus: Luxury Dating, Subtly Done",
-  description: "Sugar dating done right. Verified profiles, real privacy, $99.99/month vs Seeking's $274.99. Free for attractive members. The modern alternative to Seeking Arrangement.",
-  keywords: "sugar dating, luxury dating app, seeking arrangement alternative, upscale dating, arrangement dating, wealthy dating, elite dating",
+  title: "Plus — Private Dating for People with More to Offer",
+  description: "Private dating for people with more to offer. Verified profiles, real privacy. Free for attractive members. Now open in Miami + Houston.",
+  keywords: "luxury dating app, private dating, verified dating, upscale dating, elite dating, dating miami, dating houston, seeking arrangement alternative",
   openGraph: {
-    title: "Plus: Luxury Dating, Subtly Done",
-    description: "Verified profiles. Real privacy. Free for attractive members. The modern alternative to Seeking.",
+    title: "Plus — Private Dating for People with More to Offer",
+    description: "Private dating for people with more to offer. Verified profiles, real privacy. Free for attractive members.",
     url: "https://meetyourplus.com",
     siteName: "Plus",
     type: "website",
-    images: [{ url: "https://meetyourplus.com/og-image.png", width: 1200, height: 630, alt: "Plus: Luxury Dating, Subtly Done" }],
+    locale: "en_US",
+    images: [{ url: "https://meetyourplus.com/og-image.png", width: 1200, height: 630, alt: "Plus — Private Dating for People with More to Offer" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Plus: Luxury Dating, Subtly Done",
-    description: "Verified profiles. Real privacy. Free for attractive members. The modern alternative to Seeking.",
+    title: "Plus — Private Dating for People with More to Offer",
+    description: "Private dating for people with more to offer. Verified profiles, real privacy. Free for attractive members.",
+    site: "@meetyourplus",
+    creator: "@meetyourplus",
     images: ["https://meetyourplus.com/twitter-card.png"],
   },
   icons: {
     icon: [
-      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
     ],
     apple: "/apple-touch-icon.png",
   },
