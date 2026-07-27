@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #141210;
-  --foreground: #ede6db;
-  --accent: #d4b896;
-  --accent-light: #e0c8a8;
-  --accent-dark: #c4a882;
-  --card: #1e1b17;
-  --card-border: #2e2a24;
-  --muted: #a8a090;
-  --muted-bg: #252219;
-  --success: #6ee7b7;
-  --danger: #f87171;
-  --gold: #d4b896;
-  --gold-bg: #2a2418;
-  --scrollbar: #3a3530;
+  --background: #F5EDE4;
+  --foreground: #1A1A1A;
+  --accent: #C87F6E;
+  --accent-light: #D4937E;
+  --accent-dark: #B06B5C;
+  --card: #FFFFFF;
+  --card-border: #E8DDD2;
+  --muted: #8A7E76;
+  --muted-bg: #EDE4D9;
+  --success: #5CB88A;
+  --danger: #D4564E;
+  --gold: #C87F6E;
+  --gold-bg: #FAF5F0;
+  --scrollbar: #D4CCC2;
 }
 
 @theme inline {
@@ -48,36 +48,7 @@ body {
   scrollbar-color: var(--scrollbar) transparent;
 }
 
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-@keyframes slideIn {
-  from { opacity: 0; transform: translateX(20px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+::selection {
+  background: rgba(200, 127, 110, 0.2);
+  color: #1A1A1A;
 }

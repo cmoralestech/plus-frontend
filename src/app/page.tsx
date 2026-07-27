@@ -1,394 +1,477 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/lib/store";
 import Link from "next/link";
-import PublicNav from "@/components/PublicNav";
-import PublicFooter from "@/components/PublicFooter";
-import ProfilePreview from "@/components/ProfilePreview";
+
+const accent = "#C87F6E";
+const cream = "#F5EDE4";
+const dark = "#1A1A1A";
+const muted = "#8A7E76";
+const cardBg = "#FFFBF7";
+const divider = "#E8DDD2";
+
+const conversations = [
+  { text: "He invited me over at 11.", time: "11:02 PM", sent: false },
+  { text: "And?", time: "11:02 PM", sent: true },
+  { text: "I went to Pacha instead.", time: "11:03 PM", sent: false },
+  { text: "That's the energy.", time: "11:03 PM", sent: true },
+];
+
+const values = [
+  { icon: "✦", title: "UPFRONT", desc: "Everyone's upfront about what they want." },
+  { icon: "♡", title: "VERIFIED", desc: "Real people. Verified photos and income." },
+  { icon: "◇", title: "GENEROUS", desc: "Meet people who have more to offer." },
+  { icon: "▣", title: "PRIVATE", desc: "Your privacy is always in your control." },
+];
+
+const profiles = [
+  { name: "MIA", age: 25, city: "Miami", online: true },
+  { name: "ALEX", age: 33, city: "New York", online: true },
+  { name: "LILY", age: 24, city: "London", online: true },
+  { name: "ADAM", age: 36, city: "Dallas", online: false },
+];
 
 export default function LandingPage() {
   const { user, loading, checkAuth } = useAuthStore();
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => { checkAuth(); }, [checkAuth]);
+  useEffect(() => { checkAuth(); setMounted(true); }, [checkAuth]);
   useEffect(() => {
     if (!loading && user) router.push(user.has_profile ? "/discover" : "/onboarding");
   }, [loading, user, router]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen" style={{ background: cream, color: dark }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
         {
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Plus",
           url: "https://meetyourplus.com",
-          logo: "https://meetyourplus.com/icon-512.png",
-          description: "The luxury dating platform for successful and attractive people. A modern alternative to Seeking Arrangement.",
+          description: "The dating app where ambitious people meet generous, verified partners.",
           contactPoint: { "@type": "ContactPoint", email: "support@meetyourplus.com", contactType: "customer service" },
-          sameAs: [],
         },
         {
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: "Plus",
           url: "https://meetyourplus.com",
-          potentialAction: {
-            "@type": "SearchAction",
-            target: "https://meetyourplus.com/blog?q={search_term_string}",
-            "query-input": "required name=search_term_string",
-          },
         },
       ]) }} />
 
+      {/* ═══ NAV ═══ */}
+      <nav className="flex items-center justify-between px-6 md:px-12 lg:px-16 py-5">
+        <Link href="/" className="flex items-baseline gap-0">
+          <span style={{ fontFamily: "var(--font-display)", fontSize: "1.6rem", fontWeight: 400, letterSpacing: "-0.02em", color: dark }}>
+            PLUS
+          </span>
+          <span style={{ color: accent, fontSize: "1.6rem", fontWeight: 600 }}>+</span>
+        </Link>
+
+        <div className="hidden md:flex items-center gap-8">
+          {["DISCOVER", "ABOUT", "SAFETY", "JOURNAL"].map((item) => (
+            <Link
+              key={item}
+              href={item === "JOURNAL" ? "/blog" : `/${item.toLowerCase()}`}
+              className="text-xs tracking-[0.15em] transition-colors"
+              style={{ color: muted }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = dark)}
+              onMouseLeave={(e) => (e.currentTarget.style.color = muted)}
+            >
+              {item}
+            </Link>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-4">
+          <Link href="/auth" className="hidden md:block text-sm" style={{ color: muted }}>
+            SIGN IN
+          </Link>
+          <Link
+            href="/auth?mode=register"
+            className="px-5 py-2.5 text-sm tracking-wide transition-all"
+            style={{ background: dark, color: cream, fontWeight: 500 }}
+          >
+            JOIN PLUS+
+          </Link>
+        </div>
+      </nav>
+
       {/* ═══ HERO ═══ */}
-      <div className="relative min-h-[90vh] md:min-h-screen flex flex-col">
-        <div className="absolute inset-0">
-          <img
-            src="/hero.jpg"
-            alt="Couple enjoying luxury dating on a yacht"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background" />
-        </div>
-
-        <div className="relative z-10">
-          <PublicNav />
-        </div>
-
-        <div className="relative z-10 flex-1 flex items-end px-5 md:px-10 lg:px-16 pb-16 md:pb-24">
-          <div className="max-w-7xl w-full">
-            <h1 className="font-display text-[clamp(2.8rem,8vw,6.5rem)] leading-[0.95] tracking-tight max-w-4xl text-white mb-6">
-              Date someone<br />
-              worth your time.
+      <section className="relative overflow-hidden">
+        <div className="grid lg:grid-cols-[1fr_1fr] min-h-[85vh]">
+          {/* Left — copy */}
+          <div className="flex flex-col justify-end px-6 md:px-12 lg:px-16 pb-12 lg:pb-20 pt-16 lg:pt-0 relative z-10">
+            <h1
+              className="leading-[0.95] tracking-tight mb-6"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(3rem, 7vw, 5.5rem)",
+                fontWeight: 400,
+                color: dark,
+              }}
+            >
+              Your plus
+              <br />
+              is out there.
+              <span style={{ color: accent }}>+</span>
             </h1>
-            <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-lg mb-10">
-              Plus connects successful, generous people with the captivating
-              people they actually want to meet. Verified profiles only.
-              Attractive members are always free.
+            <p className="text-base md:text-lg leading-relaxed max-w-md mb-10" style={{ color: muted }}>
+              Dating, travel, generosity, fun + whatever comes next. Meet people who are upfront about what they want.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex gap-3">
               <Link
                 href="/auth?mode=register"
-                className="inline-flex items-center justify-center px-10 py-4 bg-accent text-background text-sm tracking-wide font-medium hover:bg-accent-light transition-colors"
+                className="px-8 py-4 text-sm tracking-wide font-medium transition-all"
+                style={{ background: dark, color: cream }}
               >
-                Join free
+                JOIN PLUS+
               </Link>
               <Link
-                href="/seeking-arrangement-alternative"
-                className="inline-flex items-center justify-center px-10 py-4 text-sm text-white/50 hover:text-white transition-colors"
+                href="/discover"
+                className="px-8 py-4 text-sm tracking-wide font-medium transition-all"
+                style={{ border: `1px solid ${dark}`, color: dark }}
               >
-                Switching from Seeking? &rarr;
-              </Link>
-              <Link
-                href="/for-sugar-daddies"
-                className="inline-flex items-center justify-center px-10 py-4 text-sm text-white/50 hover:text-white transition-colors"
-              >
-                For successful men &rarr;
+                SEE WHO&apos;S ON
               </Link>
             </div>
           </div>
-        </div>
-      </div>
 
-
-      {/* ═══ PROFILE PREVIEW ═══ */}
-      <ProfilePreview />
-
-
-      {/* ═══ WHAT MAKES THIS DIFFERENT ═══ */}
-      <section className="px-5 md:px-10 lg:px-16 py-16 md:py-28">
-        <div className="max-w-7xl">
-          <h2 className="font-display text-2xl md:text-4xl leading-snug max-w-2xl mb-16 md:mb-20">
-            Most sugar dating apps charge you $110+ a month and can&apos;t even
-            verify that the person you&apos;re talking to is real.
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-            <div>
-              <p className="text-accent text-sm font-medium mb-3">Verification built in</p>
-              <p className="text-sm text-muted leading-relaxed">
-                Income verification and photo verification are available for every
-                member. Verified badges show you who&apos;s real before
-                you send the first message.
-              </p>
+          {/* Right — hero image area */}
+          <div className="relative hidden lg:block">
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `linear-gradient(135deg, rgba(200,127,110,0.15) 0%, rgba(218,180,150,0.2) 50%, rgba(245,237,228,0.1) 100%)`,
+              }}
+            />
+            {/* Placeholder for hero lifestyle image */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center" style={{ color: muted }}>
+                <p className="text-sm tracking-[0.2em] uppercase mb-2">Hero Image</p>
+                <p className="text-xs">Add lifestyle photo here</p>
+              </div>
             </div>
-            <div>
-              <p className="text-accent text-sm font-medium mb-3">Attractive members are always free</p>
-              <p className="text-sm text-muted leading-relaxed">
-                Not a trial. Not a limited version. Full access, unlimited messaging,
-                zero cost, forever. We don&apos;t charge both sides of the arrangement.
-              </p>
-            </div>
-            <div>
-              <p className="text-accent text-sm font-medium mb-3">Half the price of Seeking</p>
-              <p className="text-sm text-muted leading-relaxed">
-                Seeking Arrangement charges $109.99/month for Premium. Plus Diamond is $99.99.
-                All features included, better verification, and an app that actually
-                works on your phone.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-
-      {/* ═══ TWO AUDIENCES ═══ */}
-      <section className="border-y border-card-border">
-        <div className="grid md:grid-cols-2">
-          {/* Successful */}
-          <div className="px-5 md:px-10 lg:px-16 py-14 md:py-24 border-b md:border-b-0 md:border-r border-card-border">
-            <p className="text-xs text-muted uppercase tracking-[0.2em] mb-6">For sugar daddies &amp; mommas</p>
-            <h3 className="font-display text-xl md:text-2xl leading-snug mb-4">
-              You&apos;ve done well. Date like it.
-            </h3>
-            <p className="text-sm text-muted leading-relaxed mb-6 max-w-md">
-              Verify your income once, and every person you match with knows
-              you&apos;re real before the conversation starts. Travel mode,
-              privacy controls, and people who respect your time.
-            </p>
-            <Link
-              href="/auth?mode=register"
-              className="inline-flex items-center justify-center px-8 py-3.5 bg-accent text-background text-sm tracking-wide font-medium hover:bg-accent-light transition-colors"
+            {/* Real Conversations floating panel */}
+            <div
+              className="absolute top-16 right-8 w-72"
+              style={{
+                opacity: mounted ? 1 : 0,
+                transform: mounted ? "translateY(0)" : "translateY(20px)",
+                transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s",
+              }}
             >
-              Create your profile
-            </Link>
-          </div>
-
-          {/* Attractive */}
-          <div className="px-5 md:px-10 lg:px-16 py-14 md:py-24">
-            <p className="text-xs text-muted uppercase tracking-[0.2em] mb-6">For sugar babies</p>
-            <h3 className="font-display text-xl md:text-2xl leading-snug mb-4">
-              Stop swiping on people who waste your time.
-            </h3>
-            <p className="text-sm text-muted leading-relaxed mb-6 max-w-md">
-              Every successful member on Plus has verified their income.
-              No fake profiles, no games. Set your expectations upfront and
-              message anyone for free.
-            </p>
-            <Link
-              href="/auth?mode=register"
-              className="inline-flex items-center justify-center px-8 py-3.5 border border-card-border text-sm tracking-wide font-medium hover:bg-muted-bg transition-colors"
-            >
-              Join free — it stays free
-            </Link>
-          </div>
-        </div>
-      </section>
-
-
-      {/* ═══ SOCIAL PROOF — real positioning, not fake stats ═══ */}
-      <section className="bg-card border-y border-card-border py-16 md:py-28">
-        <div className="px-5 md:px-10 lg:px-16 max-w-4xl">
-          <h2 className="font-display text-2xl md:text-3xl leading-snug mb-6">
-            Why people switch from Seeking Arrangement
-          </h2>
-          <div className="space-y-6 text-sm text-muted leading-relaxed">
-            <p>
-              Seeking used to be the only option. Then they raised prices to
-              $274.99/month for Diamond, removed their iOS app, and made
-              verification optional — so half the profiles you see might not
-              be who they say they are.
-            </p>
-            <p>
-              Plus exists because we thought that was ridiculous. Verification
-              should be the default, not a premium add-on. A good experience
-              shouldn&apos;t cost $275 a month. And the platform shouldn&apos;t
-              charge the person being pursued.
-            </p>
-          </div>
-          <div className="grid grid-cols-3 gap-6 mt-10 pt-10 border-t border-card-border">
-            <div>
-              <p className="font-display text-2xl md:text-3xl">$99.99</p>
-              <p className="text-muted text-xs mt-1">Diamond, per month</p>
-            </div>
-            <div>
-              <p className="font-display text-2xl md:text-3xl">$0</p>
-              <p className="text-muted text-xs mt-1">For attractive members</p>
-            </div>
-            <div>
-              <p className="font-display text-2xl md:text-3xl">Verified</p>
-              <p className="text-muted text-xs mt-1">Income &amp; photo checks</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      {/* ═══ HOW IT WORKS — less generic ═══ */}
-      <section className="px-5 md:px-10 lg:px-16 py-16 md:py-28">
-        <div className="max-w-7xl">
-          <div className="max-w-lg mb-12 md:mb-16">
-            <h2 className="font-display text-2xl md:text-3xl leading-snug mb-4">
-              Set up takes two minutes. We&apos;re not exaggerating.
-            </h2>
-            <p className="text-sm text-muted leading-relaxed">
-              No 40-question personality survey. No algorithms deciding who
-              you&apos;re allowed to talk to.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-              <p className="text-accent text-xs tracking-[0.2em] mb-3">01</p>
-              <h3 className="text-sm font-medium mb-2">Say what you want</h3>
-              <p className="text-sm text-muted leading-relaxed">
-                Your profile states your expectations clearly.
-                Arrangement type, lifestyle, what you bring. No ambiguity.
+              <p className="text-xs tracking-[0.2em] uppercase font-medium mb-4" style={{ color: dark }}>
+                REAL CONVERSATIONS
               </p>
-            </div>
-            <div>
-              <p className="text-accent text-xs tracking-[0.2em] mb-3">02</p>
-              <h3 className="text-sm font-medium mb-2">Get verified</h3>
-              <p className="text-sm text-muted leading-relaxed">
-                Income verification for successful members. Photo verification
-                for everyone. It takes five minutes and it&apos;s worth it.
-              </p>
-            </div>
-            <div>
-              <p className="text-accent text-xs tracking-[0.2em] mb-3">03</p>
-              <h3 className="text-sm font-medium mb-2">Message anyone</h3>
-              <p className="text-sm text-muted leading-relaxed">
-                No waiting for a match. If you like someone&apos;s profile,
-                say hello. The best arrangements start with honest conversation.
-              </p>
-            </div>
-            <div>
-              <p className="text-accent text-xs tracking-[0.2em] mb-3">04</p>
-              <h3 className="text-sm font-medium mb-2">Meet in person</h3>
-              <p className="text-sm text-muted leading-relaxed">
-                Dinner, a weekend trip, whatever works for both of you.
-                Travel mode lets you connect in any city before you arrive.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      {/* ═══ PRICING TEASE ═══ */}
-      <section className="bg-card border-y border-card-border">
-        <div className="px-5 md:px-10 lg:px-16 py-14 md:py-24 max-w-7xl">
-          <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-20 items-center">
-            <div>
-              <h2 className="font-display text-2xl md:text-3xl leading-snug mb-4">
-                Pricing that doesn&apos;t feel like a scam
-              </h2>
-              <p className="text-muted text-sm leading-relaxed max-w-md mb-3">
-                Attractive members use Plus completely free — no trial,
-                no catch. Successful members start free too and upgrade when
-                they want unlimited messaging.
-              </p>
-              <p className="text-muted text-sm leading-relaxed max-w-md">
-                For context: Seeking Arrangement charges $109.99/month for
-                Premium and $274.99/month for Diamond.
-              </p>
-              <Link href="/pricing" className="inline-block mt-6 text-sm text-accent hover:text-accent-light transition-colors">
-                Full pricing breakdown &rarr;
+              <div className="flex flex-col gap-2.5">
+                {conversations.map((msg, i) => (
+                  <div
+                    key={i}
+                    className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}
+                    style={{
+                      opacity: mounted ? 1 : 0,
+                      transform: mounted ? "translateY(0)" : "translateY(10px)",
+                      transition: `all 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${0.6 + i * 0.15}s`,
+                    }}
+                  >
+                    <div
+                      className="px-4 py-2.5 max-w-[200px]"
+                      style={{
+                        background: msg.sent ? accent : cardBg,
+                        color: msg.sent ? "#fff" : dark,
+                        borderRadius: msg.sent ? "16px 16px 4px 16px" : "16px 16px 16px 4px",
+                      }}
+                    >
+                      <p className="text-sm leading-snug">{msg.text}</p>
+                      <p className="text-[10px] mt-1" style={{ color: msg.sent ? "rgba(255,255,255,0.7)" : muted }}>
+                        {msg.time} {msg.sent && "✓✓"}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <Link href="/blog" className="flex items-center gap-1 mt-4 text-xs tracking-wide" style={{ color: dark }}>
+                READ MORE STORIES <span>→</span>
               </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-card-border rounded-lg overflow-hidden">
-              {[
-                { name: "Free", price: "$0", note: "Full access for attractive members" },
-                { name: "Diamond", price: "$99.99", note: "All features — messaging, privacy, priority" },
-              ].map((plan) => (
-                <div key={plan.name} className="bg-muted-bg p-5 md:p-6 text-center">
-                  <p className="text-xs text-muted mb-2">{plan.name}</p>
-                  <p className="font-display text-xl md:text-2xl mb-2">{plan.price}<span className="text-xs text-muted font-sans">/mo</span></p>
-                  <p className="text-[11px] text-muted leading-snug">{plan.note}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
 
+      {/* ═══ VALUE PROPS ═══ */}
+      <section style={{ borderTop: `1px solid ${divider}`, borderBottom: `1px solid ${divider}` }}>
+        <div className="grid grid-cols-2 lg:grid-cols-4">
+          {values.map((v, i) => (
+            <div
+              key={v.title}
+              className="px-6 md:px-10 py-10 md:py-14"
+              style={{ borderRight: i < 3 ? `1px solid ${divider}` : "none" }}
+            >
+              <span className="text-2xl block mb-4" style={{ color: muted }}>{v.icon}</span>
+              <h3 className="text-xs tracking-[0.2em] font-medium mb-3" style={{ color: dark }}>
+                {v.title}
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: muted }}>
+                {v.desc}
+              </p>
+              <span className="block mt-4 text-sm font-medium" style={{ color: accent }}>+</span>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      {/* ═══ REFERRAL ═══ */}
-      <section className="px-5 md:px-10 lg:px-16 py-14 md:py-24">
-        <div className="max-w-7xl grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-20 items-center">
+      {/* ═══ DISCOVER YOUR PLUS ═══ */}
+      <section className="px-6 md:px-12 lg:px-16 py-16 md:py-24">
+        <div className="grid lg:grid-cols-[1fr_2fr] gap-12 items-start">
           <div>
-            <p className="text-xs text-muted uppercase tracking-[0.2em] mb-5">Referral program</p>
-            <h2 className="font-display text-2xl md:text-3xl leading-snug mb-4">
-              Know people who&apos;d be into this?<br />Get paid when they join.
-            </h2>
-            <p className="text-muted text-sm leading-relaxed mb-6 max-w-md">
-              Share your link. When someone subscribes through it, you earn
-              $5–$12/month for as long as they stay. Recurring. No cap.
+            <p className="text-xs tracking-[0.2em] uppercase mb-6" style={{ color: muted }}>
+              DISCOVER YOUR PLUS
             </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                href="/auth?mode=register"
-                className="inline-flex items-center justify-center px-8 py-3.5 bg-accent text-background text-sm tracking-wide font-medium hover:bg-accent-light transition-colors"
-              >
-                Start earning
-              </Link>
-              <Link
-                href="/earn"
-                className="inline-flex items-center justify-center px-8 py-3.5 text-sm text-muted hover:text-foreground transition-colors"
-              >
-                How it works &rarr;
-              </Link>
-            </div>
+            <h2
+              className="leading-[1.1] mb-4"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(2rem, 4vw, 3.2rem)",
+                fontWeight: 400,
+              }}
+            >
+              Miami today,
+              <br />
+              who&apos;s taking
+              <br />
+              you <span style={{ color: accent }}>tonight</span>?
+            </h2>
+            <Link href="/auth?mode=register" className="inline-flex items-center gap-2 text-sm" style={{ color: dark }}>
+              See who&apos;s in town <span>→</span>
+            </Link>
           </div>
-          <div className="space-y-3">
-            {[
-              { scenario: "Share your link with friends", result: "5 subscribe", earning: "$25–$60/mo" },
-              { scenario: "Post about it on TikTok", result: "30 subscribe", earning: "$150–$360/mo" },
-              { scenario: "Build it into your content", result: "100 subscribe", earning: "$750–$1,200/mo" },
-            ].map((s) => (
-              <div key={s.scenario} className="p-4 bg-card border border-card-border rounded-lg">
-                <p className="text-xs text-muted mb-1">{s.scenario}</p>
-                <p className="text-sm mb-1">{s.result}</p>
-                <p className="text-accent font-display text-lg">{s.earning}</p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {profiles.map((p) => (
+              <div
+                key={p.name}
+                className="relative overflow-hidden group cursor-pointer"
+                style={{ aspectRatio: "3/4", borderRadius: "4px" }}
+              >
+                {/* Placeholder gradient for profile photo */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: `linear-gradient(${Math.random() * 360}deg, rgba(200,127,110,0.3), rgba(180,160,140,0.4), rgba(160,140,120,0.3))`,
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <p className="text-white text-sm font-medium">
+                    {p.name}, {p.age} <span style={{ color: accent }}>+</span>
+                  </p>
+                  <div className="flex items-center gap-1.5 mt-0.5">
+                    <span className="text-white/70 text-xs">{p.city}</span>
+                    {p.online && (
+                      <>
+                        <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
+                        <span className="text-green-400 text-[10px]">Online</span>
+                      </>
+                    )}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ═══ PHONE MOCKUP — WHAT'S YOUR PLUS? ═══ */}
+      <section className="px-6 md:px-12 lg:px-16 py-16 md:py-24" style={{ background: cardBg }}>
+        <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+          <div>
+            <p className="text-xs tracking-[0.2em] uppercase mb-6" style={{ color: muted }}>
+              THE APP
+            </p>
+            <h2
+              className="leading-[1.1] mb-6"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(2rem, 4vw, 3rem)",
+                fontWeight: 400,
+              }}
+            >
+              WHAT&apos;S YOUR <span style={{ color: accent }}>PLUS</span>?
+            </h2>
+            <p className="text-base leading-relaxed mb-8" style={{ color: muted }}>
+              Tell us what you&apos;re looking for. Dating, travel, dinner, experiences — or all of the above. Your Plus is whatever you want it to be.
+            </p>
+            <div className="flex flex-wrap gap-2.5">
+              {["Dating", "Travel", "Dinner", "Experiences", "Ongoing", "Tonight"].map((cat) => (
+                <span
+                  key={cat}
+                  className="px-4 py-2 text-sm transition-all cursor-pointer"
+                  style={{
+                    border: `1px solid ${divider}`,
+                    borderRadius: "24px",
+                    color: dark,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = accent;
+                    e.currentTarget.style.color = "#fff";
+                    e.currentTarget.style.borderColor = accent;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.color = dark;
+                    e.currentTarget.style.borderColor = divider;
+                  }}
+                >
+                  + {cat}
+                </span>
+              ))}
+            </div>
+          </div>
 
-      {/* ═══ FINAL CTA ═══ */}
-      <section className="relative py-20 md:py-32">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1599582350162-83106f579198?w=1920&q=80&auto=format"
-            alt="Couple on luxury vacation by the ocean"
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-black/75" />
-        </div>
-        <div className="relative z-10 px-5 md:px-10 lg:px-16 max-w-3xl">
-          <h2 className="font-display text-[clamp(2rem,5vw,3.5rem)] leading-[1.05] text-white mb-6">
-            You already know what you want.<br />
-            Come find it.
-          </h2>
-          <p className="text-white/50 text-sm leading-relaxed max-w-md mb-10">
-            Your profile takes two minutes. Attractive members pay nothing.
-            Successful members start free. No commitment, cancel anytime.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/auth?mode=register"
-              className="inline-flex items-center justify-center px-10 py-4 bg-accent text-background text-sm tracking-wide font-medium hover:bg-accent-light transition-colors"
+          {/* Phone mockup */}
+          <div className="flex justify-center">
+            <div
+              className="w-[280px] rounded-[36px] overflow-hidden shadow-2xl"
+              style={{ background: "#0A0A0A", padding: "12px" }}
             >
-              Create your free profile
-            </Link>
-            <Link
-              href="/seeking-arrangement-alternative"
-              className="inline-flex items-center justify-center px-10 py-4 text-sm text-white/50 hover:text-white transition-colors"
-            >
-              Compare to Seeking &rarr;
-            </Link>
+              <div className="rounded-[28px] overflow-hidden" style={{ background: "#111" }}>
+                {/* Status bar */}
+                <div className="flex items-center justify-between px-6 pt-3 pb-2">
+                  <span className="text-white/50 text-[10px]">9:41</span>
+                  <span className="text-white/50 text-[10px]">●●●</span>
+                </div>
+                {/* App header */}
+                <div className="flex items-center justify-between px-5 py-3">
+                  <span className="text-white/40 text-lg">☰</span>
+                  <span className="text-white text-lg" style={{ fontFamily: "var(--font-display)" }}>
+                    PLUS<span style={{ color: accent }}>+</span>
+                  </span>
+                  <div className="flex gap-2">
+                    <span className="text-white/40 text-sm">♡</span>
+                    <span className="text-white/40 text-sm">⚙</span>
+                  </div>
+                </div>
+                {/* Content */}
+                <div className="px-5 pb-6 pt-4">
+                  <h3 className="text-white text-2xl font-bold leading-tight mb-6" style={{ fontFamily: "var(--font-display)" }}>
+                    WHAT&apos;S
+                    <br />
+                    YOUR <span style={{ color: accent }}>PLUS</span>?
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {["Dating", "Travel", "Dinner", "Experiences", "Ongoing", "Tonight"].map((cat) => (
+                      <span
+                        key={cat}
+                        className="px-3 py-1.5 text-xs text-white/80 rounded-full"
+                        style={{ border: "1px solid rgba(255,255,255,0.15)" }}
+                      >
+                        + {cat}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                {/* Bottom nav */}
+                <div className="flex items-center justify-around px-4 py-3" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+                  {["Discover", "Likes", "Messages", "Plans", "Profile"].map((tab) => (
+                    <span key={tab} className="text-[9px] text-white/30">{tab}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* ═══ TESTIMONIAL ═══ */}
+      <section className="px-6 md:px-12 lg:px-16 py-16 md:py-24">
+        <div className="max-w-4xl">
+          <div className="flex items-start gap-4 mb-2">
+            <span className="text-5xl leading-none" style={{ fontFamily: "var(--font-display)", color: accent }}>
+              &ldquo;
+            </span>
+          </div>
+          <blockquote
+            className="leading-[1.2] mb-4"
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(2rem, 4vw, 3.2rem)",
+              fontWeight: 400,
+            }}
+          >
+            Finally, a place where
+            <br />
+            people are <span style={{ color: accent }}>honest</span>.
+          </blockquote>
+          <p className="text-sm" style={{ color: muted }}>
+            — Sarah, Miami
+          </p>
+        </div>
+      </section>
 
-      <PublicFooter />
+      {/* ═══ FINAL CTA ═══ */}
+      <section
+        className="px-6 md:px-12 lg:px-16 py-20 md:py-32 text-center"
+        style={{ background: dark, color: cream }}
+      >
+        <h2
+          className="leading-[1.05] mb-6 max-w-2xl mx-auto"
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(2rem, 5vw, 3.5rem)",
+            fontWeight: 400,
+          }}
+        >
+          Your <span style={{ color: accent }}>plus</span> is waiting.
+        </h2>
+        <p className="text-sm mb-10 max-w-md mx-auto" style={{ color: "rgba(245,237,228,0.6)" }}>
+          Free for attractive members. Always. Create your profile in two minutes and see who&apos;s near you.
+        </p>
+        <Link
+          href="/auth?mode=register"
+          className="inline-flex items-center justify-center px-10 py-4 text-sm tracking-wide font-medium transition-all"
+          style={{ background: accent, color: "#fff" }}
+        >
+          JOIN PLUS+
+        </Link>
+      </section>
+
+      {/* ═══ FOOTER ═══ */}
+      <footer className="px-6 md:px-12 lg:px-16 py-12" style={{ borderTop: `1px solid ${divider}` }}>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <Link href="/" className="flex items-baseline gap-0">
+            <span style={{ fontFamily: "var(--font-display)", fontSize: "1.2rem", fontWeight: 400, color: dark }}>
+              PLUS
+            </span>
+            <span style={{ color: accent, fontSize: "1.2rem", fontWeight: 600 }}>+</span>
+          </Link>
+
+          <div className="flex items-center gap-6">
+            {["ABOUT", "SAFETY", "BLOG", "TERMS", "PRIVACY", "CONTACT"].map((item) => (
+              <Link
+                key={item}
+                href={`/${item.toLowerCase()}`}
+                className="text-xs tracking-[0.1em]"
+                style={{ color: muted }}
+              >
+                {item}
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-4">
+            {["IG", "TT", "X", "✉"].map((icon) => (
+              <span key={icon} className="text-sm cursor-pointer" style={{ color: muted }}>
+                {icon}
+              </span>
+            ))}
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
