@@ -4,16 +4,16 @@ import PublicNav from "@/components/PublicNav";
 import PublicFooter from "@/components/PublicFooter";
 
 export const metadata: Metadata = {
-  title: "Sugar Dating Community — Free & Private | Plus",
+  title: "Private Dating Community — Free & Moderated | Plus",
   description:
-    "Join 500+ verified sugar daters sharing tips, safety advice, and real talk. Free, private, moderated Telegram community from Plus.",
+    "Join 500+ verified members sharing tips, safety advice, and real talk about private dating. Free, private, moderated Telegram community from Plus.",
   keywords:
-    "sugar dating community, sugar dating forum, sugar dating group, sugar dating advice, sugar dating tips",
+    "private dating community, dating forum, dating group, dating advice, relationship tips",
   alternates: { canonical: "https://meetyourplus.com/community" },
   openGraph: {
-    title: "Sugar Dating Community — Free & Private | Plus",
+    title: "Private Dating Community — Free & Moderated | Plus",
     description:
-      "Join 500+ verified members sharing tips, safety advice, and real talk about sugar dating. Free, private, moderated.",
+      "Join 500+ verified members sharing tips, safety advice, and real talk about dating. Free, private, moderated.",
     url: "https://meetyourplus.com/community",
     type: "website",
     images: [
@@ -57,7 +57,7 @@ export default function CommunityPage() {
           about dating. Free, private, moderated.
         </p>
         <a
-          href="https://t.me/arrangedcommunity"
+          href="https://t.me/pluscommunity"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center px-10 py-4 text-sm tracking-wide font-medium transition-all hover:brightness-110"
@@ -102,7 +102,7 @@ export default function CommunityPage() {
               >
                 Not Reddit anonymous posts. A curated community of verified
                 members who share what actually works — from first messages to
-                long-term arrangements.
+                long-term connections.
               </p>
             </div>
 
@@ -134,15 +134,15 @@ export default function CommunityPage() {
                 className="text-xs tracking-[0.2em] uppercase mb-4"
                 style={{ color: gold }}
               >
-                Arrangement advice
+                Dating advice
               </p>
               <p
                 className="text-sm leading-relaxed"
                 style={{ color: creamMuted }}
               >
-                Allowance negotiations, profile reviews, first date tips. The
+                Profile reviews, first date tips, and relationship advice. The
                 conversations that make the difference between a great
-                arrangement and a wasted evening.
+                connection and a wasted evening.
               </p>
             </div>
 
@@ -187,7 +187,7 @@ export default function CommunityPage() {
             "Weekly Q&A threads",
             "Anonymous success stories",
             "Profile review channel",
-            "City-specific channels (NYC, Miami, DFW, LA, London)",
+            "City-specific channels (Miami, Houston, NYC, LA, London)",
             "Safety alerts and scam warnings",
             "Exclusive Plus updates and early access to features",
           ].map((item) => (
@@ -222,7 +222,7 @@ export default function CommunityPage() {
           <div className="grid sm:grid-cols-2 gap-6">
             {[
               { num: "1", title: "18+ only", desc: "All members must be at least 18 years old." },
-              { num: "2", title: "No soliciting arrangements", desc: "This is a community for advice, not a marketplace." },
+              { num: "2", title: "No solicitation", desc: "This is a community for advice, not a marketplace." },
               { num: "3", title: "No sharing personal info", desc: "Don't share personal information of other members." },
               { num: "4", title: "Respectful discourse", desc: "Disagree constructively. No personal attacks." },
               { num: "5", title: "Zero tolerance for exploitation", desc: "Any form of exploitation results in an immediate ban." },
@@ -263,7 +263,7 @@ export default function CommunityPage() {
           Free. Private. Moderated. Real advice from people who actually do this.
         </p>
         <a
-          href="https://t.me/arrangedcommunity"
+          href="https://t.me/pluscommunity"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center px-12 py-4 text-sm tracking-wide font-medium transition-all hover:brightness-110"

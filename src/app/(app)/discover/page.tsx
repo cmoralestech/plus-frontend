@@ -15,8 +15,8 @@ import { Heart, Crown, Eye, MessageCircle, Sparkles, X, ArrowRight, Search, Plan
 import { trackFunnel } from "@/lib/track";
 
 const FREE_VIEW_LIMIT = 5;
-const LS_KEY = "arranged_free_views";
-const LS_DATE_KEY = "arranged_free_views_date";
+const LS_KEY = "plus_free_views";
+const LS_DATE_KEY = "plus_free_views_date";
 
 function getStoredFreeViews(): number {
   if (typeof window === "undefined") return 0;

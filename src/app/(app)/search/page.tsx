@@ -10,8 +10,8 @@ import { CardSkeleton } from "@/components/Skeleton";
 import { MapPin, SlidersHorizontal, X, ChevronDown, Loader2, Crown, Eye, MessageCircle, Sparkles } from "lucide-react";
 
 const FREE_VIEW_LIMIT = 5;
-const LS_KEY = "arranged_free_views";
-const LS_DATE_KEY = "arranged_free_views_date";
+const LS_KEY = "plus_free_views";
+const LS_DATE_KEY = "plus_free_views_date";
 
 function getStoredFreeViews(): number {
   if (typeof window === "undefined") return 0;
@@ -26,7 +26,7 @@ function getStoredFreeViews(): number {
   return stored ? parseInt(stored, 10) || 0 : 0;
 }
 
-const STORAGE_KEY = "arranged_search_prefs";
+const STORAGE_KEY = "plus_search_prefs";
 
 const popularCities = [
   "New York", "Los Angeles", "Miami", "Las Vegas", "Chicago",
