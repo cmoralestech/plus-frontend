@@ -123,7 +123,7 @@ export default function LikesPage() {
               <p className="text-sm text-muted mb-4">See who&apos;s interested in you</p>
               <a
                 href="/settings?tab=subscription"
-                className="inline-flex items-center gap-2 px-8 py-3.5 bg-accent text-[#F5EDE4] rounded-xl font-semibold text-base hover:bg-accent-dark transition-colors min-h-[48px]"
+                className="inline-flex items-center gap-2 px-8 py-3.5 bg-accent text-[#141210] rounded-xl font-semibold text-base hover:bg-accent-dark transition-colors min-h-[48px]"
               >
                 <Crown size={18} />
                 Upgrade to Premium
@@ -144,7 +144,7 @@ export default function LikesPage() {
             <div className="text-center mt-6">
               <a
                 href="/settings?tab=subscription"
-                className="inline-flex items-center gap-2 px-8 py-3.5 bg-accent text-[#F5EDE4] rounded-xl font-semibold text-base hover:bg-accent-dark transition-colors min-h-[48px]"
+                className="inline-flex items-center gap-2 px-8 py-3.5 bg-accent text-[#141210] rounded-xl font-semibold text-base hover:bg-accent-dark transition-colors min-h-[48px]"
               >
                 <Crown size={18} />
                 Unlock all likes

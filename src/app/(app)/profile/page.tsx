@@ -175,7 +175,7 @@ export default function ProfilePage() {
             <button
               onClick={handleSave}
               disabled={saving}
-              className="flex items-center gap-1 px-4 py-2 bg-accent text-[#F5EDE4] rounded-lg text-sm font-medium hover:bg-accent-dark transition-colors disabled:opacity-50"
+              className="flex items-center gap-1 px-4 py-2 bg-accent text-[#141210] rounded-lg text-sm font-medium hover:bg-accent-dark transition-colors disabled:opacity-50"
             >
               <Save size={16} />
               {saving ? "Saving..." : "Save"}

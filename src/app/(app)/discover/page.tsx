@@ -242,7 +242,7 @@ export default function DiscoverPage() {
                       window.location.href = "/settings?tab=subscription";
                     }
                   }}
-                  className="w-full py-3 bg-accent text-[#F5EDE4] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors"
+                  className="w-full py-3 bg-accent text-[#141210] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors"
                 >
                   {paywallDismissals > 0 ? (
                     <>First month 25% off &mdash; $74.99 <span className="line-through opacity-60 ml-1">$99.99</span></>
@@ -283,7 +283,7 @@ export default function DiscoverPage() {
           <div className="flex flex-col gap-3">
             <Link
               href="/search"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-[#F5EDE4] rounded-xl text-sm font-semibold hover:bg-accent-dark transition-colors min-h-[44px]"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-[#141210] rounded-xl text-sm font-semibold hover:bg-accent-dark transition-colors min-h-[44px]"
             >
               <Search size={16} />
               Try a different city

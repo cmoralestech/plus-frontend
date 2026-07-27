@@ -181,6 +181,21 @@ function ProfileCompletionBanner() {
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <AuthGuard>
+      <div style={{
+        "--background": "#141210",
+        "--foreground": "#ede6db",
+        "--accent": "#d4b896",
+        "--accent-light": "#e0c8a8",
+        "--accent-dark": "#c4a882",
+        "--card": "#1e1b17",
+        "--card-border": "#2e2a24",
+        "--muted": "#a8a090",
+        "--muted-bg": "#252219",
+        "--gold": "#d4b896",
+        background: "#141210",
+        color: "#ede6db",
+        minHeight: "100vh",
+      } as React.CSSProperties}>
       <NavBar />
       <main className="md:ml-64 pb-24 md:pb-0 min-h-screen">
         <VerificationBanner />
@@ -189,6 +204,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <ToastContainer />
+      </div>
     </AuthGuard>
   );
 }

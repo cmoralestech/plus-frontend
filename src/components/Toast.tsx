@@ -49,7 +49,7 @@ export function ToastContainer() {
           match: <Heart size={18} className="text-accent fill-accent" />,
         };
         const bg = toast.type === "match"
-          ? "bg-accent text-[#F5EDE4]"
+          ? "bg-accent text-[#141210]"
           : "bg-card border border-card-border text-foreground";
 
         return (

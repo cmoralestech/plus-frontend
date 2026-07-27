@@ -178,7 +178,7 @@ function MessagesContent() {
             </div>
             <p className="text-sm font-medium mb-1">No conversations yet</p>
             <p className="text-xs text-muted mb-4">Send a message to start a conversation</p>
-            <a href="/discover" className="px-5 py-2.5 bg-accent text-[#F5EDE4] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors min-h-[44px] inline-flex items-center">
+            <a href="/discover" className="px-5 py-2.5 bg-accent text-[#141210] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors min-h-[44px] inline-flex items-center">
               Browse profiles
             </a>
           </div>
@@ -245,7 +245,7 @@ function MessagesContent() {
                     )}
                   </div>
                   {conv.unread_count > 0 && (
-                    <span className="w-5 h-5 bg-accent text-[#F5EDE4] text-xs rounded-full flex items-center justify-center font-medium flex-shrink-0">
+                    <span className="w-5 h-5 bg-accent text-[#141210] text-xs rounded-full flex items-center justify-center font-medium flex-shrink-0">
                       {conv.unread_count}
                     </span>
                   )}
@@ -387,7 +387,7 @@ function MessagesContent() {
                       <div
                         className={`max-w-[75%] px-4 py-2.5 rounded-2xl text-sm ${
                           isMe
-                            ? "bg-accent text-[#F5EDE4] rounded-br-md"
+                            ? "bg-accent text-[#141210] rounded-br-md"
                             : "bg-card border border-card-border rounded-bl-md"
                         }`}
                       >
@@ -415,7 +415,7 @@ function MessagesContent() {
                     <p className="text-xs text-muted mb-3">Upgrade to Premium to read and reply to all messages</p>
                     <a
                       href="/settings?tab=subscription"
-                      className="px-5 py-2.5 bg-accent text-[#F5EDE4] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors min-h-[44px] inline-flex items-center"
+                      className="px-5 py-2.5 bg-accent text-[#141210] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors min-h-[44px] inline-flex items-center"
                     >
                       Upgrade now
                     </a>
@@ -444,7 +444,7 @@ function MessagesContent() {
                 <p className="text-sm text-muted mb-2">You&apos;ve sent your free opening message</p>
                 <a
                   href="/settings?tab=subscription"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-[#F5EDE4] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors min-h-[44px]"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-[#141210] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors min-h-[44px]"
                 >
                   <Lock size={14} />
                   Upgrade for unlimited messaging
@@ -474,7 +474,7 @@ function MessagesContent() {
                 type="button"
                 onClick={() => handleSend()}
                 disabled={!newMessage.trim() || sending}
-                className="w-10 h-10 bg-accent text-[#F5EDE4] rounded-full flex items-center justify-center hover:bg-accent-dark transition-colors disabled:opacity-50"
+                className="w-10 h-10 bg-accent text-[#141210] rounded-full flex items-center justify-center hover:bg-accent-dark transition-colors disabled:opacity-50"
               >
                 <Send size={16} />
               </button>

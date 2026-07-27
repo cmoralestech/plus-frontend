@@ -89,7 +89,7 @@ export default function PhotoUpload({
               className="w-full h-full object-cover"
             />
             {photo.is_primary && (
-              <div className="absolute top-1.5 left-1.5 bg-accent text-[#F5EDE4] px-1.5 py-0.5 rounded text-xs font-medium flex items-center gap-0.5">
+              <div className="absolute top-1.5 left-1.5 bg-accent text-[#141210] px-1.5 py-0.5 rounded text-xs font-medium flex items-center gap-0.5">
                 <Star size={10} />
                 Main
               </div>

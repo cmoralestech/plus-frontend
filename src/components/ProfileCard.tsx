@@ -75,7 +75,7 @@ function ProfileCard({
               )}
             </div>
           ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#FFFFFF] to-[#F5EDE4]">
+            <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#1e1b17] to-[#141210]">
               <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-2">
                 <span className="text-2xl font-display text-accent/50">{profile.display_name[0]}</span>
               </div>
