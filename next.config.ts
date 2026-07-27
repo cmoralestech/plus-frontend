@@ -14,7 +14,11 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "sugardads-api.fly.dev",
+        hostname: "plus-api.fly.dev",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
       },
       {
         protocol: "http",

@@ -143,8 +143,8 @@ export default function LandingPage() {
           {/* Right — hero image area */}
           <div className="relative hidden lg:block">
             <img
-              src="https://images.unsplash.com/photo-1581044777550-4cfa60707998?w=1200&q=80&auto=format&fit=crop"
-              alt="Women enjoying sunset social scene"
+              src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=1200&q=80&auto=format&fit=crop"
+              alt="Stylish woman in the city"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(245,237,228,1) 0%, rgba(245,237,228,0.3) 15%, transparent 40%)" }} />
