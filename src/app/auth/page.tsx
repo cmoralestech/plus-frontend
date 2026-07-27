@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useAuthStore } from "@/lib/store";
 import api from "@/lib/api";
 import { trackFunnel } from "@/lib/track";
-import { Eye, EyeOff, Shield, BadgeCheck, Lock } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function AuthPage() {
   return (
@@ -149,58 +149,16 @@ function AuthForm() {
   };
 
   return (
-    <div className="min-h-screen flex bg-background">
-      {/* Left side — value prop (desktop only) */}
-      <div className="hidden lg:flex lg:w-[45%] relative flex-col justify-end p-12 xl:p-16">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1581954548122-4dff8989c0f7?w=1200&q=80&auto=format"
-            alt=""
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
-        </div>
-        <div className="relative z-10">
-          <Link href="/" className="text-lg tracking-[0.2em] uppercase font-display text-accent block mb-10">
-            Plus
+    <div className="min-h-screen flex items-center justify-center bg-background px-5 py-12">
+      <div className="w-full max-w-sm">
+          {/* Logo */}
+          <Link href="/" className="flex items-baseline justify-center mb-10">
+            <span className="text-xl tracking-[0.1em] font-display" style={{ color: "var(--foreground)" }}>PLUS</span>
+            <span className="text-xl font-bold" style={{ color: "var(--accent)" }}>+</span>
           </Link>
-          <h2 className="font-display text-3xl xl:text-4xl text-white leading-snug mb-4">
-            {mode === "register" ? "Your next chapter starts here." : "Welcome back."}
-          </h2>
-          <p className="text-white/60 text-sm leading-relaxed max-w-sm mb-8">
-            {mode === "register"
-              ? "Join verified members who are honest about what they want. Create your profile in two minutes."
-              : "Pick up where you left off. Your matches are waiting."}
-          </p>
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-3 text-white/50 text-xs">
-              <BadgeCheck size={16} className="text-accent flex-shrink-0" />
-              <span>Income & photo verified members</span>
-            </div>
-            <div className="flex items-center gap-3 text-white/50 text-xs">
-              <Shield size={16} className="text-accent flex-shrink-0" />
-              <span>Private & discreet by default</span>
-            </div>
-            <div className="flex items-center gap-3 text-white/50 text-xs">
-              <Lock size={16} className="text-accent flex-shrink-0" />
-              <span>Free for attractive members, always</span>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Right side — form */}
-      <div className="flex-1 flex items-start md:items-center justify-center px-5 pt-14 md:pt-12 pb-12">
-        <div className="w-full max-w-sm">
-          {/* Mobile logo */}
-          <h1 className="lg:hidden">
-            <Link href="/" className="text-lg tracking-[0.2em] uppercase font-display text-accent block mb-8 text-center">
-              Plus
-            </Link>
-          </h1>
-
-          {/* Desktop heading */}
-          <div className="hidden lg:block mb-8">
+          {/* Heading */}
+          <div className="mb-8 text-center">
             <h1 className="text-xl font-display mb-1">
               {mode === "login" ? "Sign in to your account" : "Create your free account"}
             </h1>
@@ -428,7 +386,6 @@ function AuthForm() {
               </>
             )}
           </p>
-        </div>
       </div>
     </div>
   );
