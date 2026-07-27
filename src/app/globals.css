@@ -3,17 +3,17 @@
 :root {
   --background: #141210;
   --foreground: #ede6db;
-  --accent: #C87F6E;
-  --accent-light: #D4937E;
-  --accent-dark: #B06B5C;
+  --accent: #8B1A1A;
+  --accent-light: #A52222;
+  --accent-dark: #6B1414;
   --card: #1e1b17;
   --card-border: #2e2a24;
   --muted: #a8a090;
   --muted-bg: #252219;
   --success: #6ee7b7;
   --danger: #f87171;
-  --gold: #C87F6E;
-  --gold-bg: #2a2018;
+  --gold: #8B1A1A;
+  --gold-bg: #2a1818;
   --scrollbar: #3a3530;
 }
 
@@ -49,6 +49,6 @@ body {
 }
 
 ::selection {
-  background: rgba(200, 127, 110, 0.25);
+  background: rgba(139, 26, 26, 0.25);
   color: #ede6db;
 }
