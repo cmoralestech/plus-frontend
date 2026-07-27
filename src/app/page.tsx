@@ -142,19 +142,13 @@ export default function LandingPage() {
 
           {/* Right — hero image area */}
           <div className="relative hidden lg:block">
-            <div
-              className="absolute inset-0"
-              style={{
-                background: `linear-gradient(135deg, rgba(200,127,110,0.15) 0%, rgba(218,180,150,0.2) 50%, rgba(245,237,228,0.1) 100%)`,
-              }}
+            <img
+              src="https://images.unsplash.com/photo-1529635649540-e0e60e2b3c5e?w=1200&q=80&auto=format&fit=crop"
+              alt="Women enjoying nightlife"
+              className="absolute inset-0 w-full h-full object-cover"
             />
-            {/* Placeholder for hero lifestyle image */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center" style={{ color: muted }}>
-                <p className="text-sm tracking-[0.2em] uppercase mb-2">Hero Image</p>
-                <p className="text-xs">Add lifestyle photo here</p>
-              </div>
-            </div>
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(245,237,228,1) 0%, rgba(245,237,228,0.3) 15%, transparent 40%)" }} />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.2) 0%, transparent 40%)" }} />
 
             {/* Real Conversations floating panel */}
             <div
@@ -165,7 +159,7 @@ export default function LandingPage() {
                 transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s",
               }}
             >
-              <p className="text-xs tracking-[0.2em] uppercase font-medium mb-4" style={{ color: dark }}>
+              <p className="text-xs tracking-[0.2em] uppercase font-medium mb-4" style={{ color: "#fff" }}>
                 REAL CONVERSATIONS
               </p>
               <div className="flex flex-col gap-2.5">
@@ -195,7 +189,7 @@ export default function LandingPage() {
                   </div>
                 ))}
               </div>
-              <Link href="/blog" className="flex items-center gap-1 mt-4 text-xs tracking-wide" style={{ color: dark }}>
+              <Link href="/blog" className="flex items-center gap-1 mt-4 text-xs tracking-wide" style={{ color: "#fff" }}>
                 READ MORE STORIES <span>→</span>
               </Link>
             </div>
@@ -389,7 +383,8 @@ export default function LandingPage() {
 
       {/* ═══ TESTIMONIAL ═══ */}
       <section className="px-6 md:px-12 lg:px-16 py-16 md:py-24">
-        <div className="max-w-4xl">
+        <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 items-center">
+          <div>
           <div className="flex items-start gap-4 mb-2">
             <span className="text-5xl leading-none" style={{ fontFamily: "var(--font-display)", color: accent }}>
               &ldquo;
@@ -410,6 +405,20 @@ export default function LandingPage() {
           <p className="text-sm" style={{ color: muted }}>
             — Sarah, Miami
           </p>
+          </div>
+          {/* Lifestyle photo grid */}
+          <div className="hidden lg:grid grid-cols-4 gap-2">
+            {[
+              "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=300&fit=crop&q=80",
+              "https://images.unsplash.com/photo-1517263904808-5dc91e3e7044?w=400&h=300&fit=crop&q=80",
+              "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=300&fit=crop&q=80",
+              "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop&q=80",
+            ].map((src, i) => (
+              <div key={i} className="overflow-hidden" style={{ aspectRatio: "4/5", borderRadius: "4px" }}>
+                <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
