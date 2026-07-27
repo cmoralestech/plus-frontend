@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "What Type of Sugar Baby or Sugar Daddy Are You? Free Quiz | Plus",
+  title: "What's Your Dating Style? Free Quiz | Plus",
   description:
-    "Take our free sugar dating personality quiz. 7 questions, 5 arrangement styles. Find out if you're The Connoisseur, Jet-Setter, Mentor & Muse, Experience Collector, or Power Match.",
+    "Take our free dating personality quiz. 7 questions, 5 dating styles. Find out if you're The Connoisseur, Jet-Setter, Mentor & Muse, Experience Collector, or Power Match.",
   alternates: { canonical: "https://meetyourplus.com/quiz" },
   openGraph: {
-    title: "What's Your Sugar Dating Style? Take the Quiz",
+    title: "What's Your Dating Style? Take the Quiz",
     description:
-      "7 questions. 5 arrangement styles. Find out which one fits you — then find your match on Plus.",
+      "7 questions. 5 dating styles. Find out which one fits you — then find your match on Plus.",
     url: "https://meetyourplus.com/quiz",
     type: "website",
   },

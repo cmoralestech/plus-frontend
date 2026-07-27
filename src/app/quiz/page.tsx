@@ -4,19 +4,19 @@ import QuizClient from "@/components/QuizClient";
 
 const faqs = [
   {
-    q: "What type of sugar baby or sugar daddy am I?",
+    q: "What's my dating style?",
     a: "This quiz identifies your arrangement style based on what you value most — luxury and consistency (The Connoisseur), travel and spontaneity (The Jet-Setter), intellectual connection (The Mentor & Muse), cultural experiences (The Experience Collector), or ambitious partnerships between equals (The Power Match). Most people are a mix of two or three types.",
   },
   {
-    q: "Is this sugar dating personality quiz free?",
+    q: "Is this dating personality quiz free?",
     a: "Yes, completely free. No sign-up, no email gate, no credit card. You see your full results immediately and can share them or retake the quiz as many times as you want.",
   },
   {
-    q: "How accurate is this sugar dating quiz?",
-    a: "The quiz reflects real preferences we see across sugar dating profiles. It highlights your dominant style, but your results page also shows a percentage breakdown of all five styles so you can see the full picture.",
+    q: "How accurate is this dating style quiz?",
+    a: "The quiz reflects real preferences we see across dating profiles. It highlights your dominant style, but your results page also shows a percentage breakdown of all five styles so you can see the full picture.",
   },
   {
-    q: "What are the different types of sugar dating arrangements?",
+    q: "What are the different types of dating styles?",
     a: "The five main styles are: classic/traditional (regular dates, gifts, allowance), travel-based (jet-setting with a companion), mentorship (career guidance + emotional bond), experience-driven (events, culture, nightlife), and power match (two ambitious people choosing each other as equals).",
   },
   {
@@ -47,11 +47,11 @@ export default function QuizPage() {
       {/* Server-rendered intro visible to crawlers */}
       <div className="max-w-xl mx-auto px-5 pt-12 md:pt-20">
         <h1 className="font-display text-3xl md:text-4xl leading-snug mb-4">
-          What type of sugar dater are you?
+          What type of dater are you?
         </h1>
         <p className="text-muted text-sm leading-relaxed mb-2">
-          7 questions. 90 seconds. No sign-up required. Whether you&apos;re a sugar baby
-          wondering what kind of arrangement actually fits you, or a sugar daddy
+          7 questions. 90 seconds. No sign-up required. Whether you&apos;re a attractive member
+          wondering what kind of arrangement actually fits you, or a generous member
           trying to figure out why your last three first dates went nowhere — this
           quiz will tell you what you actually want (even if you won&apos;t admit it).
         </p>
@@ -64,9 +64,9 @@ export default function QuizPage() {
 
       {/* Server-rendered SEO content about result types */}
       <section className="max-w-3xl mx-auto px-5 pb-16 md:pb-20">
-        <h2 className="font-display text-2xl mb-4">The five sugar dating personality types</h2>
+        <h2 className="font-display text-2xl mb-4">The five dating personality types</h2>
         <p className="text-sm text-muted leading-relaxed mb-4">
-          After analyzing thousands of sugar dating profiles and arrangement preferences on
+          After analyzing thousands of dating profiles and arrangement preferences on
           Plus, we identified five distinct personality archetypes. Most people are a blend
           of two or three types, with one dominant style that shapes what they look for in an
           arrangement. Understanding your type helps you write a better profile, choose better
@@ -87,7 +87,7 @@ export default function QuizPage() {
               You have a reservation at that restaurant everyone&apos;s been posting about,
               and you&apos;d rather split a bottle of something interesting than drink alone.
               Your ideal arrangement runs on elegance, generosity, and real chemistry —
-              regular dates, thoughtful gifts, and the kind of sugar relationship where
+              regular dates, thoughtful gifts, and the kind of relationship where
               both people actually look forward to Friday.
             </p>
           </div>
@@ -95,7 +95,7 @@ export default function QuizPage() {
           <div>
             <h3 className="text-base font-medium text-foreground mb-1">The Jet-Setter</h3>
             <p>
-              Your carry-on is always half-packed. You don&apos;t want a sugar partner who
+              Your carry-on is always half-packed. You don&apos;t want a partner who
               needs two weeks&apos; notice for a weekend in Tulum — you want someone who
               texts &ldquo;boarding in 40 minutes, you coming?&rdquo; International trips,
               spontaneous getaways, and collecting passport stamps over designer bags.
@@ -108,7 +108,7 @@ export default function QuizPage() {
               You showed up to a first date and somehow ended up talking for four hours
               about career goals and childhood memories. Your arrangement is built on
               intellectual connection, personal growth, and conversations that make you
-              lose track of time. The sugar part matters, but the substance matters more.
+              lose track of time. The generous part matters, but the substance matters more.
             </p>
           </div>
 

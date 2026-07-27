@@ -742,7 +742,7 @@ export default function AdminPage() {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <DollarSign size={16} className="text-accent" />
-                  <span className="text-sm font-medium">Sugar Daddy Conversion Funnel (30 days)</span>
+                  <span className="text-sm font-medium">Generous Member Conversion Funnel (30 days)</span>
                 </div>
                 <button onClick={fetchFunnel} className="text-xs text-muted hover:text-foreground">
                   <RefreshCw size={14} />
@@ -907,7 +907,7 @@ export default function AdminPage() {
                           <span className={`text-[10px] px-1.5 py-0.5 rounded ${
                             p.user_type === "sugar" ? "bg-accent/10 text-accent" : "bg-success/10 text-success"
                           }`}>
-                            {p.user_type === "sugar" ? "Sugar Daddy" : "Attractive"}
+                            {p.user_type === "sugar" ? "Generous" : "Attractive"}
                           </span>
                           {p.subscription_tier !== "free" && (
                             <span className="text-[10px] px-1.5 py-0.5 rounded bg-accent/20 text-accent font-bold">

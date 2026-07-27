@@ -95,12 +95,12 @@ const results: Record<string, Result> = {
       "You have taste, and you're not apologizing for it. Your ideal arrangement involves candlelight, a good vintage, and someone who actually knows how to hold a conversation over dinner. You're not here for situationships \u2014 you want the real thing, just with better restaurants.",
     traits: ["Appreciates luxury", "Values consistency", "Romantically inclined", "Generous spirit"],
     ideal:
-      "A traditional sugar relationship with regular dates, mutual appreciation, and the kind of chemistry that makes the waiter uncomfortable.",
+      "A traditional relationship with regular dates, mutual appreciation, and the kind of chemistry that makes the waiter uncomfortable.",
     color: "#C87F6E",
     blogLinks: [
-      { title: "Sugar baby allowance guide", slug: "sugar-baby-allowance-guide" },
-      { title: "Sugar dating profile tips", slug: "sugar-dating-profile-tips" },
-      { title: "Sugar dating etiquette", slug: "sugar-dating-etiquette" },
+      { title: "Private dating guide", slug: "what-is-private-dating" },
+      { title: "Miami dating guide", slug: "miami-dating-guide" },
+      { title: "Why we built Plus", slug: "why-we-built-plus" },
     ],
   },
   jetsetter: {
@@ -108,15 +108,15 @@ const results: Record<string, Result> = {
     title: "The Jet-Setter",
     emoji: "\u2708\uFE0F",
     description:
-      "Your ideal sugar partner doesn't need two weeks' notice to fly somewhere. You want someone who texts \"boarding in 40 minutes, you coming?\" and means it. Your carry-on is always half-packed, and your love language is aisle seats.",
+      "Your ideal partner doesn't need two weeks' notice to fly somewhere. You want someone who texts \"boarding in 40 minutes, you coming?\" and means it. Your carry-on is always half-packed, and your love language is aisle seats.",
     traits: ["Adventurous", "Spontaneous", "Worldly", "Experience-driven"],
     ideal:
       "A travel companion arrangement \u2014 weekend getaways, international trips, and collecting passport stamps over things that collect dust.",
     color: "#7dd3fc",
     blogLinks: [
       { title: "Travel dating guide", slug: "travel-dating-guide" },
-      { title: "Best cities for sugar dating worldwide", slug: "best-cities-sugar-dating-worldwide" },
-      { title: "Sugar dating for expats", slug: "sugar-dating-for-expats" },
+      { title: "Houston dating scene", slug: "houston-dating-scene" },
+      { title: "Sugar Private dating guide", slug: "what-is-private-dating" },
     ],
   },
   mentor: {
@@ -124,15 +124,15 @@ const results: Record<string, Result> = {
     title: "The Mentor & Muse",
     emoji: "\u{1F4DA}",
     description:
-      "You went on a first date and somehow ended up talking for four hours about career goals, childhood memories, and why most people settle for less than they deserve. You want depth, not flash. The sugar is nice, but the substance is why you stay.",
+      "You went on a first date and somehow ended up talking for four hours about career goals, childhood memories, and why most people settle for less than they deserve. You want depth, not flash. The generosity is nice, but the substance is why you stay.",
     traits: ["Intellectually curious", "Patient", "Growth-oriented", "Emotionally intelligent"],
     ideal:
       "A mentorship-focused arrangement with real conversation, career guidance, and the kind of bond where you actually miss each other between dates.",
     color: "#a78bfa",
     blogLinks: [
-      { title: "What is sugar dating?", slug: "what-is-sugar-dating" },
-      { title: "Sugar dating for beginners", slug: "sugar-dating-for-beginners" },
-      { title: "How to find a sugar daddy", slug: "how-to-find-a-sugar-daddy" },
+      { title: "What is private dating?", slug: "what-is-private-dating" },
+      { title: "Sugar Why we built Plus", slug: "why-we-built-plus" },
+      { title: "Find your match in Miami", slug: "how-to-find-sugar-daddy-miami" },
     ],
   },
   experience: {
@@ -252,7 +252,7 @@ export default function QuizClient() {
 
   const shareResult = async () => {
     if (!result) return;
-    const text = `I got "${result.title}" on the Plus sugar dating style quiz ${result.emoji}\n\nTake it: https://meetyourplus.com/quiz`;
+    const text = `I got "${result.title}" on the Plus dating style quiz ${result.emoji}\n\nTake it: https://meetyourplus.com/quiz`;
     if (navigator.share) {
       try {
         await navigator.share({ title: `I'm ${result.title}`, text, url: "https://meetyourplus.com/quiz" });

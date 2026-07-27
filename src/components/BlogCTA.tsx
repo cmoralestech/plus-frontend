@@ -26,7 +26,7 @@ export default function BlogCTA({ slug, gold, dark1 }: { slug: string; gold: str
         </a>
       </p>
       <p className="text-xs" style={{ color: '#8A7E76' }}>
-        Are you a sugar daddy?{' '}
+        Successful and generous?{' '}
         <a href="/for-sugar-daddies" style={{ color: gold, textDecoration: 'underline' }}>
           See why Plus is worth it
         </a>
@@ -34,7 +34,7 @@ export default function BlogCTA({ slug, gold, dark1 }: { slug: string; gold: str
       <p className="text-xs" style={{ color: '#8A7E76' }}>
         Join the community &rarr;{' '}
         <a href="/community" style={{ color: gold, textDecoration: 'underline' }}>
-          Free sugar dating advice from real members
+          Free dating advice from real members
         </a>
       </p>
     </div>

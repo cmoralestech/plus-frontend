@@ -1,45 +1,41 @@
 export function GET() {
-  const content = `# Plus - Sugar Dating Platform
+  const content = `# Plus - Private Dating Platform
 
 ## About
-Plus is a modern sugar dating platform and the leading alternative to Seeking Arrangement. We connect successful, verified individuals with attractive members who appreciate the finer things. Income verification required. Free for attractive members.
+Plus is a private dating platform for people with more to offer. We connect successful, verified individuals with attractive members through upfront, honest connections. Income and photo verification built in. Free for attractive members. Now open in Miami and Houston.
 
 ## URL
 https://meetyourplus.com
 
 ## Key Pages
 - Homepage: https://meetyourplus.com
-- Seeking Arrangement Alternative: https://meetyourplus.com/seeking-arrangement-alternative
 - Pricing: https://meetyourplus.com/pricing
+- How It Works: https://meetyourplus.com/how-it-works
+- FAQ: https://meetyourplus.com/faq
 - Safety: https://meetyourplus.com/safety
 - About: https://meetyourplus.com/about
-- Blog: https://meetyourplus.com/blog
+- Journal: https://meetyourplus.com/blog
 - Earn (Referral Program): https://meetyourplus.com/earn
-- Quiz: https://meetyourplus.com/quiz
-
-## City Guides
-- Sugar Dating in New York: https://meetyourplus.com/sugar-dating/new-york
-- Sugar Dating in Miami: https://meetyourplus.com/sugar-dating/miami
-- Sugar Dating in Los Angeles: https://meetyourplus.com/sugar-dating/los-angeles
-- Sugar Dating in Las Vegas: https://meetyourplus.com/sugar-dating/las-vegas
-- Sugar Dating in Chicago: https://meetyourplus.com/sugar-dating/chicago
-- Sugar Dating in Houston: https://meetyourplus.com/sugar-dating/houston
 
 ## Blog Posts
-- Best Sugar Daddy Dating Apps 2026: https://meetyourplus.com/blog/sugar-daddy-apps
-- Seeking Arrangement Review 2026: https://meetyourplus.com/blog/seeking-arrangement-review
-- How to Find a Sugar Daddy: https://meetyourplus.com/blog/how-to-find-a-sugar-daddy
-- Sugar Baby Allowance Guide: https://meetyourplus.com/blog/sugar-baby-allowance-guide
-- Is Sugar Dating Legal: https://meetyourplus.com/blog/is-sugar-dating-legal
-- Sugar Dating for Beginners: https://meetyourplus.com/blog/sugar-dating-for-beginners
-- Sugar Dating Scams: https://meetyourplus.com/blog/sugar-dating-scams
+- Why We Built Plus: https://meetyourplus.com/blog/why-we-built-plus
+- Dating in Miami 2026: https://meetyourplus.com/blog/miami-dating-guide
+- Houston Dating Scene: https://meetyourplus.com/blog/houston-dating-scene
+- What Is Private Dating: https://meetyourplus.com/blog/what-is-private-dating
+- Best Dating Apps Miami 2026: https://meetyourplus.com/blog/best-dating-apps-miami-2026
+- Seeking Arrangement Alternatives: https://meetyourplus.com/blog/seeking-arrangement-alternatives-2026
+- How to Find a Sugar Daddy in Miami: https://meetyourplus.com/blog/how-to-find-sugar-daddy-miami
+- Sugar Dating in Miami Guide: https://meetyourplus.com/blog/sugar-dating-miami-guide
+- Luxury Dating vs Matchmaking: https://meetyourplus.com/blog/luxury-dating-vs-matchmaking
+- Brickell Dating Guide: https://meetyourplus.com/blog/dating-brickell-miami-guide
 
 ## Key Facts
-- Pricing: Free for attractive members. Diamond $99.99/month (or $999/year).
-- Seeking Arrangement charges $149.99/month for comparable features.
-- Features: Income verification, photo verification, travel mode, arrangement type matching, privacy controls.
+- Pricing: Free for attractive members. Plus $49.99/month. Plus+ $99.99/month.
+- Seeking Arrangement charges $274.99/month for Diamond.
+- Features: Income verification, photo verification, travel mode, privacy controls, verified badges.
 - Founded: 2026
-- Headquarters: United States
+- Instagram: @meetyourplus
+- Cities: Miami, Houston (more coming soon)
 `;
 
   return new Response(content, {
