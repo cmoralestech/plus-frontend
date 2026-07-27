@@ -27,25 +27,36 @@ const incomeRanges = [
   { value: "over_10m", label: "$10M+" },
 ];
 
-const lifestyleExpectations = [
-  { value: "negotiable", label: "Negotiable" },
-  { value: "minimal", label: "Minimal" },
-  { value: "practical", label: "Practical" },
-  { value: "moderate", label: "Moderate" },
-  { value: "substantial", label: "Substantial" },
-  { value: "high", label: "High" },
+const lifestyleOptions = [
+  { value: "low_key", label: "Low-key" },
+  { value: "comfortable", label: "Comfortable" },
+  { value: "elevated", label: "Elevated" },
+  { value: "luxury", label: "Luxury" },
 ];
 
-const arrangementOptions = [
-  { value: "mentorship", label: "Mentorship" },
-  { value: "travel_companion", label: "Travel companion" },
-  { value: "long_term", label: "Long-term" },
-  { value: "short_term", label: "Short-term" },
-  { value: "no_strings", label: "Casual dating" },
+const generosityOptions = [
+  { value: "not_important", label: "Not important" },
+  { value: "nice_to_have", label: "Nice to have" },
+  { value: "important", label: "Important" },
+  { value: "essential", label: "Essential" },
+];
+
+const openToOptions = [
   { value: "dating", label: "Dating" },
-  { value: "networking", label: "Networking" },
+  { value: "long_term", label: "Long-term" },
+  { value: "something_casual", label: "Something casual" },
+  { value: "travel_companion", label: "Travel partner" },
   { value: "experience_partner", label: "Experience partner" },
-  { value: "sugar_relationship", label: "Generous relationship" },
+  { value: "mentorship", label: "Mentorship" },
+  { value: "networking", label: "Networking" },
+  { value: "generous_dating", label: "Generous dating" },
+  { value: "open_relationship", label: "Open relationship" },
+];
+
+const plusTraits = [
+  "Ambitious", "Established", "Generous", "Adventurous", "Cultured",
+  "Career-driven", "Spontaneous", "Discreet", "Affectionate",
+  "Independent", "Well-traveled", "Social", "Intellectual",
 ];
 
 const currentYear = new Date().getFullYear();
@@ -86,17 +97,28 @@ function OnboardingForm() {
     headline: "",
     bio: "",
     body_type: "",
+    generosity: "",
+    plus_traits: [] as string[],
   });
 
   const update = (field: string, value: string) =>
     setForm((prev) => ({ ...prev, [field]: value }));
 
-  const toggleArrangement = (value: string) => {
+  const toggleOpenTo = (value: string) => {
     setForm((prev) => {
       const arr = prev.arrangement_types;
       if (arr.includes(value)) return { ...prev, arrangement_types: arr.filter((v) => v !== value) };
       if (arr.length >= 5) return prev;
       return { ...prev, arrangement_types: [...arr, value] };
+    });
+  };
+
+  const toggleTrait = (trait: string) => {
+    setForm((prev) => {
+      const arr = prev.plus_traits;
+      if (arr.includes(trait)) return { ...prev, plus_traits: arr.filter((t) => t !== trait) };
+      if (arr.length >= 5) return prev;
+      return { ...prev, plus_traits: [...arr, trait] };
     });
   };
 
@@ -145,7 +167,7 @@ function OnboardingForm() {
         body_type: form.body_type || null,
       };
       if (isSugar && form.income_range) payload.income_range = form.income_range;
-      if (!isSugar && form.lifestyle_expectation) payload.lifestyle_expectation = form.lifestyle_expectation;
+      if (form.lifestyle_expectation) payload.lifestyle_expectation = form.lifestyle_expectation;
 
       await api.post("/api/profiles/", payload);
       if (user) {
@@ -186,9 +208,16 @@ function OnboardingForm() {
 
   const stepTitles = [
     "Let\u2019s get started",
-    isSugar ? "What are you looking for?" : "What are you looking for?",
+    "What matters to you?",
     "Add your photos",
     "You\u2019re in!",
+  ];
+
+  const stepSubtitles = [
+    "",
+    "Be specific. Better alignment starts with being honest about what you want.",
+    "",
+    "",
   ];
 
   return (
@@ -197,7 +226,12 @@ function OnboardingForm() {
         {step < 3 && (
           <div className="text-center mb-6">
             <h1 className="text-xl md:text-2xl font-bold">{stepTitles[step]}</h1>
-            <p className="text-sm text-muted mt-1">Step {step + 1} of 3</p>
+            {stepSubtitles[step] && (
+              <p className="text-sm text-muted mt-1">{stepSubtitles[step]}</p>
+            )}
+            {!stepSubtitles[step] && (
+              <p className="text-sm text-muted mt-1">Step {step + 1} of 3</p>
+            )}
             <div className="flex gap-1.5 mt-4 max-w-[200px] mx-auto">
               {[0, 1, 2].map((i) => (
                 <div
@@ -273,66 +307,65 @@ function OnboardingForm() {
             </div>
           )}
 
-          {/* Step 1: What you're looking for */}
+          {/* Step 1: What matters to you */}
           {step === 1 && (
             <div className="space-y-5">
               <div>
-                <label htmlFor="ob-looking" className="block text-sm font-medium mb-1.5">
-                  {isSugar ? "Describe what you\u2019re looking for" : "What\u2019s your ideal connection?"}
-                </label>
-                <textarea
-                  id="ob-looking"
-                  value={form.looking_for}
-                  onChange={(e) => update("looking_for", e.target.value)}
-                  className="w-full px-4 py-3 bg-background border border-card-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 resize-none"
-                  rows={4}
-                  placeholder={isSugar
-                    ? "What kind of person are you hoping to meet? What does your ideal connection look like?"
-                    : "What are you looking for in a connection? Mentorship, travel, financial support, genuine connection?"
-                  }
-                  maxLength={1000}
-                />
-                <p className="text-[11px] text-muted mt-1">This is visible on your profile. Be honest — it helps you match with the right people.</p>
-              </div>
-
-              <div>
-                <label htmlFor="ob-headline" className="block text-sm font-medium mb-1.5">A short headline for your profile</label>
+                <label htmlFor="ob-headline" className="block text-sm font-medium mb-1.5">Your headline</label>
                 <input
                   id="ob-headline"
                   value={form.headline}
                   onChange={(e) => update("headline", e.target.value)}
                   className="w-full px-4 py-3 bg-background border border-card-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/50"
-                  placeholder="e.g., Successful entrepreneur seeking genuine connection"
+                  placeholder="Built a life I love. Looking for someone who adds to it."
                   maxLength={100}
                 />
               </div>
 
               <div>
-                <label htmlFor="ob-bio" className="block text-sm font-medium mb-1.5">Tell potential matches about yourself</label>
+                <label htmlFor="ob-bio" className="block text-sm font-medium mb-1.5">A little more about you</label>
                 <textarea
                   id="ob-bio"
                   value={form.bio}
                   onChange={(e) => update("bio", e.target.value)}
                   className="w-full px-4 py-3 bg-background border border-card-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 resize-none"
                   rows={3}
-                  placeholder={isSugar
-                    ? "What makes you a great partner? Share your passions, lifestyle, and what you enjoy..."
-                    : "What makes you unique? Share your interests, personality, and what you're looking for..."
-                  }
+                  placeholder="What are you into? What does your life look like? And what kind of person would make it better?"
                   maxLength={500}
                 />
-                <p className="text-[11px] text-muted mt-1">Profiles with bios get 5x more responses</p>
+                <p className="text-[11px] text-muted mt-1">The good profiles have a point of view.</p>
               </div>
 
               <fieldset>
-                <legend className="block text-sm font-medium mb-2">Body type</legend>
+                <legend className="block text-sm font-medium mb-1">
+                  What are you open to?
+                  <span className="text-xs text-muted font-normal ml-1">({form.arrangement_types.length}/5)</span>
+                </legend>
+                <p className="text-[11px] text-muted mb-2">Choose up to 5.</p>
+                <div className="flex flex-wrap gap-2">
+                  {openToOptions.map((a) => {
+                    const selected = form.arrangement_types.includes(a.value);
+                    const atMax = form.arrangement_types.length >= 5 && !selected;
+                    return (
+                      <button key={a.value} type="button" onClick={() => toggleOpenTo(a.value)}
+                        disabled={atMax}
+                        className={`px-3 py-1.5 rounded-full border text-sm font-medium transition-colors ${
+                          selected ? "border-accent bg-accent/10 text-accent" : atMax ? "border-card-border text-muted/40 cursor-not-allowed" : "border-card-border hover:border-muted"
+                        }`}>{a.label}</button>
+                    );
+                  })}
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend className="block text-sm font-medium mb-1">Build <span className="text-xs text-muted font-normal">(optional)</span></legend>
                 <div className="flex flex-wrap gap-1.5">
                   {[
                     { value: "slim", label: "Slim" },
                     { value: "athletic", label: "Athletic" },
                     { value: "average", label: "Average" },
                     { value: "curvy", label: "Curvy" },
-                    { value: "full_figured", label: "Full figured" },
+                    { value: "full_figured", label: "Full-figured" },
                     { value: "other", label: "Other" },
                   ].map((bt) => (
                     <button key={bt.value} type="button" onClick={() => update("body_type", form.body_type === bt.value ? "" : bt.value)}
@@ -344,26 +377,31 @@ function OnboardingForm() {
               </fieldset>
 
               <fieldset>
-                <legend className="block text-sm font-medium mb-2">
-                  Type of arrangement
-                  <span className="text-xs text-muted font-normal ml-1">({form.arrangement_types.length}/5)</span>
-                </legend>
-                <div className="flex flex-wrap gap-2">
-                  {arrangementOptions.map((a) => {
-                    const selected = form.arrangement_types.includes(a.value);
-                    const atMax = form.arrangement_types.length >= 5 && !selected;
-                    return (
-                      <button key={a.value} type="button" onClick={() => toggleArrangement(a.value)}
-                        disabled={atMax}
-                        className={`px-3 py-1.5 rounded-full border text-sm font-medium transition-colors ${
-                          selected ? "border-accent bg-accent/10 text-accent" : atMax ? "border-card-border text-muted/40 cursor-not-allowed" : "border-card-border hover:border-muted"
-                        }`}>{a.label}</button>
-                    );
-                  })}
+                <legend className="block text-sm font-medium mb-2">Your lifestyle</legend>
+                <div className="grid grid-cols-2 gap-2">
+                  {lifestyleOptions.map((l) => (
+                    <button key={l.value} type="button" onClick={() => update("lifestyle_expectation", l.value)}
+                      className={`px-3 py-2.5 rounded-lg border text-sm font-medium transition-colors ${
+                        form.lifestyle_expectation === l.value ? "border-accent bg-accent/5 text-accent" : "border-card-border hover:border-muted"
+                      }`}>{l.label}</button>
+                  ))}
                 </div>
               </fieldset>
 
-              {isSugar ? (
+              <fieldset>
+                <legend className="block text-sm font-medium mb-1">Generosity</legend>
+                <p className="text-[11px] text-muted mb-2">How important is generosity in the relationship you&apos;re looking for?</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {generosityOptions.map((g) => (
+                    <button key={g.value} type="button" onClick={() => update("generosity", g.value)}
+                      className={`px-3 py-2.5 rounded-lg border text-sm font-medium transition-colors ${
+                        form.generosity === g.value ? "border-accent bg-accent/5 text-accent" : "border-card-border hover:border-muted"
+                      }`}>{g.label}</button>
+                  ))}
+                </div>
+              </fieldset>
+
+              {isSugar && (
                 <fieldset>
                   <legend className="block text-sm font-medium mb-2">Annual income</legend>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -375,19 +413,28 @@ function OnboardingForm() {
                     ))}
                   </div>
                 </fieldset>
-              ) : (
-                <fieldset>
-                  <legend className="block text-sm font-medium mb-2">Lifestyle expectation</legend>
-                  <div className="grid grid-cols-2 gap-2">
-                    {lifestyleExpectations.map((l) => (
-                      <button key={l.value} type="button" onClick={() => update("lifestyle_expectation", l.value)}
-                        className={`px-3 py-2.5 rounded-lg border text-sm font-medium transition-colors ${
-                          form.lifestyle_expectation === l.value ? "border-accent bg-accent/5 text-accent" : "border-card-border hover:border-muted"
-                        }`}>{l.label}</button>
-                    ))}
-                  </div>
-                </fieldset>
               )}
+
+              <fieldset>
+                <legend className="block text-sm font-medium mb-1">
+                  What are you looking for in your +?
+                  <span className="text-xs text-muted font-normal ml-1">({form.plus_traits.length}/5)</span>
+                </legend>
+                <p className="text-[11px] text-muted mb-2">Choose what matters most.</p>
+                <div className="flex flex-wrap gap-2">
+                  {plusTraits.map((trait) => {
+                    const selected = form.plus_traits.includes(trait);
+                    const atMax = form.plus_traits.length >= 5 && !selected;
+                    return (
+                      <button key={trait} type="button" onClick={() => toggleTrait(trait)}
+                        disabled={atMax}
+                        className={`px-3 py-1.5 rounded-full border text-sm font-medium transition-colors ${
+                          selected ? "border-accent bg-accent/10 text-accent" : atMax ? "border-card-border text-muted/40 cursor-not-allowed" : "border-card-border hover:border-muted"
+                        }`}>{trait}</button>
+                    );
+                  })}
+                </div>
+              </fieldset>
             </div>
           )}
 
@@ -414,6 +461,7 @@ function OnboardingForm() {
                     { value: "Medium article", label: "Medium article" },
                     { value: "Friend referral", label: "Friend referral" },
                     { value: "TikTok", label: "TikTok" },
+                    { value: "Instagram", label: "Instagram" },
                     { value: "Twitter/X", label: "Twitter/X" },
                     { value: "Blog post", label: "Blog post" },
                     { value: "Other", label: "Other" },
@@ -437,77 +485,46 @@ function OnboardingForm() {
                 </div>
               </div>
 
-              {isSugar ? (
-                <>
-                  <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mx-auto">
-                    <span className="text-4xl">&#10003;</span>
-                  </div>
-                  <div>
-                    <h2 className="text-xl font-bold mb-2">Your profile is live!</h2>
-                    <p className="text-sm text-muted">
-                      Verified members in your area are ready to connect.
-                      Start browsing — you get 5 free profile views per day.
-                    </p>
-                  </div>
+              <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mx-auto">
+                <span className="text-4xl">&#10003;</span>
+              </div>
+              <div>
+                <h2 className="text-xl font-bold mb-2">You&apos;re in!</h2>
+                <p className="text-sm text-muted">
+                  Your profile is live. Verified members in your area are ready to connect.
+                </p>
+              </div>
 
-                  <button
-                    onClick={() => {
-                      if (typeof window !== "undefined" && (window as any).gtag) {
-                        (window as any).gtag("event", "onboarding_complete", { user_type: "sugar", skipped_payment: false });
-                      }
-                      router.push("/discover");
-                    }}
-                    className="w-full py-3.5 bg-accent text-background rounded-lg font-semibold hover:bg-accent-dark transition-colors text-sm"
-                  >
-                    Start browsing profiles
-                  </button>
+              <button
+                onClick={() => {
+                  if (typeof window !== "undefined" && (window as any).gtag) {
+                    (window as any).gtag("event", "onboarding_complete", { user_type: user?.user_type || "unknown" });
+                  }
+                  router.push("/discover");
+                }}
+                className="w-full py-3.5 bg-accent text-background rounded-lg font-semibold hover:bg-accent-dark transition-colors text-sm"
+              >
+                Find my +
+              </button>
 
-                  <p className="text-xs text-muted text-center">
-                    <Link href="/community" className="text-accent hover:underline">Join our private community</Link> for dating tips and safety advice.
+              <p className="text-xs text-muted text-center">
+                <Link href="/community" className="text-accent hover:underline">Join our community</Link> for dating tips and advice.
+              </p>
+
+              {isSugar && (
+                <div className="border border-card-border rounded-xl p-5 text-left">
+                  <p className="text-sm font-medium mb-2">Want full access?</p>
+                  <p className="text-xs text-muted mb-3">
+                    Plus+ members get priority placement, unlimited messaging, travel mode, and read receipts.
                   </p>
-
-                  <div className="border border-card-border rounded-xl p-5 text-left">
-                    <p className="text-sm font-medium mb-2">Want full access?</p>
-                    <p className="text-xs text-muted mb-3">
-                      Diamond members see unblurred photos, send unlimited messages, and get priority placement.
-                    </p>
-                    <button
-                      onClick={() => router.push("/settings?tab=subscription")}
-                      className="w-full py-2.5 border border-accent text-accent rounded-lg text-sm font-medium hover:bg-accent/5 transition-colors"
-                    >
-                      Upgrade to Diamond &mdash; $99.99/mo
-                    </button>
-                    <p className="text-[11px] text-muted mt-2 text-center">Cancel anytime. No commitment.</p>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mx-auto">
-                    <span className="text-4xl">&#10003;</span>
-                  </div>
-                  <div>
-                    <h2 className="text-xl font-bold mb-2">You&apos;re all set!</h2>
-                    <p className="text-sm text-muted">
-                      Your profile is live. Every successful member on Plus has verified their income &mdash;
-                      so you know who you&apos;re talking to. Start browsing.
-                    </p>
-                  </div>
                   <button
-                    onClick={() => {
-                      if (typeof window !== "undefined" && (window as any).gtag) {
-                        (window as any).gtag("event", "onboarding_complete", { user_type: "attractive" });
-                      }
-                      router.push("/discover");
-                    }}
-                    className="w-full py-3 bg-accent text-background rounded-lg font-semibold hover:bg-accent-dark transition-colors text-sm"
+                    onClick={() => router.push("/settings?tab=subscription")}
+                    className="w-full py-2.5 border border-accent text-accent rounded-lg text-sm font-medium hover:bg-accent/5 transition-colors"
                   >
-                    Start browsing profiles
+                    Upgrade to Plus+ &mdash; $99.99/mo
                   </button>
-
-                  <p className="text-xs text-muted text-center">
-                    <Link href="/community" className="text-accent hover:underline">Join our private community</Link> for dating tips and safety advice.
-                  </p>
-                </>
+                  <p className="text-[11px] text-muted mt-2 text-center">Cancel anytime. No commitment.</p>
+                </div>
               )}
             </div>
           )}
@@ -532,16 +549,12 @@ function OnboardingForm() {
               ) : step === 1 ? (
                 <button onClick={handleNext} disabled={submitting}
                   className="flex-1 py-3 bg-accent text-background rounded-lg font-semibold hover:bg-accent-dark transition-colors disabled:opacity-50">
-                  {submitting ? "Creating profile..." : "Create profile"}
+                  {submitting ? "Creating profile..." : "Find my +"}
                 </button>
               ) : (
                 <div className="flex-1 space-y-2">
                   <button onClick={() => setStep(3)}
-                    className={`w-full py-3 rounded-lg font-semibold transition-colors text-sm ${
-                      photos.length > 0
-                        ? "bg-accent text-background hover:bg-accent-dark"
-                        : "bg-accent text-background hover:bg-accent-dark"
-                    }`}>
+                    className="w-full py-3 rounded-lg font-semibold transition-colors text-sm bg-accent text-background hover:bg-accent-dark">
                     {photos.length > 0 ? "Continue" : "Continue without photos"}
                   </button>
                   {photos.length === 0 && (
