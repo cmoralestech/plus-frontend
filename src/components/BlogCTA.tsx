@@ -19,19 +19,19 @@ export default function BlogCTA({ slug, gold, dark1 }: { slug: string; gold: str
       >
         Create your free profile
       </button>
-      <p className="text-xs" style={{ color: '#a8a090' }}>
+      <p className="text-xs" style={{ color: '#8A7E76' }}>
         Know someone who&apos;d love this?{' '}
         <a href="/earn" style={{ color: gold, textDecoration: 'underline' }}>
           Earn $5–$12/month per referral
         </a>
       </p>
-      <p className="text-xs" style={{ color: '#a8a090' }}>
+      <p className="text-xs" style={{ color: '#8A7E76' }}>
         Are you a sugar daddy?{' '}
         <a href="/for-sugar-daddies" style={{ color: gold, textDecoration: 'underline' }}>
           See why Plus is worth it
         </a>
       </p>
-      <p className="text-xs" style={{ color: '#a8a090' }}>
+      <p className="text-xs" style={{ color: '#8A7E76' }}>
         Join the community &rarr;{' '}
         <a href="/community" style={{ color: gold, textDecoration: 'underline' }}>
           Free sugar dating advice from real members

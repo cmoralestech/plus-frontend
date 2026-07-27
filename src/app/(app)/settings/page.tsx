@@ -417,7 +417,7 @@ function SettingsContent() {
                 </div>
                 <div className="flex gap-2 pt-1">
                   <button type="submit" disabled={saving === "password"}
-                    className="px-4 py-2 bg-accent text-[#141210] rounded-lg text-sm font-medium hover:bg-accent-dark disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-accent">
+                    className="px-4 py-2 bg-accent text-[#F5EDE4] rounded-lg text-sm font-medium hover:bg-accent-dark disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-accent">
                     {saving === "password" ? "Saving..." : "Update password"}
                   </button>
                   <button type="button" onClick={() => { setShowPasswordForm(false); setCurrentPw(""); setNewPw(""); setConfirmPw(""); }}
@@ -753,7 +753,7 @@ function SettingsContent() {
                     tier.current
                       ? "bg-muted-bg text-muted cursor-default"
                       : tier.highlight
-                      ? "bg-accent text-[#141210] hover:bg-accent-dark"
+                      ? "bg-accent text-[#F5EDE4] hover:bg-accent-dark"
                       : "border border-card-border hover:bg-muted-bg"
                   }`}
                 >
@@ -850,7 +850,7 @@ function SettingsContent() {
                     <div className="mt-6 space-y-2">
                       <button
                         onClick={() => { setCancelStep(0); setCancelReason(""); }}
-                        className="w-full py-3 bg-accent text-[#141210] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors"
+                        className="w-full py-3 bg-accent text-[#F5EDE4] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors"
                       >
                         Keep my subscription
                       </button>

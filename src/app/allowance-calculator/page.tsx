@@ -7,12 +7,12 @@ import PublicFooter from "@/components/PublicFooter";
 import TrackPageView from "@/components/TrackPageView";
 
 /* ── Theme ── */
-const gold = "#d4b896";
-const dark1 = "#141210";
-const dark2 = "#1a1714";
-const cream = "#ede6db";
-const creamMuted = "#a8a090";
-const line = "#2e2a24";
+const gold = "#C87F6E";
+const dark1 = "#F5EDE4";
+const dark2 = "#FFFBF7";
+const cream = "#1A1A1A";
+const creamMuted = "#8A7E76";
+const line = "#E8DDD2";
 
 /* ── Data ── */
 type CityData = { name: string; tier: 1 | 2 | 3 | 4 | 5; label: string };

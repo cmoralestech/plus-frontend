@@ -67,7 +67,7 @@ export default function FavoritesPage() {
           <p className="text-sm text-muted max-w-xs mx-auto mb-6">
             Save profiles you&apos;re interested in and come back to them later
           </p>
-          <a href="/discover" className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-[#141210] rounded-xl text-sm font-semibold hover:bg-accent-dark transition-colors min-h-[44px]">
+          <a href="/discover" className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-[#F5EDE4] rounded-xl text-sm font-semibold hover:bg-accent-dark transition-colors min-h-[44px]">
             Browse profiles
           </a>
         </div>

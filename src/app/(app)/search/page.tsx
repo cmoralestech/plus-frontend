@@ -280,7 +280,7 @@ export default function SearchPage() {
                       window.location.href = "/settings?tab=subscription";
                     }
                   }}
-                  className="w-full py-3 bg-accent text-[#141210] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors"
+                  className="w-full py-3 bg-accent text-[#F5EDE4] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors"
                 >
                   {paywallDismissals > 0 ? (
                     <>First month 25% off &mdash; $74.99 <span className="line-through opacity-60 ml-1">$99.99</span></>
@@ -332,7 +332,7 @@ export default function SearchPage() {
                   {customCity.trim() && (
                     <button
                       onClick={() => switchCity(customCity.trim())}
-                      className="px-3 py-2 bg-accent text-[#141210] rounded-lg text-sm font-medium"
+                      className="px-3 py-2 bg-accent text-[#F5EDE4] rounded-lg text-sm font-medium"
                     >
                       Go
                     </button>
@@ -420,7 +420,7 @@ export default function SearchPage() {
             <SlidersHorizontal size={15} />
             <span className="hidden sm:inline">Filters</span>
             {activeFilterCount > 0 && (
-              <span className="w-5 h-5 bg-accent text-[#141210] rounded-full text-xs flex items-center justify-center font-bold">
+              <span className="w-5 h-5 bg-accent text-[#F5EDE4] rounded-full text-xs flex items-center justify-center font-bold">
                 {activeFilterCount}
               </span>
             )}
@@ -511,7 +511,7 @@ export default function SearchPage() {
               <div className="flex gap-2 mt-4">
                 <button
                   onClick={applyFilters}
-                  className="flex-1 py-2.5 bg-accent text-[#141210] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors"
+                  className="flex-1 py-2.5 bg-accent text-[#F5EDE4] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors"
                 >
                   Apply
                 </button>

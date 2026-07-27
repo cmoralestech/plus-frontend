@@ -29,7 +29,7 @@ export default async function Image({
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "60px 80px",
-          background: "#141210",
+          background: "#F5EDE4",
         }}
       >
         {/* Tag label */}
@@ -44,7 +44,7 @@ export default async function Image({
               fontSize: 20,
               letterSpacing: "0.15em",
               textTransform: "uppercase",
-              color: "#d4b896",
+              color: "#C87F6E",
             }}
           >
             {tag}
@@ -65,7 +65,7 @@ export default async function Image({
           <span
             style={{
               fontSize: title.length > 60 ? 44 : title.length > 40 ? 52 : 60,
-              color: "#ede6db",
+              color: "#1A1A1A",
               lineHeight: 1.2,
               fontWeight: 600,
             }}
@@ -80,14 +80,14 @@ export default async function Image({
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            borderTop: "1px solid #2e2a24",
+            borderTop: "1px solid #E8DDD2",
             paddingTop: 24,
           }}
         >
           <span
             style={{
               fontSize: 28,
-              color: "#d4b896",
+              color: "#C87F6E",
               fontWeight: 600,
               letterSpacing: "0.05em",
             }}
@@ -97,7 +97,7 @@ export default async function Image({
           <span
             style={{
               fontSize: 16,
-              color: "#a8a090",
+              color: "#8A7E76",
             }}
           >
             meetyourplus.com

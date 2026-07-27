@@ -76,7 +76,7 @@ export default function FilterBar({ filters, onFilterChange, onSearch }: FilterB
         {/* Search button */}
         <button
           onClick={onSearch}
-          className="flex-shrink-0 px-4 py-2 bg-accent text-[#141210] rounded-full text-sm font-medium min-h-[38px] whitespace-nowrap"
+          className="flex-shrink-0 px-4 py-2 bg-accent text-[#F5EDE4] rounded-full text-sm font-medium min-h-[38px] whitespace-nowrap"
         >
           Search{activeCount > 0 ? ` (${activeCount})` : ""}
         </button>

@@ -96,7 +96,7 @@ const results: Record<string, Result> = {
     traits: ["Appreciates luxury", "Values consistency", "Romantically inclined", "Generous spirit"],
     ideal:
       "A traditional sugar relationship with regular dates, mutual appreciation, and the kind of chemistry that makes the waiter uncomfortable.",
-    color: "#d4b896",
+    color: "#C87F6E",
     blogLinks: [
       { title: "Sugar baby allowance guide", slug: "sugar-baby-allowance-guide" },
       { title: "Sugar dating profile tips", slug: "sugar-dating-profile-tips" },

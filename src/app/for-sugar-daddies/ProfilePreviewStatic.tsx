@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-const gold = "#d4b896";
-const dark3 = "#201d18";
-const line = "#2e2a24";
+const gold = "#C87F6E";
+const dark3 = "#FAF5F0";
+const line = "#E8DDD2";
 
 interface PreviewCard {
   name: string;
@@ -35,14 +35,14 @@ export default function ProfilePreviewStatic() {
             >
               Members waiting to meet you
             </h2>
-            <p className="text-sm mt-1" style={{ color: "#a8a090" }}>
+            <p className="text-sm mt-1" style={{ color: "#8A7E76" }}>
               Sign up free to see full profiles and start connecting.
             </p>
           </div>
           <Link
             href="/auth?mode=register"
             className="hidden sm:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium transition-all hover:brightness-110 rounded-lg"
-            style={{ background: gold, color: "#141210" }}
+            style={{ background: gold, color: "#F5EDE4" }}
           >
             Join free
           </Link>
@@ -145,13 +145,13 @@ export default function ProfilePreviewStatic() {
               <div className="p-3">
                 <div className="flex items-center gap-1.5">
                   <span className="font-semibold text-sm">{card.name}</span>
-                  <span className="text-xs" style={{ color: "#a8a090" }}>
+                  <span className="text-xs" style={{ color: "#8A7E76" }}>
                     {card.age}
                   </span>
                 </div>
                 <div
                   className="flex items-center gap-1 mt-0.5 text-xs"
-                  style={{ color: "#a8a090" }}
+                  style={{ color: "#8A7E76" }}
                 >
                   <svg
                     width="11"
@@ -179,13 +179,13 @@ export default function ProfilePreviewStatic() {
             className="py-5 rounded-xl border"
             style={{ borderColor: line, background: dark3 }}
           >
-            <p className="text-sm mb-3" style={{ color: "#a8a090" }}>
+            <p className="text-sm mb-3" style={{ color: "#8A7E76" }}>
               Sign up to see full profiles, photos, and start messaging.
             </p>
             <Link
               href="/auth?mode=register"
               className="inline-flex items-center justify-center px-8 py-3 text-sm font-medium transition-all hover:brightness-110 rounded-lg"
-              style={{ background: gold, color: "#141210" }}
+              style={{ background: gold, color: "#F5EDE4" }}
             >
               Create your free profile
             </Link>

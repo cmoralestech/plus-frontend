@@ -42,8 +42,8 @@ export default function CookieConsent() {
         left: 0,
         right: 0,
         zIndex: 9999,
-        background: "#1a1714",
-        borderTop: "1px solid #2e2a24",
+        background: "#FFFBF7",
+        borderTop: "1px solid #E8DDD2",
         padding: "16px 20px",
         display: "flex",
         alignItems: "center",
@@ -52,9 +52,9 @@ export default function CookieConsent() {
         flexWrap: "wrap",
       }}
     >
-      <p style={{ color: "#a8a090", fontSize: "13px", margin: 0, maxWidth: "600px" }}>
+      <p style={{ color: "#8A7E76", fontSize: "13px", margin: 0, maxWidth: "600px" }}>
         We use cookies for analytics and to improve your experience.{" "}
-        <a href="/privacy#cookies" style={{ color: "#d4b896", textDecoration: "underline" }}>
+        <a href="/privacy#cookies" style={{ color: "#C87F6E", textDecoration: "underline" }}>
           Learn more
         </a>
       </p>
@@ -62,8 +62,8 @@ export default function CookieConsent() {
         <button
           onClick={accept}
           style={{
-            background: "#d4b896",
-            color: "#141210",
+            background: "#C87F6E",
+            color: "#F5EDE4",
             border: "none",
             padding: "8px 20px",
             fontSize: "13px",
@@ -78,8 +78,8 @@ export default function CookieConsent() {
           onClick={decline}
           style={{
             background: "transparent",
-            color: "#a8a090",
-            border: "1px solid #2e2a24",
+            color: "#8A7E76",
+            border: "1px solid #E8DDD2",
             padding: "8px 20px",
             fontSize: "13px",
             cursor: "pointer",

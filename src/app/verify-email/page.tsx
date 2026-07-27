@@ -40,7 +40,7 @@ function VerifyContent() {
             <CheckCircle size={48} className="text-success mx-auto mb-4" />
             <h2 className="text-xl font-bold mb-2">Email verified!</h2>
             <p className="text-sm text-muted mb-6">Your account is now verified. You can start using Plus.</p>
-            <Link href="/discover" className="px-6 py-3 bg-accent text-[#141210] rounded-lg font-semibold inline-block">
+            <Link href="/discover" className="px-6 py-3 bg-accent text-[#F5EDE4] rounded-lg font-semibold inline-block">
               Start discovering
             </Link>
           </>
@@ -50,7 +50,7 @@ function VerifyContent() {
             <CheckCircle size={48} className="text-success mx-auto mb-4" />
             <h2 className="text-xl font-bold mb-2">Already verified</h2>
             <p className="text-sm text-muted mb-6">Your email is already verified.</p>
-            <Link href="/discover" className="px-6 py-3 bg-accent text-[#141210] rounded-lg font-semibold inline-block">
+            <Link href="/discover" className="px-6 py-3 bg-accent text-[#F5EDE4] rounded-lg font-semibold inline-block">
               Go to app
             </Link>
           </>
@@ -60,7 +60,7 @@ function VerifyContent() {
             <XCircle size={48} className="text-danger mx-auto mb-4" />
             <h2 className="text-xl font-bold mb-2">Verification failed</h2>
             <p className="text-sm text-muted mb-6">This link is invalid or expired. Try requesting a new one.</p>
-            <Link href="/auth" className="px-6 py-3 bg-accent text-[#141210] rounded-lg font-semibold inline-block">
+            <Link href="/auth" className="px-6 py-3 bg-accent text-[#F5EDE4] rounded-lg font-semibold inline-block">
               Back to sign in
             </Link>
           </>

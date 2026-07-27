@@ -15,12 +15,12 @@ export const metadata: Metadata = {
   },
 };
 
-const gold = "#d4b896";
-const dark1 = "#141210";
-const dark2 = "#1a1714";
-const cream = "#ede6db";
-const creamMuted = "#a8a090";
-const line = "#2e2a24";
+const gold = "#C87F6E";
+const dark1 = "#F5EDE4";
+const dark2 = "#FFFBF7";
+const cream = "#1A1A1A";
+const creamMuted = "#8A7E76";
+const line = "#E8DDD2";
 
 export default function AboutPage() {
   return (

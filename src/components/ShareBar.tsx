@@ -20,14 +20,14 @@ export default function ShareBar({ title, slug }: Props) {
   };
 
   return (
-    <div className="flex items-center gap-3 py-4" style={{ borderTop: "1px solid #2e2a24" }}>
-      <span className="text-xs" style={{ color: "#706860" }}>Share:</span>
+    <div className="flex items-center gap-3 py-4" style={{ borderTop: "1px solid #E8DDD2" }}>
+      <span className="text-xs" style={{ color: "#8A7E76" }}>Share:</span>
       <a
         href={`https://twitter.com/intent/tweet?text=${text}&url=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
         className="text-xs px-3 py-1.5 rounded-full transition-colors"
-        style={{ color: "#a8a090", border: "1px solid #2e2a24" }}
+        style={{ color: "#8A7E76", border: "1px solid #E8DDD2" }}
       >
         X / Twitter
       </a>
@@ -36,14 +36,14 @@ export default function ShareBar({ title, slug }: Props) {
         target="_blank"
         rel="noopener noreferrer"
         className="text-xs px-3 py-1.5 rounded-full transition-colors"
-        style={{ color: "#a8a090", border: "1px solid #2e2a24" }}
+        style={{ color: "#8A7E76", border: "1px solid #E8DDD2" }}
       >
         Reddit
       </a>
       <button
         onClick={copy}
         className="text-xs px-3 py-1.5 rounded-full transition-colors"
-        style={{ color: copied ? "#d4b896" : "#a8a090", border: "1px solid #2e2a24" }}
+        style={{ color: copied ? "#C87F6E" : "#8A7E76", border: "1px solid #E8DDD2" }}
       >
         {copied ? "Copied!" : "Copy link"}
       </button>

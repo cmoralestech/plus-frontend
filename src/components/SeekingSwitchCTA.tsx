@@ -14,8 +14,8 @@ export default function SeekingSwitchCTA() {
  * Styled to match the blog's dark theme.
  */
 export const SEEKING_SWITCH_CTA_HTML = `
-<div style="background: linear-gradient(135deg, #1e1b17, #252017); border: 1px solid #d4b896; padding: 24px; margin: 32px 0; border-radius: 8px; text-align: center;">
-  <p style="margin: 0 0 8px; font-size: 16px; font-weight: 600; color: #ede6db;">Tired of walking on eggshells?</p>
-  <p style="margin: 0 0 16px; font-size: 14px; color: #a8a090;">Plus doesn't ban you for sugar dating language. Verified profiles, $99.99/month, no censorship.</p>
-  <a href="/switch-from-seeking" style="display: inline-block; padding: 12px 32px; background: #d4b896; color: #141210; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">Switch from Seeking &rarr;</a>
+<div style="background: linear-gradient(135deg, #FFFFFF, #252017); border: 1px solid #C87F6E; padding: 24px; margin: 32px 0; border-radius: 8px; text-align: center;">
+  <p style="margin: 0 0 8px; font-size: 16px; font-weight: 600; color: #1A1A1A;">Tired of walking on eggshells?</p>
+  <p style="margin: 0 0 16px; font-size: 14px; color: #8A7E76;">Plus doesn't ban you for sugar dating language. Verified profiles, $99.99/month, no censorship.</p>
+  <a href="/switch-from-seeking" style="display: inline-block; padding: 12px 32px; background: #C87F6E; color: #F5EDE4; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">Switch from Seeking &rarr;</a>
 </div>`;

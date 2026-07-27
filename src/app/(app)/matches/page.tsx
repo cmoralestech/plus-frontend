@@ -67,7 +67,7 @@ export default function MatchesPage() {
           </div>
           <a
             href="/settings?tab=subscription"
-            className="flex-shrink-0 px-4 py-2 bg-accent text-[#141210] rounded-lg text-xs font-semibold hover:bg-accent-dark transition-colors min-h-[36px] flex items-center"
+            className="flex-shrink-0 px-4 py-2 bg-accent text-[#F5EDE4] rounded-lg text-xs font-semibold hover:bg-accent-dark transition-colors min-h-[36px] flex items-center"
           >
             Upgrade
           </a>
@@ -95,7 +95,7 @@ export default function MatchesPage() {
           <p className="text-sm text-muted mb-6 max-w-xs mx-auto">
             When you and someone else both like each other, you&apos;ll see them here
           </p>
-          <a href="/discover" className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-[#141210] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors min-h-[44px]">
+          <a href="/discover" className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-[#F5EDE4] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors min-h-[44px]">
             Start discovering
           </a>
         </div>
@@ -158,7 +158,7 @@ export default function MatchesPage() {
                     {timeAgo(match.created_at)}
                   </span>
                   {match.unread_count > 0 && (
-                    <span className="w-5 h-5 bg-accent text-[#141210] text-xs rounded-full flex items-center justify-center font-medium">
+                    <span className="w-5 h-5 bg-accent text-[#F5EDE4] text-xs rounded-full flex items-center justify-center font-medium">
                       {match.unread_count}
                     </span>
                   )}
