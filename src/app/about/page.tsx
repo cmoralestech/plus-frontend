@@ -4,11 +4,11 @@ import PublicNav from "@/components/PublicNav";
 import PublicFooter from "@/components/PublicFooter";
 
 export const metadata: Metadata = {
-  title: "About Plus: Why We Built a Better Sugar Dating Platform",
-  description: "We built Plus because Seeking stopped caring. Our story, our values, and why honest dating shouldn't cost $110/month.",
+  title: "About Plus: Why We Built a Better Private Dating Platform",
+  description: "We built Plus because Seeking stopped caring. Our story, our values, and why private dating shouldn't cost $110/month.",
   alternates: { canonical: "https://meetyourplus.com/about" },
   openGraph: {
-    title: "About Plus | The Modern Sugar Dating Platform",
+    title: "About Plus | Private Dating for People With More to Offer",
     description: "Why we built Plus, how it works, and what makes it different from Seeking Arrangement.",
     url: "https://meetyourplus.com/about",
     type: "website",
@@ -35,18 +35,18 @@ export default function AboutPage() {
 
         <div className="space-y-6 text-base leading-relaxed" style={{ color: creamMuted }}>
           <p>
-            Every relationship involves an exchange. Time, attention, energy, resources, we all bring
+            Every relationship involves an exchange. Time, attention, energy, resources — we all bring
             something to the table and we all have expectations. Most dating platforms pretend this
             isn&apos;t true. Plus doesn&apos;t.
           </p>
           <p>
             We built Plus because the existing platforms in this space had grown stale. Outdated
             interfaces, rampant fake profiles, poor privacy, and a general lack of respect for the
-            people who use them. The sugar dating community deserved better.
+            people who use them. The private dating community deserved better.
           </p>
           <p>
-            Plus is a platform for adults who know what they want. Successful members, people
-            who&apos;ve built wealth, careers, and lifestyles worth sharing, connect with attractive
+            Plus is a platform for adults who know what they want. Successful members — people
+            who&apos;ve built wealth, careers, and lifestyles worth sharing — connect with attractive
             members who bring charm, ambition, and companionship. The terms are defined upfront.
             The expectations are clear. No games.
           </p>
@@ -59,12 +59,11 @@ export default function AboutPage() {
             Why we built Plus
           </h2>
           <p>
-            The sugar dating space had been dominated by a single platform for over a decade. That
+            The private dating space had been dominated by a single platform for over a decade. That
             platform raised prices year after year — from $70 to $109 to $274 per month — while the
             experience deteriorated. Fake profiles multiplied. Bots flooded inboxes. Verification
             became optional, which meant anyone could claim any income level. The iOS app was removed.
-            And then they started banning users for using the very language the platform was built for:
-            arrangement, allowance, sugar daddy.
+            And then they started banning users for using everyday dating language.
           </p>
           <p>
             We saw a community of millions of people who knew what they wanted from dating — clarity,
@@ -92,10 +91,10 @@ export default function AboutPage() {
             How Plus is different
           </h2>
           <p>
-            We charge $99.99/month for full access, not $109.99 or $274.99. Attractive members
-            pay nothing, not a trial, but permanent free access. We verify profiles instead
-            of letting bots and fakes run wild. We built real privacy controls (hidden income,
-            photo blurring, private browsing) because discretion actually matters in this space.
+            We charge $49.99/month for Plus and $99.99/month for Plus+ — not $109.99 or $274.99. Everyone starts
+            with a Free tier that includes browsing, likes, matching, and 5 messages per day. We verify
+            profiles instead of letting bots and fakes run wild. We built real privacy controls
+            (hidden profiles, photo blurring, private browsing) because discretion actually matters in this space.
           </p>
           <p>
             Our moderation team reviews flagged content within hours, not days. Every message
@@ -106,9 +105,9 @@ export default function AboutPage() {
           <p>
             Beyond safety and pricing, we obsess over the details that make daily use pleasant.
             The app loads fast. Notifications work reliably. Search filters are genuinely useful —
-            filter by arrangement type, lifestyle preferences, location radius, and verified
+            filter by dating type, lifestyle preferences, location radius, and verified
             income bracket. Profiles show what matters: what someone is looking for, what they
-            offer, and what kind of arrangement they prefer. No games, no ambiguity, no guessing.
+            offer, and what kind of connection they prefer. No games, no ambiguity, no guessing.
           </p>
           <p>
             We also believe privacy is non-negotiable in this space. Many of our members are

@@ -28,7 +28,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-lg font-semibold text-foreground">1. Information We Collect</h2>
             <p><strong>Account information:</strong> Email address, password, date of birth, gender, user type.</p>
-            <p><strong>Profile information:</strong> Display name, photos, bio, occupation, education, location, interests, arrangement preferences, and other profile fields you choose to provide.</p>
+            <p><strong>Profile information:</strong> Display name, photos, bio, occupation, education, location, interests, dating preferences, and other profile fields you choose to provide.</p>
             <p><strong>Usage data:</strong> How you interact with the Service, including profiles viewed, likes, matches, messages sent, and features used.</p>
             <p><strong>Device data:</strong> IP address, browser type, operating system, and device identifiers.</p>
             <p><strong>Location data:</strong> City and coordinates if you grant location permission or set a travel destination.</p>
@@ -63,10 +63,10 @@ export default function PrivacyPage() {
             <p>You can control your privacy through Settings:</p>
             <ul className="list-disc pl-5 space-y-1">
               <li>Hide your profile from discovery</li>
-              <li>Blur photos for non-matches (Premium)</li>
-              <li>Hide income information (Premium)</li>
+              <li>Blur photos for non-matches (Plus)</li>
+              <li>Hide income information (Plus)</li>
               <li>Hide online status and last seen</li>
-              <li>Enable private browsing (Diamond)</li>
+              <li>Enable private browsing (Plus+)</li>
               <li>Control email and push notification preferences</li>
             </ul>
           </section>

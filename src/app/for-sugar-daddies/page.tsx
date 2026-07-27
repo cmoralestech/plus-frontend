@@ -5,14 +5,14 @@ import PublicFooter from "@/components/PublicFooter";
 import ProfilePreviewStatic from "./ProfilePreviewStatic";
 
 export const metadata: Metadata = {
-  title: "Sugar Daddy Dating App — Verified, Private, $99.99/mo | Plus",
+  title: "Dating for Successful Men — Verified, Private, From $49.99/mo | Plus",
   description:
-    "The verified sugar daddy dating app for successful men who value privacy. Income-verified profiles, discreet billing, $99.99/mo vs Seeking's $150+. No app store listing.",
+    "The verified private dating app for successful men who value privacy. Income-verified profiles, discreet billing, from $49.99/mo vs Seeking's $150+. No app store listing.",
   keywords:
-    "sugar daddy app, sugar daddy dating, sugar daddy website, sugar daddy dating app, arrangement dating, seeking alternative for men",
+    "dating for successful men, private dating app, verified dating, luxury dating app, dating for professionals, seeking alternative for men",
   alternates: { canonical: "https://meetyourplus.com/for-sugar-daddies" },
   openGraph: {
-    title: "Sugar Daddy Dating App — Verified, Private, $99.99/mo | Plus",
+    title: "Dating for Successful Men — Verified, Private, From $49.99/mo | Plus",
     description:
       "The verified platform for successful men who value their time, privacy, and quality connections.",
     url: "https://meetyourplus.com/for-sugar-daddies",
@@ -113,7 +113,7 @@ export default function ForSugarDaddiesPage() {
               >
                 Verify your income once and every woman you connect with sees
                 your badge before the first message. No explaining yourself. No
-                "prove it" conversations. Your verification does the talking.
+                &quot;prove it&quot; conversations. Your verification does the talking.
               </p>
             </div>
 
@@ -145,16 +145,16 @@ export default function ForSugarDaddiesPage() {
                 className="text-xs tracking-[0.2em] uppercase mb-4"
                 style={{ color: gold }}
               >
-                $99.99/month, not $150
+                From $49.99/month, not $150
               </p>
               <p
                 className="text-sm leading-relaxed"
                 style={{ color: creamMuted }}
               >
                 Seeking charges $109.99 for Premium and up to $274.99 for
-                Diamond. Plus Diamond is $99.99/month with unlimited
-                messaging, all privacy controls, private browsing, and
-                everything you actually need. One plan, all features.
+                Diamond. Plus starts at $49.99/month with unlimited
+                messaging and privacy controls. Plus+ at $99.99/month adds
+                priority placement, travel mode, and everything you need.
               </p>
             </div>
 
@@ -173,8 +173,8 @@ export default function ForSugarDaddiesPage() {
                 style={{ color: creamMuted }}
               >
                 Monthly billing. Cancel from your settings in two clicks. No
-                annual commitments, no cancellation fees, no "contact support to
-                cancel" games. You keep access through the end of your billing
+                annual commitments, no cancellation fees, no &quot;contact support to
+                cancel&quot; games. You keep access through the end of your billing
                 period.
               </p>
             </div>
@@ -193,7 +193,7 @@ export default function ForSugarDaddiesPage() {
           How Plus compares to Seeking
         </h2>
         <p className="text-sm mb-10" style={{ color: creamMuted }}>
-          Seeking charges $150&ndash;375/month. We charge $99.99. Same concept,
+          Seeking charges $150&ndash;275/month. We start at $49.99. Same concept,
           better execution, verified members.
         </p>
 
@@ -226,21 +226,21 @@ export default function ForSugarDaddiesPage() {
             </thead>
             <tbody style={{ color: creamMuted }}>
               {[
-                ["Full access price", "$99.99/mo", "$109.99/mo"],
-                ["Top-tier price", "$99.99/mo (Diamond)", "$274.99/mo (Diamond)"],
+                ["Entry paid tier", "$49.99/mo (Plus)", "$109.99/mo (Premium)"],
+                ["Top-tier price", "$99.99/mo (Plus+)", "$274.99/mo (Diamond)"],
                 ["Income verification", "Built-in, verified badge", "Optional, rarely used"],
                 ["Photo verification", "Live selfie match", "Basic"],
-                ["Privacy controls", "All tiers", "Diamond only ($274.99)"],
-                ["Travel mode", "Yes, any city", "No"],
+                ["Privacy controls", "Plus tier and above", "Diamond only ($274.99)"],
+                ["Travel mode", "Yes, any city (Plus+)", "No"],
                 ["Mobile experience", "Built for phones", "Desktop-first"],
                 ["iOS app", "PWA (works on iPhone)", "Removed from App Store"],
                 ["Contracts", "None, cancel anytime", "Annual plans pushed"],
-              ].map(([feature, arranged, seeking]) => (
+              ].map(([feature, plus, seeking]) => (
                 <tr key={feature} style={{ borderBottom: `1px solid ${line}` }}>
                   <td className="py-3 pr-4" style={{ color: cream }}>
                     {feature}
                   </td>
-                  <td className="py-3 px-4">{arranged}</td>
+                  <td className="py-3 px-4">{plus}</td>
                   <td className="py-3 pl-4">{seeking}</td>
                 </tr>
               ))}
@@ -296,7 +296,7 @@ export default function ForSugarDaddiesPage() {
                 <p className="text-sm font-medium mb-1">Discreet billing</p>
                 <p className="text-xs leading-relaxed" style={{ color: creamMuted }}>
                   Your card statement shows a generic company name. No mention
-                  of dating, sugar, or Plus.
+                  of dating or Plus.
                 </p>
               </div>
             </div>
@@ -384,7 +384,7 @@ export default function ForSugarDaddiesPage() {
               Browse verified members
             </h3>
             <p className="text-sm leading-relaxed" style={{ color: creamMuted }}>
-              Filter by city, age, arrangement type, lifestyle. Every profile
+              Filter by city, age, dating preferences, lifestyle. Every profile
               shows verification status upfront. Travel mode lets you connect
               before you arrive.
             </p>
@@ -429,11 +429,60 @@ export default function ForSugarDaddiesPage() {
             Simple pricing. No surprises.
           </h2>
           <p className="text-sm mb-12" style={{ color: creamMuted }}>
-            Start free. Upgrade when you want unlimited messaging.
+            Start free. Upgrade when you want more.
           </p>
 
-          <div className="max-w-md mx-auto">
-            {/* Diamond */}
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            {/* Plus */}
+            <div
+              className="p-8 border"
+              style={{ borderColor: gold, background: dark3 }}
+            >
+              <p
+                className="text-xs tracking-[0.2em] uppercase mb-6"
+                style={{ color: gold }}
+              >
+                Plus
+              </p>
+              <p
+                className="text-4xl font-light mb-1"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                $49.99
+              </p>
+              <p className="text-sm mb-8" style={{ color: creamMuted }}>
+                per month &mdash; or $499/year
+              </p>
+              <ul
+                className="space-y-3 text-sm mb-10"
+                style={{ color: creamMuted }}
+              >
+                <li className="flex gap-3">
+                  <span style={{ color: gold }}>+</span> Unlimited messaging
+                </li>
+                <li className="flex gap-3">
+                  <span style={{ color: gold }}>+</span> See who liked you
+                </li>
+                <li className="flex gap-3">
+                  <span style={{ color: gold }}>+</span> Verified badge
+                </li>
+                <li className="flex gap-3">
+                  <span style={{ color: gold }}>+</span> Hide from search
+                </li>
+                <li className="flex gap-3">
+                  <span style={{ color: gold }}>+</span> Blur photos for non-matches
+                </li>
+              </ul>
+              <Link
+                href="/auth?mode=register"
+                className="block text-center py-3 text-sm tracking-wide font-medium transition-all hover:brightness-110"
+                style={{ background: gold, color: dark1 }}
+              >
+                Get started
+              </Link>
+            </div>
+
+            {/* Plus+ */}
             <div
               className="p-8 border relative"
               style={{ borderColor: gold, background: dark3 }}
@@ -448,7 +497,7 @@ export default function ForSugarDaddiesPage() {
                 className="text-xs tracking-[0.2em] uppercase mb-6"
                 style={{ color: gold }}
               >
-                Diamond
+                Plus+
               </p>
               <p
                 className="text-4xl font-light mb-1"
@@ -464,30 +513,22 @@ export default function ForSugarDaddiesPage() {
                 style={{ color: creamMuted }}
               >
                 <li className="flex gap-3">
-                  <span style={{ color: gold }}>+</span> Unlimited messaging
+                  <span style={{ color: gold }}>+</span> Everything in Plus
                 </li>
                 <li className="flex gap-3">
-                  <span style={{ color: gold }}>+</span> See who liked you
+                  <span style={{ color: gold }}>+</span> Priority placement in feed
                 </li>
                 <li className="flex gap-3">
-                  <span style={{ color: gold }}>+</span> Income verification
-                  badge
+                  <span style={{ color: gold }}>+</span> Travel mode
                 </li>
                 <li className="flex gap-3">
-                  <span style={{ color: gold }}>+</span> Hide from search
+                  <span style={{ color: gold }}>+</span> Read receipts
                 </li>
                 <li className="flex gap-3">
-                  <span style={{ color: gold }}>+</span> Private browsing mode
+                  <span style={{ color: gold }}>+</span> Profile boost
                 </li>
                 <li className="flex gap-3">
-                  <span style={{ color: gold }}>+</span> Hidden read receipts
-                </li>
-                <li className="flex gap-3">
-                  <span style={{ color: gold }}>+</span> Priority placement in
-                  feed
-                </li>
-                <li className="flex gap-3">
-                  <span style={{ color: gold }}>+</span> Featured profile badge
+                  <span style={{ color: gold }}>+</span> Unlimited likes
                 </li>
               </ul>
               <Link
@@ -500,7 +541,7 @@ export default function ForSugarDaddiesPage() {
             </div>
           </div>
 
-          <p className="text-xs mt-8" style={{ color: creamMuted }}>
+          <p className="text-xs mt-8 text-center" style={{ color: creamMuted }}>
             For context: Seeking charges $109.99/month for their base Premium and
             $274.99/month for Diamond.{" "}
             <Link href="/pricing" style={{ color: gold }}>

@@ -6,14 +6,14 @@ import PublicFooter from "@/components/PublicFooter";
 /* ─── Metadata ─────────────────────────────────────────────────── */
 
 export const metadata: Metadata = {
-  title: "How Plus Works | Sugar Dating Made Simple",
+  title: "How Plus Works | Private Dating Made Simple",
   description:
-    "Learn how Plus works, from creating your free profile to meeting verified members. Sugar dating made simple, safe, and transparent.",
+    "Learn how Plus works, from creating your free profile to meeting verified members. Private dating made simple, safe, and transparent.",
   alternates: { canonical: "https://meetyourplus.com/how-it-works" },
   openGraph: {
-    title: "How Plus Works | Sugar Dating Made Simple",
+    title: "How Plus Works | Private Dating Made Simple",
     description:
-      "From profile creation to your first arrangement, here's exactly how Plus works.",
+      "From profile creation to your first connection, here's exactly how Plus works.",
     url: "https://meetyourplus.com/how-it-works",
     siteName: "Plus",
     type: "website",
@@ -27,10 +27,10 @@ const STEPS = [
     number: "01",
     title: "Create your profile",
     description:
-      "Sign up for free in under two minutes. Choose whether you're joining as a successful member or an attractive member, add your best photos, write a short bio that shows your personality, and define your arrangement preferences — mentorship, travel companion, sugar relationship, or open to anything. Your profile is your first impression, so be honest about what you're looking for. The best arrangements start with clarity.",
+      "Sign up for free in under two minutes. Choose whether you're joining as a successful member or an attractive member, add your best photos, write a short bio that shows your personality, and define your dating preferences — mentorship, travel companion, long-term relationship, or open to anything. Your profile is your first impression, so be honest about what you're looking for. The best connections start with clarity.",
     bullets: [
       "Always free to create, no credit card required",
-      "Choose your member type and arrangement preferences upfront",
+      "Choose your member type and dating preferences upfront",
       "Add up to 6 photos — public or private, you control visibility",
     ],
   },
@@ -49,31 +49,31 @@ const STEPS = [
     number: "03",
     title: "Discover members",
     description:
-      "Once your profile is live, our relevancy engine surfaces the best matches based on your preferences, location, arrangement type, and activity. Browse members in your city or use Travel Mode to connect in any of 50+ cities before you even arrive. Filter by lifestyle expectations, arrangement type, verification status, and more. The discovery feed is designed to show you people who actually match what you're looking for — not just everyone with a pulse.",
+      "Once your profile is live, our relevancy engine surfaces the best matches based on your preferences, location, dating type, and activity. Browse members in your city or use Travel Mode to connect in any city before you even arrive. Filter by lifestyle expectations, dating preferences, verification status, and more. The discovery feed is designed to show you people who actually match what you're looking for — not just everyone with a pulse.",
     bullets: [
       "Relevancy-ranked feed that improves the more you use it",
-      "Travel Mode lets you set your location to any city in advance",
-      "Advanced filters: arrangement type, age, lifestyle, verification status",
+      "Travel Mode lets you set your location to any city in advance (Plus+)",
+      "Advanced filters: dating type, age, lifestyle, verification status",
     ],
   },
   {
     number: "04",
     title: "Start a conversation",
     description:
-      "There's no matching gate on Plus. If someone catches your eye, reach out directly. Attractive members can message anyone for free with no limits. Successful members on the free plan get one opening message per conversation — enough to make a strong first impression. Diamond members unlock unlimited messaging. We've found that the best arrangements start with a genuine, personal message — not a generic 'hey.'",
+      "There's no matching gate on Plus. If someone catches your eye, reach out directly. Free members get 5 messages per day. Plus members unlock unlimited messaging. We've found that the best connections start with a genuine, personal message — not a generic 'hey.'",
     bullets: [
       "No matching required — message anyone directly",
-      "Attractive members message free, always, no hidden paywalls",
-      "Diamond ($99.99/mo or $999/yr) unlocks unlimited messaging for successful members",
+      "Free tier includes 5 messages per day",
+      "Plus ($49.99/mo) or Plus+ ($99.99/mo) unlocks unlimited messaging",
     ],
   },
   {
     number: "05",
-    title: "Define your arrangement",
+    title: "Define your connection",
     description:
-      "This is the conversation that matters most. Once you've connected with someone, discuss what you're each looking for openly. Arrangement types vary widely — some people want a classic sugar relationship with a monthly allowance, others prefer experience-based arrangements involving travel, dinners, and mentorship. Plus encourages you to have this conversation early and honestly. Define the frequency of dates, expectations around exclusivity, and what support looks like. The clearer you are upfront, the better the arrangement will be for both sides.",
+      "This is the conversation that matters most. Once you've connected with someone, discuss what you're each looking for openly. Connections vary widely — some people want mentorship and travel, others prefer regular dates with clear expectations. Plus encourages you to have this conversation early and honestly. Define the frequency of dates, expectations around exclusivity, and what the relationship looks like. The clearer you are upfront, the better the experience will be for both sides.",
     bullets: [
-      "Define arrangement type: allowance, experience-based, mentorship, or hybrid",
+      "Define what you're looking for: mentorship, travel, companionship, or long-term",
       "Set expectations for frequency, exclusivity, and communication style",
       "Use in-app messaging to keep early conversations on-platform for safety",
     ],
@@ -82,7 +82,7 @@ const STEPS = [
     number: "06",
     title: "Meet safely",
     description:
-      "When you're ready to meet in person, safety comes first. Always choose a public place for your first date — an upscale restaurant, a hotel bar, or a well-known venue. Share your plans with a trusted friend. Trust your instincts: if something feels off, end the date. Plus provides block and report tools that are available at every stage, and our trust and safety team reviews reports within 24 hours. A great arrangement is built on mutual respect and genuine connection — and that starts with feeling safe.",
+      "When you're ready to meet in person, safety comes first. Always choose a public place for your first date — an upscale restaurant, a hotel bar, or a well-known venue. Share your plans with a trusted friend. Trust your instincts: if something feels off, end the date. Plus provides block and report tools that are available at every stage, and our trust and safety team reviews reports within 24 hours. A great relationship is built on mutual respect and genuine connection — and that starts with feeling safe.",
     bullets: [
       "Always meet in public for the first few dates",
       "Use block and report tools if anything feels wrong — our team responds within 24 hours",

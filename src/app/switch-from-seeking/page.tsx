@@ -6,11 +6,11 @@ import PublicFooter from "@/components/PublicFooter";
 export const metadata: Metadata = {
   title: "Banned from Seeking? Switch to Plus in 2 Minutes",
   description:
-    "Tired of Seeking's bans, censorship, and $110/month pricing? Plus has verified profiles, no banned words, and costs half the price. Switch in 2 minutes.",
+    "Tired of Seeking's bans, censorship, and $110/month pricing? Plus has verified profiles, fair moderation, and starts at $49.99/month. Switch in 2 minutes.",
   alternates: { canonical: "https://meetyourplus.com/switch-from-seeking" },
   openGraph: {
     title: "Banned from Seeking? Switch to Plus",
-    description: "No banned words. No surprise bans. $99.99/month. Verified profiles.",
+    description: "Fair moderation. No surprise bans. From $49.99/month. Verified profiles.",
     url: "https://meetyourplus.com/switch-from-seeking",
     type: "website",
   },
@@ -32,8 +32,8 @@ export default function SwitchFromSeekingPage() {
             Start fresh in 2 minutes.
           </h1>
           <p className="text-muted text-base md:text-lg leading-relaxed max-w-xl mb-8">
-            No banned words. No surprise suspensions. No $110/month for optional
-            verification. Just a sugar dating platform that lets you be honest
+            No surprise suspensions. No $110/month for optional
+            verification. Just a private dating platform that lets you be honest
             about what you want.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
@@ -62,16 +62,16 @@ export default function SwitchFromSeekingPage() {
           <div className="space-y-6">
             {[
               {
-                problem: "\"I got banned for using the word 'arrangement.'\"",
-                solution: "Plus doesn't ban sugar dating language. Discuss arrangements, allowances, and expectations openly.",
+                problem: "\"I got banned for having a normal conversation.\"",
+                solution: "Plus has fair moderation. We don't ban people for being honest about what they're looking for.",
               },
               {
                 problem: "\"They charged me $109.99 and banned me the same week.\"",
-                solution: "Plus Diamond is $99.99/month. If you cancel, your access stops. We don't charge banned accounts because we don't ban people for being honest.",
+                solution: "Plus starts at $49.99/month. If you cancel, your access stops. We don't charge banned accounts because we don't ban people for normal behavior.",
               },
               {
                 problem: "\"Half the profiles are fake. No way to tell who's real.\"",
-                solution: "Every sugar daddy on Plus has verified their income. Not optional. Required.",
+                solution: "Every successful member on Plus can verify their income. Photo verification confirms everyone is who they say they are.",
               },
               {
                 problem: "\"There's no app and the mobile site is terrible.\"",
@@ -108,20 +108,20 @@ export default function SwitchFromSeekingPage() {
               </thead>
               <tbody className="text-muted">
                 {[
-                  ["Full access price", "$99.99/month", "$109.99/month"],
-                  ["Income verification", "Required", "Optional"],
-                  ["Banned for saying 'arrangement'", "No", "Yes"],
-                  ["Banned for saying 'allowance'", "No", "Yes"],
+                  ["Entry paid tier", "$49.99/month (Plus)", "$109.99/month (Premium)"],
+                  ["Top tier", "$99.99/month (Plus+)", "$274.99/month (Diamond)"],
+                  ["Income verification", "Available", "Optional"],
+                  ["Fair moderation", "Yes", "Aggressive bans"],
                   ["Mobile app experience", "Mobile-first PWA", "Removed from App Store"],
                   ["Customer support response", "Under 24 hours", "3% resolution rate"],
                   ["Refund if you cancel", "Yes, end of period", "Non-refundable"],
-                  ["Photo blurring for privacy", "Included", "$274.99/month (Diamond)"],
-                  ["Travel mode", "Yes", "No"],
-                  ["Free for attractive members", "Yes, always", "Limited"],
-                ].map(([feature, arranged, seeking]) => (
+                  ["Photo blurring for privacy", "Included (Plus)", "$274.99/month (Diamond)"],
+                  ["Travel mode", "Yes (Plus+)", "No"],
+                  ["Free tier", "Yes, 5 messages/day", "Limited"],
+                ].map(([feature, plus, seeking]) => (
                   <tr key={feature} className="border-b border-card-border">
                     <td className="py-3 pr-4 text-foreground">{feature}</td>
-                    <td className="py-3 px-4">{arranged}</td>
+                    <td className="py-3 px-4">{plus}</td>
                     <td className="py-3 pl-4">{seeking}</td>
                   </tr>
                 ))}
@@ -139,7 +139,7 @@ export default function SwitchFromSeekingPage() {
             No credit card to browse.
           </h2>
           <p className="text-muted text-sm mb-8 max-w-md mx-auto">
-            Attractive members are always free. Sugar daddies start free and
+            Everyone starts free with 5 messages per day. Successful members
             upgrade when they&apos;re ready. Cancel anytime.
           </p>
           <Link
@@ -149,7 +149,7 @@ export default function SwitchFromSeekingPage() {
             Create your free profile
           </Link>
           <p className="text-xs text-muted mt-4">
-            Already have an Plus account?{" "}
+            Already have a Plus account?{" "}
             <Link href="/auth?mode=login" className="text-accent hover:underline">
               Sign in
             </Link>

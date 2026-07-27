@@ -4,14 +4,14 @@ import PublicNav from "@/components/PublicNav";
 import PublicFooter from "@/components/PublicFooter";
 
 export const metadata: Metadata = {
-  title: "Plus — Verified Dating for Successful Professionals",
+  title: "Plus — Private Dating for People With More to Offer",
   description:
-    "Meet verified, ambitious partners who know what they want. Income-verified profiles, photo verification, 50+ cities. Free to join.",
+    "Meet verified, ambitious partners who know what they want. Income-verified profiles, photo verification, now open in Miami + Houston. Free to join.",
   alternates: { canonical: "https://meetyourplus.com/join" },
   openGraph: {
-    title: "Plus — Verified Dating for Successful Professionals",
+    title: "Plus — Private Dating for People With More to Offer",
     description:
-      "Meet verified, ambitious partners who know what they want. Income-verified profiles, photo verification, 50+ cities. Free to join.",
+      "Meet verified, ambitious partners who know what they want. Income-verified profiles, photo verification, now open in Miami + Houston. Free to join.",
     url: "https://meetyourplus.com/join",
     type: "website",
     images: [
@@ -39,13 +39,13 @@ export default function JoinPage() {
           className="text-sm tracking-[0.3em] uppercase mb-6"
           style={{ color: gold }}
         >
-          Verified luxury dating
+          Private dating
         </p>
         <h1
           className="text-[clamp(2.4rem,6vw,4.5rem)] leading-[1.05] font-normal mb-6"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          Dating at a Higher Standard
+          Private Dating for People With More to Offer
         </h1>
         <p
           className="text-lg md:text-xl leading-relaxed max-w-2xl mb-10"
@@ -53,6 +53,7 @@ export default function JoinPage() {
         >
           Plus connects verified, successful people with attractive,
           ambitious partners. Clear expectations. Real connections. No games.
+          Now open in Miami and Houston, with more cities coming soon.
         </p>
         <Link
           href="/auth?mode=register"
@@ -223,7 +224,7 @@ export default function JoinPage() {
             style={{ color: creamMuted }}
           >
             Most premium dating apps charge $150+ per month with optional
-            verification. Plus charges $99.99 with required verification.
+            verification. Plus starts at $49.99 with required photo verification.
             You get fewer profiles, but every single one is real.
           </p>
         </div>
@@ -237,15 +238,18 @@ export default function JoinPage() {
           className="text-2xl md:text-3xl font-normal mb-4"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          Active in 50+ cities worldwide
+          Now open in Miami + Houston, more cities coming
         </h2>
         <p
           className="text-base leading-relaxed"
           style={{ color: creamMuted }}
         >
-          Members in New York, Miami, Los Angeles, London, Dallas, and more.
-          Verified professionals connecting with ambitious partners in every
-          major city.
+          Verified professionals connecting with ambitious partners.
+          Follow us on Instagram{" "}
+          <a href="https://instagram.com/meetyourplus" style={{ color: gold }} target="_blank" rel="noopener noreferrer">
+            @meetyourplus
+          </a>{" "}
+          for updates on new city launches.
         </p>
       </section>
 
@@ -264,10 +268,10 @@ export default function JoinPage() {
             Simple pricing
           </h2>
           <p className="text-sm mb-12" style={{ color: creamMuted }}>
-            Two tiers. No hidden fees.
+            Three tiers. No hidden fees.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-2xl">
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl">
             {/* Free tier */}
             <div
               className="p-6 md:p-8 border"
@@ -286,7 +290,7 @@ export default function JoinPage() {
                 $0
               </p>
               <p className="text-sm mb-6" style={{ color: creamMuted }}>
-                Free for attractive members, always
+                Free forever
               </p>
               <ul
                 className="space-y-2.5 text-sm"
@@ -301,10 +305,55 @@ export default function JoinPage() {
                 <li className="flex gap-3">
                   <span style={{ color: gold }}>+</span> Like and match
                 </li>
+                <li className="flex gap-3">
+                  <span style={{ color: gold }}>+</span> 5 messages per day
+                </li>
               </ul>
             </div>
 
-            {/* Diamond tier */}
+            {/* Plus tier */}
+            <div
+              className="p-6 md:p-8 border"
+              style={{ borderColor: gold, background: dark3 }}
+            >
+              <p
+                className="text-xs tracking-[0.2em] uppercase mb-4"
+                style={{ color: gold }}
+              >
+                Plus
+              </p>
+              <p
+                className="text-3xl font-light mb-1"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                $49.99
+              </p>
+              <p className="text-sm mb-6" style={{ color: creamMuted }}>
+                per month &mdash; or $499/year
+              </p>
+              <ul
+                className="space-y-2.5 text-sm"
+                style={{ color: creamMuted }}
+              >
+                <li className="flex gap-3">
+                  <span style={{ color: gold }}>+</span> Unlimited messaging
+                </li>
+                <li className="flex gap-3">
+                  <span style={{ color: gold }}>+</span> See who liked you
+                </li>
+                <li className="flex gap-3">
+                  <span style={{ color: gold }}>+</span> Verified badge
+                </li>
+                <li className="flex gap-3">
+                  <span style={{ color: gold }}>+</span> Hide from search
+                </li>
+                <li className="flex gap-3">
+                  <span style={{ color: gold }}>+</span> Blur photos
+                </li>
+              </ul>
+            </div>
+
+            {/* Plus+ tier */}
             <div
               className="p-6 md:p-8 border relative"
               style={{ borderColor: gold, background: dark3 }}
@@ -319,7 +368,7 @@ export default function JoinPage() {
                 className="text-xs tracking-[0.2em] uppercase mb-4"
                 style={{ color: gold }}
               >
-                Diamond
+                Plus+
               </p>
               <p
                 className="text-3xl font-light mb-1"
@@ -335,19 +384,19 @@ export default function JoinPage() {
                 style={{ color: creamMuted }}
               >
                 <li className="flex gap-3">
-                  <span style={{ color: gold }}>+</span> Unlimited messaging
-                </li>
-                <li className="flex gap-3">
-                  <span style={{ color: gold }}>+</span> See who liked you
-                </li>
-                <li className="flex gap-3">
-                  <span style={{ color: gold }}>+</span> Income verification badge
-                </li>
-                <li className="flex gap-3">
-                  <span style={{ color: gold }}>+</span> All privacy controls
+                  <span style={{ color: gold }}>+</span> Everything in Plus
                 </li>
                 <li className="flex gap-3">
                   <span style={{ color: gold }}>+</span> Priority placement
+                </li>
+                <li className="flex gap-3">
+                  <span style={{ color: gold }}>+</span> Travel mode
+                </li>
+                <li className="flex gap-3">
+                  <span style={{ color: gold }}>+</span> Read receipts
+                </li>
+                <li className="flex gap-3">
+                  <span style={{ color: gold }}>+</span> Profile boost
                 </li>
               </ul>
             </div>

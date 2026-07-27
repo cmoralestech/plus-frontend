@@ -179,7 +179,7 @@ export default function ContactPage() {
             team directly — those messages are triaged with highest priority and
             reviewed within hours, not days. For press, partnerships, or media
             inquiries, our communications team handles everything from interviews
-            to data requests for articles about sugar dating trends.
+            to data requests for articles about dating trends.
           </p>
           <div className="grid sm:grid-cols-2 gap-4 text-sm">
             <div>

@@ -37,8 +37,8 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-semibold text-foreground">3. Nature of the Service</h2>
             <p>Plus is an online dating platform that facilitates introductions between consenting adults. <strong>Plus is not an escort service and does not facilitate, promote, or tolerate commercial sexual services, sex trafficking, or any form of exploitation.</strong></p>
-            <p>The Service is designed for people seeking genuine dating relationships where expectations about lifestyle and finances are communicated openly. Any arrangement formed through the Service is between the individuals involved and is their sole responsibility.</p>
-            <p>We do not guarantee any specific outcome, match, or arrangement. We are not a party to any agreement between users.</p>
+            <p>The Service is designed for people seeking genuine dating relationships where expectations about lifestyle and finances are communicated openly. Any connection formed through the Service is between the individuals involved and is their sole responsibility.</p>
+            <p>We do not guarantee any specific outcome, match, or connection. We are not a party to any agreement between users.</p>
           </section>
 
           <section>

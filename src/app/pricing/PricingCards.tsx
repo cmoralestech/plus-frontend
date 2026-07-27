@@ -40,17 +40,17 @@ export default function PricingCards() {
         </span>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {/* Free */}
         <div className="p-8 border" style={{ borderColor: line, background: dark2 }}>
           <p className="text-xs tracking-[0.2em] uppercase mb-6" style={{ color: creamMuted }}>Free</p>
           <p className="text-4xl font-light mb-1" style={{ fontFamily: "var(--font-display)" }}>$0</p>
-          <p className="text-sm mb-8" style={{ color: creamMuted }}>Always free for attractive members</p>
+          <p className="text-sm mb-8" style={{ color: creamMuted }}>Free forever</p>
           <ul className="space-y-3 text-sm mb-10" style={{ color: creamMuted }}>
             <li className="flex gap-3"><span style={{ color: gold }}>+</span> Create profile & upload photos</li>
             <li className="flex gap-3"><span style={{ color: gold }}>+</span> Browse & discover profiles</li>
             <li className="flex gap-3"><span style={{ color: gold }}>+</span> Like & match</li>
-            <li className="flex gap-3"><span style={{ color: gold }}>+</span> 1 opening message per conversation</li>
+            <li className="flex gap-3"><span style={{ color: gold }}>+</span> 5 messages per day</li>
             <li className="flex gap-3"><span style={{ color: gold }}>+</span> Basic privacy controls</li>
             <li className="flex gap-3"><span style={{ color: gold }}>+</span> Block & report tools</li>
           </ul>
@@ -59,12 +59,38 @@ export default function PricingCards() {
           </Link>
         </div>
 
-        {/* Diamond */}
+        {/* Plus */}
+        <div className="p-8 border" style={{ borderColor: gold, background: dark2 }}>
+          <p className="text-xs tracking-[0.2em] uppercase mb-6" style={{ color: gold }}>Plus</p>
+          <p className="text-4xl font-light mb-1" style={{ fontFamily: "var(--font-display)" }}>
+            {isAnnual ? "$499" : "$49.99"}
+          </p>
+          <p className="text-sm" style={{ color: creamMuted }}>
+            {isAnnual ? "per year" : "per month"}
+          </p>
+          {isAnnual && (
+            <p className="text-sm mt-1" style={{ color: gold }}>$41.58/mo</p>
+          )}
+          <div className={isAnnual ? "mb-6" : "mb-8"} />
+          <ul className="space-y-3 text-sm mb-10" style={{ color: creamMuted }}>
+            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Everything in Free</li>
+            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Unlimited messaging</li>
+            <li className="flex gap-3"><span style={{ color: gold }}>+</span> See who liked you</li>
+            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Verified badge</li>
+            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Hide from search</li>
+            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Blur photos for non-matches</li>
+          </ul>
+          <Link href={`/settings?tab=subscription&billing=${billing}&plan=plus`} className="block text-center py-3 text-sm tracking-wide font-medium transition-all" style={{ background: gold, color: dark1 }}>
+            {isAnnual ? "Get Plus \u2014 $499/year" : "Get Plus"}
+          </Link>
+        </div>
+
+        {/* Plus+ */}
         <div className="p-8 border relative" style={{ borderColor: gold, background: dark2 }}>
           <span className="absolute -top-3 left-8 px-3 py-0.5 text-[10px] tracking-[0.15em] uppercase" style={{ background: gold, color: dark1 }}>
             All features
           </span>
-          <p className="text-xs tracking-[0.2em] uppercase mb-6" style={{ color: gold }}>Diamond</p>
+          <p className="text-xs tracking-[0.2em] uppercase mb-6" style={{ color: gold }}>Plus+</p>
           <p className="text-4xl font-light mb-1" style={{ fontFamily: "var(--font-display)" }}>
             {isAnnual ? "$999" : "$99.99"}
           </p>
@@ -76,18 +102,15 @@ export default function PricingCards() {
           )}
           <div className={isAnnual ? "mb-6" : "mb-8"} />
           <ul className="space-y-3 text-sm mb-10" style={{ color: creamMuted }}>
-            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Everything in Free</li>
-            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Unlimited messaging</li>
-            <li className="flex gap-3"><span style={{ color: gold }}>+</span> See all photos unblurred</li>
-            <li className="flex gap-3"><span style={{ color: gold }}>+</span> See who liked you</li>
-            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Hide from search</li>
-            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Private browsing mode</li>
-            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Hide read receipts</li>
-            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Priority in discover feed</li>
-            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Featured profile badge</li>
+            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Everything in Plus</li>
+            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Priority placement in feed</li>
+            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Travel mode</li>
+            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Read receipts</li>
+            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Profile boost</li>
+            <li className="flex gap-3"><span style={{ color: gold }}>+</span> Unlimited likes</li>
           </ul>
-          <Link href={`/settings?tab=subscription&billing=${billing}`} className="block text-center py-3 text-sm tracking-wide font-medium transition-all" style={{ background: gold, color: dark1 }}>
-            {isAnnual ? "Get Diamond \u2014 $999/year" : "Get Diamond"}
+          <Link href={`/settings?tab=subscription&billing=${billing}&plan=plus-plus`} className="block text-center py-3 text-sm tracking-wide font-medium transition-all" style={{ background: gold, color: dark1 }}>
+            {isAnnual ? "Get Plus+ \u2014 $999/year" : "Get Plus+"}
           </Link>
         </div>
       </div>

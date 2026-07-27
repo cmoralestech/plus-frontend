@@ -9,15 +9,15 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://meetyourplus.com/earn" },
   openGraph: {
     title: "Get Paid to Share Plus",
-    description: "Earn recurring monthly income by referring people to the luxury dating platform. $5-$12/subscriber/month. No cap.",
+    description: "Earn recurring monthly income by referring people to the private dating platform. $5-$12/subscriber/month. No cap.",
   },
 };
 
 const tiers = [
-  { name: "Starter", min: "0", premium: "$5", diamond: "$10", color: "" },
-  { name: "Silver", min: "25+", premium: "$7.50", diamond: "$15", color: "" },
-  { name: "Gold", min: "100+", premium: "$10", diamond: "$25", color: "border-accent" },
-  { name: "Platinum", min: "500+", premium: "$12", diamond: "$32", color: "border-accent" },
+  { name: "Starter", min: "0", plus: "$5", plusPlus: "$10", color: "" },
+  { name: "Silver", min: "25+", plus: "$7.50", plusPlus: "$15", color: "" },
+  { name: "Gold", min: "100+", plus: "$10", plusPlus: "$25", color: "border-accent" },
+  { name: "Platinum", min: "500+", plus: "$12", plusPlus: "$32", color: "border-accent" },
 ];
 
 export default function EarnPage() {
@@ -88,10 +88,10 @@ export default function EarnPage() {
           {tiers.map((tier) => (
             <div key={tier.name} className={`p-5 rounded-xl border border-card-border bg-card text-center ${tier.color}`}>
               <p className="text-[10px] uppercase tracking-wide text-muted mb-3">{tier.name}</p>
-              <p className="text-xs text-muted mb-1">Per Premium subscriber</p>
-              <p className="font-display text-xl text-foreground mb-3">{tier.premium}<span className="text-xs text-muted font-sans">/mo</span></p>
-              <p className="text-xs text-muted mb-1">Per Diamond subscriber</p>
-              <p className="font-display text-xl text-accent">{tier.diamond}<span className="text-xs text-muted font-sans">/mo</span></p>
+              <p className="text-xs text-muted mb-1">Per Plus subscriber</p>
+              <p className="font-display text-xl text-foreground mb-3">{tier.plus}<span className="text-xs text-muted font-sans">/mo</span></p>
+              <p className="text-xs text-muted mb-1">Per Plus+ subscriber</p>
+              <p className="font-display text-xl text-accent">{tier.plusPlus}<span className="text-xs text-muted font-sans">/mo</span></p>
               {tier.min !== "0" && (
                 <p className="text-[10px] text-muted/50 mt-3 pt-3 border-t border-card-border">{tier.min} paying referrals</p>
               )}
@@ -108,7 +108,7 @@ export default function EarnPage() {
           </h2>
           <div className="grid sm:grid-cols-2 gap-x-16 gap-y-8">
             {[
-              { n: "01", title: "Sign up free", body: "Create an Plus account (takes 2 minutes). Your referral link is generated automatically." },
+              { n: "01", title: "Sign up free", body: "Create a Plus account (takes 2 minutes). Your referral link is generated automatically." },
               { n: "02", title: "Share your link", body: "Post it on social media, put it in your bio, share it in DMs, use it in content. Wherever your audience is." },
               { n: "03", title: "People sign up", body: "When someone clicks your link and creates an account, they're tracked to you forever. They don't even need to subscribe right away." },
               { n: "04", title: "You get paid monthly", body: "When your referrals subscribe, you earn $5-$32/month per subscriber. PayPal payouts when your balance hits $50." },
@@ -135,7 +135,7 @@ export default function EarnPage() {
               body: "You make dating, lifestyle, or relationship content. Your audience is already interested. One viral post can generate hundreds of signups and months of recurring income.",
             },
             {
-              title: "Sugar dating community members",
+              title: "Dating community members",
               body: "You're already in the space. You know people who are frustrated with Seeking. Recommend something better and get paid for it, every month.",
             },
             {
@@ -162,7 +162,7 @@ export default function EarnPage() {
               { point: "Recurring, not one-time", detail: "Most referral programs pay you once. We pay you every month for as long as your referral stays subscribed." },
               { point: "No cap on earnings", detail: "There's no maximum. Refer 1,000 people? You earn on all 1,000. Forever." },
               { point: "Tiered commissions that reward growth", detail: "Start at $5/subscriber. As you refer more paying users, your rate automatically increases, up to $32/subscriber at Platinum." },
-              { point: "The product sells itself", detail: "Plus is less than half the price of Seeking with better features. You're not pushing something people don't want, you're pointing them to something better." },
+              { point: "The product sells itself", detail: "Plus starts at $49.99/mo — less than half the price of Seeking with better features. You're not pushing something people don't want, you're pointing them to something better." },
               { point: "Custom referral links", detail: "Get a branded link like meetyourplus.com/r/your-name. Professional and trackable." },
               { point: "Ready-to-post content", detail: "We give you copy-paste captions for Twitter, Instagram, TikTok, and DMs. Share in seconds." },
             ].map((item) => (
@@ -186,19 +186,19 @@ export default function EarnPage() {
         <div className="space-y-5 text-sm text-muted leading-relaxed max-w-2xl">
           <p>
             Let&apos;s break down the math with specific examples so you know exactly what
-            to expect. These scenarios use the Starter tier ($5/Premium subscriber,
-            $10/Diamond subscriber) to show conservative estimates — your actual earnings
+            to expect. These scenarios use the Starter tier ($5/Plus subscriber,
+            $10/Plus+ subscriber) to show conservative estimates — your actual earnings
             increase as you climb tiers.
           </p>
           <p>
             <span className="text-foreground font-medium">Scenario 1: Casual sharing.</span>{" "}
-            You send your link to 20 friends who are interested in sugar dating.
-            5 of them sign up, 2 subscribe to Diamond. You earn $10/month, every
+            You send your link to 20 friends who are interested in private dating.
+            5 of them sign up, 2 subscribe to Plus+. You earn $10/month, every
             month, for doing nothing. Over a year, that&apos;s $120 from five minutes of effort.
           </p>
           <p>
             <span className="text-foreground font-medium">Scenario 2: One viral TikTok.</span>{" "}
-            You post a video about sugar dating tips and include your link in bio.
+            You post a video about dating tips and include your link in bio.
             It gets 50K views and drives 300 signups. If 10% subscribe (30 people),
             you&apos;re earning $150-$300/month. That single video pays you for years.
           </p>
@@ -206,7 +206,7 @@ export default function EarnPage() {
             <span className="text-foreground font-medium">Scenario 3: Consistent content creator.</span>{" "}
             You make weekly content about dating, lifestyle, or relationships. Over
             6 months you accumulate 1,000 signups with 150 paying subscribers.
-            At the Gold tier ($25/Diamond subscriber), you&apos;re earning $3,750/month.
+            At the Gold tier ($25/Plus+ subscriber), you&apos;re earning $3,750/month.
             That&apos;s a meaningful income stream from content you were already making.
           </p>
           <p>
