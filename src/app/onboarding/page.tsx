@@ -27,6 +27,15 @@ const incomeRanges = [
   { value: "over_10m", label: "$10M+" },
 ];
 
+const netWorthRanges = [
+  { value: "under_500k", label: "Under $500K" },
+  { value: "500k_1m", label: "$500K\u20131M" },
+  { value: "1m_5m", label: "$1M\u20135M" },
+  { value: "5m_10m", label: "$5M\u201310M" },
+  { value: "10m_50m", label: "$10M\u201350M" },
+  { value: "over_50m", label: "$50M+" },
+];
+
 const lifestyleOptions = [
   { value: "low_key", label: "Low-key" },
   { value: "comfortable", label: "Comfortable" },
@@ -53,10 +62,15 @@ const openToOptions = [
   { value: "open_relationship", label: "Open relationship" },
 ];
 
+const showUpTraits = [
+  "Generous", "Thoughtful", "A planner", "Adventurous",
+  "A mentor", "Well-connected", "Spontaneous", "Supportive",
+];
+
 const plusTraits = [
-  "Ambitious", "Established", "Generous", "Adventurous", "Cultured",
-  "Career-driven", "Spontaneous", "Discreet", "Affectionate",
-  "Independent", "Well-traveled", "Social", "Intellectual",
+  "Ambitious", "Attractive", "Independent", "Adventurous", "Cultured",
+  "Affectionate", "Intellectual", "Social", "Spontaneous", "Discreet",
+  "Career-driven", "Well-traveled", "Playful",
 ];
 
 const currentYear = new Date().getFullYear();
@@ -98,6 +112,8 @@ function OnboardingForm() {
     bio: "",
     body_type: "",
     generosity: "",
+    net_worth: "",
+    show_up_traits: [] as string[],
     plus_traits: [] as string[],
   });
 
@@ -110,6 +126,15 @@ function OnboardingForm() {
       if (arr.includes(value)) return { ...prev, arrangement_types: arr.filter((v) => v !== value) };
       if (arr.length >= 5) return prev;
       return { ...prev, arrangement_types: [...arr, value] };
+    });
+  };
+
+  const toggleShowUp = (trait: string) => {
+    setForm((prev) => {
+      const arr = prev.show_up_traits;
+      if (arr.includes(trait)) return { ...prev, show_up_traits: arr.filter((t) => t !== trait) };
+      if (arr.length >= 4) return prev;
+      return { ...prev, show_up_traits: [...arr, trait] };
     });
   };
 
@@ -303,7 +328,7 @@ function OnboardingForm() {
                   value={form.headline}
                   onChange={(e) => update("headline", e.target.value)}
                   className="w-full px-4 py-3 bg-background border border-card-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/50"
-                  placeholder="Built a life I love. Looking for someone who adds to it."
+                  placeholder="Built something meaningful. Looking for someone worth sharing it with."
                   maxLength={100}
                 />
               </div>
@@ -321,6 +346,27 @@ function OnboardingForm() {
                 />
                 <p className="text-[11px] text-muted mt-1">The good profiles have a point of view.</p>
               </div>
+
+              <fieldset>
+                <legend className="block text-sm font-medium mb-1">
+                  How do you like to show up?
+                  <span className="text-xs text-muted font-normal ml-1">({form.show_up_traits.length}/4)</span>
+                </legend>
+                <p className="text-[11px] text-muted mb-2">Choose up to 4.</p>
+                <div className="flex flex-wrap gap-2">
+                  {showUpTraits.map((trait) => {
+                    const selected = form.show_up_traits.includes(trait);
+                    const atMax = form.show_up_traits.length >= 4 && !selected;
+                    return (
+                      <button key={trait} type="button" onClick={() => toggleShowUp(trait)}
+                        disabled={atMax}
+                        className={`px-3 py-1.5 rounded-full border text-sm font-medium transition-colors ${
+                          selected ? "border-accent bg-accent/10 text-accent" : atMax ? "border-card-border text-muted/40 cursor-not-allowed" : "border-card-border hover:border-muted"
+                        }`}>{trait}</button>
+                    );
+                  })}
+                </div>
+              </fieldset>
 
               <fieldset>
                 <legend className="block text-sm font-medium mb-1">
@@ -388,17 +434,31 @@ function OnboardingForm() {
               </fieldset>
 
               {isSugar && (
-                <fieldset>
-                  <legend className="block text-sm font-medium mb-2">Annual income</legend>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                    {incomeRanges.map((r) => (
-                      <button key={r.value} type="button" onClick={() => update("income_range", r.value)}
-                        className={`px-3 py-2.5 rounded-lg border text-sm font-medium transition-colors ${
-                          form.income_range === r.value ? "border-accent bg-accent/5 text-accent" : "border-card-border hover:border-muted"
-                        }`}>{r.label}</button>
-                    ))}
-                  </div>
-                </fieldset>
+                <>
+                  <fieldset>
+                    <legend className="block text-sm font-medium mb-2">Annual income</legend>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                      {incomeRanges.map((r) => (
+                        <button key={r.value} type="button" onClick={() => update("income_range", r.value)}
+                          className={`px-3 py-2.5 rounded-lg border text-sm font-medium transition-colors ${
+                            form.income_range === r.value ? "border-accent bg-accent/5 text-accent" : "border-card-border hover:border-muted"
+                          }`}>{r.label}</button>
+                      ))}
+                    </div>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend className="block text-sm font-medium mb-2">Net worth</legend>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                      {netWorthRanges.map((r) => (
+                        <button key={r.value} type="button" onClick={() => update("net_worth", r.value)}
+                          className={`px-3 py-2.5 rounded-lg border text-sm font-medium transition-colors ${
+                            form.net_worth === r.value ? "border-accent bg-accent/5 text-accent" : "border-card-border hover:border-muted"
+                          }`}>{r.label}</button>
+                      ))}
+                    </div>
+                  </fieldset>
+                </>
               )}
 
               <fieldset>

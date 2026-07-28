@@ -192,15 +192,15 @@ export default function LandingPage() {
 
 
       {/* ═══ TWO AUDIENCES ═══ */}
-      <section style={{ borderTop: `1px solid ${cardBorder}`, borderBottom: `1px solid ${cardBorder}` }}>
+      <section style={{ background: "#F5EDE4", color: "#1A1A1A" }}>
         <div className="grid md:grid-cols-2">
           {/* Generous */}
-          <div className="px-5 md:px-10 lg:px-16 py-14 md:py-24" style={{ borderBottom: `1px solid ${cardBorder}`, borderRight: `1px solid ${cardBorder}` }}>
-            <p className="text-xs uppercase tracking-[0.2em] mb-6" style={{ color: muted }}>For generous members</p>
-            <h3 style={{ fontFamily: "var(--font-display)" }} className="text-xl md:text-2xl leading-snug mb-4">
+          <div className="px-5 md:px-10 lg:px-16 py-14 md:py-24" style={{ borderBottom: "1px solid #E8DDD2", borderRight: "1px solid #E8DDD2" }}>
+            <p className="text-xs uppercase tracking-[0.2em] mb-6" style={{ color: "#8A7E76" }}>For generous members</p>
+            <h3 style={{ fontFamily: "var(--font-display)", color: "#1A1A1A" }} className="text-xl md:text-2xl leading-snug mb-4">
               Chemistry, and a yacht in Capri.<br />Turns out, you can have it all.
             </h3>
-            <p className="text-sm leading-relaxed mb-6 max-w-md" style={{ color: muted }}>
+            <p className="text-sm leading-relaxed mb-6 max-w-md" style={{ color: "#6B5E54" }}>
               Verify your income once, and every person you match with knows
               you&apos;re real before the conversation starts. Travel mode,
               privacy controls, and people who respect your time.
@@ -208,7 +208,7 @@ export default function LandingPage() {
             <Link
               href="/auth?mode=register"
               className="inline-flex items-center justify-center px-8 py-3.5 text-sm tracking-wide font-medium transition-colors hover:opacity-90"
-              style={{ background: accent, color: "#fff" }}
+              style={{ background: "#1A1A1A", color: "#F5EDE4" }}
             >
               Create your profile
             </Link>
@@ -216,11 +216,11 @@ export default function LandingPage() {
 
           {/* Attractive */}
           <div className="px-5 md:px-10 lg:px-16 py-14 md:py-24">
-            <p className="text-xs uppercase tracking-[0.2em] mb-6" style={{ color: muted }}>For attractive members</p>
-            <h3 style={{ fontFamily: "var(--font-display)" }} className="text-xl md:text-2xl leading-snug mb-4">
+            <p className="text-xs uppercase tracking-[0.2em] mb-6" style={{ color: "#8A7E76" }}>For attractive members</p>
+            <h3 style={{ fontFamily: "var(--font-display)", color: "#1A1A1A" }} className="text-xl md:text-2xl leading-snug mb-4">
               Ordinary was never really the plan.
             </h3>
-            <p className="text-sm leading-relaxed mb-6 max-w-md" style={{ color: muted }}>
+            <p className="text-sm leading-relaxed mb-6 max-w-md" style={{ color: "#6B5E54" }}>
               Every generous member on Plus has verified their income.
               No fake profiles, no games. Set your expectations upfront and
               message anyone for free. A little chase, excellent timing,
@@ -229,7 +229,7 @@ export default function LandingPage() {
             <Link
               href="/auth?mode=register"
               className="inline-flex items-center justify-center px-8 py-3.5 text-sm tracking-wide font-medium transition-colors"
-              style={{ border: `1px solid ${cardBorder}`, color: fg }}
+              style={{ border: "1px solid #1A1A1A", color: "#1A1A1A" }}
             >
               Join free — it stays free
             </Link>
@@ -454,7 +454,7 @@ export default function LandingPage() {
 
 
       {/* ═══ TESTIMONIAL ═══ */}
-      <section className="px-5 md:px-10 lg:px-16 py-16 md:py-28">
+      <section className="px-5 md:px-10 lg:px-16 py-16 md:py-28" style={{ background: "#F5EDE4", color: "#1A1A1A" }}>
         <div className="grid lg:grid-cols-[1.2fr_1.5fr] gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
           <div>
             <span className="text-5xl leading-none block mb-4" style={{ fontFamily: "var(--font-display)", color: accent }}>
@@ -466,11 +466,12 @@ export default function LandingPage() {
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)",
                 fontWeight: 400,
+                color: "#1A1A1A",
               }}
             >
               The best part of getting ready? Knowing the date is actually <span style={{ color: accent }}>worth it</span>.
             </blockquote>
-            <p className="text-[13px]" style={{ color: muted }}>
+            <p className="text-[13px]" style={{ color: "#8A7E76" }}>
               — Sarah, 26, Miami
             </p>
           </div>
@@ -491,43 +492,42 @@ export default function LandingPage() {
 
 
       {/* ═══ REFERRAL ═══ */}
-      <section style={{ borderTop: `1px solid ${cardBorder}`, borderBottom: `1px solid ${cardBorder}` }}>
-        <div className="px-5 md:px-10 lg:px-16 py-14 md:py-24 max-w-7xl grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-20 items-center">
+      <section className="px-5 md:px-10 lg:px-16 py-14 md:py-24" style={{ background: "#F5EDE4", color: "#1A1A1A" }}>
+        <div className="max-w-7xl grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-20 items-center">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] mb-5" style={{ color: muted }}>Referral program</p>
-            <h2 style={{ fontFamily: "var(--font-display)" }} className="text-2xl md:text-3xl leading-snug mb-4">
-              Know people who&apos;d be into this?<br />Get paid when they join.
+            <p className="text-xs uppercase tracking-[0.2em] mb-5" style={{ color: "#8A7E76" }}>Referral Program</p>
+            <h2 style={{ fontFamily: "var(--font-display)", color: "#1A1A1A" }} className="text-2xl md:text-3xl leading-snug mb-4">
+              Introduce people you believe in.<br />Earn when they subscribe.
             </h2>
-            <p className="text-sm leading-relaxed mb-6 max-w-md" style={{ color: muted }}>
-              Share your link. When someone subscribes through it, you earn
-              $5–$12/month for as long as they stay. Recurring. No cap.
+            <p className="text-sm leading-relaxed mb-6 max-w-md" style={{ color: "#6B5E54" }}>
+              When someone joins Plus through your personal referral link and subscribes, you receive a recurring commission of $5–$12 per month for the duration of their membership. There is no cap on earnings.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/auth?mode=register"
                 className="inline-flex items-center justify-center px-8 py-3.5 text-sm tracking-wide font-medium transition-colors hover:opacity-90"
-                style={{ background: accent, color: "#fff" }}
+                style={{ background: "#1A1A1A", color: "#F5EDE4" }}
               >
-                Start earning
+                Learn more
               </Link>
               <Link
                 href="/earn"
                 className="inline-flex items-center justify-center px-8 py-3.5 text-sm transition-colors"
-                style={{ color: muted }}
+                style={{ color: "#6B5E54" }}
               >
-                How it works &rarr;
+                View commission tiers &rarr;
               </Link>
             </div>
           </div>
           <div className="space-y-3">
             {[
-              { scenario: "Share your link with friends", result: "5 subscribe", earning: "$25–$60/mo" },
-              { scenario: "Post about it on TikTok", result: "30 subscribe", earning: "$150–$360/mo" },
-              { scenario: "Build it into your content", result: "100 subscribe", earning: "$750–$1,200/mo" },
+              { scenario: "Personal recommendations", result: "5 members subscribe", earning: "$25–$60/mo" },
+              { scenario: "Social media audience", result: "30 members subscribe", earning: "$150–$360/mo" },
+              { scenario: "Content partnership", result: "100 members subscribe", earning: "$750–$1,200/mo" },
             ].map((s) => (
-              <div key={s.scenario} className="p-4 rounded-lg" style={{ background: card, border: `1px solid ${cardBorder}` }}>
-                <p className="text-xs mb-1" style={{ color: muted }}>{s.scenario}</p>
-                <p className="text-sm mb-1">{s.result}</p>
+              <div key={s.scenario} className="p-4 rounded-lg" style={{ background: "#FFFBF7", border: "1px solid #E8DDD2" }}>
+                <p className="text-xs mb-1" style={{ color: "#8A7E76" }}>{s.scenario}</p>
+                <p className="text-sm mb-1" style={{ color: "#1A1A1A" }}>{s.result}</p>
                 <p className="text-lg" style={{ fontFamily: "var(--font-display)", color: accent }}>{s.earning}</p>
               </div>
             ))}
