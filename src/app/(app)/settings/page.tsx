@@ -57,12 +57,12 @@ const PREMIUM_FIELDS = new Set([
 const privacyMeta: Record<string, { label: string; desc: string; icon: React.ElementType; tier: string }> = {
   hide_profile: { label: "Hide profile", desc: "Profile won't appear anywhere", icon: EyeOff, tier: "free" },
   hide_online_status: { label: "Hide online status", desc: "Others won't see when you're active", icon: Clock, tier: "free" },
-  hide_from_search: { label: "Hide from search", desc: "Don't appear in discover feed", icon: Search, tier: "premium" },
-  blur_photos_for_non_matches: { label: "Blur photos", desc: "Only matches see clear photos", icon: Image, tier: "premium" },
-  hide_income: { label: "Hide income", desc: "Don't show financial info on profile", icon: BookOpen, tier: "premium" },
-  hide_read_receipts: { label: "Hide read receipts", desc: "Others won't know you read their messages", icon: MessageCircle, tier: "diamond" },
-  hide_last_seen: { label: "Hide last seen", desc: "Your last active time stays private", icon: Clock, tier: "diamond" },
-  private_browsing: { label: "Private browsing", desc: "Browse profiles without being seen", icon: UserX, tier: "diamond" },
+  hide_from_search: { label: "Hide from search", desc: "Don't appear in discover feed", icon: Search, tier: "plus" },
+  blur_photos_for_non_matches: { label: "Blur photos", desc: "Only matches see clear photos", icon: Image, tier: "plus" },
+  hide_income: { label: "Hide income", desc: "Don't show financial info on profile", icon: BookOpen, tier: "plus" },
+  hide_read_receipts: { label: "Hide read receipts", desc: "Others won't know you read their messages", icon: MessageCircle, tier: "plus_plus" },
+  hide_last_seen: { label: "Hide last seen", desc: "Your last active time stays private", icon: Clock, tier: "plus_plus" },
+  private_browsing: { label: "Private browsing", desc: "Browse profiles without being seen", icon: UserX, tier: "plus_plus" },
 };
 
 const notifMeta: Record<string, { label: string; icon: React.ElementType; section: string }> = {
@@ -292,8 +292,8 @@ function SettingsContent() {
     setCancellingSubscription(false);
   };
 
-  const tierLabel = (t: string) => t === "diamond" ? "Diamond" : t === "premium" ? "Premium" : "Free";
-  const tierColor = (t: string) => t === "diamond" ? "text-accent" : t === "premium" ? "text-gold" : "text-muted";
+  const tierLabel = (t: string) => t === "plus_plus" ? "Plus+" : t === "plus" ? "Plus" : "Free";
+  const tierColor = (t: string) => t === "plus_plus" ? "text-accent" : t === "plus" ? "text-accent" : "text-muted";
 
   const tabs = [
     { id: "account" as const, label: "Account", icon: Shield },
@@ -552,8 +552,8 @@ function SettingsContent() {
                       <p className="text-sm font-medium">{meta.label}</p>
                       {isPremium && (
                         <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-sm uppercase ${
-                          meta.tier === "diamond" ? "bg-accent/10 text-accent" : "bg-gold-bg text-gold"
-                        }`}>{meta.tier}</span>
+                          meta.tier === "plus_plus" ? "bg-accent/10 text-accent" : "bg-gold-bg text-gold"
+                        }`}>{meta.tier === "plus_plus" ? "Plus+" : meta.tier === "plus" ? "Plus" : meta.tier}</span>
                       )}
                     </div>
                     <p className="text-xs text-muted">{meta.desc}</p>
@@ -686,22 +686,31 @@ function SettingsContent() {
           </div>
 
           {/* Pricing tiers */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {[
               {
                 id: "free", name: "Free", price: "$0", period: "forever",
-                features: ["Browse profiles", "Like & match", "1 message per conversation", "Basic privacy"],
+                features: ["Browse profiles", "Like & match", "5 messages per day", "Basic privacy"],
                 current: sub.tier === "free",
                 cta: "Current plan",
               },
               {
-                id: "diamond", name: "Diamond",
+                id: "plus", name: "Plus",
+                price: billingCycle === "annual" ? "$499" : "$49.99",
+                period: billingCycle === "annual" ? "/year" : "/month",
+                perMonth: billingCycle === "annual" ? "$41.58/mo" : undefined,
+                features: ["Unlimited messaging", "See who liked you", "Verified badge", "Hide from search", "Blur photos for non-matches"],
+                current: sub.tier === "plus",
+                cta: billingCycle === "annual" ? "Go Plus \u2014 $499/year" : "Go Plus \u2014 $49.99/mo",
+              },
+              {
+                id: "plus_plus", name: "Plus+",
                 price: billingCycle === "annual" ? "$999" : "$99.99",
                 period: billingCycle === "annual" ? "/year" : "/month",
                 perMonth: billingCycle === "annual" ? "$83.25/mo" : undefined,
-                features: ["See all photos unblurred", "Unlimited messaging", "See who liked you", "Priority in discover feed", "Private browsing mode", "Hide read receipts", "Hide from search", "Featured profile badge"],
-                current: sub.tier === "diamond" || sub.tier === "premium", highlight: true,
-                cta: billingCycle === "annual" ? "Go Diamond \u2014 $999/year" : "Go Diamond \u2014 $99.99/mo",
+                features: ["Everything in Plus", "Priority in discover", "Travel mode", "Read receipts", "Profile boost", "Unlimited likes"],
+                current: sub.tier === "plus_plus", highlight: true,
+                cta: billingCycle === "annual" ? "Go Plus+ \u2014 $999/year" : "Go Plus+ \u2014 $99.99/mo",
               },
             ].map((tier) => (
               <div key={tier.id} className={`bg-card rounded-xl border p-5 flex flex-col ${
@@ -736,8 +745,11 @@ function SettingsContent() {
                       (window as any).gtag('event', 'begin_checkout', { plan: tier.id });
                     }
                     // Meta Pixel: InitiateCheckout
+                    const checkoutValue = tier.id === "plus_plus"
+                      ? (billingCycle === "annual" ? 999 : 99.99)
+                      : (billingCycle === "annual" ? 499 : 49.99);
                     if (typeof window !== 'undefined' && (window as any).fbq) {
-                      (window as any).fbq('track', 'InitiateCheckout', {value: 99.99, currency: 'USD'});
+                      (window as any).fbq('track', 'InitiateCheckout', {value: checkoutValue, currency: 'USD'});
                     }
                     try {
                       const { data } = await api.post(`/api/billing/checkout?tier=${tier.id}&billing=${billingCycle}`);
@@ -760,7 +772,7 @@ function SettingsContent() {
                   {saving === `upgrade-${tier.id}` ? "Redirecting to checkout..." : tier.current ? "Current plan" : tier.cta}
                 </button>
                 {tier.id === "free" && (
-                  <p className="text-[11px] text-muted text-center mt-2">Seeking charges $150/mo for this. We charge $99.99.</p>
+                  <p className="text-[11px] text-muted text-center mt-2">Seeking charges $274.99/mo. Plus starts at $49.99.</p>
                 )}
                 {tier.highlight && !tier.current && (
                   <>

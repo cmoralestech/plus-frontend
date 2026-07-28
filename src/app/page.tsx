@@ -429,17 +429,17 @@ export default function LandingPage() {
                 they want unlimited messaging.
               </p>
               <p className="text-sm leading-relaxed max-w-md" style={{ color: muted }}>
-                For context: Seeking Arrangement charges $109.99/month for
-                Premium and $274.99/month for Diamond.
+                For context: Seeking Arrangement charges $274.99/month for Diamond.
               </p>
               <Link href="/pricing" className="inline-block mt-6 text-sm transition-colors" style={{ color: accent }}>
                 Full pricing breakdown &rarr;
               </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px rounded-lg overflow-hidden" style={{ background: cardBorder }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-px rounded-lg overflow-hidden" style={{ background: cardBorder }}>
               {[
-                { name: "Free", price: "$0", note: "Full access for attractive members" },
-                { name: "Diamond", price: "$99.99", note: "All features — messaging, privacy, priority" },
+                { name: "Free", price: "$0", note: "Browse, match, 5 messages/day" },
+                { name: "Plus", price: "$49.99", note: "Unlimited messaging, verified badge" },
+                { name: "Plus+", price: "$99.99", note: "Priority, travel mode, boost" },
               ].map((plan) => (
                 <div key={plan.name} className="p-5 md:p-6 text-center" style={{ background: mutedBg }}>
                   <p className="text-xs mb-2" style={{ color: muted }}>{plan.name}</p>
