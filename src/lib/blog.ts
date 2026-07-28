@@ -1359,7 +1359,7 @@ export const posts: BlogPost[] = [
     tag: "Industry",
     readTime: "10 min",
     metaDescription:
-      "Complete 2026 dating app pricing comparison: Tinder, Bumble, Hinge, Raya, Seeking, and Plus. Real costs including hidden fees, credits, boosts, and annual totals that nobody talks about.",
+      "2026 dating app pricing comparison: Tinder, Bumble, Hinge, Raya, Seeking, Plus. Real costs including hidden fees and annual totals.",
     content: `
 <p>Open your phone. Go to Settings. Tap Subscriptions. Scroll until you find the dating app you forgot to cancel three months ago.</p>
 
@@ -1519,7 +1519,7 @@ export const posts: BlogPost[] = [
     tag: "Dating",
     readTime: "11 min",
     metaDescription:
-      "Austin dating scene guide for 2026. Where to meet Austin singles in South Congress, Rainey Street, East Austin, and The Domain. Best dating app Austin picks, first date ideas, and waitlist info.",
+      "Austin dating scene 2026: South Congress, Rainey Street, East Austin, The Domain. Where to meet singles, best apps, and first date ideas.",
     content: `
 <p>Austin added 150,000 residents between 2020 and 2025. Most of them came from San Francisco, New York, and LA, carrying big-city salaries, big-city dating expectations, and absolutely no idea how Austin actually works. They downloaded Hinge on the flight in and started swiping before they found an apartment. Six months later, half of them were confused about why the dating scene felt so different from what they left behind.</p>
 
@@ -1646,7 +1646,7 @@ export const posts: BlogPost[] = [
     tag: "Dating",
     readTime: "11 min",
     metaDescription:
-      "Dallas dating scene guide for 2026. Where to meet Dallas singles in Highland Park, Uptown, Bishop Arts, and Turtle Creek. Why matchmakers are thriving, best dating app Dallas picks, and waitlist info.",
+      "Dallas dating scene 2026: Highland Park, Uptown, Bishop Arts, Turtle Creek. Why matchmakers are booming and which apps work.",
     content: `
 <p>Dallas is the city where dating apps go to die. Not because people here don't date. They date constantly, aggressively, with a level of social energy that rivals anywhere in the country. It's because the apps were built for cities that work differently, and Dallas works on its own terms entirely.</p>
 
@@ -1773,7 +1773,7 @@ export const posts: BlogPost[] = [
     tag: "Industry",
     readTime: "10 min",
     metaDescription:
-      "What women actually want from dating apps in 2026, backed by data: verification, safety, intention clarity, and quality over quantity. Why Bumble, Hinge, and Tinder are failing women and what's next.",
+      "What women want from dating apps in 2026: verification, safety, intention clarity. Why 78% are exhausted and what comes next.",
     content: `
 <p>A Forbes Health survey of 1,000 Americans found that 78% of dating app users report emotional exhaustion. Among Gen Z women, the burnout rate hits 79%. Nearly half of all women on major platforms have encountered unwanted sexual messages, harassment, or behavior that made them feel unsafe. And across every demographic, 64% of daters want more emotional honesty while 60% crave clearer communication about intentions.</p>
 
@@ -1821,7 +1821,7 @@ export const posts: BlogPost[] = [
 
 <p>The "next profile might be the one" is the dating app industry's version of the slot machine's "next pull might win." It keeps you engaged without improving your odds. A woman who swipes through 200 profiles in an evening isn't 10x more likely to find a compatible partner than one who reviews 20 profiles carefully. She's just 10x more exhausted.</p>
 
-<p>What women actually want is a platform that does the filtering for them. Not an AI that guesses, and not an algorithm trained on engagement metrics that considers a profile view as meaningful as a date. Real filtering: verified identity, confirmed income, stated intentions, dealbreaker alignment, and a limited number of daily suggestions that have been genuinely pre-qualified. Fewer options that are all good beats infinite options that are mostly noise.</p>
+<p>What women actually want is a platform that does the filtering for them. Not an AI that guesses, and not an algorithm trained on engagement metrics that considers a profile view as meaningful as a date. Real filtering: verified identity, confirmed income, stated intentions, dealbreaker alignment, and a limited number of daily suggestions that have been genuinely pre-qualified. Fewer options that are all good beats infinite options that are mostly noise. <a href="/auth?mode=register">Plus was designed around this principle</a>.</p>
 
 <p>The dating app that figures this out will win women's loyalty for a decade. So far, nobody has, because limiting the number of profiles users see reduces engagement metrics, and engagement metrics are what drive investor confidence and advertising revenue. The incentive to fix the volume problem runs directly counter to the incentive to grow the business. Which is why nothing changes.</p>
 
@@ -1912,7 +1912,7 @@ export const posts: BlogPost[] = [
     tag: "Guides",
     readTime: "9 min",
     metaDescription:
-      "How to write a dating profile that gets matches in 2026. Data-backed tips for Hinge, Bumble, and Plus: photos, bios, prompts, voice notes, and specific before-and-after profile examples.",
+      "How to write a dating profile that works in 2026. Data-backed tips: photos, bios, prompts, and before-and-after examples.",
     content: `
 <p>Your dating profile is a landing page. It has three seconds to convince someone to stop scrolling and pay attention. Everything you know about making a good first impression in person, the firm handshake, the eye contact, the way you carry yourself, is irrelevant. Online, you are six photos, three prompts, and a bio. That's it. That's all of you, compressed into a rectangle on someone's phone screen while they're sitting on the toilet or waiting for a coffee order.</p>
 
@@ -1991,6 +1991,8 @@ export const posts: BlogPost[] = [
 <p>Stop using all group photos. Profiles that are entirely or mostly group photos fail the basic test of dating apps: showing someone what you look like. Solo photos in your first three slots. Groups, if at all, in slots four through six.</p>
 
 <p>Stop writing prompts that are actually requirements lists. "Don't bother if you're not active, ambitious, over 5'10", college educated, and ready for a serious relationship." Requirements lists repel people who would otherwise be interested. They read as demanding, rigid, and slightly hostile. State what you want positively instead of listing what you don't want. Attraction is built by showing what you bring, not by listing tests that someone has to pass.</p>
+
+<p>If you're building a profile from scratch, <a href="/auth?mode=register">Plus lets you set this up in two minutes</a> with prompts designed for specificity over generality.</p>
 
 <h2>Plus-specific profile tips</h2>
 
