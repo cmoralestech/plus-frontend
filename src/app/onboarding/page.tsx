@@ -155,7 +155,7 @@ function OnboardingForm() {
     try {
       const payload: Record<string, unknown> = {
         display_name: form.display_name,
-        date_of_birth: user?.date_of_birth || form.date_of_birth,
+        date_of_birth: (user as any)?.date_of_birth || form.date_of_birth,
         gender: form.gender,
         city: form.city || null,
         state: form.state || null,
