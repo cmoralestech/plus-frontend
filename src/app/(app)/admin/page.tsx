@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useAuthStore } from "@/lib/store";
 import { useRouter } from "next/navigation";
 import api from "@/lib/api";
+import WaitlistDashboard from "@/components/admin/WaitlistDashboard";
 import {
   Users,
   MessageSquare,
@@ -141,7 +142,7 @@ interface AdminProfile {
   last_seen: string | null;
 }
 
-type Tab = "dashboard" | "users" | "verifications" | "reports" | "funnel" | "locations" | "profiles" | "attribution";
+type Tab = "dashboard" | "users" | "verifications" | "reports" | "funnel" | "locations" | "profiles" | "attribution" | "waitlist";
 
 export default function AdminPage() {
   const { user } = useAuthStore();
@@ -298,6 +299,7 @@ export default function AdminPage() {
             ["attribution", "Attribution"],
             ["funnel", "Funnel"],
             ["locations", "Locations"],
+            ["waitlist", "Waitlist"],
             ["profiles", "Profiles"],
             ["users", "Users"],
             ["verifications", "Verifications"],
@@ -876,6 +878,8 @@ export default function AdminPage() {
         )}
 
         {/* Profiles Tab */}
+        {tab === "waitlist" && <WaitlistDashboard />}
+
         {tab === "profiles" && (
           <div className="space-y-4">
             <div className="bg-card border border-card-border rounded-lg p-4">
