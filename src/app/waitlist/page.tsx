@@ -6,6 +6,7 @@ import PublicNav from "@/components/PublicNav";
 import PublicFooter from "@/components/PublicFooter";
 import api from "@/lib/api";
 import { useVisitorCity } from "@/lib/markets";
+import CityAutocomplete from "@/components/CityAutocomplete";
 
 const worthJoiningOptions = [
   "Better people", "Verified profiles", "Established matches",
@@ -87,14 +88,10 @@ export default function WaitlistPage() {
     setAttribution(next);
   }, []);
 
-  // Prefill the city so screen 1 is usually a confirmation, not a typing task.
-  useEffect(() => {
-    if (!detectedCity) return;
-    setForm((prev) => (prev.city ? prev : { ...prev, city: detectedCity }));
-  }, [detectedCity]);
-
   const [form, setForm] = useState({
     city: "",
+    state: "",
+    country: "",
     zip_code: "",
     worth_joining: [] as string[],
     gender: "",
@@ -111,6 +108,13 @@ export default function WaitlistPage() {
     instagram: "",
     how_heard: "",
   });
+
+  // Prefill the city so screen 1 is usually a confirmation, not a typing task.
+  // Never overwrites a city the visitor already chose.
+  useEffect(() => {
+    if (!detectedCity) return;
+    setForm((prev) => (prev.city ? prev : { ...prev, city: detectedCity }));
+  }, [detectedCity]);
 
   const update = (field: string, value: string) =>
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -137,6 +141,8 @@ export default function WaitlistPage() {
       const res = await api.post("/api/waitlist/", {
         ...attribution,
         city: form.city,
+        state: form.state || null,
+        country: form.country || null,
         zip_code: form.zip_code || null,
         worth_joining: form.worth_joining.length ? form.worth_joining : null,
         gender: form.gender || null,
@@ -309,12 +315,15 @@ export default function WaitlistPage() {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="col-span-2 sm:col-span-1">
                     <label className="block text-sm font-medium mb-1.5">City</label>
-                    <input
+                    {/* Autocomplete rather than free text: city is the key the
+                        whole demand model groups on, and "Austin" / "austin" /
+                        "Austin, TX" would each become their own market. */}
+                    <CityAutocomplete
                       value={form.city}
-                      onChange={(e) => update("city", e.target.value)}
-                      className="w-full px-4 py-3 bg-background border border-card-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/50"
+                      onChange={(city, state, country) =>
+                        setForm((prev) => ({ ...prev, city, state, country }))
+                      }
                       placeholder="Austin, Chicago, Dallas..."
-                      autoFocus
                     />
                   </div>
                   <div className="col-span-2 sm:col-span-1">

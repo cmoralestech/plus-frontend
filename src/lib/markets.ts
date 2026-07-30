@@ -35,8 +35,11 @@ export type VisitorLocation = {
  * callers fall back to city-neutral copy. Guessing a city wrong is worse than
  * not naming one, since the whole point is to make someone feel seen.
  */
+const ACTIVE_CACHE_KEY = "visitor_in_market";
+
 export function useVisitorCity(): VisitorLocation {
   const [city, setCity] = useState<string | null>(null);
+  const [isActive, setIsActive] = useState(false);
   const [resolved, setResolved] = useState(false);
 
   useEffect(() => {
@@ -45,6 +48,7 @@ export function useVisitorCity(): VisitorLocation {
     const cached = localStorage.getItem(CACHE_KEY);
     if (cached !== null) {
       setCity(cached || null);
+      setIsActive(localStorage.getItem(ACTIVE_CACHE_KEY) === "1");
       setResolved(true);
       return;
     }
@@ -54,11 +58,20 @@ export function useVisitorCity(): VisitorLocation {
         const { data } = await api.get("/api/location/detect");
         if (cancelled) return;
         const detected: string | null = data?.city || null;
+        // Trust the server's verdict: it decides by distance from the metro
+        // centre, so suburbs like Coral Gables or Sugar Land count as in-market
+        // even though their names don't contain "miami" or "houston".
+        const active = Boolean(data?.is_active_market);
         localStorage.setItem(CACHE_KEY, detected || "");
+        localStorage.setItem(ACTIVE_CACHE_KEY, active ? "1" : "0");
         setCity(detected);
+        setIsActive(active);
       } catch {
         // Detection is optional; city-neutral copy is the fallback.
-        if (!cancelled) setCity(null);
+        if (!cancelled) {
+          setCity(null);
+          setIsActive(false);
+        }
       } finally {
         if (!cancelled) setResolved(true);
       }
@@ -69,5 +82,5 @@ export function useVisitorCity(): VisitorLocation {
     };
   }, []);
 
-  return { city, resolved, isActive: isActiveMarket(city) };
+  return { city, resolved, isActive };
 }
