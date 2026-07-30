@@ -19,12 +19,13 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://meetyourplus.com"),
   title: "Plus — Private Dating for People with More to Offer",
-  description: "Private dating for people with more to offer. Verified profiles, real privacy. Free for attractive members. Now open in Miami + Houston.",
+  description: "Private dating for people with more to offer. Verified profiles, real privacy. Free for Plus members. Now open in Miami + Houston.",
   keywords: "luxury dating app, private dating, verified dating, upscale dating, elite dating, dating miami, dating houston, seeking arrangement alternative",
   openGraph: {
     title: "Plus — Private Dating for People with More to Offer",
-    description: "Private dating for people with more to offer. Verified profiles, real privacy. Free for attractive members.",
+    description: "Private dating for people with more to offer. Verified profiles, real privacy. Free for Plus members.",
     url: "https://meetyourplus.com",
     siteName: "Plus",
     type: "website",
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Plus — Private Dating for People with More to Offer",
-    description: "Private dating for people with more to offer. Verified profiles, real privacy. Free for attractive members.",
+    description: "Private dating for people with more to offer. Verified profiles, real privacy. Free for Plus members.",
     site: "@meetyourplus",
     creator: "@meetyourplus",
     images: ["https://meetyourplus.com/twitter-card.png"],
@@ -50,13 +51,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://meetyourplus.com",
-    languages: {
-      en: "https://meetyourplus.com",
-      es: "https://meetyourplus.com/es/blog",
-      pt: "https://meetyourplus.com/pt/blog",
-      tr: "https://meetyourplus.com/tr/blog",
-      "x-default": "https://meetyourplus.com",
-    },
+    // No es/pt/tr homepages exist yet — hreflang pointing at the localized blog
+    // indexes made the homepage's alternate cluster invalid. Add entries here
+    // once real localized homepages ship.
   },
   manifest: "/manifest.json",
   appleWebApp: {

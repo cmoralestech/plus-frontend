@@ -742,7 +742,7 @@ export default function AdminPage() {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <DollarSign size={16} className="text-accent" />
-                  <span className="text-sm font-medium">Generous Member Conversion Funnel (30 days)</span>
+                  <span className="text-sm font-medium">Established Member Conversion Funnel (30 days)</span>
                 </div>
                 <button onClick={fetchFunnel} className="text-xs text-muted hover:text-foreground">
                   <RefreshCw size={14} />

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getPostBySlug, getAllSlugs, getRelatedPosts } from "@/lib/blog";
+import { languageAlternates } from "@/lib/blog-alternates";
 import PublicNav from "@/components/PublicNav";
 import PublicFooter from "@/components/PublicFooter";
 import BlogCTA from "@/components/BlogCTA";
@@ -24,17 +25,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = getPostBySlug(slug);
   if (!post) return {};
   return {
-    title: `${post.title} | Plus`,
+    title: `${post.seoTitle ?? post.title} | Plus`,
     description: post.metaDescription,
     alternates: {
       canonical: `https://meetyourplus.com/blog/${slug}`,
-      languages: {
-        en: `https://meetyourplus.com/blog/${slug}`,
-        es: `https://meetyourplus.com/es/blog/${slug}`,
-        pt: `https://meetyourplus.com/pt/blog/${slug}`,
-        tr: `https://meetyourplus.com/tr/blog/${slug}`,
-        "x-default": `https://meetyourplus.com/blog/${slug}`,
-      },
+      languages: languageAlternates(slug),
     },
     openGraph: {
       title: post.title,
@@ -42,13 +37,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `https://meetyourplus.com/blog/${slug}`,
       type: "article",
       siteName: "Plus",
-      images: [{ url: post.featuredImage || "https://meetyourplus.com/og-image.png", width: 1200, height: 630, alt: post.title }],
+      publishedTime: post.datePublished,
+      modifiedTime: post.dateModified ?? post.datePublished,
+      // og:image intentionally omitted — ./opengraph-image.tsx generates a per-post card.
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.metaDescription,
-      images: [post.featuredImage || "https://meetyourplus.com/og-image.png"],
     },
   };
 }
@@ -58,6 +54,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const post = getPostBySlug(slug);
   if (!post) notFound();
   const related = getRelatedPosts(slug, 3);
+
+  const wordCount = post.content.replace(/<[^>]+>/g, " ").trim().split(/\s+/).length;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -69,7 +67,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     author: { "@type": "Organization", name: "Plus", url: "https://meetyourplus.com/about" },
     publisher: { "@type": "Organization", name: "Plus", url: "https://meetyourplus.com", logo: { "@type": "ImageObject", url: "https://meetyourplus.com/icon-512.png" } },
     mainEntityOfPage: { "@type": "WebPage", "@id": `https://meetyourplus.com/blog/${slug}` },
-    image: post.featuredImage || "https://meetyourplus.com/og-image.png",
+    image: post.featuredImage || `https://meetyourplus.com/blog/${slug}/opengraph-image`,
+    inLanguage: "en-US",
+    articleSection: post.tag,
+    wordCount,
+    isPartOf: { "@type": "Blog", "@id": "https://meetyourplus.com/blog#blog", name: "Plus Blog" },
   };
 
   const breadcrumbLd = {

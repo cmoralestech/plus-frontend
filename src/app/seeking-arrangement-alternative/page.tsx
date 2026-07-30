@@ -295,7 +295,7 @@ export default function SeekingAlternativePage() {
             { href: "/blog/seeking-arrangement-account-banned", title: "Seeking Account Banned?", desc: "What to do next" },
             { href: "/blog/sugardaddymeet-vs-arranged", title: "SugarDaddyMeet vs Plus", desc: "Head-to-head comparison" },
             { href: "/blog/secret-benefits-vs-arranged", title: "Secret Benefits vs Plus", desc: "Credits vs subscription" },
-            { href: "/for-sugar-daddies", title: "For Successful Men: Why Plus Is Worth It", desc: "What generous members get on Plus" },
+            { href: "/for-sugar-daddies", title: "For Successful Men: Why Plus Is Worth It", desc: "What established members get on Plus" },
           ].map((link) => (
             <Link key={link.href} href={link.href}
               className="block p-4 border transition-all hover:border-opacity-60"

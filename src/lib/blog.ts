@@ -1,6 +1,8 @@
 export interface BlogPost {
   slug: string;
   title: string;
+  /** SERP title, kept under ~60 chars with the " | Plus" suffix. Falls back to `title`. */
+  seoTitle?: string;
   excerpt: string;
   date: string;
   datePublished?: string;
@@ -25,7 +27,7 @@ export const posts: BlogPost[] = [
     tag: "Company",
     readTime: "9 min",
     metaDescription:
-      "Why Plus exists as a verified dating app and seeking arrangement alternative. Our origin story, pricing ($99.99 vs $274.99), verification model, and city-by-city launch in Miami and Houston.",
+      "Why Plus exists as a verified dating app and Seeking Arrangement alternative: our origin story, $99.99 pricing, and the Miami and Houston launch.",
     content: `
 <p>Two years ago, we sat in a coffee shop in Miami and wrote down everything wrong with online dating for people who have their lives together. The list was long. Too long. Apps that charge $275 a month for a Diamond badge and still can't tell you whether the person on the other end actually looks like their photos. Platforms that started with a genuinely useful idea and slowly rotted into something unrecognizable. Waitlist-gated clubs where getting in matters more than what happens after.</p>
 
@@ -53,17 +55,17 @@ export const posts: BlogPost[] = [
 
 <p>Private means verified. Every member can verify their photos and their income. This isn't behind a paywall. It's not a premium feature you unlock at a higher tier. Verification is fundamental to how the platform works because trust is fundamental to how good dating works. When you see a verified badge on Plus, it means something. The person looks like their photos. Their financial situation is what they say it is.</p>
 
-<p>People with more to offer means both sides bring something real. Generous members bring financial stability, life experience, connections, mentorship, access. Attractive members bring exactly what the name suggests, plus ambition, personality, and presence. The point is that both people are adding to each other's lives, not extracting from them.</p>
+<p>People with more to offer means both sides bring something real. Established members bring financial stability, life experience, connections, mentorship, access. Plus members bring exactly what the name suggests, plus ambition, personality, and presence. The point is that both people are adding to each other's lives, not extracting from them.</p>
 
 <p>We built Plus around four principles that came directly from our frustrations with every other platform we'd tried.</p>
 
-<h2>Attractive members never pay</h2>
+<h2>Plus members never pay</h2>
 
 <p>Not a free trial. Not a limited version with paywalled messages. Full access, unlimited messaging, every feature, zero cost, forever. This was the first decision we made and the one we've gotten the most pushback on from investors.</p>
 
-<p>The logic is simple. Charging both sides of a dating platform is a tax on connection. If an attractive member has to pay $50 or $100 just to respond to messages, some of them won't. That means fewer responses for generous members, which means a worse experience for everyone, which means people leave. Two-sided paywalls are a slow death spiral disguised as revenue.</p>
+<p>The logic is simple. Charging both sides of a dating platform is a tax on connection. If a Plus member has to pay $50 or $100 just to respond to messages, some of them won't. That means fewer responses for established members, which means a worse experience for everyone, which means people leave. Two-sided paywalls are a slow death spiral disguised as revenue.</p>
 
-<p>We'd rather have a platform full of active, engaged attractive members who actually respond to messages. Generous members benefit directly from that, and they're willing to pay for it. One side pays, both sides win.</p>
+<p>We'd rather have a platform full of active, engaged Plus members who actually respond to messages. Established members benefit directly from that, and they're willing to pay for it. One side pays, both sides win.</p>
 
 <h2>The pricing had to make sense</h2>
 
@@ -92,7 +94,7 @@ export const posts: BlogPost[] = [
 
 <p>On Plus, verification covers two things: photos and income. Photo verification confirms you look like your pictures through a multi-step process that's genuinely difficult to fake. Income verification confirms your financial situation through documentation review. Both are optional in the sense that nobody is forced to complete them, but verified profiles get dramatically more attention, so the incentive structure pushes everyone toward transparency.</p>
 
-<p>This matters because the biggest problem in upfront dating isn't finding matches. It's trusting them. When a generous member says they earn a certain amount, is that true? When an attractive member's profile photos look incredible, do they actually look like that? On platforms without real verification, you're guessing. On Plus, you're not.</p>
+<p>This matters because the biggest problem in upfront dating isn't finding matches. It's trusting them. When a established member says they earn a certain amount, is that true? When a Plus member's profile photos look incredible, do they actually look like that? On platforms without real verification, you're guessing. On Plus, you're not.</p>
 
 <h2>Why we launched in Miami and Houston first</h2>
 
@@ -132,11 +134,11 @@ export const posts: BlogPost[] = [
 
 <h2>Frequently asked questions</h2>
 
-<h3>Is Plus really free for attractive members?</h3>
+<h3>Is Plus really free for Plus members?</h3>
 <p>Yes. Full access, unlimited messaging, every feature, no time limit. It's free forever, not a trial. We don't charge both sides because doing so makes the experience worse for everyone.</p>
 
 <h3>How is Plus different from Seeking?</h3>
-<p>Plus Diamond costs $99.99 per month compared to Seeking's $274.99. Verification is built into the core experience rather than being optional. Attractive members never pay. And we have an iOS app, which Seeking no longer offers.</p>
+<p>Plus Diamond costs $99.99 per month compared to Seeking's $274.99. Verification is built into the core experience rather than being optional. Plus members never pay. And we have an iOS app, which Seeking no longer offers.</p>
 
 <h3>What cities is Plus available in?</h3>
 <p>Miami and Houston right now, with more cities launching soon. You can sign up from anywhere to be first when we expand to your area, and you can browse and connect with members who travel.</p>
@@ -145,7 +147,7 @@ export const posts: BlogPost[] = [
 <p>Plus is a private dating app where both people are upfront about what they want and what they bring. Some members are looking for arrangements that include financial generosity. Others want travel partners, mentorship, or serious relationships. We support all of it as long as both people are honest and consenting.</p>
 
 <h3>How does income verification work?</h3>
-<p>Generous members can verify their income through a documentation review process. Once verified, your profile displays a badge confirming your stated income range. The actual documents are never shown to other members and are deleted after review.</p>
+<p>Established members can verify their income through a documentation review process. Once verified, your profile displays a badge confirming your stated income range. The actual documents are never shown to other members and are deleted after review.</p>
 `,
   },
   {
@@ -159,7 +161,7 @@ export const posts: BlogPost[] = [
     tag: "Dating",
     readTime: "10 min",
     metaDescription:
-      "The real guide to dating in Miami in 2026. Best dating app Miami picks, where to meet Miami singles in Brickell, Wynwood, South Beach, and Coconut Grove, plus first date ideas that work.",
+      "The real guide to dating in Miami in 2026: best dating apps, where to meet singles in Brickell, Wynwood, and South Beach, plus first date ideas.",
     content: `
 <p>I moved to Miami four years ago expecting the dating scene to be superficial and exhausting. Half of that was right. It is exhausting. But superficial? Not in the way I expected. Miami is actually one of the most honest dating cities in America, precisely because nobody pretends they don't care about looks, money, or lifestyle. In most cities, people hide those preferences behind vague profiles and awkward first-date small talk. In Miami, the cards are on the table before the appetizers arrive.</p>
 
@@ -233,7 +235,7 @@ export const posts: BlogPost[] = [
 
 <p>Raya exists in Miami but functions more as a social club than a dating app. Most people on Raya here are using it for networking and Instagram growth, not dates. If you can get on, it's worth having, but don't make it your primary strategy.</p>
 
-<p>For people who want something more intentional, where both parties are upfront about what they're looking for and verified to actually be who they say they are, <a href="/auth?mode=register">Plus is open in Miami</a>. It's a verified dating app built for people who are past the swiping phase and want connections where expectations are clear from the start. Free for attractive members, $99.99 per month for generous members. We wrote about <a href="/blog/why-we-built-plus">why we built it</a> if you want the full story.</p>
+<p>For people who want something more intentional, where both parties are upfront about what they're looking for and verified to actually be who they say they are, <a href="/auth?mode=register">Plus is open in Miami</a>. It's a verified dating app built for people who are past the swiping phase and want connections where expectations are clear from the start. Free for Plus members, $99.99 per month for established members. We wrote about <a href="/blog/why-we-built-plus">why we built it</a> if you want the full story.</p>
 
 <h2>First, second, and third date ideas</h2>
 
@@ -278,15 +280,16 @@ export const posts: BlogPost[] = [
   {
     slug: "houston-dating-scene",
     title: "Houston's dating scene is underrated — here's the insider take",
+    seoTitle: "Houston Dating Scene 2026: The Insider Guide",
     excerpt:
       "The fourth-largest city in America has a dating scene that nobody talks about. More genuine people, less competition, and a food scene that makes every date better.",
     date: "July 27, 2026",
     datePublished: "2026-07-27",
     dateModified: "2026-07-27",
     tag: "Dating",
-    readTime: "10 min",
+    readTime: "11 min",
     metaDescription:
-      "Houston dating scene guide for 2026. Where to meet Houston singles in Montrose, River Oaks, Midtown, and The Heights. Best dating app Houston picks, first date ideas, and why Houston is underrated.",
+      "Houston dating scene guide for 2026: where to meet singles in Montrose, River Oaks, and The Heights, the best dating apps, and first date ideas.",
     content: `
 <p>Every article about dating in America covers the same five cities. New York. LA. Miami. Chicago. San Francisco. Houston almost never makes the list, which is ridiculous when you consider the numbers: 2.3 million people in the city proper, the fourth-largest metro in America, more Fortune 500 headquarters than anywhere except New York, and a cost of living that lets you take someone to an incredible restaurant without checking your bank balance afterward.</p>
 
@@ -370,7 +373,7 @@ export const posts: BlogPost[] = [
 
 <p>Hinge has grown significantly in Houston over the past two years, especially among people looking for serious relationships. The prompt-based profiles do a better job of showing personality than photo-only apps, which matters in a city where substance is valued over flash.</p>
 
-<p>For people who want to skip the games entirely, <a href="/auth?mode=register">Plus just launched in Houston</a>. It's a private dating app with verified profiles where both people are upfront about what they're looking for from the start. Income verification and photo verification are built in, not optional. Free for attractive members, $99.99 a month for generous members. In a city full of successful professionals who don't have time for ambiguity, that directness resonates. We wrote <a href="/blog/why-we-built-plus">the full story of why we built it</a> if you're curious.</p>
+<p>For people who want to skip the games entirely, <a href="/auth?mode=register">Plus just launched in Houston</a>. It's a private dating app with verified profiles where both people are upfront about what they're looking for from the start. Income verification and photo verification are built in, not optional. Free for Plus members, $99.99 a month for established members. In a city full of successful professionals who don't have time for ambiguity, that directness resonates. We wrote <a href="/blog/why-we-built-plus">the full story of why we built it</a> if you're curious.</p>
 
 <p>One thing I've noticed about Houston compared to coastal cities: people here are more willing to meet in person quickly and less likely to ghost. Whether that's Southern manners or just the culture of a city where people are genuine, the result is that apps actually convert to dates at a higher rate here than in New York or LA.</p>
 
@@ -397,7 +400,7 @@ export const posts: BlogPost[] = [
 <p>Anvil Bar &amp; Refuge in Montrose for cocktails, the Menil Collection for a free museum date with coffee after, and Julep for whiskey lovers. Each is distinctive enough to make an impression and relaxed enough to keep the pressure low.</p>
 
 <h3>How is Houston dating different from Dallas or Austin?</h3>
-<p>Houston is more diverse and less concerned with image than Dallas. Compared to Austin, it's larger, wealthier on average, and less dominated by the tech scene. Houston's dating culture rewards substance and warmth over trendiness, which makes it more approachable for people who are past the performative phase of dating.</p>
+<p>Houston is more diverse and less concerned with image than <a href="/blog/dallas-dating-guide">Dallas</a>. Compared to <a href="/blog/austin-dating-guide">Austin</a>, it's larger, wealthier on average, and less dominated by the tech scene. Houston's dating culture rewards substance and warmth over trendiness, which makes it more approachable for people who are past the performative phase of dating.</p>
 `,
   },
   {
@@ -409,9 +412,9 @@ export const posts: BlogPost[] = [
     datePublished: "2026-07-27",
     dateModified: "2026-07-27",
     tag: "Lifestyle",
-    readTime: "9 min",
+    readTime: "11 min",
     metaDescription:
-      "What private dating means in 2026, how it compares to sugar dating and elite dating apps like Raya and The League, and how verified luxury dating platforms like Plus are defining the category.",
+      "What private dating means in 2026, how it compares to sugar dating and elite apps like Raya and The League, and how verified platforms work.",
     content: `
 <p>A decade ago, the phrase "private dating" didn't exist as a category. You had mainstream dating apps on one end, sugar dating platforms on the other, and a handful of invite-only clubs like Raya in between. Each served a specific audience, but none of them served the growing number of people who wanted something that combined the honesty of sugar dating, the quality control of exclusive apps, and the privacy of neither broadcasting your love life to the world nor feeling like you were doing something you needed to hide.</p>
 
@@ -481,15 +484,15 @@ export const posts: BlogPost[] = [
 
 <h2>How private dating works on Plus</h2>
 
-<p>Plus is a verified dating app built from scratch around private dating principles. Here's what the experience actually looks like.</p>
+<p>Plus is a verified dating app built from scratch around private dating principles. Here's what the experience actually looks like, and <a href="/how-it-works">how it works</a> end to end.</p>
 
 <p>You create a profile that includes your photos, a description of yourself, and an explicit statement of what you're looking for. Travel, dinners, a relationship, companionship, experiences. You say it clearly, because the whole point is that nobody has to guess.</p>
 
-<p>Generous members can verify their income through a documentation review process. The documents are reviewed and then deleted. Other members see a verified badge confirming your stated income range, but never the underlying documents. Photo verification uses a multi-step process that confirms you look like your profile pictures in real life.</p>
+<p>Established members can verify their income through a documentation review process. The documents are reviewed and then deleted. Other members see a verified badge confirming your stated income range, but never the underlying documents. Photo verification uses a multi-step process that confirms you look like your profile pictures in real life.</p>
 
-<p>Attractive members join for free. Not a trial. Not a limited feature set. Complete access to the platform, unlimited messaging, all features, at zero cost, permanently. This is how Plus keeps the platform active and balanced. When attractive members aren't paywalled, they're more likely to join, stay, and engage, which makes the experience better for everyone.</p>
+<p>Plus members join for free. Not a trial. Not a limited feature set. Complete access to the platform, unlimited messaging, all features, at zero cost, permanently. This is how Plus keeps the platform active and balanced. When Plus members aren't paywalled, they're more likely to join, stay, and engage, which makes the experience better for everyone.</p>
 
-<p>Generous members pay $99.99 per month for Diamond. That includes everything: unlimited messaging, full verification access, priority visibility, and all current and future features. For context, Seeking charges $274.99 for their Diamond tier. The League charges $399.99 for Owner. Raya is $299.99. Plus delivers a better experience with better verification for a fraction of the cost.</p>
+<p>Established members pay $99.99 per month for Diamond. That includes everything: unlimited messaging, full verification access, priority visibility, and all current and future features. For context, Seeking charges $274.99 for their Diamond tier. The League charges $399.99 for Owner. Raya is $299.99. Plus delivers a better experience with better verification for a fraction of the cost.</p>
 
 <p>Privacy controls let you manage your visibility. You decide how discoverable your profile is. You can limit who sees your photos before you've matched. Your data is handled with the kind of care that a platform built on the word "private" should treat it with. You can <a href="/auth?mode=register">see the experience for yourself</a> in about two minutes.</p>
 
@@ -497,9 +500,9 @@ export const posts: BlogPost[] = [
 
 <p>The biggest misconception is that private dating is a euphemism for escorts or paid companionship. The opposite is true. Verified, upfront platforms like Plus make it easier to identify and remove bad actors because real people verify their identities and state genuine dating intentions. Anonymity enables exploitation. Verification prevents it.</p>
 
-<p>Another common assumption is that private dating is only for rich older men and young women. The demographics are broader than that. Plus members include women in their 30s and 40s who are generous members, same-age couples, and people across a wide range of relationship dynamics. What connects them is mutual honesty about what each person brings and wants.</p>
+<p>Another common assumption is that private dating is only for rich older men and young women. The demographics are broader than that. Our members include women in their 30s and 40s who are established members, same-age couples, and people across a wide range of relationship dynamics. What connects them is mutual honesty about what each person brings and wants.</p>
 
-<p>People also assume that upscale dating requires upscale income. On Plus, attractive members pay nothing. The financial barrier is zero. What private dating actually requires isn't money but clarity: knowing what you want and being willing to say it out loud.</p>
+<p>People also assume that upscale dating requires upscale income. On Plus, Plus members pay nothing. The financial barrier is zero. What private dating actually requires isn't money but clarity: knowing what you want and being willing to say it out loud.</p>
 
 <h2>Where the category is going</h2>
 
@@ -519,30 +522,31 @@ export const posts: BlogPost[] = [
 <p>Private dating evolved from sugar dating but is broader. Sugar dating focuses specifically on financial generosity as a core dynamic. Private dating includes that but also encompasses verified dating for travel, experiences, mentorship, and serious relationships. The common thread is honesty about expectations, not a specific transactional structure.</p>
 
 <h3>How much does a luxury dating app cost?</h3>
-<p>Prices vary widely. Raya charges $299.99 per month, The League charges up to $399.99, and Seeking's Diamond tier is $274.99. Plus offers verified private dating for $99.99 per month for generous members, with free full access for attractive members.</p>
+<p>Prices vary widely. Raya charges $299.99 per month, The League charges up to $399.99, and Seeking's Diamond tier is $274.99. Plus offers verified private dating for $99.99 per month for established members, with free full access for Plus members.</p>
 
 <h3>Are private dating apps safe?</h3>
 <p>Reputable private dating platforms are actually safer than mainstream apps because verification is built in. On Plus, members verify their photos and income, which significantly reduces catfishing and misrepresentation. Commercial solicitation is prohibited and actively moderated.</p>
 
 <h3>Who uses elite dating apps?</h3>
-<p>On Plus, the typical generous member is 30-55 with a verified income and a clear idea of what they're looking for. The typical attractive member is 22-38, ambitious, and values a dating experience where expectations are transparent from the start. Both groups share a preference for honesty over games.</p>
+<p>On Plus, the typical established member is 30-55 with a verified income and a clear idea of what they're looking for. The typical Plus member is 22-38, ambitious, and values a dating experience where expectations are transparent from the start. Both groups share a preference for honesty over games.</p>
 
 <h3>Can I use a private dating app if I'm not wealthy?</h3>
-<p>On Plus, attractive members have full access for free, permanently. Private dating is about mutual honesty, not income requirements. If you're attractive, interesting, and clear about what you want, the platform is designed to work for you at zero cost.</p>
+<p>On Plus, Plus members have full access for free, permanently. Private dating is about mutual honesty, not income requirements. If you're attractive, interesting, and clear about what you want, the platform is designed to work for you at zero cost.</p>
 `,
   },
   {
     slug: "best-dating-apps-miami-2026",
     title: "Best dating apps in Miami for 2026, ranked by someone who uses them",
+    seoTitle: "Best Dating Apps in Miami for 2026, Ranked",
     excerpt:
       "I've used every dating app in Miami for the past three years. Here's what actually works in 2026, which apps are coasting on reputation, and where your money is better spent.",
     date: "July 27, 2026",
     datePublished: "2026-07-27",
     dateModified: "2026-07-27",
     tag: "Dating",
-    readTime: "12 min",
+    readTime: "14 min",
     metaDescription:
-      "Best dating apps in Miami for 2026, ranked and reviewed. Honest comparison of Tinder, Hinge, Bumble, Raya, The League, Seeking, Secret Benefits, and Plus for Miami singles.",
+      "Best dating apps in Miami for 2026, ranked and reviewed. Honest comparison of Hinge, Bumble, Tinder, Raya, The League, Seeking, and Plus.",
     content: `
 <p>Miami has more dating apps per capita than almost anywhere in the country, which sounds like an advantage until you realize most of them are terrible. I've been single in this city for three years, lived in Brickell for two of them and Coconut Grove for the last one, and I've downloaded, paid for, deleted, re-downloaded, and rage-deleted every major dating app on the market. Some of them twice.</p>
 
@@ -568,7 +572,7 @@ export const posts: BlogPost[] = [
 
 <h2>2. Bumble — best for women who want control</h2>
 
-<p>Bumble's women-message-first mechanic remains its defining feature, and in Miami it works better than in most cities. The Latin cultural influence here means both men and women tend to be more forward than in, say, Seattle, which means the Bumble constraint of requiring women to initiate doesn't create the awkward standoffs that plague the app in less direct cities.</p>
+<p>Bumble's women-message-first mechanic remains its defining feature, and in Miami it works better than in most cities. It also maps closely to <a href="/blog/what-women-want-from-dating-apps-2026">what women actually say they want from dating apps</a>. The Latin cultural influence here means both men and women tend to be more forward than in, say, Seattle, which means the Bumble constraint of requiring women to initiate doesn't create the awkward standoffs that plague the app in less direct cities.</p>
 
 <p>The Miami Bumble user base is broad. Broader than Hinge. You'll find everyone from 22-year-old models to 45-year-old executives, and the geographic spread covers the entire metro area rather than clustering in specific neighborhoods. That breadth is both its strength and its weakness. More options means more noise, and you'll spend more time filtering through profiles that don't match what you're looking for.</p>
 
@@ -584,7 +588,7 @@ export const posts: BlogPost[] = [
 
 <p>What Plus does differently is verification and honesty. Every profile can verify photos and income, which means when someone says they look like their pictures and earn what they claim, you can actually trust that. On every other app on this list, you're taking people at their word. In Miami, where the gap between online personas and reality is wider than the MacArthur Causeway, verification solves a problem that matters.</p>
 
-<p>Plus is built for <a href="/blog/what-is-private-dating">private dating</a>, where both people are upfront about expectations before the first message. Generous members pay $99.99 per month for Diamond. Attractive members use the full platform for free, forever. That pricing model is straightforward in a way that dating apps rarely are, and it creates a user base where people are genuinely motivated to connect rather than just browse.</p>
+<p>Plus is built for <a href="/blog/what-is-private-dating">private dating</a>, where both people are upfront about expectations before the first message. Established members pay $99.99 per month for Diamond. Plus members use the full platform for free, forever. You can compare the tiers on the <a href="/pricing">pricing page</a>. That pricing model is straightforward in a way that dating apps rarely are, and it creates a user base where people are genuinely motivated to connect rather than just browse.</p>
 
 <p>The Miami community on Plus is growing fast, especially in Brickell and the surrounding neighborhoods. The typical user is older and more established than on Hinge or Bumble, which makes sense given the platform's focus. If you've read our <a href="/blog/miami-dating-guide">Miami dating guide</a>, you know that this city rewards directness. Plus is the most direct dating platform available.</p>
 
@@ -628,7 +632,7 @@ export const posts: BlogPost[] = [
 
 <p>The decline has been steep. Diamond membership now costs $274.99 per month. The iOS app was pulled, forcing iPhone users to access the platform through a mobile browser, which is a clunky experience. Verification became optional rather than required, which gutted the trust that made the platform valuable in the first place. The bot problem has gotten worse. Profiles that look legitimate turn out to be automated messages funneling you to other sites.</p>
 
-<p>In Miami specifically, Seeking still has a larger user base than most alternatives in the upfront dating space. That's legacy momentum, not current quality. If you're a generous member paying $274.99 per month and you're not sure whether the person you're messaging has verified their identity or their photos, you're overpaying for uncertainty. We covered this transition in detail in our piece on <a href="/blog/why-we-built-plus">why Plus was built</a>.</p>
+<p>In Miami specifically, Seeking still has a larger user base than most alternatives in the upfront dating space. That's legacy momentum, not current quality. If you're a established member paying $274.99 per month and you're not sure whether the person you're messaging has verified their identity or their photos, you're overpaying for uncertainty. We covered this transition in detail in our piece on <a href="/blog/why-we-built-plus">why Plus was built</a>.</p>
 
 <p>Some people stay on Seeking out of familiarity. The interface is known, the user base is established, and switching platforms requires effort. That inertia is real but increasingly hard to justify when better-verified alternatives exist at lower prices.</p>
 
@@ -707,6 +711,7 @@ export const posts: BlogPost[] = [
   {
     slug: "seeking-arrangement-alternatives-2026",
     title: "Seeking Arrangement alternatives in 2026: what actually works",
+    seoTitle: "Seeking Arrangement Alternatives in 2026",
     excerpt:
       "Seeking keeps raising prices and lowering standards. If you're looking for a real alternative, here's what the landscape actually looks like in 2026.",
     date: "July 27, 2026",
@@ -715,7 +720,7 @@ export const posts: BlogPost[] = [
     tag: "Reviews",
     readTime: "11 min",
     metaDescription:
-      "Seeking Arrangement alternatives for 2026: honest reviews of Plus, Secret Benefits, SugarDaddyMeet, WhatsYourPrice, and Hanker. Pricing comparison and which platform is best for sugar daddies and sugar babies.",
+      "Seeking Arrangement alternatives for 2026: honest reviews of Plus, Secret Benefits, SugarDaddyMeet, WhatsYourPrice, and Hanker, with pricing.",
     content: `
 <p>I signed up for Seeking in 2021 when it was still called Seeking Arrangement. The platform worked. Profiles were detailed, verification was encouraged, the user base was active, and the monthly cost felt reasonable for what you got. Five years later, the name changed, the price tripled, the iOS app vanished, and I spent a Tuesday evening reporting three bot accounts before finally canceling my subscription.</p>
 
@@ -745,7 +750,7 @@ export const posts: BlogPost[] = [
 
 <p>Diamond membership costs $99.99 per month. That's everything. Unlimited messaging, full verification access, priority visibility, every feature the platform offers. No credit packs, no tiered feature unlocking, no upsells. You pay once and the entire platform is available to you.</p>
 
-<p>Attractive members use Plus completely free. Not a trial. Not a limited feature set. Full access, unlimited messaging, all features, no expiration. The reason this works is straightforward: when attractive members aren't paywalled, they join more freely, respond more often, and stay on the platform longer. That activity makes the experience better for generous members, who are willing to pay for it. One side pays, both sides benefit.</p>
+<p>Plus members use Plus completely free. Not a trial. Not a limited feature set. Full access, unlimited messaging, all features, no expiration. The reason this works is straightforward: when Plus members aren't paywalled, they join more freely, respond more often, and stay on the platform longer. That activity makes the experience better for established members, who are willing to pay for it. One side pays, both sides benefit.</p>
 
 <p>The verification system is what separates Plus from Seeking most clearly. Photo verification uses a multi-step process that's genuinely hard to fake. Income verification confirms financial claims through documentation review. The documents are reviewed and deleted; other members only see a verified badge with the stated income range. Both verifications are integrated into the core experience rather than tucked behind an optional checkbox.</p>
 
@@ -777,7 +782,7 @@ export const posts: BlogPost[] = [
 
 <h2>4. WhatsYourPrice — the bidding model</h2>
 
-<p>WhatsYourPrice takes a radically different approach to upfront dating: instead of matching and messaging, generous members bid on first dates with attractive members. You see a profile you're interested in, you offer a dollar amount for a first date, and the other person accepts, rejects, or counteroffers.</p>
+<p>WhatsYourPrice takes a radically different approach to upfront dating: instead of matching and messaging, established members bid on first dates with Plus members. You see a profile you're interested in, you offer a dollar amount for a first date, and the other person accepts, rejects, or counteroffers.</p>
 
 <p>The concept has a certain blunt honesty to it. There's no ambiguity about expectations when the opening interaction is a financial offer. Some users find this refreshing. It cuts through the pretense that exists on more conventional platforms and gets directly to whether both people are interested enough to meet.</p>
 
@@ -801,7 +806,7 @@ export const posts: BlogPost[] = [
 
 <table>
 <thead>
-<tr><th>Platform</th><th>Monthly cost</th><th>Free for attractive members</th><th>Photo verification</th><th>Income verification</th><th>iOS app</th></tr>
+<tr><th>Platform</th><th>Monthly cost</th><th>Free for Plus members</th><th>Photo verification</th><th>Income verification</th><th>iOS app</th></tr>
 </thead>
 <tbody>
 <tr><td>Seeking</td><td>$274.99 (Diamond)</td><td>Yes (limited)</td><td>Optional</td><td>Optional</td><td>No</td></tr>
@@ -815,7 +820,7 @@ export const posts: BlogPost[] = [
 
 <h2>Which alternative is best for sugar daddies</h2>
 
-<p>If you're a generous member leaving Seeking, your priorities are probably: a real user base of attractive, verified members; a price that doesn't insult your intelligence; and a platform that actually works on your phone.</p>
+<p>If you're a established member leaving Seeking, your priorities are probably: a real user base of attractive, verified members; a price that doesn't insult your intelligence; and a platform that actually works on your phone.</p>
 
 <p>Plus checks all three. The $99.99 monthly cost represents a $175 savings over Seeking's Diamond tier. The verification system is more rigorous than anything else on the market. The iOS app exists and functions well. And the free-for-attractive-members model ensures the platform has an active, engaged community of people you actually want to meet.</p>
 
@@ -823,9 +828,9 @@ export const posts: BlogPost[] = [
 
 <h2>Which alternative is best for sugar babies</h2>
 
-<p>Attractive members looking for alternatives to Seeking should prioritize platforms where the generous-member user base is verified and active. A platform full of unverified profiles benefits no one, but it especially wastes the time of attractive members who are fielding messages from people who may not be who they claim to be.</p>
+<p>Plus members looking for alternatives to Seeking should prioritize platforms where the generous-member user base is verified and active. A platform full of unverified profiles benefits no one, but it especially wastes the time of Plus members who are fielding messages from people who may not be who they claim to be.</p>
 
-<p>Plus gives attractive members full, free access to a verified community. No credits to buy, no features locked behind paywalls, no time-limited trials. The income verification on generous members' profiles means you can trust the financial claims before investing time in a conversation. In a category where time wasted on fake or misleading profiles is the biggest frustration, that verification is worth more than any feature set.</p>
+<p>Plus gives Plus members full, free access to a verified community. No credits to buy, no features locked behind paywalls, no time-limited trials. The income verification on established members' profiles means you can trust the financial claims before investing time in a conversation. In a category where time wasted on fake or misleading profiles is the biggest frustration, that verification is worth more than any feature set.</p>
 
 <p>The <a href="/blog/how-to-find-sugar-daddy-miami">Miami sugar daddy guide</a> covers specific strategies for meeting generous partners, including which platforms and in-person venues work best in South Florida.</p>
 
@@ -850,21 +855,22 @@ export const posts: BlogPost[] = [
 <p>Seeking made verification optional rather than encouraged or required. This means a significant portion of profiles on the platform are unverified, and there's no way to confirm that a user's photos or financial claims are accurate without meeting them in person. Platforms like Plus have made verification a core feature rather than an afterthought.</p>
 
 <h3>Are there free Seeking alternatives for women?</h3>
-<p>Plus offers full, free access for attractive members with no time limits or feature restrictions. Secret Benefits and SugarDaddyMeet also offer free accounts for women, but with more limited feature sets. The quality of the free experience varies significantly between platforms.</p>
+<p>Plus offers full, free access for Plus members with no time limits or feature restrictions. Secret Benefits and SugarDaddyMeet also offer free accounts for women, but with more limited feature sets. The quality of the free experience varies significantly between platforms.</p>
 `,
   },
   {
     slug: "how-to-find-sugar-daddy-miami",
     title: "How to find a sugar daddy in Miami: the realistic guide",
+    seoTitle: "How to Find a Sugar Daddy in Miami (2026)",
     excerpt:
       "Miami is a Tier 1 sugar dating market with real money and real expectations. Here's how it actually works, from apps to venues to safety, written without the usual nonsense.",
     date: "July 27, 2026",
     datePublished: "2026-07-27",
     dateModified: "2026-07-27",
     tag: "Guides",
-    readTime: "10 min",
+    readTime: "11 min",
     metaDescription:
-      "How to find a sugar daddy in Miami in 2026. Realistic guide covering allowances, where to meet sugar daddies in Brickell, Bal Harbour, and Fisher Island, best apps, profile tips, and safety essentials.",
+      "How to find a sugar daddy in Miami in 2026: realistic allowances, where to meet them in Brickell and Bal Harbour, the best apps, and safety rules.",
     content: `
 <p>Miami is one of four cities in the country where the sugar dating market is genuinely thriving. Alongside New York, Los Angeles, and San Francisco, it sits in Tier 1 for both the number of active sugar daddies and the generosity of arrangements. That sounds great on paper, and it can be great in practice, but only if you go in with realistic expectations, a safety-first mindset, and a plan that goes beyond downloading an app and hoping for the best.</p>
 
@@ -900,7 +906,7 @@ export const posts: BlogPost[] = [
 
 <p>Two apps dominate the Miami sugar dating market, and they sit at different price points and quality levels.</p>
 
-<p><a href="/auth?mode=register">Plus</a> is the newer option and the one I'd recommend starting with. Generous members on Plus have verified their income through documentation review, which means when a profile says someone earns a certain amount, that claim has been confirmed. Photo verification adds another layer of trust. The platform is free for attractive members with no limits on features or messaging, so there's zero financial risk in trying it.</p>
+<p><a href="/auth?mode=register">Plus</a> is the newer option and the one I'd recommend starting with. Established members on Plus have verified their income through documentation review, which means when a profile says someone earns a certain amount, that claim has been confirmed. Photo verification adds another layer of trust. The platform is free for Plus members with no limits on features or messaging, so there's zero financial risk in trying it.</p>
 
 <p>The Miami user base on Plus concentrates in Brickell, Coral Gables, and Coconut Grove, which happens to be exactly where the money is. The quality of conversations tends to be higher than on legacy platforms because both people have been upfront about expectations before the first message. Read more about <a href="/blog/what-is-private-dating">how private dating works</a> to understand the model.</p>
 
@@ -932,7 +938,7 @@ export const posts: BlogPost[] = [
 
 <h2>Safety essentials: non-negotiable rules</h2>
 
-<p>Safety isn't a section to skim. It's the most important part of this guide, and every recommendation here applies regardless of how genuine someone seems online.</p>
+<p>Safety isn't a section to skim. It's the most important part of this guide, and every recommendation here applies regardless of how genuine someone seems online. We keep an expanded version on our <a href="/safety">safety page</a>.</p>
 
 <p>Always meet in public for the first several dates. A Brickell restaurant, a hotel lobby bar, a coffee shop in Coral Gables. Never at someone's home, never at yours, never at a location that's isolated or difficult to leave. A genuine sugar daddy will not only understand this boundary but will expect and respect it. Anyone who pressures you to meet privately before you're ready is someone you should stop talking to immediately.</p>
 
@@ -963,7 +969,7 @@ export const posts: BlogPost[] = [
 <p>Sugar dating between consenting adults is legal. It involves mutual generosity within a dating relationship, which is different from commercial sex work. The distinction matters, and reputable platforms like Plus have clear terms of service that prohibit commercial solicitation while supporting honest, upfront dating.</p>
 
 <h3>Which app is best for finding a sugar daddy in Miami?</h3>
-<p>Plus offers the best combination of verified profiles, fair pricing (free for attractive members), and an active Miami user base. Seeking has a larger user base but charges $274.99 per month with optional verification, which reduces the trust factor that makes upfront dating work.</p>
+<p>Plus offers the best combination of verified profiles, fair pricing (free for Plus members), and an active Miami user base. Seeking has a larger user base but charges $274.99 per month with optional verification, which reduces the trust factor that makes upfront dating work.</p>
 
 <h3>Where do sugar daddies hang out in Miami?</h3>
 <p>Brickell happy hours at upscale restaurants, Bal Harbour Shops, Fisher Island events, yacht club socials, and charity galas are the highest-probability in-person venues. Online, Plus and Seeking are the most active platforms for Miami's sugar dating market.</p>
@@ -975,6 +981,7 @@ export const posts: BlogPost[] = [
   {
     slug: "sugar-dating-miami-guide",
     title: "Sugar dating in Miami: allowances, culture, and what to expect in 2026",
+    seoTitle: "Sugar Dating in Miami: Allowances & Culture",
     excerpt:
       "Miami's sugar dating scene is shaped by Latin directness, Tier 1 allowances, and neighborhoods where the money concentrates. Here's the complete picture for 2026.",
     date: "July 27, 2026",
@@ -983,19 +990,19 @@ export const posts: BlogPost[] = [
     tag: "Guides",
     readTime: "11 min",
     metaDescription:
-      "Sugar dating in Miami guide for 2026. Realistic allowances ($3,500-5,000/mo), Miami neighborhoods where sugar daddies live, how Miami compares to NYC and LA, apps, safety, and legal status.",
+      "Sugar dating in Miami for 2026: realistic allowances ($3,500-5,000/mo), the neighborhoods that matter, how Miami compares to NYC, apps, and safety.",
     content: `
 <p>Florida has the largest per capita sugar daddy population in the United States. That statistic surprises people who assume New York or California would lead, but when you account for population ratios, the combination of Florida's wealth concentration, favorable tax environment, and lifestyle-oriented culture produces more generous dating participants per resident than any other state. Within Florida, Miami is the undisputed center of gravity.</p>
 
 <p>Sugar dating in Miami operates differently than in other Tier 1 cities. The cultural norms are distinct. The allowance ranges reflect a specific cost of living. The social dynamics between generous and attractive partners are shaped by the city's Latin influence, its international population, and an unspoken directness about money and attraction that you won't find in more reserved markets like San Francisco or Chicago.</p>
 
-<p>This guide covers all of it. Allowances, neighborhoods, how the culture works, which apps perform best, safety considerations, and the legal framework you should understand.</p>
+<p>This guide covers all of it. Allowances, neighborhoods, how the culture works, which apps perform best, safety considerations, and the legal framework you should understand. For the city landing page, see <a href="/sugar-dating/miami">sugar dating in Miami</a>.</p>
 
 <h2>Miami as a Tier 1 sugar dating market</h2>
 
 <p>Sugar dating markets are informally ranked by activity level, allowance sizes, and the ratio of genuine participants to fake profiles and scammers. Tier 1 includes New York City, Los Angeles, San Francisco, and Miami. These cities have the largest active user bases, the highest average allowances, and the most robust ecosystems of both online platforms and in-person venues where sugar dating happens.</p>
 
-<p>What makes Miami unusual among Tier 1 cities is accessibility. New York's sugar dating scene concentrates in Manhattan, where the cost of participation, dressing appropriately, eating at the right restaurants, living within a reasonable distance, is prohibitively high for many attractive members. San Francisco's tech wealth creates generous partners but the city's awkward social culture makes organic connections difficult. LA spreads everything across a metro area so vast that geography becomes a barrier.</p>
+<p>What makes Miami unusual among Tier 1 cities is accessibility. New York's sugar dating scene concentrates in Manhattan, where the cost of participation, dressing appropriately, eating at the right restaurants, living within a reasonable distance, is prohibitively high for many Plus members. San Francisco's tech wealth creates generous partners but the city's awkward social culture makes organic connections difficult. LA spreads everything across a metro area so vast that geography becomes a barrier.</p>
 
 <p>Miami compresses the relevant geography. Brickell, Coral Gables, Coconut Grove, Fisher Island, and Sunny Isles contain the overwhelming majority of the city's wealthy population, and all of them sit within a 30-minute drive of each other in reasonable traffic. The cost of looking great in Miami is lower than in New York. The social culture encourages rather than punishes directness. And the city's beauty standard, while high, is achievable with effort rather than requiring the genetic lottery that LA's entertainment-industry influence demands.</p>
 
@@ -1015,9 +1022,9 @@ export const posts: BlogPost[] = [
 
 <p>Latin directness is the most significant. Roughly 70% of Miami's population is Hispanic or Latino, and that cultural influence permeates how everyone in the city interacts, regardless of their own background. Conversations about money, attraction, and expectations happen more openly and earlier here than in Anglo-dominant cities. A generous partner in Miami is more likely to state what he's offering clearly on the first date than a counterpart in, say, Boston, who might dance around the topic for three meetings before getting specific.</p>
 
-<p>That directness works both ways. Attractive members in Miami are also more comfortable stating what they want, what their boundaries are, and what they expect in return for their time and companionship. The result is arrangements that get established faster, with less misunderstanding and fewer wasted dates spent trying to read between lines that don't need to exist.</p>
+<p>That directness works both ways. Plus members in Miami are also more comfortable stating what they want, what their boundaries are, and what they expect in return for their time and companionship. The result is arrangements that get established faster, with less misunderstanding and fewer wasted dates spent trying to read between lines that don't need to exist.</p>
 
-<p>Appearance standards in Miami are high across the board, and this shapes the competitive landscape for sugar dating. Both men and women invest visibly in how they look. Fitness culture is pervasive. Grooming, fashion, and aesthetic presentation are taken seriously in ways that feel less pronounced in other cities. For sugar dating specifically, this means generous partners in Miami have refined taste and high visual expectations, while attractive members are competing against a pool of genuinely stunning people.</p>
+<p>Appearance standards in Miami are high across the board, and this shapes the competitive landscape for sugar dating. Both men and women invest visibly in how they look. Fitness culture is pervasive. Grooming, fashion, and aesthetic presentation are taken seriously in ways that feel less pronounced in other cities. For sugar dating specifically, this means generous partners in Miami have refined taste and high visual expectations, and anyone dating here is competing against a pool of genuinely stunning people.</p>
 
 <p>International money flows through Miami constantly. The city functions as the financial and cultural bridge between the United States and Latin America, and that bridge carries wealth in both directions. Brazilian entrepreneurs, Colombian investors, Argentine real estate developers, and Venezuelan expatriates are all active participants in the Miami dating scene, including the sugar dating segment. This international dimension adds variety and generosity but also introduces cultural complexity around expectations and communication styles.</p>
 
@@ -1035,7 +1042,7 @@ export const posts: BlogPost[] = [
 
 <h2>How Miami differs from NYC and LA</h2>
 
-<p>New York's sugar dating scene is defined by intensity and options. Manhattan has the highest volume of both generous and attractive participants in the country, but the sheer scale creates a paradox of choice that makes building lasting arrangements harder. The cost of living is higher, which pushes allowance expectations up, but the competition among attractive members is ferocious. New York sugar dating moves fast, burns through arrangements quickly, and rewards relentless networking.</p>
+<p>New York's sugar dating scene is defined by intensity and options. Manhattan has the highest volume of both generous and attractive participants in the country, but the sheer scale creates a paradox of choice that makes building lasting arrangements harder. The cost of living is higher, which pushes allowance expectations up, but the competition among Plus members is ferocious. New York sugar dating moves fast, burns through arrangements quickly, and rewards relentless networking.</p>
 
 <p>Miami moves at a different pace. Arrangements tend to develop more organically, with more emphasis on in-person chemistry and social connection. The Brickell happy hour culture creates organic meeting opportunities that Manhattan's more fragmented social scene doesn't replicate as easily. Allowances are slightly lower on average than Manhattan but significantly higher than most Tier 2 cities, and the lower cost of living means the purchasing power of a Miami allowance stretches further.</p>
 
@@ -1045,11 +1052,11 @@ export const posts: BlogPost[] = [
 
 <h2>Apps ranked for Miami sugar dating</h2>
 
-<p><a href="/auth?mode=register">Plus</a> ranks first for the Miami market. Income and photo verification remove the uncertainty that undermines trust on other platforms. Free access for attractive members eliminates the barrier that keeps many of the most desirable people off of legacy platforms. And the $99.99 price for generous members attracts successful men who would happily pay but who refuse to be gouged by $275 subscriptions.</p>
+<p><a href="/auth?mode=register">Plus</a> ranks first for the Miami market. Income and photo verification remove the uncertainty that undermines trust on other platforms. Free access for Plus members eliminates the barrier that keeps many of the most desirable people off of legacy platforms. And the $99.99 price for established members attracts successful men who would happily pay but who refuse to be gouged by $275 subscriptions.</p>
 
 <p>Seeking remains viable because of its legacy user base. The raw number of profiles in Miami is still substantial, but the quality-per-profile has declined. Worth using alongside Plus for maximum coverage, but don't rely on it as your primary platform given the verification gaps and pricing. For a detailed comparison, our <a href="/blog/seeking-arrangement-alternatives-2026">Seeking alternatives guide</a> covers the full landscape.</p>
 
-<p>Secret Benefits functions in Miami but the credit model makes it expensive for active users. If you're a generous member who dates infrequently, the pay-per-action model might save you money compared to a monthly subscription. Active daters will spend more.</p>
+<p>Secret Benefits functions in Miami but the credit model makes it expensive for active users. If you're a established member who dates infrequently, the pay-per-action model might save you money compared to a monthly subscription. Active daters will spend more.</p>
 
 <h2>Safety and boundaries</h2>
 
@@ -1075,7 +1082,7 @@ export const posts: BlogPost[] = [
 
 <p>The Miami sugar dating market is robust and accessible for people who approach it with realistic expectations, genuine personality, and respect for their own safety. The combination of Tier 1 allowances, Latin cultural directness, compressed geography, and strong platform options makes Miami one of the best cities in the country for upfront dating.</p>
 
-<p>Start by <a href="/auth?mode=register">creating a profile on Plus</a> and exploring the verified community. The free access for attractive members means there's no cost to seeing what's available, and the verification on generous members' profiles means the people you're looking at have been confirmed as real. From there, let conversations develop naturally, meet in person at a Brickell restaurant or a Coral Gables cafe, and see whether the chemistry justifies an arrangement.</p>
+<p>Start by <a href="/auth?mode=register">creating a profile on Plus</a> and exploring the verified community. The free access for Plus members means there's no cost to seeing what's available, and the verification on established members' profiles means the people you're looking at have been confirmed as real. From there, let conversations develop naturally, meet in person at a Brickell restaurant or a Coral Gables cafe, and see whether the chemistry justifies an arrangement.</p>
 
 <p>Follow @meetyourplus on Instagram to see what the community looks like.</p>
 
@@ -1085,7 +1092,7 @@ export const posts: BlogPost[] = [
 <p>Miami is one of the top four sugar dating markets in the United States alongside NYC, LA, and San Francisco. Florida has the highest per capita sugar daddy population in the country, and Miami specifically benefits from concentrated wealth, Latin cultural directness, and a compressed geography that makes meeting in person convenient.</p>
 
 <h3>What is the typical sugar baby allowance in Miami?</h3>
-<p>Monthly allowances in Miami typically range from $3,500 to $5,000, with per-date arrangements between $200 and $600. Total arrangement value is often higher when including rent, travel, dining, and other non-cash benefits provided by generous partners.</p>
+<p>Monthly allowances in Miami typically range from $3,500 to $5,000, with per-date arrangements between $200 and $600. Total arrangement value is often higher when including rent, travel, dining, and other non-cash benefits provided by generous partners. Our <a href="/allowance-calculator">allowance calculator</a> will give you a range for your own city.</p>
 
 <h3>How does Miami sugar dating compare to New York?</h3>
 <p>New York has higher volume but also more competition and a higher cost of living that eats into allowance purchasing power. Miami offers a more relaxed pace, stronger in-person meeting opportunities through Brickell's social scene, and a cultural directness about money and expectations that makes arrangements easier to establish.</p>
@@ -1094,21 +1101,22 @@ export const posts: BlogPost[] = [
 <p>Sugar dating between consenting adults is legal in Florida. It involves genuine mutual interest and companionship within a dating relationship that includes financial generosity. This is distinct from escort services, which involve exchanging money specifically for sexual services and are illegal under Florida law.</p>
 
 <h3>What is the best sugar dating app in Miami?</h3>
-<p>Plus offers the best combination of verification, pricing, and Miami-specific user base for sugar dating in 2026. Generous members pay $99.99 per month with full income and photo verification, compared to Seeking's $274.99 with optional verification. Attractive members use Plus completely free.</p>
+<p>Plus offers the best combination of verification, pricing, and Miami-specific user base for sugar dating in 2026. Established members pay $99.99 per month with full income and photo verification, compared to Seeking's $274.99 with optional verification. Plus members use Plus completely free.</p>
 `,
   },
   {
     slug: "luxury-dating-vs-matchmaking",
     title: "Luxury dating apps vs matchmakers: which is actually worth your money?",
+    seoTitle: "Luxury Dating Apps vs Matchmakers: Real Costs",
     excerpt:
       "Miami matchmakers charge $5,000 to $25,000 for a handful of introductions. Luxury dating apps charge under $400. The value equation isn't as obvious as you think.",
     date: "July 27, 2026",
     datePublished: "2026-07-27",
     dateModified: "2026-07-27",
     tag: "Lifestyle",
-    readTime: "9 min",
+    readTime: "10 min",
     metaDescription:
-      "Luxury dating apps vs matchmakers: honest ROI comparison. Miami matchmaking costs ($5,000-25,000+), luxury dating app pricing (Plus $99.99, Raya $299.99, The League $399.99), and which delivers better results.",
+      "Luxury dating apps vs matchmakers: an honest ROI comparison of Miami matchmaking ($5,000-25,000+) against Plus, Raya, and The League pricing.",
     content: `
 <p>A friend of mine paid $15,000 to a Miami matchmaker last year. She received eight introductions over four months. Two of those turned into second dates. None turned into a relationship. She described the experience as "hiring a very expensive friend to set you up with people she found on LinkedIn."</p>
 
@@ -1142,9 +1150,9 @@ export const posts: BlogPost[] = [
 
 <h2>What luxury dating apps charge</h2>
 
-<p>The pricing gap between matchmakers and luxury dating apps is enormous, and the experience gap has narrowed significantly.</p>
+<p>The pricing gap between matchmakers and luxury dating apps is enormous, and the experience gap has narrowed significantly. If you're on the generous side of that equation, <a href="/for-sugar-daddies">here's the case for Plus</a>.</p>
 
-<p><a href="/auth?mode=register">Plus</a> charges $99.99 per month for Diamond membership. That includes unlimited messaging, full verification access (both photo and income), priority visibility, and every feature the platform offers. Attractive members use the entire platform for free. Over a year, a generous member spends $1,200 on Plus. That's less than what most matchmakers charge for a single introduction.</p>
+<p><a href="/auth?mode=register">Plus</a> charges $99.99 per month for Diamond membership. That includes unlimited messaging, full verification access (both photo and income), priority visibility, and every feature the platform offers. Plus members use the entire platform for free. Over a year, a established member spends $1,200 on Plus. That's less than what most matchmakers charge for a single introduction.</p>
 
 <p>Raya charges $299.99 per month for its membership. There's no free tier. The experience is a curated social app weighted toward creative industries, with a reputation for celebrity profiles and an acceptance process based on social media presence and professional connections. Annual cost: $3,600.</p>
 
@@ -1169,7 +1177,7 @@ export const posts: BlogPost[] = [
 
 <h2>The ROI analysis nobody does</h2>
 
-<p>Let's make this concrete. A generous member pays a mid-tier matchmaker $15,000 and receives 12 introductions over six months. Cost per introduction: $1,250. If three of those turn into second dates, cost per meaningful connection: $5,000. If one turns into a relationship, the total cost of finding that partner: $15,000.</p>
+<p>Let's make this concrete. A established member pays a mid-tier matchmaker $15,000 and receives 12 introductions over six months. Cost per introduction: $1,250. If three of those turn into second dates, cost per meaningful connection: $5,000. If one turns into a relationship, the total cost of finding that partner: $15,000.</p>
 
 <p>The same person pays $99.99 per month on Plus for six months. Total cost: $600. In that time, with active use, they might exchange messages with 30 to 50 people, go on 10 to 20 first dates, and have several multi-date connections. Cost per introduction: effectively zero beyond the monthly fee. Cost per meaningful connection: under $100.</p>
 
@@ -1232,21 +1240,22 @@ export const posts: BlogPost[] = [
 <p>For most users, verified luxury dating apps like Plus provide equivalent or better results at dramatically lower cost. The main scenario where matchmakers maintain a genuine advantage is for ultra-high-net-worth individuals who need absolute discretion or people re-entering dating after a long absence who need coaching and structure.</p>
 
 <h3>What is the most affordable luxury dating app?</h3>
-<p>Plus at $99.99 per month is the most affordable verified luxury dating app in 2026. Seeking charges $274.99, Raya charges $299.99, and The League charges up to $399.99. Plus is also the only platform among these that offers full free access for attractive members.</p>
+<p>Plus at $99.99 per month is the most affordable verified luxury dating app in 2026. Seeking charges $274.99, Raya charges $299.99, and The League charges up to $399.99. Plus is also the only platform among these that offers full free access for Plus members.</p>
 `,
   },
   {
     slug: "dating-brickell-miami-guide",
     title: "The Brickell dating guide: where Miami's professionals actually meet",
+    seoTitle: "Brickell Dating Guide: Where Miami Pros Meet",
     excerpt:
       "Brickell packs more single professionals per block than anywhere in Florida. Here's the hyperlocal guide to dating in Miami's financial heartbeat.",
     date: "July 27, 2026",
     datePublished: "2026-07-27",
     dateModified: "2026-07-27",
     tag: "Dating",
-    readTime: "8 min",
+    readTime: "11 min",
     metaDescription:
-      "Brickell dating guide for 2026. Where Miami's professionals meet for happy hours, dates, and nightlife. Venues, apps, brunch spots, and Brickell dating dynamics from someone who lives there.",
+      "Brickell dating guide for 2026: where Miami's professionals meet for happy hours and dates, the venues that work, and the apps worth using.",
     content: `
 <p>Brickell has the highest concentration of single professionals in South Florida. The towers that line Brickell Avenue and the surrounding streets house finance workers, tech employees, lawyers, real estate developers, and startup founders, most of them between 25 and 38, and most of them unmarried. By 6 PM on a Thursday, the lobby elevators in these buildings disgorge thousands of well-dressed people into a neighborhood that's essentially designed for one thing: going out.</p>
 
@@ -1351,13 +1360,14 @@ export const posts: BlogPost[] = [
   {
     slug: "real-cost-of-dating-apps-2026",
     title: "The real cost of dating apps in 2026: a pricing breakdown nobody asked for",
+    seoTitle: "The Real Cost of Dating Apps in 2026",
     excerpt:
       "Most people spend $400 to $800 a year on dating apps and have nothing to show for it. We pulled the actual numbers on every major platform so you can see where your money goes.",
     date: "July 28, 2026",
     datePublished: "2026-07-28",
     dateModified: "2026-07-28",
     tag: "Industry",
-    readTime: "10 min",
+    readTime: "13 min",
     metaDescription:
       "2026 dating app pricing comparison: Tinder, Bumble, Hinge, Raya, Seeking, Plus. Real costs including hidden fees and annual totals.",
     content: `
@@ -1423,11 +1433,11 @@ export const posts: BlogPost[] = [
 
 <h2>Plus: $0 to $99.99 per month</h2>
 
-<p>Plus has two tiers. Attractive members pay nothing. Not a trial, not a limited version, not a freemium bait-and-switch. Full access, unlimited messaging, every feature, forever free. Generous members pay $49.99 per month for Plus or $99.99 per month for Plus+, which includes everything: verification, unlimited messaging, priority visibility, advanced filters, all features.</p>
+<p>Plus has two tiers. Plus members pay nothing. Not a trial, not a limited version, not a freemium bait-and-switch. Full access, unlimited messaging, every feature, forever free. Established members pay $49.99 per month for Plus or $99.99 per month for Plus+, which includes everything: verification, unlimited messaging, priority visibility, advanced filters, all features. The <a href="/pricing">full pricing breakdown</a> lays out what each tier includes.</p>
 
-<p>There are no credits, no Boosts, no Roses, no SuperSwipes, no Spotlights, no add-ons. The price you see is the price you pay. Annual cost for a Plus+ member: $1,199.88. Annual cost for an attractive member: $0.</p>
+<p>There are no credits, no Boosts, no Roses, no SuperSwipes, no Spotlights, no add-ons. The price you see is the price you pay. Annual cost for a Plus+ member: $1,199.88. Annual cost for a Plus member: $0.</p>
 
-<p>We designed the pricing this way because we believe that charging both sides of a dating platform is a tax on the connections the platform is supposed to create. When attractive members don't have to pay, they actually use the app. They respond to messages. They engage with profiles. The experience improves for everyone, including the generous members whose subscription makes it all work.</p>
+<p>We designed the pricing this way because we believe that charging both sides of a dating platform is a tax on the connections the platform is supposed to create. When Plus members don't have to pay, they actually use the app. They respond to messages. They engage with profiles. The experience improves for everyone, including the established members whose subscription makes it all work.</p>
 
 <h2>The annual cost comparison nobody wants to see</h2>
 
@@ -1478,7 +1488,7 @@ export const posts: BlogPost[] = [
 
 <p>Third: set a quarterly budget and stick to it. If you're willing to spend $150 per quarter on dating, that gives you one premium subscription on one app with nothing left over for add-ons, which is exactly the constraint that prevents overspending. When the quarter ends, evaluate honestly: did this subscription lead to dates? If not, cancel and try something different.</p>
 
-<p>Fourth: consider what you're optimizing for. If you want the largest possible pool of casual matches, Tinder Platinum at $39.99 is hard to beat on sheer volume. If you want serious relationships, HingeX at $49.99 has the best serious-dating user base. If you want <a href="/blog/what-is-private-dating">private, verified dating</a> where both people are upfront about expectations, <a href="/auth?mode=register">Plus starts at $49.99 for generous members and is free for attractive members</a>. The right answer depends on what you want, not on which app has the best marketing.</p>
+<p>Fourth: consider what you're optimizing for. If you want the largest possible pool of casual matches, Tinder Platinum at $39.99 is hard to beat on sheer volume. If you want serious relationships, HingeX at $49.99 has the best serious-dating user base. If you want <a href="/blog/what-is-private-dating">private, verified dating</a> where both people are upfront about expectations, <a href="/auth?mode=register">Plus starts at $49.99 for established members and is free for Plus members</a>. The right answer depends on what you want, not on which app has the best marketing.</p>
 
 <h2>The industry has to change</h2>
 
@@ -1505,19 +1515,20 @@ export const posts: BlogPost[] = [
 <p>Dating app companies are publicly traded or venture-backed, meaning they face constant pressure to grow revenue. With user counts declining across major platforms, the strategy has shifted from acquiring new users to extracting more revenue from existing ones. This means more premium tiers, more add-on features, and more paywalled functionality that used to be free. The 78% emotional exhaustion rate among users suggests this strategy is unsustainable.</p>
 
 <h3>Is Plus really free for one side?</h3>
-<p>Yes. Attractive members on Plus get full access to every feature, unlimited messaging, and complete functionality at no cost, not as a trial but permanently. Generous members pay $49.99 or $99.99 per month depending on tier. This model works because it keeps the attractive side of the platform highly active, which creates a better experience for generous members who are willing to pay for it.</p>
+<p>Yes. Plus members on Plus get full access to every feature, unlimited messaging, and complete functionality at no cost, not as a trial but permanently. Established members pay $49.99 or $99.99 per month depending on tier. This model works because it keeps the attractive side of the platform highly active, which creates a better experience for established members who are willing to pay for it.</p>
 `,
   },
   {
     slug: "austin-dating-guide",
     title: "Austin's dating scene in 2026: where the tech money meets real people",
+    seoTitle: "Austin Dating Scene 2026: The Complete Guide",
     excerpt:
       "Austin is Miami's nerdy cousin — same ambition, less pretension. A neighborhood-by-neighborhood breakdown of where to meet people, what apps work, and why this city rewards authenticity over performance.",
     date: "July 28, 2026",
     datePublished: "2026-07-28",
     dateModified: "2026-07-28",
     tag: "Dating",
-    readTime: "11 min",
+    readTime: "14 min",
     metaDescription:
       "Austin dating scene 2026: South Congress, Rainey Street, East Austin, The Domain. Where to meet singles, best apps, and first date ideas.",
     content: `
@@ -1613,7 +1624,7 @@ export const posts: BlogPost[] = [
 
 <p>If you're already here and dating, you're in one of the best positions in the country. The ratio of interesting people to competition is heavily in your favor compared to any coastal city. If you're thinking about moving, the dating scene is one more reason the calculation works.</p>
 
-<p>Plus is coming to Austin. When we launch, the same model that's working in <a href="/blog/miami-dating-guide">Miami</a> and <a href="/blog/houston-dating-scene">Houston</a> will be available here: verified profiles, upfront intentions, free for attractive members, $49.99 to $99.99 for generous members. No swiping, no add-ons, no games.</p>
+<p>Plus is coming to Austin. When we launch, the same model that's working in <a href="/blog/miami-dating-guide">Miami</a> and <a href="/blog/houston-dating-scene">Houston</a> will be available here: verified profiles, upfront intentions, free for Plus members, $49.99 to $99.99 for established members. No swiping, no add-ons, no games.</p>
 
 <p><a href="/auth?mode=register">Get on the Austin waitlist now</a>. When we go live, waitlist members get access first.</p>
 
@@ -1632,19 +1643,20 @@ export const posts: BlogPost[] = [
 <p>Rainey Street for Thursday and Friday after-work drinks, South Congress for weekend brunches and walks, East Austin breweries and restaurants for casual socializing, and The Domain for North Austin tech workers. The Zilker Park and Barton Springs area is the weekend gathering spot for active professionals. Weekday coworking spaces like Capital Factory and WeWork also function as social hubs where professional and personal networks overlap.</p>
 
 <h3>How is dating in Austin different from Dallas or Houston?</h3>
-<p>Austin is significantly more casual than Dallas and more creative than Houston. The dating culture values authenticity and interesting experiences over displays of wealth or social status. Dallas dating tends to be more traditional, polished, and status-conscious. Houston dating is warmer and more diverse but more car-dependent and spread out. Austin's walkable neighborhoods and outdoor culture create more organic opportunities for meeting people, while its smaller size relative to Dallas and Houston means the dating community feels more interconnected.</p>
+<p>Austin is significantly more casual than <a href="/blog/dallas-dating-guide">Dallas</a> and more creative than Houston. The dating culture values authenticity and interesting experiences over displays of wealth or social status. Dallas dating tends to be more traditional, polished, and status-conscious. Houston dating is warmer and more diverse but more car-dependent and spread out. Austin's walkable neighborhoods and outdoor culture create more organic opportunities for meeting people, while its smaller size relative to Dallas and Houston means the dating community feels more interconnected.</p>
 `,
   },
   {
     slug: "dallas-dating-guide",
     title: "Dating in Dallas: old money, new energy, and why matchmakers can't keep up",
+    seoTitle: "Dating in Dallas 2026: Neighborhoods & Apps",
     excerpt:
       "Dallas has the demand, the demographics, and the disposable income for great dating. What it doesn't have is a single app that understands the city. We break down every neighborhood and why matchmakers are booked solid.",
     date: "July 28, 2026",
     datePublished: "2026-07-28",
     dateModified: "2026-07-28",
     tag: "Dating",
-    readTime: "11 min",
+    readTime: "14 min",
     metaDescription:
       "Dallas dating scene 2026: Highland Park, Uptown, Bishop Arts, Turtle Creek. Why matchmakers are booming and which apps work.",
     content: `
@@ -1656,7 +1668,7 @@ export const posts: BlogPost[] = [
 
 <h2>Why Dallas is different from every other dating market</h2>
 
-<p>Dallas runs on social infrastructure. Country clubs, church communities, alumni networks, charity galas, professional organizations. In Austin, you meet someone at a bar. In Houston, you meet someone through work or through the sprawling international community. In Dallas, you meet someone because your friend's wife went to SMU with their sister, and she's hosting a dinner party at her house in Highland Park on Saturday. That's how it works. Or at least, that's how it's always worked.</p>
+<p>Dallas runs on social infrastructure. Country clubs, church communities, alumni networks, charity galas, professional organizations. In <a href="/blog/austin-dating-guide">Austin</a>, you meet someone at a bar. In <a href="/blog/houston-dating-scene">Houston</a>, you meet someone through work or through the sprawling international community. In Dallas, you meet someone because your friend's wife went to SMU with their sister, and she's hosting a dinner party at her house in Highland Park on Saturday. That's how it works. Or at least, that's how it's always worked.</p>
 
 <p>The problem is that this social infrastructure excludes people who didn't grow up here or marry into it. Transplants to Dallas experience a jarring reality: the city is extraordinarily friendly on the surface and almost impossible to crack socially underneath. Everyone smiles. Everyone is polite. Everyone is happy to chat at a bar in Uptown. But the real social circles, the ones where people actually form relationships, operate on layers of shared history and mutual connections that take years to build.</p>
 
@@ -1728,7 +1740,7 @@ export const posts: BlogPost[] = [
 
 <p>Dallas has the highest concentration of matchmaker demand in Texas. The average matchmaker engagement costs $5,000 to $25,000, and the best firms are fully booked. This tells you two things: there's massive demand for curated, verified dating among people who can afford it, and there's no technology solution serving that demand at scale.</p>
 
-<p>Plus was built for markets that look exactly like this. Photo and income verification replaces the matchmaker's vetting process. Upfront intention declaration replaces the months of pleasant ambiguity that plague Dallas dating. A pricing model of $49.99 to $99.99 per month replaces the $15,000 matchmaker retainer. And a free tier for attractive members ensures that the platform has the active, engaged user base that makes the generous members' subscriptions worthwhile.</p>
+<p>Plus was built for markets that look exactly like this. Photo and income verification replaces the matchmaker's vetting process. Upfront intention declaration replaces the months of pleasant ambiguity that plague Dallas dating. A pricing model of $49.99 to $99.99 per month replaces the $15,000 matchmaker retainer. And a free tier for Plus members ensures that the platform has the active, engaged user base that makes the established members' subscriptions worthwhile.</p>
 
 <p>We've seen this model work in <a href="/blog/miami-dating-guide">Miami</a> and <a href="/blog/houston-dating-scene">Houston</a>, two cities with different dating cultures but similar underlying demand for verified, intentional connections. Dallas is next on the roadmap because the market signals are overwhelming: high incomes, high standards, high frustration with existing options, and a willingness to pay for something better.</p>
 
@@ -1765,13 +1777,14 @@ export const posts: BlogPost[] = [
   {
     slug: "what-women-want-from-dating-apps-2026",
     title: "What women actually want from dating apps — and why every app is getting it wrong",
+    seoTitle: "What Women Actually Want From Dating Apps",
     excerpt:
       "78% of dating app users report emotional exhaustion. 48% of women encountered unwanted behavior on major platforms. The data on what women want is clear. The industry just isn't listening.",
     date: "July 28, 2026",
     datePublished: "2026-07-28",
     dateModified: "2026-07-28",
     tag: "Industry",
-    readTime: "10 min",
+    readTime: "13 min",
     metaDescription:
       "What women want from dating apps in 2026: verification, safety, intention clarity. Why 78% are exhausted and what comes next.",
     content: `
@@ -1869,7 +1882,7 @@ export const posts: BlogPost[] = [
 
 <p>Safety is structural. Real identities. Verified photos. A moderation team that reviews flags within hours. Zero tolerance for harassment, explicit unsolicited content, and misrepresentation. When every user is verified, the cost of bad behavior is account loss, not just creating a new anonymous profile five minutes later.</p>
 
-<p>Availability is addressed by the platform's model. On Plus, the free tier for attractive members means the people who are there are genuinely using the platform. They're not paying $50 a month out of sunk-cost obligation. They're there because they want to be, and they're active because the experience is worth their time without costing their money. For generous members, the $49.99 to $99.99 monthly cost filters for people who are serious enough about finding someone to invest in the process.</p>
+<p>Availability is addressed by the platform's model. On Plus, the free tier for Plus members means the people who are there are genuinely using the platform. They're not paying $50 a month out of sunk-cost obligation. They're there because they want to be, and they're active because the experience is worth their time without costing their money. For established members, the $49.99 to $99.99 monthly cost filters for people who are serious enough about finding someone to invest in the process.</p>
 
 <p><a href="/auth?mode=register">Create your profile</a>. Two minutes. See why the experience feels different from anything else you've tried.</p>
 
@@ -1904,19 +1917,20 @@ export const posts: BlogPost[] = [
   {
     slug: "dating-profile-that-works",
     title: "How to write a dating profile that actually works in 2026",
+    seoTitle: "How to Write a Dating Profile That Works",
     excerpt:
       "Profiles with voice notes get 40% more matches. Bios under 3 sentences outperform long ones. Your first photo matters more than all others combined. Data-backed advice, not generic tips.",
     date: "July 28, 2026",
     datePublished: "2026-07-28",
     dateModified: "2026-07-28",
     tag: "Guides",
-    readTime: "9 min",
+    readTime: "15 min",
     metaDescription:
       "How to write a dating profile that works in 2026. Data-backed tips: photos, bios, prompts, and before-and-after examples.",
     content: `
 <p>Your dating profile is a landing page. It has three seconds to convince someone to stop scrolling and pay attention. Everything you know about making a good first impression in person, the firm handshake, the eye contact, the way you carry yourself, is irrelevant. Online, you are six photos, three prompts, and a bio. That's it. That's all of you, compressed into a rectangle on someone's phone screen while they're sitting on the toilet or waiting for a coffee order.</p>
 
-<p>Most dating advice about profiles is garbage. "Be yourself." "Show your personality." "Don't try too hard." Vague directives that sound wise and help no one. What follows is specific, data-backed guidance on what actually works on Hinge, Bumble, and Plus in 2026. Some of this will contradict advice you've read elsewhere. Good. The other advice isn't working, which is why you're reading this.</p>
+<p>Most dating advice about profiles is garbage. It also tends to ignore <a href="/blog/what-women-want-from-dating-apps-2026">what women consistently report wanting</a> from these platforms. "Be yourself." "Show your personality." "Don't try too hard." Vague directives that sound wise and help no one. What follows is specific, data-backed guidance on what actually works on Hinge, Bumble, and Plus in 2026. Some of this will contradict advice you've read elsewhere. Good. The other advice isn't working, which is why you're reading this.</p>
 
 <h2>Your first photo is your entire profile</h2>
 

@@ -3,16 +3,26 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { useVisitorCity } from "@/lib/markets";
 
 const navLinks = [
   { href: "/discover", label: "Discover" },
-  { href: "/about", label: "About" },
+  { href: "/how-it-works", label: "How It Works" },
   { href: "/safety", label: "Safety" },
   { href: "/blog", label: "Journal" },
 ];
 
 export default function PublicNav({ transparent }: { transparent?: boolean }) {
   const [open, setOpen] = useState(false);
+  const { resolved, isActive, city } = useVisitorCity();
+
+  // Only divert to the waitlist once detection has settled and actively places
+  // the visitor outside a launch market. Unknown location keeps the default
+  // join CTA — an undetected visitor is far more likely to be in-market than
+  // to benefit from being told PLUS isn't available.
+  const divertToWaitlist = resolved && Boolean(city) && !isActive;
+  const ctaHref = divertToWaitlist ? "/waitlist" : "/auth?mode=register";
+  const ctaLabel = divertToWaitlist ? "JOIN WAITLIST" : "JOIN PLUS+";
 
   return (
     <nav className="flex items-center justify-between px-5 md:px-10 lg:px-16 py-5">
@@ -47,22 +57,22 @@ export default function PublicNav({ transparent }: { transparent?: boolean }) {
           Sign In
         </Link>
         <Link
-          href="/auth?mode=register"
+          href={ctaHref}
           className="text-[13px] tracking-wide px-5 py-2.5 font-medium transition-colors hover:opacity-90"
           style={{ background: "var(--accent)", color: "#fff" }}
         >
-          JOIN PLUS+
+          {ctaLabel}
         </Link>
       </div>
 
       {/* Mobile: Join free + hamburger */}
       <div className="flex md:hidden items-center gap-3">
         <Link
-          href="/auth?mode=register"
+          href={ctaHref}
           className="text-[13px] tracking-wide px-4 py-2 font-medium transition-colors hover:opacity-90"
           style={{ background: "var(--accent)", color: "#fff" }}
         >
-          JOIN PLUS+
+          {ctaLabel}
         </Link>
         <button
           onClick={() => setOpen(!open)}

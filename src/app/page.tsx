@@ -48,7 +48,7 @@ export default function LandingPage() {
           "@type": "Organization",
           name: "Plus",
           url: "https://meetyourplus.com",
-          description: "Private dating for people with more to offer. Verified profiles, real privacy, free for attractive members.",
+          description: "Private dating for people with more to offer. Verified profiles, real privacy, free for Plus members.",
           contactPoint: { "@type": "ContactPoint", email: "support@meetyourplus.com", contactType: "customer service" },
         },
         {
@@ -172,7 +172,7 @@ export default function LandingPage() {
               </p>
             </div>
             <div>
-              <p className="text-sm font-medium mb-3" style={{ color: accent }}>Attractive members are always free</p>
+              <p className="text-sm font-medium mb-3" style={{ color: accent }}>Plus members are always free</p>
               <p className="text-sm leading-relaxed" style={{ color: muted }}>
                 Not a trial. Not a limited version. Full access, unlimited messaging,
                 zero cost, forever. We don&apos;t charge both sides.
@@ -196,7 +196,7 @@ export default function LandingPage() {
         <div className="grid md:grid-cols-2">
           {/* Generous */}
           <div className="px-5 md:px-10 lg:px-16 py-14 md:py-24" style={{ borderBottom: "1px solid #E8DDD2", borderRight: "1px solid #E8DDD2" }}>
-            <p className="text-xs uppercase tracking-[0.2em] mb-6" style={{ color: "#8A7E76" }}>For generous members</p>
+            <p className="text-xs uppercase tracking-[0.2em] mb-6" style={{ color: "#8A7E76" }}>For established members</p>
             <h3 style={{ fontFamily: "var(--font-display)", color: "#1A1A1A" }} className="text-xl md:text-2xl leading-snug mb-4">
               Chemistry, and a yacht in Capri.<br />Turns out, you can have it all.
             </h3>
@@ -216,12 +216,12 @@ export default function LandingPage() {
 
           {/* Attractive */}
           <div className="px-5 md:px-10 lg:px-16 py-14 md:py-24">
-            <p className="text-xs uppercase tracking-[0.2em] mb-6" style={{ color: "#8A7E76" }}>For attractive members</p>
+            <p className="text-xs uppercase tracking-[0.2em] mb-6" style={{ color: "#8A7E76" }}>For Plus members</p>
             <h3 style={{ fontFamily: "var(--font-display)", color: "#1A1A1A" }} className="text-xl md:text-2xl leading-snug mb-4">
               Ordinary was never really the plan.
             </h3>
             <p className="text-sm leading-relaxed mb-6 max-w-md" style={{ color: "#6B5E54" }}>
-              Every generous member on Plus has verified their income.
+              Every established member on Plus has verified their income.
               No fake profiles, no games. Set your expectations upfront and
               message anyone for free. A little chase, excellent timing,
               and nowhere else to be.
@@ -307,7 +307,7 @@ export default function LandingPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { step: "01", title: "Say what you want", desc: "Your profile states your expectations clearly. What you're looking for, your lifestyle, what you bring. No ambiguity." },
-              { step: "02", title: "Get verified", desc: "Income verification for generous members. Photo verification for everyone. It takes five minutes and it's worth it." },
+              { step: "02", title: "Get verified", desc: "Income verification for established members. Photo verification for everyone. It takes five minutes and it's worth it." },
               { step: "03", title: "Message anyone", desc: "No waiting for a match. If you like someone's profile, say hello. The best connections start with honest conversation." },
               { step: "04", title: "Meet in person", desc: "Dinner, a weekend trip, whatever works for both of you. Travel mode lets you connect in any city before you arrive." },
             ].map((s) => (
@@ -424,8 +424,8 @@ export default function LandingPage() {
                 Pricing that doesn&apos;t feel like a scam
               </h2>
               <p className="text-sm leading-relaxed max-w-md mb-3" style={{ color: muted }}>
-                Attractive members use Plus completely free — no trial,
-                no catch. Generous members start free too and upgrade when
+                Plus members use Plus completely free — no trial,
+                no catch. Established members start free too and upgrade when
                 they want unlimited messaging.
               </p>
               <p className="text-sm leading-relaxed max-w-md" style={{ color: muted }}>
@@ -577,7 +577,7 @@ export default function LandingPage() {
             Your <span style={{ color: accent }}>plus</span> is waiting.
           </h2>
           <p className="text-[14px] leading-[1.7] mb-12" style={{ color: muted }}>
-            Free for attractive members. Always. Create your profile in two minutes and see who&apos;s near you.
+            Free for Plus members. Always. Create your profile in two minutes and see who&apos;s near you.
           </p>
           <Link
             href="/auth?mode=register"

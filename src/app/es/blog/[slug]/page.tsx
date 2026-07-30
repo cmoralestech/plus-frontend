@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getPostBySlug, getAllSlugs, getRelatedPosts } from "@/lib/blog-es";
+import { languageAlternates } from "@/lib/blog-alternates";
 import PublicNav from "@/components/PublicNav";
 import PublicFooter from "@/components/PublicFooter";
 
@@ -21,17 +22,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = getPostBySlug(slug);
   if (!post) return {};
   return {
-    title: `${post.title} | Plus`,
+    title: `${post.seoTitle ?? post.title} | Plus`,
     description: post.metaDescription,
     alternates: {
       canonical: `https://meetyourplus.com/es/blog/${slug}`,
-      languages: {
-        en: `https://meetyourplus.com/blog/${slug}`,
-        es: `https://meetyourplus.com/es/blog/${slug}`,
-        pt: `https://meetyourplus.com/pt/blog/${slug}`,
-        tr: `https://meetyourplus.com/tr/blog/${slug}`,
-        "x-default": `https://meetyourplus.com/blog/${slug}`,
-      },
+      languages: languageAlternates(slug),
     },
     openGraph: {
       title: post.title,
@@ -39,13 +34,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `https://meetyourplus.com/es/blog/${slug}`,
       type: "article",
       siteName: "Plus",
-      images: [{ url: "https://meetyourplus.com/og-image.png", width: 1200, height: 630, alt: post.title }],
+      // og:image intentionally omitted — ./opengraph-image.tsx generates a per-post card.
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.metaDescription,
-      images: ["https://meetyourplus.com/og-image.png"],
     },
   };
 }

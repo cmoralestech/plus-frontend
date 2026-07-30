@@ -37,12 +37,12 @@ const FAQ_SECTIONS: FaqSection[] = [
       {
         question: "How do I create a profile?",
         answer:
-          "Creating a profile takes about two minutes. Sign up with your email, choose whether you're joining as a successful member or an attractive member, add your photos, write a brief bio, and define your dating preferences. You can start browsing immediately after signing up.",
+          "Creating a profile takes about two minutes. Sign up with your email, choose whether you're joining as an established member or a Plus member, add your photos, write a brief bio, and define your dating preferences. You can start browsing immediately after signing up.",
       },
       {
         question: "What's the difference between a 'successful' and 'attractive' member?",
         answer:
-          "Successful members are established professionals who are looking to meet attractive, ambitious people. They typically offer financial generosity, mentorship, or lifestyle experiences. Attractive members are the compelling individuals they want to meet — people who bring beauty, ambition, personality, and presence to the relationship. Both sides bring value; the labels simply define the dynamic.",
+          "Established members are established professionals who are looking to meet attractive, ambitious people. They typically offer financial generosity, mentorship, or lifestyle experiences. Plus members are the compelling individuals they want to meet — people who bring beauty, ambition, personality, and presence to the relationship. Both sides bring value; the labels simply define the dynamic.",
       },
     ],
   },
@@ -72,12 +72,12 @@ const FAQ_SECTIONS: FaqSection[] = [
       {
         question: "Is Plus safe?",
         answer:
-          "Safety is foundational to Plus. Every member can undergo photo verification to confirm they are who they say they are. Successful members can complete optional income verification. We provide block and report tools, the ability to hide your profile from search, invisible browsing mode, and a dedicated trust and safety team that reviews reports promptly.",
+          "Safety is foundational to Plus. Every member can undergo photo verification to confirm they are who they say they are. Established members can complete optional income verification. We provide block and report tools, the ability to hide your profile from search, invisible browsing mode, and a dedicated trust and safety team that reviews reports promptly.",
       },
       {
         question: "How does verification work?",
         answer:
-          "Photo verification requires you to take a live selfie that matches your profile photos using AI-powered facial recognition. Income verification allows successful members to verify their earnings through secure document upload — tax returns, pay stubs, or bank statements processed by a third-party verification partner. Verified members earn a badge on their profile.",
+          "Photo verification requires you to take a live selfie that matches your profile photos using AI-powered facial recognition. Income verification allows established members to verify their earnings through secure document upload — tax returns, pay stubs, or bank statements processed by a third-party verification partner. Verified members earn a badge on their profile.",
       },
       {
         question: "Can I hide my profile?",
@@ -132,7 +132,7 @@ const FAQ_SECTIONS: FaqSection[] = [
       {
         question: "What is private dating?",
         answer:
-          "Private dating is a form of dating where both parties are upfront about what they bring to the relationship and what they expect in return. Successful members — typically established professionals with significant income — connect with attractive members who offer companionship, charm, and genuine connection. The expectations are discussed openly from the start, eliminating the ambiguity and game-playing that defines traditional dating apps.",
+          "Private dating is a form of dating where both parties are upfront about what they bring to the relationship and what they expect in return. Established members — typically established professionals with significant income — connect with Plus members who offer companionship, charm, and genuine connection. The expectations are discussed openly from the start, eliminating the ambiguity and game-playing that defines traditional dating apps.",
       },
       {
         question: "How is upfront dating different from regular dating?",

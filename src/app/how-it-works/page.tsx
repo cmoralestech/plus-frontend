@@ -27,7 +27,7 @@ const STEPS = [
     number: "01",
     title: "Create your profile",
     description:
-      "Sign up for free in under two minutes. Choose whether you're joining as a successful member or an attractive member, add your best photos, write a short bio that shows your personality, and define your dating preferences — mentorship, travel companion, long-term relationship, or open to anything. Your profile is your first impression, so be honest about what you're looking for. The best connections start with clarity.",
+      "Sign up for free in under two minutes. Choose whether you're joining as an established member or a Plus member, add your best photos, write a short bio that shows your personality, and define your dating preferences — mentorship, travel companion, long-term relationship, or open to anything. Your profile is your first impression, so be honest about what you're looking for. The best connections start with clarity.",
     bullets: [
       "Always free to create, no credit card required",
       "Choose your member type and dating preferences upfront",
@@ -38,7 +38,7 @@ const STEPS = [
     number: "02",
     title: "Get verified",
     description:
-      "Verification is what separates Plus from every other platform. Photo verification uses AI-powered facial recognition to confirm you are who your photos say you are — take a quick selfie and our system matches it in seconds. Successful members can also complete income verification by securely uploading tax documents, pay stubs, or bank statements through our third-party verification partner. Verified members earn a badge that builds instant trust and dramatically increases messages received.",
+      "Verification is what separates Plus from every other platform. Photo verification uses AI-powered facial recognition to confirm you are who your photos say you are — take a quick selfie and our system matches it in seconds. Established members can also complete income verification by securely uploading tax documents, pay stubs, or bank statements through our third-party verification partner. Verified members earn a badge that builds instant trust and dramatically increases messages received.",
     bullets: [
       "Photo verification takes under 60 seconds",
       "Income verification is optional but highly recommended — verified profiles get 3x more messages",

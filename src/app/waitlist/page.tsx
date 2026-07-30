@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import PublicNav from "@/components/PublicNav";
 import PublicFooter from "@/components/PublicFooter";
 import api from "@/lib/api";
+import { useVisitorCity } from "@/lib/markets";
 
 const worthJoiningOptions = [
   "Better people", "Verified profiles", "Established matches",
@@ -51,6 +52,46 @@ export default function WaitlistPage() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const { city: detectedCity, isActive: inActiveMarket } = useVisitorCity();
+  const [shareCode, setShareCode] = useState("");
+  const [copied, setCopied] = useState(false);
+  const [attribution, setAttribution] = useState<{
+    referred_by_code?: string;
+    utm_source?: string;
+    utm_medium?: string;
+    utm_campaign?: string;
+  }>({});
+
+  // Read from window rather than useSearchParams so this page doesn't need a
+  // Suspense boundary just to see the inbound referral code.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const next: Record<string, string> = {};
+
+    const ref = params.get("ref");
+    if (ref) next.referred_by_code = ref;
+
+    // UTMCapture stores first-touch attribution; prefer it over the current URL
+    // so a referral shared into a campaign still credits the original source.
+    try {
+      const stored = JSON.parse(localStorage.getItem("utm_data") || "{}");
+      for (const key of ["utm_source", "utm_medium", "utm_campaign"] as const) {
+        const value = params.get(key) || stored[key];
+        if (value) next[key] = value;
+      }
+      if (!next.referred_by_code && stored.ref) next.referred_by_code = stored.ref;
+    } catch {
+      // Malformed localStorage shouldn't block someone joining the waitlist.
+    }
+
+    setAttribution(next);
+  }, []);
+
+  // Prefill the city so screen 1 is usually a confirmation, not a typing task.
+  useEffect(() => {
+    if (!detectedCity) return;
+    setForm((prev) => (prev.city ? prev : { ...prev, city: detectedCity }));
+  }, [detectedCity]);
 
   const [form, setForm] = useState({
     city: "",
@@ -93,7 +134,8 @@ export default function WaitlistPage() {
     setError("");
     setSubmitting(true);
     try {
-      await api.post("/api/waitlist/", {
+      const res = await api.post("/api/waitlist/", {
+        ...attribution,
         city: form.city,
         zip_code: form.zip_code || null,
         worth_joining: form.worth_joining.length ? form.worth_joining : null,
@@ -111,6 +153,7 @@ export default function WaitlistPage() {
         instagram: form.instagram || null,
         how_heard: form.how_heard || null,
       });
+      setShareCode(res.data?.share_code || "");
       setSubmitted(true);
     } catch (err: any) {
       setError(err.response?.data?.detail || "Something went wrong. Please try again.");
@@ -129,6 +172,23 @@ export default function WaitlistPage() {
   const totalSteps = 6;
 
   if (submitted) {
+    // Falls back to the plain waitlist URL if the API didn't return a code, so
+    // the success screen never renders a broken or identifying link.
+    const shareUrl = shareCode
+      ? `https://meetyourplus.com/waitlist?ref=${shareCode}`
+      : "https://meetyourplus.com/waitlist";
+    const shareMessage = `Plus isn't in ${form.city} yet. I just joined the waitlist to help change that — you should too: ${shareUrl}`;
+
+    const copyShareUrl = async () => {
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch {
+        // Clipboard can be blocked; the input is selectable as a fallback.
+      }
+    };
+
     return (
       <div className="min-h-screen bg-background text-foreground flex flex-col">
         <PublicNav />
@@ -154,16 +214,40 @@ export default function WaitlistPage() {
               <div className="flex items-center gap-2">
                 <input
                   readOnly
-                  value={`meetyourplus.com/waitlist?ref=${form.email.split("@")[0]}`}
+                  aria-label="Your referral link"
+                  value={shareUrl.replace("https://", "")}
                   className="flex-1 px-3 py-2.5 bg-background border border-card-border rounded-lg text-sm text-muted"
                 />
                 <button
-                  onClick={() => navigator.clipboard.writeText(`https://meetyourplus.com/waitlist?ref=${form.email.split("@")[0]}`)}
-                  className="px-4 py-2.5 text-sm font-medium rounded-lg transition-colors"
+                  onClick={copyShareUrl}
+                  className="px-4 py-2.5 text-sm font-medium rounded-lg transition-colors shrink-0"
                   style={{ background: "var(--accent)", color: "#fff" }}
                 >
-                  Copy
+                  {copied ? "Copied" : "Copy"}
                 </button>
+              </div>
+
+              <div className="flex flex-wrap gap-2 mt-3">
+                <a
+                  href={`sms:?&body=${encodeURIComponent(shareMessage)}`}
+                  className="px-3 py-1.5 rounded-full border border-card-border text-xs font-medium hover:border-muted transition-colors"
+                >
+                  Text it
+                </a>
+                <a
+                  href={`https://wa.me/?text=${encodeURIComponent(shareMessage)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded-full border border-card-border text-xs font-medium hover:border-muted transition-colors"
+                >
+                  WhatsApp
+                </a>
+                <a
+                  href={`mailto:?subject=${encodeURIComponent(`Plus is coming to ${form.city}`)}&body=${encodeURIComponent(shareMessage)}`}
+                  className="px-3 py-1.5 rounded-full border border-card-border text-xs font-medium hover:border-muted transition-colors"
+                >
+                  Email
+                </a>
               </div>
             </div>
 
@@ -185,9 +269,20 @@ export default function WaitlistPage() {
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="font-display text-2xl md:text-3xl mb-2">
-              Plus isn&apos;t in your city yet.<br />
+              {detectedCity
+                ? `Plus isn't in ${detectedCity} yet.`
+                : "Plus isn't in your city yet."}
+              <br />
               <span className="text-accent">Help change that. +</span>
             </h1>
+            {inActiveMarket && (
+              <p className="text-sm text-muted mt-3">
+                Actually — Plus is already live in {detectedCity}.{" "}
+                <Link href="/auth?mode=register" className="text-accent hover:underline">
+                  Skip the list and join now →
+                </Link>
+              </p>
+            )}
             <p className="text-muted text-sm">
               Join the waitlist. We launch where demand is real.
             </p>

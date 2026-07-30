@@ -273,9 +273,9 @@ function AuthForm() {
                           : "border-card-border hover:border-muted"
                       }`}
                     >
-                      <span className="text-sm font-medium block">Successful</span>
+                      <span className="text-sm font-medium block">Established</span>
                       <span className="text-[11px] text-muted mt-0.5 block leading-snug">
-                        I&apos;m established and generous. I&apos;ll verify my income.
+                        I&apos;ve built something. I&apos;ll complete financial verification.
                       </span>
                     </button>
                     <button
@@ -288,9 +288,9 @@ function AuthForm() {
                           : "border-card-border hover:border-muted"
                       }`}
                     >
-                      <span className="text-sm font-medium block">Attractive</span>
+                      <span className="text-sm font-medium block">Plus</span>
                       <span className="text-[11px] text-muted mt-0.5 block leading-snug">
-                        I bring the spark. Always 100% free.
+                        I know what I bring. Always 100% free.
                       </span>
                     </button>
                   </div>

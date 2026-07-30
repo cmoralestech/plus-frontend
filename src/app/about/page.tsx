@@ -45,7 +45,7 @@ export default function AboutPage() {
             people who use them. The private dating community deserved better.
           </p>
           <p>
-            Plus is a platform for adults who know what they want. Successful members — people
+            Plus is a platform for adults who know what they want. Established members — people
             who&apos;ve built wealth, careers, and lifestyles worth sharing — connect with attractive
             members who bring charm, ambition, and companionship. The terms are defined upfront.
             The expectations are clear. No games.

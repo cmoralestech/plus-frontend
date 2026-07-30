@@ -64,8 +64,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
       };
     }),
-    // Spanish blog
-    { url: `${base}/es/blog`, lastModified: CONTENT_UPDATED, changeFrequency: "weekly" as const, priority: 0.7 },
+    // Spanish blog — index only listed once it actually has posts
+    ...(blogSlugsEs.length
+      ? [{ url: `${base}/es/blog`, lastModified: CONTENT_UPDATED, changeFrequency: "weekly" as const, priority: 0.7 }]
+      : []),
     ...blogSlugsEs.map((slug) => {
       const post = getPostBySlugEs(slug);
       return {
@@ -75,8 +77,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.6,
       };
     }),
-    // Portuguese blog
-    { url: `${base}/pt/blog`, lastModified: CONTENT_UPDATED, changeFrequency: "weekly" as const, priority: 0.7 },
+    // Portuguese blog — index only listed once it actually has posts
+    ...(blogSlugsPt.length
+      ? [{ url: `${base}/pt/blog`, lastModified: CONTENT_UPDATED, changeFrequency: "weekly" as const, priority: 0.7 }]
+      : []),
     ...blogSlugsPt.map((slug) => {
       const post = getPostBySlugPt(slug);
       return {
@@ -86,8 +90,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.6,
       };
     }),
-    // Turkish blog
-    { url: `${base}/tr/blog`, lastModified: CONTENT_UPDATED, changeFrequency: "weekly" as const, priority: 0.7 },
+    // Turkish blog — index only listed once it actually has posts
+    ...(blogSlugsTr.length
+      ? [{ url: `${base}/tr/blog`, lastModified: CONTENT_UPDATED, changeFrequency: "weekly" as const, priority: 0.7 }]
+      : []),
     ...blogSlugsTr.map((slug) => {
       const post = getPostBySlugTr(slug);
       return {

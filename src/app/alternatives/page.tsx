@@ -392,7 +392,7 @@ export default function AlternativesPage() {
             { href: "/blog/seeking-arrangement-cost", title: "How Much Does Seeking Cost?", desc: "Full pricing breakdown for 2026" },
             { href: "/blog/why-everyone-leaving-seeking-2026", title: "Why Everyone Is Leaving Seeking", desc: "Price hikes, bans, and the exodus" },
             { href: "/seeking-arrangement-alternative", title: "Seeking Arrangement Alternative", desc: "Why Plus is the #1 replacement" },
-            { href: "/for-sugar-daddies", title: "For Successful Men: Why Plus Is Worth It", desc: "What generous members get on Plus" },
+            { href: "/for-sugar-daddies", title: "For Successful Men: Why Plus Is Worth It", desc: "What established members get on Plus" },
           ].map((link) => (
             <Link key={link.href} href={link.href}
               className="block p-5 border transition-all hover:border-opacity-60"

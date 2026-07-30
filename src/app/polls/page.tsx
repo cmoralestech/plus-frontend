@@ -24,7 +24,7 @@ const polls: PollDef[] = [
     slug: "first-date-who-pays",
     question: "On a sugar first date, who pays?",
     emoji: "💳",
-    options: ["The successful member, always", "Split it like equals", "Whoever asked the other out", "Depends on the vibe"],
+    options: ["The established member, always", "Split it like equals", "Whoever asked the other out", "Depends on the vibe"],
   },
   {
     slug: "allowance-or-experiences",
@@ -54,7 +54,7 @@ const polls: PollDef[] = [
     slug: "first-message",
     question: "Who should send the first message?",
     emoji: "💬",
-    options: ["The successful member", "The attractive member", "Whoever is more interested", "I always send it myself"],
+    options: ["The established member", "The Plus member", "Whoever is more interested", "I always send it myself"],
   },
   {
     slug: "verify-income",

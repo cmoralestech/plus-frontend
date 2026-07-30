@@ -1,8 +1,17 @@
+import { posts } from "@/lib/blog";
+
+export const dynamic = "force-static";
+
 export function GET() {
+  // Generated from the post list so it can't drift out of date.
+  const blogPosts = posts
+    .map((p) => `- ${p.title}: https://meetyourplus.com/blog/${p.slug}`)
+    .join("\n");
+
   const content = `# Plus - Private Dating Platform
 
 ## About
-Plus is a private dating platform for people with more to offer. We connect successful, verified individuals with attractive members through upfront, honest connections. Income and photo verification built in. Free for attractive members. Now open in Miami and Houston.
+Plus is a private dating platform for people with more to offer. We connect financially verified established members with Plus members through upfront, honest connections. Identity and financial verification built in. Free for Plus members. Now open in Miami and Houston.
 
 ## URL
 https://meetyourplus.com
@@ -18,19 +27,10 @@ https://meetyourplus.com
 - Earn (Referral Program): https://meetyourplus.com/earn
 
 ## Blog Posts
-- Why We Built Plus: https://meetyourplus.com/blog/why-we-built-plus
-- Dating in Miami 2026: https://meetyourplus.com/blog/miami-dating-guide
-- Houston Dating Scene: https://meetyourplus.com/blog/houston-dating-scene
-- What Is Private Dating: https://meetyourplus.com/blog/what-is-private-dating
-- Best Dating Apps Miami 2026: https://meetyourplus.com/blog/best-dating-apps-miami-2026
-- Seeking Arrangement Alternatives: https://meetyourplus.com/blog/seeking-arrangement-alternatives-2026
-- How to Find a Sugar Daddy in Miami: https://meetyourplus.com/blog/how-to-find-sugar-daddy-miami
-- Sugar Dating in Miami Guide: https://meetyourplus.com/blog/sugar-dating-miami-guide
-- Luxury Dating vs Matchmaking: https://meetyourplus.com/blog/luxury-dating-vs-matchmaking
-- Brickell Dating Guide: https://meetyourplus.com/blog/dating-brickell-miami-guide
+${blogPosts}
 
 ## Key Facts
-- Pricing: Free for attractive members. Plus $49.99/month. Plus+ $99.99/month.
+- Pricing: Free for Plus members. Plus $49.99/month. Plus+ $99.99/month.
 - Seeking Arrangement charges $274.99/month for Diamond.
 - Features: Income verification, photo verification, travel mode, privacy controls, verified badges.
 - Founded: 2026

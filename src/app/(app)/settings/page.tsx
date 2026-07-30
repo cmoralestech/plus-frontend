@@ -368,7 +368,7 @@ function SettingsContent() {
               <div className="flex items-center justify-between">
                 <dt className="text-muted">Account type</dt>
                 <dd className="font-medium capitalize">
-                  {user?.user_type === "sugar" ? "Successful member" : "Attractive member"}
+                  {user?.user_type === "sugar" ? "Established member" : "Plus member"}
                 </dd>
               </div>
               <div className="flex items-center justify-between">

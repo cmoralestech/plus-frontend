@@ -71,7 +71,7 @@ export default function SwitchFromSeekingPage() {
               },
               {
                 problem: "\"Half the profiles are fake. No way to tell who's real.\"",
-                solution: "Every successful member on Plus can verify their income. Photo verification confirms everyone is who they say they are.",
+                solution: "Every established member on Plus can verify their income. Photo verification confirms everyone is who they say they are.",
               },
               {
                 problem: "\"There's no app and the mobile site is terrible.\"",
@@ -139,7 +139,7 @@ export default function SwitchFromSeekingPage() {
             No credit card to browse.
           </h2>
           <p className="text-muted text-sm mb-8 max-w-md mx-auto">
-            Everyone starts free with 5 messages per day. Successful members
+            Everyone starts free with 5 messages per day. Established members
             upgrade when they&apos;re ready. Cancel anytime.
           </p>
           <Link

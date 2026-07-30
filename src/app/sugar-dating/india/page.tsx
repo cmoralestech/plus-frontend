@@ -388,7 +388,7 @@ export default function IndiaPage() {
           style={{ background: gold, color: dark1 }}>
           Create your free profile
         </Link>
-        <p className="text-xs mt-4" style={{ color: creamMuted }}>No credit card required. Free forever for attractive members.</p>
+        <p className="text-xs mt-4" style={{ color: creamMuted }}>No credit card required. Free forever for Plus members.</p>
       </section>
 
       <PublicFooter />

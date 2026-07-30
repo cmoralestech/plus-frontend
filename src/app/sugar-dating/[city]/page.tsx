@@ -181,7 +181,7 @@ const CITIES: Record<string, CityData> = {
     faqs: [
       { question: "Is sugar dating legal in Los Angeles?", answer: "Yes. Sugar dating is legal in California and throughout the United States. It's a dating relationship between consenting adults. Plus provides a verified, safe platform for people in LA who want clarity about expectations from the start." },
       { question: "What is the average sugar daddy allowance in Los Angeles?", answer: "LA allowances generally range from $3,000 to $8,000 per month. Entertainment industry executives and tech founders on the west side tend to offer at the higher end, while the broader market sits comfortably in the $3K-$5K range." },
-      { question: "Where do sugar daddies hang out in Los Angeles?", answer: "Soho House West Hollywood, The Tower Bar at the Sunset Tower Hotel, and high-end restaurants in Beverly Hills like Spago are all common haunts. On Plus, you skip the bottle service and connect directly with verified, successful members." },
+      { question: "Where do sugar daddies hang out in Los Angeles?", answer: "Soho House West Hollywood, The Tower Bar at the Sunset Tower Hotel, and high-end restaurants in Beverly Hills like Spago are all common haunts. On Plus, you skip the bottle service and connect directly with verified, established members." },
       { question: "Is the LA sugar dating scene competitive?", answer: "LA has a large pool of attractive people, which can make traditional sugar dating sites feel crowded. Plus levels the playing field with verification — both income and photos — so quality connections happen faster and with less noise." },
       { question: "How is sugar dating in LA different from other cities?", answer: "LA's scene is more aesthetics-driven and laid-back than NYC or Miami. Dates tend to be less formal — think PCH drives, sunset dinners, and beach clubs rather than stuffy steakhouses. The entertainment industry influence means image matters, but so does authenticity." },
     ],
@@ -307,7 +307,7 @@ const CITIES: Record<string, CityData> = {
     wealthSectors: "Energy, oil & gas, and healthcare",
     allowanceRange: "$2K - $5K / month",
     sceneDescription:
-      "Houston's sugar dating scene is powered by the energy sector, oil and gas executives, energy traders, and petrochemical engineers with significant means and demanding travel schedules. The city's low cost of living relative to its wealth concentration creates a unique dynamic: successful members can offer more, and attractive members enjoy a higher standard of living. Houston's Southern hospitality adds warmth to every arrangement. Expect upscale steakhouse dinners, gallery openings in the Museum District, and getaways to Galveston.",
+      "Houston's sugar dating scene is powered by the energy sector, oil and gas executives, energy traders, and petrochemical engineers with significant means and demanding travel schedules. The city's low cost of living relative to its wealth concentration creates a unique dynamic: established members can offer more, and Plus members enjoy a higher standard of living. Houston's Southern hospitality adds warmth to every arrangement. Expect upscale steakhouse dinners, gallery openings in the Museum District, and getaways to Galveston.",
     whyReasons: [
       {
         title: "Energy sector wealth",
@@ -403,7 +403,7 @@ const CITIES: Record<string, CityData> = {
       { question: "What is the average sugar daddy allowance in Dubai?", answer: "Allowances in Dubai typically range from AED 8,000 to AED 20,000 per month, with DIFC finance professionals and property developers often on the higher end. Many arrangements also include lifestyle perks like shopping allowances and travel. Plus members in Dubai report that clear expectations set upfront lead to more satisfying relationships." },
       { question: "Where do sugar daddies hang out in Dubai?", answer: "The highest concentration is in DIFC's upscale bars (Zuma, La Petite Maison, Roberto's), the lobby lounges of Downtown hotels like the Address and Armani, and beach clubs along the Palm. Thursday nights are the biggest going-out night given the Friday-Saturday weekend." },
       { question: "How does sugar dating work for expats in Dubai?", answer: "Dubai's sugar dating scene is overwhelmingly expat-driven — both sides are often international transplants, which creates natural common ground. The transient nature of expat life means people are more open to non-traditional arrangements. Plus's travel mode is heavily used by members flying in and out of Dubai regularly." },
-      { question: "Is Plus available in Dubai?", answer: "Yes, Plus is fully available in Dubai and across the UAE. The platform's emphasis on verification, privacy controls, and discreet communication makes it well-suited to the cultural context. Signing up takes under two minutes and is completely free for attractive members." },
+      { question: "Is Plus available in Dubai?", answer: "Yes, Plus is fully available in Dubai and across the UAE. The platform's emphasis on verification, privacy controls, and discreet communication makes it well-suited to the cultural context. Signing up takes under two minutes and is completely free for Plus members." },
     ],
     relatedPosts: [
       { slug: "sugar-dating-for-expats", title: "Sugar Dating for Expats: A Complete Guide" },
@@ -1099,7 +1099,7 @@ const CITIES: Record<string, CityData> = {
       { question: "What is the average sugar daddy allowance in Dallas?", answer: "Dallas allowances typically range from $3,000 to $8,000 per month. Oil and gas executives and finance professionals tend toward the higher end, while tech workers and younger professionals start around $3K-$4K. Dallas's lower cost of living means these numbers deliver serious lifestyle value compared to coastal cities." },
       { question: "Where do sugar daddies hang out in Dallas?", answer: "Uptown rooftop bars like HG Sply Co and The Henry, Highland Park Village restaurants, and steakhouses like Nick & Sam's and Bob's are all prime territory. You'll also find them at Cowboys games in suites and at the Katy Trail Ice House after work. On Plus, you skip the guessing and connect directly with verified members." },
       { question: "Is sugar dating popular in Dallas?", answer: "DFW is one of the fastest-growing sugar dating markets in the US. The combination of oil/gas wealth, finance money, a booming tech sector, and Texas's culture of generosity creates ideal conditions. The metro's massive population (7.5 million+) means the dating pool is deep and active." },
-      { question: "How does Dallas sugar dating compare to Houston?", answer: "Dallas tends to run slightly higher on allowances due to more diverse wealth sources (finance + oil vs. primarily oil in Houston). The culture is also a bit flashier — Uptown Dallas is more about being seen than Houston's River Oaks scene. Houston has more energy-sector concentration; Dallas has more variety in the types of successful members you'll find." },
+      { question: "How does Dallas sugar dating compare to Houston?", answer: "Dallas tends to run slightly higher on allowances due to more diverse wealth sources (finance + oil vs. primarily oil in Houston). The culture is also a bit flashier — Uptown Dallas is more about being seen than Houston's River Oaks scene. Houston has more energy-sector concentration; Dallas has more variety in the types of established members you'll find." },
     ],
     relatedPosts: [
       { slug: "sugar-dating-dallas", title: "Sugar Dating in Dallas: Where to Meet, What to Expect" },
@@ -1185,7 +1185,7 @@ const CITIES: Record<string, CityData> = {
       },
       {
         title: "Less competition than Dallas",
-        body: "Most DFW sugar babies focus on Dallas Uptown. Fort Worth's market is less crowded, which means more attention from generous members and a more personal experience on both sides.",
+        body: "Most DFW sugar babies focus on Dallas Uptown. Fort Worth's market is less crowded, which means more attention from established members and a more personal experience on both sides.",
       },
       {
         title: "Western charm and culture",
@@ -1305,7 +1305,7 @@ const CITIES: Record<string, CityData> = {
       },
       {
         title: "Under-the-radar market",
-        body: "Less competition than Dallas or Austin. Fewer sugar babies means more attention from generous members, and the Southern hospitality culture makes arrangements feel warmer and more personal.",
+        body: "Less competition than Dallas or Austin. Fewer sugar babies means more attention from established members, and the Southern hospitality culture makes arrangements feel warmer and more personal.",
       },
     ],
     restaurants: [
@@ -3532,7 +3532,7 @@ export default async function CityPage({
             [city.allowanceRange, "Typical allowance range"],
             [city.wealthSectors.split(",")[0], "Primary wealth sector"],
             ["Verified", "Income & photo verification"],
-            ["Free", "For attractive members"],
+            ["Free", "For Plus members"],
           ].map(([stat, label]) => (
             <div key={label} className="flex-1 px-5 md:px-10 lg:px-16 py-5 md:py-6 flex items-baseline gap-3">
               <span className="font-display text-xl md:text-2xl text-foreground">{stat}</span>
@@ -3705,9 +3705,9 @@ export default async function CityPage({
           <div className="space-y-5 text-sm text-muted leading-relaxed">
             <p>
               Sugar dating is a form of relationship where both parties are upfront about
-              what they bring to the table and what they expect in return. Successful members —
+              what they bring to the table and what they expect in return. Established members —
               typically established professionals with significant income — connect with
-              attractive members who offer companionship, charm, and genuine connection. The
+              Plus members who offer companionship, charm, and genuine connection. The
               terms are discussed openly from the start: frequency of dates, lifestyle
               expectations, financial arrangements, and boundaries. There is no ambiguity and
               no pretending that dating doesn&apos;t involve an exchange of value.
@@ -3715,9 +3715,9 @@ export default async function CityPage({
             <p>
               This honesty is what separates sugar dating from traditional dating apps, where
               people often hide their true intentions behind vague profiles and endless swiping.
-              On a sugar dating platform, a successful member can state directly that they are
+              On a sugar dating platform, an established member can state directly that they are
               looking for a companion for dinners, travel, and events — and that they are
-              prepared to be generous. An attractive member can state that they value financial
+              prepared to be generous. A Plus member can state that they value financial
               stability, mentorship, and luxury experiences. Both sides save time by being clear
               from the first interaction.
             </p>

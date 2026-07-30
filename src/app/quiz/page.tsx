@@ -50,8 +50,8 @@ export default function QuizPage() {
           What type of dater are you?
         </h1>
         <p className="text-muted text-sm leading-relaxed mb-2">
-          7 questions. 90 seconds. No sign-up required. Whether you&apos;re a attractive member
-          wondering what kind of arrangement actually fits you, or a generous member
+          7 questions. 90 seconds. No sign-up required. Whether you&apos;re a Plus member
+          wondering what kind of arrangement actually fits you, or a established member
           trying to figure out why your last three first dates went nowhere — this
           quiz will tell you what you actually want (even if you won&apos;t admit it).
         </p>

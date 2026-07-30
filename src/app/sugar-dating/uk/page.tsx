@@ -306,7 +306,7 @@ export default function UKPage() {
             <h3 className="text-lg font-medium mb-2">Half the price of legacy platforms</h3>
             <p className="text-sm leading-relaxed" style={{ color: creamMuted }}>
               Seeking charges over &pound;90/month for Premium. Plus Diamond is &pound;79.99/month
-              with all features. Attractive members are free forever. You get more for less.
+              with all features. Plus members are free forever. You get more for less.
             </p>
           </div>
         </div>
@@ -369,7 +369,7 @@ export default function UKPage() {
           style={{ background: gold, color: dark1 }}>
           Create your free profile
         </Link>
-        <p className="text-xs mt-4" style={{ color: creamMuted }}>No credit card required. Free forever for attractive members.</p>
+        <p className="text-xs mt-4" style={{ color: creamMuted }}>No credit card required. Free forever for Plus members.</p>
       </section>
 
       <PublicFooter />

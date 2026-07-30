@@ -87,7 +87,7 @@ export default function JoinPage() {
                 className="text-sm leading-relaxed"
                 style={{ color: creamMuted }}
               >
-                Income verification for successful members, photo verification
+                Income verification for established members, photo verification
                 for everyone. You know who you&apos;re talking to.
               </p>
             </div>
