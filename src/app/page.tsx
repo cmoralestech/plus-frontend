@@ -6,6 +6,7 @@ import { useAuthStore } from "@/lib/store";
 import Link from "next/link";
 import PublicNav from "@/components/PublicNav";
 import PublicFooter from "@/components/PublicFooter";
+import { useVisitorCity } from "@/lib/markets";
 
 const bg = "#141210";
 const card = "#1e1b17";
@@ -16,29 +17,65 @@ const accentLight = "#A52222";
 const muted = "#a8a090";
 const mutedBg = "#252219";
 
+// A recurring brand device: standards and intention, shown rather than stated.
+// Rotates so the homepage reads differently on a second visit.
 const conversations = [
-  { text: "He invited me over at 11.", time: "11:02 PM", sent: false },
-  { text: "And?", time: "11:02 PM", sent: true },
-  { text: "I went to Pacha instead.", time: "11:03 PM", sent: false },
-  { text: "That's the energy.", time: "11:03 PM", sent: true },
+  [
+    { text: "He asked what I wanted to do.", time: "9:14 PM", sent: false },
+    { text: "And?", time: "9:14 PM", sent: true },
+    { text: "Then actually planned it.", time: "9:15 PM", sent: false },
+    { text: "Oh. Keep him.", time: "9:15 PM", sent: true },
+  ],
+  [
+    { text: "He's 43.", time: "11:02 PM", sent: false },
+    { text: "And?", time: "11:02 PM", sent: true },
+    { text: "He has a reservation.", time: "11:03 PM", sent: false },
+    { text: "Finally.", time: "11:03 PM", sent: true },
+  ],
+  [
+    { text: "She's younger than my usual type.", time: "8:40 PM", sent: false },
+    { text: "And?", time: "8:40 PM", sent: true },
+    { text: "She's also smarter than my usual type.", time: "8:41 PM", sent: false },
+    { text: "There it is.", time: "8:41 PM", sent: true },
+  ],
 ];
 
 const profiles = [
-  { name: "MIA", age: 25, city: "Miami", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=533&fit=crop&q=80" },
-  { name: "ALEX", age: 33, city: "New York", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=533&fit=crop&q=80" },
-  { name: "LILY", age: 24, city: "London", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=533&fit=crop&q=80" },
-  { name: "ADAM", age: 36, city: "Houston", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=533&fit=crop&q=80" },
+  { name: "MIA", age: 27, work: "Art Director", city: "Miami", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=533&fit=crop&q=80" },
+  { name: "ALEX", age: 38, work: "Founder", city: "New York", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=533&fit=crop&q=80" },
+  { name: "LILY", age: 26, work: "Stylist", city: "London", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=533&fit=crop&q=80" },
+  { name: "ADAM", age: 44, work: "Hospitality", city: "Houston", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=533&fit=crop&q=80" },
 ];
+
+const plusTags = ["Dating", "Long-term", "Travel", "Experiences", "Generous dating", "Something casual"];
 
 export default function LandingPage() {
   const { user, loading, checkAuth } = useAuthStore();
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
+  const [convoIndex, setConvoIndex] = useState(0);
+  const { city: visitorCity, resolved: cityResolved, isActive: inActiveMarket } = useVisitorCity();
 
   useEffect(() => { checkAuth(); setMounted(true); }, [checkAuth]);
   useEffect(() => {
     if (!loading && user) router.push(user.has_profile ? "/discover" : "/onboarding");
   }, [loading, user, router]);
+
+  // Rotation starts after mount so server and client render the same first frame.
+  useEffect(() => {
+    const id = setInterval(
+      () => setConvoIndex((i) => (i + 1) % conversations.length),
+      7000
+    );
+    return () => clearInterval(id);
+  }, []);
+
+  // Someone outside a launch market shouldn't be sent to a signup they can't
+  // use. Only divert once detection has actually placed them somewhere.
+  const outOfMarket = cityResolved && Boolean(visitorCity) && !inActiveMarket;
+  const joinHref = outOfMarket ? "/waitlist" : "/auth?mode=register";
+  const joinLabel = outOfMarket ? "Join the waitlist" : "Find your +";
+  const activeConvo = conversations[convoIndex];
 
   return (
     <div className="min-h-screen" style={{ background: bg, color: fg }}>
@@ -91,23 +128,42 @@ export default function LandingPage() {
                 is out there.<span style={{ color: accent }}>+</span>
               </h1>
               <p className="text-white/50 text-base md:text-lg leading-relaxed max-w-lg mb-10">
-                Private dating for people with more to offer. Less guessing, better alignment. Accepting members now in Miami + Houston.
+                Dating for people who know what they want — and what they bring.
+                Better alignment. Real people. No pretending.
+                <span className="block mt-2 text-white/40">
+                  Now accepting members in Miami + Houston.
+                </span>
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
-                  href="/auth?mode=register"
+                  href={joinHref}
                   className="inline-flex items-center justify-center px-10 py-4 text-sm tracking-wide font-medium transition-colors hover:opacity-90"
                   style={{ background: accent, color: "#fff" }}
                 >
-                  Join free
+                  {joinLabel}
                 </Link>
                 <Link
                   href="/discover"
                   className="inline-flex items-center justify-center px-10 py-4 text-sm text-white/50 hover:text-white transition-colors"
                 >
-                  See who&apos;s on &rarr;
+                  See who&apos;s here &rarr;
                 </Link>
               </div>
+              {outOfMarket ? (
+                <p className="text-[13px] text-white/50 mt-5">
+                  Plus isn&apos;t in {visitorCity} yet.{" "}
+                  <Link href="/waitlist" className="underline" style={{ color: "#fff" }}>
+                    Help change that. <span style={{ color: accent }}>+</span>
+                  </Link>
+                </p>
+              ) : (
+                <p className="text-[13px] text-white/40 mt-5">
+                  Not in Miami or Houston?{" "}
+                  <Link href="/waitlist" className="underline hover:text-white transition-colors">
+                    Join the waitlist &rarr;
+                  </Link>
+                </p>
+              )}
             </div>
 
             {/* Chat bubbles */}
@@ -123,9 +179,9 @@ export default function LandingPage() {
                 Real Conversations
               </p>
               <div className="flex flex-col gap-2">
-                {conversations.map((msg, i) => (
+                {activeConvo.map((msg, i) => (
                   <div
-                    key={i}
+                    key={`${convoIndex}-${i}`}
                     className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}
                     style={{
                       opacity: mounted ? 1 : 0,
@@ -159,31 +215,36 @@ export default function LandingPage() {
       <section className="px-5 md:px-10 lg:px-16 py-16 md:py-28">
         <div className="max-w-7xl">
           <h2 style={{ fontFamily: "var(--font-display)" }} className="text-2xl md:text-4xl leading-snug max-w-2xl mb-16 md:mb-20">
-            Most dating apps charge you $110+ a month and can&apos;t even verify that the person you&apos;re talking to is real.
+            Chemistry can&apos;t be verified. Fortunately, some things can.<span style={{ color: accent }}> +</span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8 md:gap-12">
             <div>
-              <p className="text-sm font-medium mb-3" style={{ color: accent }}>Verification built in</p>
+              <p className="text-sm font-medium mb-3" style={{ color: accent }}>
+                Real people. Actually verified.
+              </p>
               <p className="text-sm leading-relaxed" style={{ color: muted }}>
-                Income verification and photo verification are available for every
-                member. Verified badges show you who&apos;s real before
-                you send the first message.
+                Identity verification helps keep fake profiles, impersonators, and
+                bots out of the community.
               </p>
             </div>
             <div>
-              <p className="text-sm font-medium mb-3" style={{ color: accent }}>Plus members are always free</p>
+              <p className="text-sm font-medium mb-3" style={{ color: accent }}>
+                Success shouldn&apos;t be self-reported.
+              </p>
               <p className="text-sm leading-relaxed" style={{ color: muted }}>
-                Not a trial. Not a limited version. Full access, unlimited messaging,
-                zero cost, forever. We don&apos;t charge both sides.
+                Established members complete financial verification before receiving
+                verified status. Exact financial information stays private.
               </p>
             </div>
             <div>
-              <p className="text-sm font-medium mb-3" style={{ color: accent }}>Better alignment, less noise</p>
+              <p className="text-sm font-medium mb-3" style={{ color: accent }}>
+                Say what you actually want.
+              </p>
               <p className="text-sm leading-relaxed" style={{ color: muted }}>
-                Everyone on Plus is upfront about what they want. No guessing games,
-                no ghosting after three messages. The best part of getting ready?
-                Knowing the date is actually worth it.
+                Lifestyle. Generosity. Chemistry. Ambition. Something serious — or
+                something less serious. Plus makes room for the things that actually
+                matter to you.
               </p>
             </div>
           </div>
@@ -198,19 +259,20 @@ export default function LandingPage() {
           <div className="px-5 md:px-10 lg:px-16 py-14 md:py-24" style={{ borderBottom: "1px solid #E8DDD2", borderRight: "1px solid #E8DDD2" }}>
             <p className="text-xs uppercase tracking-[0.2em] mb-6" style={{ color: "#8A7E76" }}>For established members</p>
             <h3 style={{ fontFamily: "var(--font-display)", color: "#1A1A1A" }} className="text-xl md:text-2xl leading-snug mb-4">
-              Chemistry, and a yacht in Capri.<br />Turns out, you can have it all.
+              You&apos;ve built the life. Find someone who adds to it.
+              <span style={{ color: accent }}> +</span>
             </h3>
             <p className="text-sm leading-relaxed mb-6 max-w-md" style={{ color: "#6B5E54" }}>
-              Verify your income once, and every person you match with knows
-              you&apos;re real before the conversation starts. Travel mode,
-              privacy controls, and people who respect your time.
+              Meet ambitious, attractive people who are upfront about what
+              they&apos;re looking for — and interested in what you bring to the
+              table.
             </p>
             <Link
-              href="/auth?mode=register"
+              href={joinHref}
               className="inline-flex items-center justify-center px-8 py-3.5 text-sm tracking-wide font-medium transition-colors hover:opacity-90"
               style={{ background: "#1A1A1A", color: "#F5EDE4" }}
             >
-              Create your profile
+              {joinLabel}
             </Link>
           </div>
 
@@ -218,20 +280,19 @@ export default function LandingPage() {
           <div className="px-5 md:px-10 lg:px-16 py-14 md:py-24">
             <p className="text-xs uppercase tracking-[0.2em] mb-6" style={{ color: "#8A7E76" }}>For Plus members</p>
             <h3 style={{ fontFamily: "var(--font-display)", color: "#1A1A1A" }} className="text-xl md:text-2xl leading-snug mb-4">
-              Ordinary was never really the plan.
+              Your standards aren&apos;t a personality flaw.
+              <span style={{ color: accent }}> +</span>
             </h3>
             <p className="text-sm leading-relaxed mb-6 max-w-md" style={{ color: "#6B5E54" }}>
-              Every established member on Plus has verified their income.
-              No fake profiles, no games. Set your expectations upfront and
-              message anyone for free. A little chase, excellent timing,
-              and nowhere else to be.
+              Meet established, verified people who value generosity, chemistry,
+              and actually making a plan.
             </p>
             <Link
-              href="/auth?mode=register"
+              href={joinHref}
               className="inline-flex items-center justify-center px-8 py-3.5 text-sm tracking-wide font-medium transition-colors"
               style={{ border: "1px solid #1A1A1A", color: "#1A1A1A" }}
             >
-              Join free — it stays free
+              {outOfMarket ? "Join the waitlist" : "Join free — it stays free"}
             </Link>
           </div>
         </div>
@@ -254,12 +315,11 @@ export default function LandingPage() {
                   fontWeight: 400,
                 }}
               >
-                Miami today,<br />
-                who&apos;s taking<br />
-                you <span style={{ color: accent }}>tonight</span>?
+                Miami tonight.<br />
+                Who&apos;s your <span style={{ color: accent }}>+</span>?
               </h2>
-              <Link href="/auth?mode=register" className="inline-flex items-center gap-2 text-[13px] group" style={{ color: accent }}>
-                See who&apos;s in town <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
+              <Link href="/discover" className="inline-flex items-center gap-2 text-[13px] group" style={{ color: accent }}>
+                See who&apos;s here <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
               </Link>
             </div>
 
@@ -281,7 +341,9 @@ export default function LandingPage() {
                     <p className="text-white text-[13px] font-medium">
                       {p.name}, {p.age}<span style={{ color: accent }}> +</span>
                     </p>
-                    <p className="text-white/50 text-[11px] mt-0.5">{p.city}</p>
+                    <p className="text-white/50 text-[11px] mt-0.5">
+                      {p.work} &middot; {p.city}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -296,20 +358,20 @@ export default function LandingPage() {
         <div className="px-5 md:px-10 lg:px-16 py-16 md:py-28 max-w-7xl">
           <div className="max-w-lg mb-12 md:mb-16">
             <h2 style={{ fontFamily: "var(--font-display)" }} className="text-2xl md:text-3xl leading-snug mb-4">
-              Set up takes two minutes. We&apos;re not exaggerating.
+              Two minutes. Tell us what matters.<span style={{ color: accent }}> +</span>
             </h2>
             <p className="text-sm leading-relaxed" style={{ color: muted }}>
-              No 40-question personality survey. No algorithms deciding who
-              you&apos;re allowed to talk to.
+              No personality test. No endless questionnaire. Create your profile,
+              set your preferences, verify, and start discovering people.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Say what you want", desc: "Your profile states your expectations clearly. What you're looking for, your lifestyle, what you bring. No ambiguity." },
-              { step: "02", title: "Get verified", desc: "Income verification for established members. Photo verification for everyone. It takes five minutes and it's worth it." },
-              { step: "03", title: "Message anyone", desc: "No waiting for a match. If you like someone's profile, say hello. The best connections start with honest conversation." },
-              { step: "04", title: "Meet in person", desc: "Dinner, a weekend trip, whatever works for both of you. Travel mode lets you connect in any city before you arrive." },
+              { step: "01", title: "Say what you want", desc: "Tell us what you're looking for, what you value, and what kind of relationship fits your life." },
+              { step: "02", title: "Get verified", desc: "Identity verification for members. Financial verification for established members." },
+              { step: "03", title: "Discover your +", desc: "Browse freely. If someone interests you, say hello. No waiting for an algorithm to decide you're compatible." },
+              { step: "04", title: "Going somewhere? +", desc: "Find someone worth taking with you. Art Week in Miami. F1 in Monaco. Cannes. Wimbledon. Ibiza. Aspen. Capri. Add where you're headed — or where you want to go — and find a + who wants to be there too." },
             ].map((s) => (
               <div key={s.step}>
                 <p className="text-xs tracking-[0.2em] mb-3" style={{ color: accent }}>{s.step}</p>
@@ -340,10 +402,12 @@ export default function LandingPage() {
               WHAT&apos;S YOUR <span style={{ color: accent }}>PLUS</span>?
             </h2>
             <p className="text-[15px] leading-[1.7] mb-10" style={{ color: muted }}>
-              Tell us what you&apos;re looking for. Dating, travel, dinner, experiences — or all of the above. Your Plus is whatever you want it to be.
+              There isn&apos;t one right kind of relationship. Tell us what
+              you&apos;re actually looking for and find someone looking for
+              something compatible.
             </p>
             <div className="flex flex-wrap gap-2.5">
-              {["Dating", "Travel", "Dinner", "Experiences", "Ongoing", "Tonight"].map((cat) => (
+              {plusTags.map((cat) => (
                 <span
                   key={cat}
                   className="px-5 py-2.5 text-[13px] transition-all cursor-pointer"
@@ -392,7 +456,7 @@ export default function LandingPage() {
                     <span style={{ color: accent }}>PLUS</span>?
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    {["Dating", "Travel", "Dinner", "Experiences", "Ongoing", "Tonight"].map((cat) => (
+                    {plusTags.map((cat) => (
                       <span
                         key={cat}
                         className="px-3.5 py-1.5 text-[11px] text-white/60 rounded-full"
@@ -421,15 +485,13 @@ export default function LandingPage() {
           <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-20 items-center">
             <div>
               <h2 style={{ fontFamily: "var(--font-display)" }} className="text-2xl md:text-3xl leading-snug mb-4">
-                Pricing that doesn&apos;t feel like a scam
+                Pay for access. Not attention.<span style={{ color: accent }}> +</span>
               </h2>
-              <p className="text-sm leading-relaxed max-w-md mb-3" style={{ color: muted }}>
-                Plus members use Plus completely free — no trial,
-                no catch. Established members start free too and upgrade when
-                they want unlimited messaging.
-              </p>
               <p className="text-sm leading-relaxed max-w-md" style={{ color: muted }}>
-                For context: Seeking Arrangement charges $274.99/month for Diamond.
+                Plus members use Plus completely free — no trial, no catch.
+                Established members start free too and upgrade when they want
+                unlimited messaging. No boosts, no credits, nothing that charges
+                you to be seen.
               </p>
               <Link href="/pricing" className="inline-block mt-6 text-sm transition-colors" style={{ color: accent }}>
                 Full pricing breakdown &rarr;
@@ -469,11 +531,8 @@ export default function LandingPage() {
                 color: "#1A1A1A",
               }}
             >
-              The best part of getting ready? Knowing the date is actually <span style={{ color: accent }}>worth it</span>.
+              The best part of getting ready? Knowing the date is actually <span style={{ color: accent }}>worth it</span>.<span style={{ color: accent }}> +</span>
             </blockquote>
-            <p className="text-[13px]" style={{ color: "#8A7E76" }}>
-              — Sarah, 26, Miami
-            </p>
           </div>
 
           <div className="hidden lg:grid grid-cols-3 gap-2.5">
@@ -491,73 +550,35 @@ export default function LandingPage() {
       </section>
 
 
-      {/* ═══ REFERRAL ═══ */}
-      <section className="px-5 md:px-10 lg:px-16 py-14 md:py-24" style={{ background: "#F5EDE4", color: "#1A1A1A" }}>
-        <div className="max-w-7xl grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-20 items-center">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] mb-5" style={{ color: "#8A7E76" }}>Referral Program</p>
-            <h2 style={{ fontFamily: "var(--font-display)", color: "#1A1A1A" }} className="text-2xl md:text-3xl leading-snug mb-4">
-              Introduce people you believe in.<br />Earn when they subscribe.
-            </h2>
-            <p className="text-sm leading-relaxed mb-6 max-w-md" style={{ color: "#6B5E54" }}>
-              When someone joins Plus through your personal referral link and subscribes, you receive a recurring commission of $5–$12 per month for the duration of their membership. There is no cap on earnings.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                href="/auth?mode=register"
-                className="inline-flex items-center justify-center px-8 py-3.5 text-sm tracking-wide font-medium transition-colors hover:opacity-90"
-                style={{ background: "#1A1A1A", color: "#F5EDE4" }}
-              >
-                Learn more
-              </Link>
-              <Link
-                href="/earn"
-                className="inline-flex items-center justify-center px-8 py-3.5 text-sm transition-colors"
-                style={{ color: "#6B5E54" }}
-              >
-                View commission tiers &rarr;
-              </Link>
-            </div>
-          </div>
-          <div className="space-y-3">
-            {[
-              { scenario: "Personal recommendations", result: "5 members subscribe", earning: "$25–$60/mo" },
-              { scenario: "Social media audience", result: "30 members subscribe", earning: "$150–$360/mo" },
-              { scenario: "Content partnership", result: "100 members subscribe", earning: "$750–$1,200/mo" },
-            ].map((s) => (
-              <div key={s.scenario} className="p-4 rounded-lg" style={{ background: "#FFFBF7", border: "1px solid #E8DDD2" }}>
-                <p className="text-xs mb-1" style={{ color: "#8A7E76" }}>{s.scenario}</p>
-                <p className="text-sm mb-1" style={{ color: "#1A1A1A" }}>{s.result}</p>
-                <p className="text-lg" style={{ fontFamily: "var(--font-display)", color: accent }}>{s.earning}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-
-      {/* ═══ CITIES ═══ */}
+      {/* ═══ EXPANSION FUNNEL ═══ */}
       <section className="px-5 md:px-10 lg:px-16 py-16 md:py-28 text-center">
-        <p className="text-xs uppercase tracking-[0.2em] mb-6" style={{ color: muted }}>Now accepting members</p>
+        <p className="text-xs uppercase tracking-[0.2em] mb-6" style={{ color: muted }}>
+          Where should Plus go next?<span style={{ color: accent }}> +</span>
+        </p>
         <h2 style={{ fontFamily: "var(--font-display)" }} className="text-3xl md:text-5xl leading-snug mb-4">
-          Miami <span style={{ color: accent }}>+</span> Houston
+          Miami <span style={{ color: accent }}>+</span> Houston are open.
         </h2>
-        <p className="text-sm mb-8" style={{ color: muted }}>More destinations coming soon. Not in Miami or Houston? Join the waitlist and help bring Plus to your city.</p>
+        <p className="text-sm mb-8 max-w-xl mx-auto leading-relaxed" style={{ color: muted }}>
+          Tell us where you are — and what you&apos;re looking for. We&apos;ll use
+          member demand to decide where Plus opens next.
+        </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
-            href="/auth?mode=register"
+            href="/waitlist"
             className="inline-flex items-center justify-center px-10 py-4 text-sm tracking-wide font-medium transition-colors hover:opacity-90"
             style={{ background: accent, color: "#fff" }}
           >
-            JOIN PLUS+
+            PUT MY CITY ON THE LIST
           </Link>
-          <Link
-            href="/waitlist"
-            className="inline-flex items-center justify-center px-10 py-4 text-sm tracking-wide font-medium transition-colors"
-            style={{ border: `1px solid ${cardBorder}`, color: fg }}
-          >
-            Join the waitlist &rarr;
-          </Link>
+          {!outOfMarket && (
+            <Link
+              href="/auth?mode=register"
+              className="inline-flex items-center justify-center px-10 py-4 text-sm tracking-wide font-medium transition-colors"
+              style={{ border: `1px solid ${cardBorder}`, color: fg }}
+            >
+              Find your + &rarr;
+            </Link>
+          )}
         </div>
       </section>
 
@@ -580,11 +601,11 @@ export default function LandingPage() {
             Free for Plus members. Always. Create your profile in two minutes and see who&apos;s near you.
           </p>
           <Link
-            href="/auth?mode=register"
+            href={joinHref}
             className="inline-flex items-center justify-center px-10 py-4 text-sm tracking-wide font-medium transition-colors hover:opacity-90"
             style={{ background: accent, color: "#fff" }}
           >
-            JOIN PLUS+
+            {joinLabel}
           </Link>
         </div>
       </section>
