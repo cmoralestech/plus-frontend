@@ -290,11 +290,11 @@ export default function SeekingAlternativePage() {
         <div className="grid md:grid-cols-2 gap-3">
           {[
             { href: "/alternatives", title: "All Seeking Alternatives Compared", desc: "Side-by-side comparison table" },
-            { href: "/blog/seeking-arrangement-cost", title: "How Much Does Seeking Cost in 2026?", desc: "Full pricing breakdown" },
-            { href: "/blog/why-everyone-leaving-seeking-2026", title: "Why Everyone Is Leaving Seeking", desc: "Price hikes, bans, and the exodus" },
-            { href: "/blog/seeking-arrangement-account-banned", title: "Seeking Account Banned?", desc: "What to do next" },
-            { href: "/blog/sugardaddymeet-vs-arranged", title: "SugarDaddyMeet vs Plus", desc: "Head-to-head comparison" },
-            { href: "/blog/secret-benefits-vs-arranged", title: "Secret Benefits vs Plus", desc: "Credits vs subscription" },
+            { href: "/alternatives", title: "How Much Does Seeking Cost in 2026?", desc: "Full pricing breakdown" },
+            { href: "/blog/seeking-arrangement-alternatives-2026", title: "Why Everyone Is Leaving Seeking", desc: "Price hikes, bans, and the exodus" },
+            { href: "/switch-from-seeking", title: "Seeking Account Banned?", desc: "What to do next" },
+            { href: "/alternatives", title: "SugarDaddyMeet vs Plus", desc: "Head-to-head comparison" },
+            { href: "/alternatives", title: "Secret Benefits vs Plus", desc: "Credits vs subscription" },
             { href: "/for-sugar-daddies", title: "For Successful Men: Why Plus Is Worth It", desc: "What established members get on Plus" },
           ].map((link) => (
             <Link key={link.href} href={link.href}

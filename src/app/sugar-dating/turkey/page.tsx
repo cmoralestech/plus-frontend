@@ -360,8 +360,8 @@ export default function TurkeyPage() {
             { href: "/tr/blog", title: "Turkish Blog", desc: "Sugar dating guides in Turkish" },
             { href: "/sugar-dating/dubai", title: "Sugar Dating in Dubai", desc: "The Gulf hub, a short flight from Istanbul" },
             { href: "/sugar-dating/london", title: "Sugar Dating in London", desc: "Europe\u2019s largest sugar dating market" },
-            { href: "/blog/sugar-daddy-apps", title: "Best Sugar Daddy Apps in 2026", desc: "Platform comparison guide" },
-            { href: "/blog/sugar-baby-allowance-guide", title: "Sugar Baby Allowance Guide", desc: "What to expect worldwide" },
+            { href: "/alternatives", title: "Best Sugar Daddy Apps in 2026", desc: "Platform comparison guide" },
+            { href: "/allowance-calculator", title: "Sugar Baby Allowance Guide", desc: "What to expect worldwide" },
             { href: "/seeking-arrangement-alternative", title: "Best Seeking Alternative", desc: "Why members are switching to Plus" },
           ].map((link) => (
             <Link key={link.href} href={link.href}

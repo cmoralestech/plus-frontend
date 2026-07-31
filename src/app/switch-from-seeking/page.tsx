@@ -163,11 +163,11 @@ export default function SwitchFromSeekingPage() {
           <h2 className="font-display text-xl mb-6">Related reading</h2>
           <div className="space-y-3">
             {[
-              { title: "Seeking banned your account? Here's what to do", href: "/blog/seeking-arrangement-unbanned" },
-              { title: "Complete list of Seeking's banned words", href: "/blog/seeking-arrangement-banned-words" },
-              { title: "How to get a refund from Seeking after a ban", href: "/blog/seeking-arrangement-refund-after-ban" },
-              { title: "Seeking vs Plus: full comparison", href: "/blog/seeking-arrangement-vs-arranged" },
-              { title: "Why people are leaving Seeking", href: "/blog/why-i-left-seeking-arrangement" },
+              { title: "Seeking banned your account? Here's what to do", href: "/switch-from-seeking" },
+              { title: "Complete list of Seeking's banned words", href: "/switch-from-seeking" },
+              { title: "How to get a refund from Seeking after a ban", href: "/switch-from-seeking" },
+              { title: "Seeking vs Plus: full comparison", href: "/seeking-arrangement-alternative" },
+              { title: "Why people are leaving Seeking", href: "/blog/seeking-arrangement-alternatives-2026" },
             ].map((link) => (
               <Link
                 key={link.href}

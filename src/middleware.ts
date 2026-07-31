@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { BLOG_SLUG_REDIRECTS } from "@/lib/related-links";
 
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host") || "";
@@ -14,15 +15,25 @@ export function middleware(request: NextRequest) {
     );
   }
 
+  const pathname = request.nextUrl.pathname;
+
   // Redirect common alternative URLs
   const redirects: Record<string, string> = {
-    "/blog/seeking-arrangement-alternatives": "/alternatives",
-    "/blog/seeking-alternatives": "/alternatives",
     "/seeking-alternatives": "/alternatives",
   };
-  const pathname = request.nextUrl.pathname;
   if (redirects[pathname]) {
     return NextResponse.redirect(new URL(redirects[pathname], request.url), 301);
+  }
+
+  // Blog URLs that were linked across the site but never written. Internal
+  // links now point straight at the destinations; these 301s catch anything
+  // already indexed or linked from outside, so the equity isn't lost to a 404.
+  if (pathname.startsWith("/blog/")) {
+    const slug = pathname.slice("/blog/".length).replace(/\/$/, "");
+    const mapped = BLOG_SLUG_REDIRECTS[slug];
+    if (mapped) {
+      return NextResponse.redirect(new URL(mapped.href, request.url), 301);
+    }
   }
 
   return NextResponse.next();

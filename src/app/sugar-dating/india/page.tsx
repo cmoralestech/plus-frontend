@@ -359,7 +359,7 @@ export default function IndiaPage() {
             { href: "/sugar-dating/mumbai", title: "Sugar Dating in Mumbai", desc: "The complete Mumbai city guide" },
             { href: "/sugar-dating/delhi", title: "Sugar Dating in Delhi", desc: "Delhi\u2019s full sugar dating guide" },
             { href: "/sugar-dating/bangalore", title: "Sugar Dating in Bangalore", desc: "India\u2019s tech capital guide" },
-            { href: "/blog/sugar-baby-allowance-guide", title: "Sugar Baby Allowance Guide", desc: "What to expect by city and country" },
+            { href: "/allowance-calculator", title: "Sugar Baby Allowance Guide", desc: "What to expect by city and country" },
             { href: "/sugar-dating/turkey", title: "Sugar Dating in Turkey", desc: "Europe\u2019s fastest-growing market" },
             { href: "/sugar-dating/uk", title: "Sugar Dating in the UK", desc: "London, Manchester, and beyond" },
           ].map((link) => (

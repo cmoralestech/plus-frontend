@@ -351,8 +351,8 @@ export default function GermanyPage() {
             { href: "/sugar-dating/uk", title: "Sugar Dating in the UK", desc: "Europe\u2019s largest English-speaking market" },
             { href: "/sugar-dating/turkey", title: "Sugar Dating in Turkey", desc: "Europe\u2019s #1 market by search volume" },
             { href: "/for-sugar-daddies", title: "For Sugar Daddies", desc: "Why Plus is worth it for successful men" },
-            { href: "/blog/sugar-daddy-apps", title: "Best Sugar Daddy Apps in 2026", desc: "Platform comparison guide" },
-            { href: "/blog/sugar-baby-allowance-guide", title: "Sugar Baby Allowance Guide", desc: "What to expect worldwide" },
+            { href: "/alternatives", title: "Best Sugar Daddy Apps in 2026", desc: "Platform comparison guide" },
+            { href: "/allowance-calculator", title: "Sugar Baby Allowance Guide", desc: "What to expect worldwide" },
             { href: "/seeking-arrangement-alternative", title: "Best Seeking Alternative", desc: "Why members are switching to Plus" },
           ].map((link) => (
             <Link key={link.href} href={link.href}

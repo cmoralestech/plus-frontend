@@ -723,7 +723,7 @@ export default function AllowanceCalculatorPage() {
                   Find verified members in {selectedCity.name}
                 </Link>
                 <Link
-                  href="/blog/sugar-baby-allowance-guide"
+                  href="/allowance-calculator"
                   className="block text-center py-3 text-sm transition-all duration-200"
                   style={{ color: gold }}
                 >
@@ -808,22 +808,22 @@ export default function AllowanceCalculatorPage() {
         <div className="grid md:grid-cols-2 gap-4">
           {[
             {
-              href: "/blog/sugar-baby-allowance-guide",
+              href: "/allowance-calculator",
               title: "Sugar Baby Allowance Guide 2026",
               desc: "Complete breakdown of allowance ranges by city, arrangement type, and experience level.",
             },
             {
-              href: "/blog/sugar-daddy-allowance-guide",
+              href: "/allowance-calculator",
               title: "Sugar Daddy Allowance Guide",
               desc: "What to expect to provide as a sugar daddy, and how to structure your arrangement.",
             },
             {
-              href: "/blog/sugar-dating-for-beginners",
+              href: "/blog/what-is-private-dating",
               title: "Sugar Dating for Beginners",
               desc: "Everything you need to know before your first arrangement — from profiles to first dates.",
             },
             {
-              href: "/blog/sugar-dating-statistics-2026",
+              href: "/blog/what-women-want-from-dating-apps-2026",
               title: "Sugar Dating Statistics 2026",
               desc: "Real data on the sugar dating industry: demographics, average allowances, and growth trends.",
             },

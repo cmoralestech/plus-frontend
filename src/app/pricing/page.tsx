@@ -127,7 +127,7 @@ export default function PricingPage() {
           </table>
         </div>
         <p className="text-xs mt-6" style={{ color: creamMuted }}>
-          Seeking Arrangement pricing as of June 2026. <Link href="/blog/seeking-arrangement-review" style={{ color: gold }}>Read our full Seeking review →</Link>
+          Seeking Arrangement pricing as of June 2026. <Link href="/alternatives" style={{ color: gold }}>Read our full Seeking review →</Link>
         </p>
       </section>
 

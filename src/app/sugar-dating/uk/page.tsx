@@ -339,8 +339,8 @@ export default function UKPage() {
           {[
             { href: "/sugar-dating/london", title: "Sugar Dating in London", desc: "The complete London city guide" },
             { href: "/seeking-arrangement-alternative", title: "Best Seeking Alternative", desc: "Why members are switching to Plus" },
-            { href: "/blog/sugar-daddy-apps", title: "Best Sugar Daddy Apps in 2026", desc: "Platform comparison guide" },
-            { href: "/blog/sugar-baby-allowance-guide", title: "Sugar Baby Allowance Guide", desc: "What to expect by city and country" },
+            { href: "/alternatives", title: "Best Sugar Daddy Apps in 2026", desc: "Platform comparison guide" },
+            { href: "/allowance-calculator", title: "Sugar Baby Allowance Guide", desc: "What to expect by city and country" },
             { href: "/sugar-dating/turkey", title: "Sugar Dating in Turkey", desc: "Europe\u2019s fastest-growing market" },
             { href: "/sugar-dating/india", title: "Sugar Dating in India", desc: "Mumbai, Delhi, Bangalore, and beyond" },
           ].map((link) => (

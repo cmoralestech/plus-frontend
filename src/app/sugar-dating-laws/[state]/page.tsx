@@ -1367,25 +1367,25 @@ export default async function StateLawPage({
           <p className="text-accent text-xs tracking-[0.4em] uppercase mb-10 md:mb-16">Related reading</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <Link
-              href="/blog/is-sugar-dating-legal"
+              href="/blog/what-is-private-dating"
               className="group border border-card-border rounded-lg p-5 hover:border-accent/40 transition-colors"
             >
               <h3 className="text-sm font-medium group-hover:text-accent transition-colors leading-snug">
-                Is Sugar Dating Legal? The Complete Answer
+                What Private Dating Actually Means
               </h3>
               <p className="text-xs text-muted mt-2">Read more &rarr;</p>
             </Link>
             <Link
-              href="/blog/sugar-dating-laws-by-country"
+              href="/sugar-dating/uk"
               className="group border border-card-border rounded-lg p-5 hover:border-accent/40 transition-colors"
             >
               <h3 className="text-sm font-medium group-hover:text-accent transition-colors leading-snug">
-                Sugar Dating Laws by Country
+                Sugar Dating in the UK: Law and Culture
               </h3>
               <p className="text-xs text-muted mt-2">Read more &rarr;</p>
             </Link>
             <Link
-              href="/blog/sugar-dating-scams"
+              href="/safety"
               className="group border border-card-border rounded-lg p-5 hover:border-accent/40 transition-colors"
             >
               <h3 className="text-sm font-medium group-hover:text-accent transition-colors leading-snug">

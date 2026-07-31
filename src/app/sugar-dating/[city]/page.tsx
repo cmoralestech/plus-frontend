@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { resolveBlogLink } from "@/lib/related-links";
 import Link from "next/link";
 import PublicNav from "@/components/PublicNav";
 import PublicFooter from "@/components/PublicFooter";
@@ -3748,18 +3749,21 @@ export default async function CityPage({
         <div className="px-5 md:px-10 lg:px-16 py-14 md:py-28 max-w-7xl">
           <p className="text-accent text-xs tracking-[0.4em] uppercase mb-10 md:mb-16">Related reading</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {city.relatedPosts.map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="group border border-card-border rounded-lg p-5 hover:border-accent/40 transition-colors"
-              >
-                <h3 className="text-sm font-medium group-hover:text-accent transition-colors leading-snug">
-                  {post.title}
-                </h3>
-                <p className="text-xs text-muted mt-2">Read more &rarr;</p>
-              </Link>
-            ))}
+            {city.relatedPosts.map((post) => {
+              const link = resolveBlogLink(post.slug, post.title);
+              return (
+                <Link
+                  key={post.slug}
+                  href={link.href}
+                  className="group border border-card-border rounded-lg p-5 hover:border-accent/40 transition-colors"
+                >
+                  <h3 className="text-sm font-medium group-hover:text-accent transition-colors leading-snug">
+                    {link.title}
+                  </h3>
+                  <p className="text-xs text-muted mt-2">Read more &rarr;</p>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
