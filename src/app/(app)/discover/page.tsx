@@ -4,11 +4,10 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import api from "@/lib/api";
 import { Profile, useAuthStore } from "@/lib/store";
-import ProfileCard from "@/components/ProfileCard";
+import ProfileFeedCard from "@/components/ProfileFeedCard";
 import ProfileDetailModal from "@/components/ProfileDetailModal";
 import ReportModal from "@/components/ReportModal";
 import ConfirmDialog from "@/components/ConfirmDialog";
-import { CardSkeleton } from "@/components/Skeleton";
 import { showToast } from "@/components/Toast";
 import TravelMode from "@/components/TravelMode";
 import { Heart, Crown, Eye, MessageCircle, Sparkles, X, ArrowRight, Search, Plane, Share2 } from "lucide-react";
@@ -86,9 +85,12 @@ export default function DiscoverPage() {
     fetchProfiles(city);
   };
 
-  const handleLike = async (profileId: number) => {
+  const handleLike = async (profileId: number, context: string | null = null) => {
     try {
-      const { data } = await api.post("/api/matches/like", { profile_id: profileId });
+      const { data } = await api.post("/api/matches/like", {
+        profile_id: profileId,
+        context,
+      });
       if (data.is_match) {
         setMatchAnimation(true);
         setTimeout(() => setMatchAnimation(false), 2500);
@@ -226,17 +228,14 @@ export default function DiscoverPage() {
                 </li>
               </ul>
               <div className="mt-5 space-y-2">
-                {paywallDismissals > 0 && (
-                  <div className="flex items-center justify-center gap-2 mb-1">
-                    <span className="text-[10px] font-semibold uppercase tracking-wide bg-accent/15 text-accent px-2 py-0.5 rounded-full">Limited offer</span>
-                  </div>
-                )}
+                {/* Price is the same whether or not you've dismissed this before.
+                    A discount that appears only after you decline is the pattern
+                    we position against. */}
                 <button
                   onClick={async () => {
-                    const couponParam = paywallDismissals > 0 ? "&coupon=5LpkJfaj" : "";
-                    trackFunnel("checkout_started", { tier: "diamond", source: "discover_paywall", discounted: paywallDismissals > 0 });
+                    trackFunnel("checkout_started", { tier: "plus_plus", source: "discover_paywall" });
                     try {
-                      const { data } = await api.post(`/api/billing/checkout?tier=diamond${couponParam}`);
+                      const { data } = await api.post("/api/billing/checkout?tier=plus_plus");
                       if (data.checkout_url) window.location.href = data.checkout_url;
                     } catch {
                       window.location.href = "/settings?tab=subscription";
@@ -244,11 +243,7 @@ export default function DiscoverPage() {
                   }}
                   className="w-full py-3 bg-accent text-[#141210] rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors"
                 >
-                  {paywallDismissals > 0 ? (
-                    <>First month 25% off &mdash; $74.99 <span className="line-through opacity-60 ml-1">$99.99</span></>
-                  ) : (
-                    <>Unlock &mdash; $99.99/mo</>
-                  )}
+                  Unlock Plus+ &mdash; $99.99/mo
                 </button>
                 <button
                   onClick={() => { setPaywallDismissals((d) => d + 1); setPaywallProfile(null); }}
@@ -270,8 +265,16 @@ export default function DiscoverPage() {
 
       {/* Content */}
       {loading ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {Array.from({ length: 8 }).map((_, i) => <CardSkeleton key={i} />)}
+        <div className="max-w-xl mx-auto space-y-6">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className="rounded-2xl border border-card-border bg-card overflow-hidden">
+              <div className="p-4 space-y-2">
+                <div className="h-5 w-40 rounded bg-muted-bg animate-pulse" />
+                <div className="h-3 w-56 rounded bg-muted-bg animate-pulse" />
+              </div>
+              <div className="w-full bg-muted-bg animate-pulse" style={{ aspectRatio: "4/5" }} />
+            </div>
+          ))}
         </div>
       ) : profiles.length === 0 ? (
         <div className="text-center py-20 max-w-sm mx-auto">
@@ -305,14 +308,15 @@ export default function DiscoverPage() {
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="max-w-xl mx-auto">
           {profiles.filter((p) => !passedIds.has(p.id)).map((profile) => (
-            <ProfileCard
+            <ProfileFeedCard
               key={profile.id}
               profile={profile}
-              compact
               blurred={shouldBlur}
-              onClick={() => {
+              onLike={(context) => handleLike(profile.id, context)}
+              onPass={() => handlePass(profile.id)}
+              onOpen={() => {
                 if (isFreeSD) {
                   if (freeViews < FREE_VIEW_LIMIT) {
                     const next = freeViews + 1;
@@ -328,13 +332,12 @@ export default function DiscoverPage() {
                   setSelectedProfile(profile);
                 }
               }}
-              onMessage={!shouldBlur ? () => { setAutoMessage(true); setSelectedProfile(profile); } : undefined}
             />
           ))}
           {user?.user_type === "attractive" && (
             <Link
               href="/earn"
-              className="flex flex-col items-center justify-center gap-2 rounded-xl border border-card-border bg-card/50 p-6 text-center text-sm text-muted hover:border-accent/30 hover:text-foreground transition-colors"
+              className="flex flex-col items-center justify-center gap-2 rounded-2xl border border-card-border bg-card/50 p-6 text-center text-sm text-muted hover:border-accent/30 hover:text-foreground transition-colors"
             >
               <span>Know someone generous who&apos;d appreciate you?</span>
               <span className="inline-flex items-center gap-1 text-accent text-xs font-medium">

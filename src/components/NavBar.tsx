@@ -30,12 +30,13 @@ const sidebarItems = [
   { href: "/settings", label: "Settings", icon: Settings, badgeKey: null },
 ];
 
+// Four, matching every major dating app. Discover, Search and Favorites were
+// three overlapping browse surfaces; Search and Favorites stay in the sidebar
+// and are reachable from Discover, so nothing is lost.
 const mobileItems = [
   { href: "/discover", label: "Discover", icon: Compass, badgeKey: null },
-  { href: "/search", label: "Search", icon: Search, badgeKey: null },
   { href: "/likes", label: "Likes", icon: Heart, badgeKey: "likes_received" as const },
   { href: "/messages", label: "Messages", icon: MessageCircle, badgeKey: "unread_messages" as const },
-  { href: "/favorites", label: "Favorites", icon: Star, badgeKey: null },
   { href: "/profile", label: "Profile", icon: User, badgeKey: null },
 ];
 
