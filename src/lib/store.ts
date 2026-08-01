@@ -53,6 +53,12 @@ export interface Profile {
   smoking?: string;
   has_children?: boolean;
   ideal_first_date?: string;
+  /** How you like to show up (max 4). */
+  show_up_traits?: string[];
+  /** What you're looking for in your + (max 5). */
+  plus_traits?: string[];
+  generosity?: string;
+  net_worth?: string;
   sexual_orientation?: string;
   pronouns?: string;
   is_online?: boolean;

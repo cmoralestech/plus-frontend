@@ -189,6 +189,12 @@ function OnboardingForm() {
         headline: form.headline || null,
         bio: form.bio || null,
         body_type: form.body_type || null,
+        // These were collected on the form but never sent, so every answer was
+        // discarded on submit.
+        show_up_traits: form.show_up_traits.length ? form.show_up_traits : null,
+        plus_traits: form.plus_traits.length ? form.plus_traits : null,
+        generosity: form.generosity || null,
+        net_worth: form.net_worth || null,
       };
       if (isSugar && form.income_range) payload.income_range = form.income_range;
       if (form.lifestyle_expectation) payload.lifestyle_expectation = form.lifestyle_expectation;
@@ -343,7 +349,7 @@ function OnboardingForm() {
                   placeholder="What are you into? What does your life look like? And what kind of person would make it better?"
                   maxLength={500}
                 />
-                <p className="text-[11px] text-muted mt-1">The good profiles have a point of view.</p>
+                <p className="text-[11px] text-muted mt-1">The best profiles have a point of view.</p>
               </div>
 
               <fieldset>

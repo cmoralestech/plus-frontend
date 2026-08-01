@@ -31,6 +31,18 @@ import PhotoUpload from "@/components/PhotoUpload";
 import ProfileCompleteness from "@/components/ProfileCompleteness";
 import { ProfileSkeleton } from "@/components/Skeleton";
 
+// Kept in sync with the same lists in onboarding.
+const SHOW_UP_TRAITS = [
+  "Generous", "Thoughtful", "A planner", "Adventurous",
+  "A mentor", "Well-connected", "Spontaneous", "Supportive",
+];
+
+const PLUS_TRAITS = [
+  "Ambitious", "Attractive", "Independent", "Adventurous", "Cultured",
+  "Affectionate", "Intellectual", "Social", "Spontaneous", "Discreet",
+  "Career-driven", "Well-traveled", "Playful",
+];
+
 export default function ProfilePage() {
   const { user } = useAuthStore();
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -80,6 +92,8 @@ export default function ProfilePage() {
       arrangement_types: profile.arrangement_types || [],
       interests: profile.interests || [],
       lifestyle_tags: profile.lifestyle_tags || [],
+      show_up_traits: profile.show_up_traits || [],
+      plus_traits: profile.plus_traits || [],
       relationship_status: profile.relationship_status || "",
       availability: profile.availability || "",
       languages: profile.languages || "",
@@ -87,10 +101,21 @@ export default function ProfilePage() {
     setEditing(true);
   };
 
-  const toggleEditArray = (field: "arrangement_types" | "interests" | "lifestyle_tags", value: string) => {
+  const ARRAY_FIELD_MAX: Record<string, number> = {
+    arrangement_types: 5,
+    lifestyle_tags: 8,
+    show_up_traits: 4,
+    plus_traits: 5,
+    interests: 10,
+  };
+
+  const toggleEditArray = (
+    field: "arrangement_types" | "interests" | "lifestyle_tags" | "show_up_traits" | "plus_traits",
+    value: string,
+  ) => {
     setEditForm((prev: Record<string, any>) => {
       const arr: string[] = prev[field] || [];
-      const max = field === "arrangement_types" ? 5 : field === "lifestyle_tags" ? 8 : 10;
+      const max = ARRAY_FIELD_MAX[field] ?? 10;
       if (arr.includes(value)) return { ...prev, [field]: arr.filter((v: string) => v !== value) };
       if (arr.length >= max) return prev;
       return { ...prev, [field]: [...arr, value] };
@@ -105,7 +130,7 @@ export default function ProfilePage() {
       for (const [key, value] of Object.entries(editForm)) {
         if (key === "height_cm") {
           payload[key] = value ? parseInt(value as string) : null;
-        } else if (key === "arrangement_types" || key === "interests" || key === "lifestyle_tags") {
+        } else if (key in ARRAY_FIELD_MAX) {
           payload[key] = (value as string[]).length > 0 ? value : null;
         } else {
           payload[key] = value || null;
@@ -257,23 +282,26 @@ export default function ProfilePage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Headline</label>
+                <label className="block text-sm font-medium mb-1">Your headline</label>
                 <input
                   value={editForm.headline}
                   onChange={(e) => setEditForm((f: Record<string, any>) => ({ ...f, headline: e.target.value }))}
+                  placeholder="Built something meaningful. Looking for someone worth sharing it with."
                   className="w-full px-4 py-2.5 bg-background border border-card-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/50"
                   maxLength={200}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">About me</label>
+                <label className="block text-sm font-medium mb-1">A little more about you</label>
                 <textarea
                   value={editForm.bio}
                   onChange={(e) => setEditForm((f: Record<string, any>) => ({ ...f, bio: e.target.value }))}
                   rows={4}
+                  placeholder="What have you built? What do you enjoy outside of work? What kind of person makes your life more interesting?"
                   className="w-full px-4 py-2.5 bg-background border border-card-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 resize-none"
                   maxLength={2000}
                 />
+                <p className="text-[11px] text-muted mt-1">The best profiles have a point of view.</p>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1">City</label>
@@ -355,7 +383,7 @@ export default function ProfilePage() {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Body type</label>
+                <label className="block text-sm font-medium mb-1">Build <span className="text-xs text-muted font-normal">(optional)</span></label>
                 <select
                   value={editForm.body_type}
                   onChange={(e) => setEditForm((f: Record<string, any>) => ({ ...f, body_type: e.target.value }))}
@@ -480,6 +508,72 @@ export default function ProfilePage() {
                             selected ? "border-accent bg-accent/10 text-accent" : "border-card-border hover:border-muted"
                           }`}>
                           {arrangementLabels[t] || t.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-sm font-medium mb-2">
+                    How do you like to show up?
+                    <span className="text-xs text-muted font-normal ml-1">
+                      ({(editForm.show_up_traits || []).length}/4)
+                    </span>
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {SHOW_UP_TRAITS.map((trait) => {
+                      const selected = (editForm.show_up_traits || []).includes(trait);
+                      const atMax = (editForm.show_up_traits || []).length >= 4 && !selected;
+                      return (
+                        <button
+                          key={trait}
+                          type="button"
+                          onClick={() => toggleEditArray("show_up_traits", trait)}
+                          aria-pressed={selected}
+                          disabled={atMax}
+                          className={`px-2.5 py-1.5 rounded-full border text-xs font-medium transition-colors ${
+                            selected
+                              ? "border-accent bg-accent/10 text-accent"
+                              : atMax
+                                ? "border-card-border text-muted/40 cursor-not-allowed"
+                                : "border-card-border hover:border-muted"
+                          }`}
+                        >
+                          {trait}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-sm font-medium mb-2">
+                    What are you looking for in your +?
+                    <span className="text-xs text-muted font-normal ml-1">
+                      ({(editForm.plus_traits || []).length}/5)
+                    </span>
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {PLUS_TRAITS.map((trait) => {
+                      const selected = (editForm.plus_traits || []).includes(trait);
+                      const atMax = (editForm.plus_traits || []).length >= 5 && !selected;
+                      return (
+                        <button
+                          key={trait}
+                          type="button"
+                          onClick={() => toggleEditArray("plus_traits", trait)}
+                          aria-pressed={selected}
+                          disabled={atMax}
+                          className={`px-2.5 py-1.5 rounded-full border text-xs font-medium transition-colors ${
+                            selected
+                              ? "border-accent bg-accent/10 text-accent"
+                              : atMax
+                                ? "border-card-border text-muted/40 cursor-not-allowed"
+                                : "border-card-border hover:border-muted"
+                          }`}
+                        >
+                          {trait}
                         </button>
                       );
                     })}
@@ -698,6 +792,36 @@ export default function ProfilePage() {
                           </span>
                         );
                       })}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* === TRAITS === */}
+              {(profile.show_up_traits?.length || profile.plus_traits?.length) && (
+                <div className="mt-5 pt-5 border-t border-card-border space-y-4">
+                  {profile.show_up_traits && profile.show_up_traits.length > 0 && (
+                    <div>
+                      <h3 className="text-xs text-muted uppercase tracking-wider mb-1.5">How I show up</h3>
+                      <div className="flex flex-wrap gap-1.5">
+                        {profile.show_up_traits.map((t: string) => (
+                          <span key={t} className="px-2.5 py-1 bg-accent/5 text-accent text-xs rounded-full font-medium border border-accent/20">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {profile.plus_traits && profile.plus_traits.length > 0 && (
+                    <div>
+                      <h3 className="text-xs text-muted uppercase tracking-wider mb-1.5">Looking for in my +</h3>
+                      <div className="flex flex-wrap gap-1.5">
+                        {profile.plus_traits.map((t: string) => (
+                          <span key={t} className="px-2.5 py-1 bg-muted-bg text-muted text-xs rounded-full font-medium">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
