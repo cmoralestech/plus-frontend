@@ -66,8 +66,12 @@ export default function ProfileFeedCard({ profile, blurred, onLike, onPass, onOp
   const items = useMemo(() => buildItems(profile), [profile]);
   const [liked, setLiked] = useState(false);
 
+  // Demonstration profiles are shown so the app isn't empty, but nobody is
+  // behind them. They're labelled and inert rather than quietly unresponsive.
+  const isExample = Boolean(profile.is_seed);
+
   const like = (context: string | null) => {
-    if (liked) return;
+    if (liked || isExample) return;
     setLiked(true);
     onLike(context);
   };
@@ -110,6 +114,14 @@ export default function ProfileFeedCard({ profile, blurred, onLike, onPass, onOp
         {profile.headline && (
           <p className="mt-3 text-sm leading-relaxed">{profile.headline}</p>
         )}
+        {isExample && (
+          <p
+            className="mt-3 text-[11px] uppercase tracking-wider px-2.5 py-1.5 rounded-md inline-block"
+            style={{ background: "rgba(168,160,144,0.12)", color: "var(--muted)" }}
+          >
+            Example profile · not a real member
+          </p>
+        )}
       </header>
 
       {/* Photos and prompts */}
@@ -125,7 +137,7 @@ export default function ProfileFeedCard({ profile, blurred, onLike, onPass, onOp
               loading={i > 1 ? "lazy" : "eager"}
               onClick={onOpen}
             />
-            {!blurred && (
+            {!blurred && !isExample && (
               <LikeButton
                 onClick={() => like(`your ${ordinal(item.index)}`)}
                 label={`Like ${profile.display_name}'s ${ordinal(item.index)}`}
@@ -138,7 +150,7 @@ export default function ProfileFeedCard({ profile, blurred, onLike, onPass, onOp
               {item.label}
             </p>
             <p className="text-base leading-relaxed">{item.value}</p>
-            {!blurred && (
+            {!blurred && !isExample && (
               <LikeButton
                 onClick={() => like(`your answer to "${item.label}"`)}
                 label={`Like ${profile.display_name}'s answer to ${item.label}`}
@@ -166,19 +178,28 @@ export default function ProfileFeedCard({ profile, blurred, onLike, onPass, onOp
 
       {/* Actions */}
       <div className="border-t border-card-border p-3 flex gap-2">
-        <button
-          onClick={onPass}
-          className="flex-1 py-2.5 rounded-xl border border-card-border text-sm font-medium text-muted hover:bg-muted-bg transition-colors min-h-[44px]"
-        >
-          Not for me
-        </button>
-        <button
-          onClick={() => like(null)}
-          disabled={liked}
-          className="flex-1 py-2.5 rounded-xl bg-accent text-white text-sm font-semibold hover:opacity-90 transition-opacity min-h-[44px] disabled:opacity-60"
-        >
-          {liked ? "Liked" : "Like"}
-        </button>
+        {isExample ? (
+          <p className="flex-1 py-2.5 text-center text-xs text-muted leading-relaxed">
+            Example profiles show what Plus looks like in a city before it fills
+            up. You can&apos;t like or message them.
+          </p>
+        ) : (
+          <>
+            <button
+              onClick={onPass}
+              className="flex-1 py-2.5 rounded-xl border border-card-border text-sm font-medium text-muted hover:bg-muted-bg transition-colors min-h-[44px]"
+            >
+              Not for me
+            </button>
+            <button
+              onClick={() => like(null)}
+              disabled={liked}
+              className="flex-1 py-2.5 rounded-xl bg-accent text-white text-sm font-semibold hover:opacity-90 transition-opacity min-h-[44px] disabled:opacity-60"
+            >
+              {liked ? "Liked" : "Like"}
+            </button>
+          </>
+        )}
       </div>
     </article>
   );

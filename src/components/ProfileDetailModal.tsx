@@ -456,7 +456,12 @@ export default function ProfileDetailModal({
 
           {/* ═══ ACTION BAR — sticky bottom ═══ */}
           <div className="sticky bottom-0 bg-card border-t border-card-border" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
-            {showMessageInput ? (
+            {profile.is_seed ? (
+              <p className="p-4 text-center text-xs text-muted leading-relaxed">
+                Example profile · not a real member. You can&apos;t like or
+                message it.
+              </p>
+            ) : showMessageInput ? (
               <div className="p-3 flex gap-2">
                 <input
                   autoFocus

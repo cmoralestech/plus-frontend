@@ -59,6 +59,8 @@ export interface Profile {
   last_active?: string;
   is_photo_verified: boolean;
   is_income_verified?: boolean;
+  /** Demonstration profile — labelled in the UI and not interactive. */
+  is_seed?: boolean;
   is_traveling?: boolean;
   travel_city?: string;
   distance_miles?: number;
