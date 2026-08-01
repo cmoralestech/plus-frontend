@@ -462,11 +462,18 @@ export default function ProfilePage() {
                     rows={2} maxLength={500} placeholder="Describe your perfect first date" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium mb-2">Arrangement type</p>
+                  <p className="text-sm font-medium mb-2">What are you open to?</p>
                   <div className="flex flex-wrap gap-1.5">
-                    {["mentorship","travel_companion","long_term","short_term","no_strings","dating","networking","experience_partner","sugar_relationship"].map((t) => {
+                    {["dating","long_term","something_casual","travel_companion","experience_partner","mentorship","networking","open_relationship"].map((t) => {
                       const selected = (editForm.arrangement_types || []).includes(t);
-                      const arrangementLabels: Record<string, string> = { no_strings: "Casual dating" };
+                      const arrangementLabels: Record<string, string> = {
+                        no_strings: "Casual dating",
+                        something_casual: "Something casual",
+                        travel_companion: "Travel partner",
+                        experience_partner: "Experience partner",
+                        long_term: "Long-term",
+                        open_relationship: "Open relationship",
+                      };
                       return (
                         <button key={t} type="button" onClick={() => toggleEditArray("arrangement_types", t)} aria-pressed={selected}
                           className={`px-2.5 py-1.5 rounded-full border text-xs font-medium transition-colors ${
@@ -598,11 +605,14 @@ export default function ProfilePage() {
                 )}
               </div>
 
-              {isSugar && profile.income_range && (
+              {/* Verification status only — never the amount. Exact financial
+                  information stays private; other members see that it was
+                  checked, not what it was. */}
+              {isSugar && profile.is_income_verified && (
                 <div className="mb-4">
                   <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-gold-bg text-gold text-sm rounded-lg font-medium">
-                    <DollarSign size={14} />
-                    Income: {formatIncome(profile.income_range)}
+                    <BadgeCheck size={14} />
+                    Financially verified
                   </span>
                 </div>
               )}
@@ -622,7 +632,14 @@ export default function ProfilePage() {
                   {profile.arrangement_types && profile.arrangement_types.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 mb-3">
                       {profile.arrangement_types.map((t: string) => {
-                        const arrangementLabels: Record<string, string> = { no_strings: "Casual dating" };
+                        const arrangementLabels: Record<string, string> = {
+                          no_strings: "Casual dating",
+                          something_casual: "Something casual",
+                          travel_companion: "Travel partner",
+                          experience_partner: "Experience partner",
+                          long_term: "Long-term",
+                          open_relationship: "Open relationship",
+                        };
                         return (
                           <span key={t} className="px-2.5 py-1 bg-accent/5 text-accent text-xs rounded-full font-medium border border-accent/20">
                             {arrangementLabels[t] || capitalize(t)}

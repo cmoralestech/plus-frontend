@@ -343,11 +343,13 @@ export default function ProfileDetailModal({
           </div>
 
           {/* ═══ FINANCIAL BADGE ═══ */}
-          {(isSugar && profile.income_range) || (!isSugar && profile.lifestyle_expectation) ? (
+          {/* Verification status only. Exact income is never shown to other
+              members — they see that it was checked, not the amount. */}
+          {(isSugar && profile.is_income_verified) || (!isSugar && profile.lifestyle_expectation) ? (
             <div className="px-5 pt-3">
-              {isSugar && profile.income_range && (
+              {isSugar && profile.is_income_verified && (
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gold-bg text-gold text-sm rounded-lg font-medium">
-                  <DollarSign size={14} /> {formatIncome(profile.income_range)}
+                  <BadgeCheck size={14} /> Financially verified
                 </span>
               )}
               {!isSugar && profile.lifestyle_expectation && (
@@ -363,7 +365,7 @@ export default function ProfileDetailModal({
             </div>
           ) : null}
 
-          {/* ═══ ARRANGEMENT TYPES ═══ */}
+          {/* ═══ OPEN TO ═══ */}
           {profile.arrangement_types && profile.arrangement_types.length > 0 && (
             <div className="px-5 pt-4">
               <p className="text-[11px] uppercase tracking-wide text-muted mb-2">Open to</p>

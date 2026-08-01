@@ -58,7 +58,6 @@ const openToOptions = [
   { value: "experience_partner", label: "Experience partner" },
   { value: "mentorship", label: "Mentorship" },
   { value: "networking", label: "Networking" },
-  { value: "generous_dating", label: "Generous dating" },
   { value: "open_relationship", label: "Open relationship" },
 ];
 
