@@ -141,9 +141,24 @@ export default function DiscoverPage() {
       )}
 
       {/* Travel Mode */}
-      <div className="mb-5">
+      <div className="mb-3">
         <TravelMode onCityChange={handleTravelChange} />
       </div>
+
+      {/* Entry point for destinations — kept here rather than as a fifth nav
+          item, which would undo the trim back to four. */}
+      <Link
+        href="/going"
+        className="flex items-center justify-between gap-3 mb-5 px-4 py-3 rounded-xl border border-card-border bg-card hover:border-accent/40 transition-colors"
+      >
+        <span className="text-sm">
+          Going somewhere?<span className="text-accent"> +</span>
+          <span className="block text-xs text-muted mt-0.5">
+            Find a + who wants to be there too
+          </span>
+        </span>
+        <ArrowRight size={16} className="text-muted flex-shrink-0" />
+      </Link>
 
       {/* Match animation */}
       {matchAnimation && (

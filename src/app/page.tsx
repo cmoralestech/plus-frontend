@@ -40,11 +40,14 @@ const conversations = [
   ],
 ];
 
-const profiles = [
-  { name: "MIA", age: 27, work: "Art Director", city: "Miami", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=533&fit=crop&q=80" },
-  { name: "ALEX", age: 38, work: "Founder", city: "New York", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=533&fit=crop&q=80" },
-  { name: "LILY", age: 26, work: "Stylist", city: "London", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=533&fit=crop&q=80" },
-  { name: "ADAM", age: 44, work: "Hospitality", city: "Houston", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=533&fit=crop&q=80" },
+// Campaign photography rather than invented member cards. The previous strip
+// labelled stock headshots of real people as members ("MIA, 27") of a product
+// that has none yet.
+const campaign = [
+  { img: "/campaign/green-dress-croquet.jpg", alt: "Two people playing croquet in a candlelit drawing room" },
+  { img: "/campaign/ballroom-pony.jpg", alt: "A couple at a long dinner table in a chandeliered ballroom" },
+  { img: "/campaign/campaign-09.jpg", alt: "Two men laughing in the back of a vintage car at night" },
+  { img: "/campaign/campaign-11.jpg", alt: "A couple sharing dessert under a dining table" },
 ];
 
 const plusTags = ["Dating", "Long-term", "Travel", "Experiences", "Generous dating", "Something casual"];
@@ -100,8 +103,8 @@ export default function LandingPage() {
       <div className="relative min-h-[90vh] md:min-h-screen flex flex-col">
         <div className="absolute inset-0">
           <img
-            src="/hero.jpg"
-            alt="Couple enjoying luxury dating on a yacht"
+            src="/campaign/night-croquet.jpg"
+            alt="Friends playing croquet on a floodlit lawn at night"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, rgba(20,18,16,0.7) 0%, rgba(20,18,16,0.5) 50%, ${bg} 100%)` }} />
@@ -324,27 +327,19 @@ export default function LandingPage() {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
-              {profiles.map((p) => (
+              {campaign.map((c) => (
                 <div
-                  key={p.name}
-                  className="relative overflow-hidden group cursor-pointer"
+                  key={c.img}
+                  className="relative overflow-hidden group"
                   style={{ aspectRatio: "3/4", borderRadius: "3px" }}
                 >
                   <img
-                    src={p.img}
-                    alt={p.name}
+                    src={c.img}
+                    alt={c.alt}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 40%, transparent 60%)" }} />
-                  <div className="absolute bottom-0 left-0 right-0 p-3.5">
-                    <p className="text-white text-[13px] font-medium">
-                      {p.name}, {p.age}<span style={{ color: accent }}> +</span>
-                    </p>
-                    <p className="text-white/50 text-[11px] mt-0.5">
-                      {p.work} &middot; {p.city}
-                    </p>
-                  </div>
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 45%)" }} />
                 </div>
               ))}
             </div>
@@ -537,12 +532,12 @@ export default function LandingPage() {
 
           <div className="hidden lg:grid grid-cols-3 gap-2.5">
             {[
-              "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=550&fit=crop&q=80",
-              "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=550&fit=crop&q=80",
-              "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&h=550&fit=crop&q=80",
-            ].map((src, i) => (
-              <div key={i} className="overflow-hidden" style={{ aspectRatio: "3/4", borderRadius: "3px" }}>
-                <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
+              { src: "/campaign/tennis-terrace.jpg", alt: "Two women on a sunlit terrace after tennis" },
+              { src: "/campaign/greyhounds-breakfast.jpg", alt: "A man at breakfast with two greyhounds" },
+              { src: "/campaign/kitchen-champagne.jpg", alt: "A couple pouring champagne in a hotel kitchen" },
+            ].map((img) => (
+              <div key={img.src} className="overflow-hidden" style={{ aspectRatio: "3/4", borderRadius: "3px" }}>
+                <img src={img.src} alt={img.alt} className="w-full h-full object-cover" loading="lazy" />
               </div>
             ))}
           </div>
