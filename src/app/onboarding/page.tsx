@@ -98,6 +98,7 @@ function OnboardingForm() {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [detectingLocation, setDetectingLocation] = useState(false);
   const [acquisitionSource, setAcquisitionSource] = useState("");
+  const [needsDob, setNeedsDob] = useState(false);
 
   const [form, setForm] = useState({
     display_name: "",
@@ -180,9 +181,19 @@ function OnboardingForm() {
     setError("");
     setSubmitting(true);
     try {
+      // Registration collects this; the guard exists because when it went
+      // missing the request failed with a validation error nobody could act on.
+      const dob = (user as any)?.date_of_birth || form.date_of_birth;
+      if (!dob) {
+        setError("We need your date of birth to finish. Please re-enter it below.");
+        setNeedsDob(true);
+        setSubmitting(false);
+        return;
+      }
+
       const payload: Record<string, unknown> = {
         display_name: form.display_name,
-        date_of_birth: (user as any)?.date_of_birth || form.date_of_birth,
+        date_of_birth: dob,
         gender: form.gender,
         city: form.city || null,
         state: form.state || null,
@@ -294,6 +305,25 @@ function OnboardingForm() {
                   autoFocus
                 />
               </div>
+
+              {/* Only appears if the date didn't survive registration, so nobody
+                  is asked for it twice in the normal case. */}
+              {needsDob && (
+                <div>
+                  <label htmlFor="ob-dob" className="block text-sm font-medium mb-1.5">
+                    Date of birth
+                  </label>
+                  <input
+                    id="ob-dob"
+                    type="date"
+                    value={form.date_of_birth}
+                    onChange={(e) => update("date_of_birth", e.target.value)}
+                    min={`${minYear}-01-01`}
+                    max={`${maxYear}-12-31`}
+                    className="w-full px-4 py-3 bg-background border border-card-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/50"
+                  />
+                </div>
+              )}
 
               <div>
                 <label className="block text-sm font-medium mb-1.5">Where are you?</label>
