@@ -37,6 +37,12 @@ export default function CityAutocomplete({ value, onChange, placeholder }: Props
 
   const search = (q: string) => {
     setQuery(q);
+    // Propagate what was typed straight away. Previously the value only
+    // reached the form when a suggestion was clicked, so anyone who typed
+    // their city and didn't pick from the dropdown was left with a filled-in
+    // field, a disabled Continue button and no explanation. Selecting a
+    // suggestion still overwrites this with the full city/state/country.
+    onChange(q, "", "");
     clearTimeout(debounceTimer);
     if (q.length < 2) { setResults([]); setOpen(false); return; }
 
