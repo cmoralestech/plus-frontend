@@ -57,7 +57,7 @@ function UpgradeNudgeBanner() {
   const [eligible, setEligible] = useState(false);
 
   useEffect(() => {
-    if (!user || user.user_type !== "sugar") return;
+    if (!user || user.user_type !== "established") return;
 
     // Check if account is 3+ days old
     const createdAt = new Date(user.created_at);

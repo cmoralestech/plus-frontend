@@ -4,7 +4,7 @@ import api from "./api";
 export interface User {
   id: number;
   email: string;
-  user_type: "sugar" | "attractive";
+  user_type: "established" | "plus";
   is_verified: boolean;
   created_at: string;
   has_profile: boolean;

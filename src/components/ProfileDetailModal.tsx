@@ -70,7 +70,7 @@ export default function ProfileDetailModal({
   const [photoIndex, setPhotoIndex] = useState(0);
   const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const isSugar = profile.user_type === "sugar";
+  const isSugar = profile.user_type === "established";
   const [showMessageInput, setShowMessageInput] = useState(autoMessage || false);
   const [messageText, setMessageText] = useState("");
   const [sendingMessage, setSendingMessage] = useState(false);

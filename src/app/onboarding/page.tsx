@@ -175,7 +175,7 @@ function OnboardingForm() {
     );
   };
 
-  const isSugar = user?.user_type === "sugar";
+  const isSugar = user?.user_type === "established";
 
   const handleCreateProfile = async () => {
     setError("");

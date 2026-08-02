@@ -29,7 +29,7 @@ const FILTER_DEFS: FilterOption[] = [
     { value: "50", label: "50 mi" }, { value: "100", label: "100 mi" }, { value: "250", label: "250 mi" },
   ]},
   { key: "user_type", label: "Type", type: "select", options: [
-    { value: "", label: "Any" }, { value: "sugar", label: "Successful" }, { value: "attractive", label: "Attractive" },
+    { value: "", label: "Any" }, { value: "established", label: "Established" }, { value: "plus", label: "Plus" },
   ]},
   { key: "income_range", label: "Income", type: "select", options: [
     { value: "", label: "Any" }, { value: "100k_250k", label: "$100K+" }, { value: "250k_500k", label: "$250K+" },

@@ -49,14 +49,14 @@ export default function DiscoverPage() {
 
   // Check subscription for blur logic
   useEffect(() => {
-    if (user?.user_type === "sugar") {
+    if (user?.user_type === "established") {
       api.get("/api/subscription/").then(({ data }) => {
         setSubTier(data.tier || "free");
       }).catch(() => {});
     }
   }, [user]);
 
-  const isFreeSD = user?.user_type === "sugar" && subTier === "free";
+  const isFreeSD = user?.user_type === "established" && subTier === "free";
   const shouldBlur = isFreeSD;
   const freeViewsRemaining = FREE_VIEW_LIMIT - freeViews;
 
@@ -349,7 +349,7 @@ export default function DiscoverPage() {
               }}
             />
           ))}
-          {user?.user_type === "attractive" && (
+          {user?.user_type === "plus" && (
             <Link
               href="/earn"
               className="flex flex-col items-center justify-center gap-2 rounded-2xl border border-card-border bg-card/50 p-6 text-center text-sm text-muted hover:border-accent/30 hover:text-foreground transition-colors"

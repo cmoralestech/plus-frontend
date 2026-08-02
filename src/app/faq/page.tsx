@@ -40,7 +40,7 @@ const FAQ_SECTIONS: FaqSection[] = [
           "Creating a profile takes about two minutes. Sign up with your email, choose whether you're joining as an established member or a Plus member, add your photos, write a brief bio, and define your dating preferences. You can start browsing immediately after signing up.",
       },
       {
-        question: "What's the difference between a 'successful' and 'attractive' member?",
+        question: "What's the difference between an Established member and a Plus member?",
         answer:
           "Established members are established professionals who are looking to meet attractive, ambitious people. They typically offer financial generosity, mentorship, or lifestyle experiences. Plus members are the compelling individuals they want to meet — people who bring beauty, ambition, personality, and presence to the relationship. Both sides bring value; the labels simply define the dynamic.",
       },

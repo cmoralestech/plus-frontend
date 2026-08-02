@@ -101,12 +101,12 @@ export default function SearchPage() {
   const [subTier, setSubTier] = useState<string>("free");
 
   useEffect(() => {
-    if (user?.user_type === "sugar") {
+    if (user?.user_type === "established") {
       api.get("/api/subscription/").then(({ data }) => setSubTier(data.tier || "free")).catch(() => {});
     }
   }, [user]);
 
-  const isFreeSD = user?.user_type === "sugar" && subTier === "free";
+  const isFreeSD = user?.user_type === "established" && subTier === "free";
   const shouldBlur = isFreeSD;
   const [freeViews, setFreeViews] = useState<number>(getStoredFreeViews);
   const [showLocationPicker, setShowLocationPicker] = useState(false);

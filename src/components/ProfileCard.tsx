@@ -49,7 +49,7 @@ function ProfileCard({
   blurred,
 }: ProfileCardProps) {
   const primaryPhoto = profile.photos.find((p) => p.is_primary) || profile.photos[0];
-  const isSugar = profile.user_type === "sugar";
+  const isSugar = profile.user_type === "established";
   const apiBase = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
   if (compact) {

@@ -158,7 +158,7 @@ export default function AdminPage() {
   const [locations, setLocations] = useState<LocationEntry[]>([]);
   const [attribution, setAttribution] = useState<AttributionData | null>(null);
   const [adminProfiles, setAdminProfiles] = useState<AdminProfile[]>([]);
-  const [profileFilter, setProfileFilter] = useState<"" | "sugar" | "attractive">("");
+  const [profileFilter, setProfileFilter] = useState<"" | "established" | "plus">("");
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState<string | null>(null);
 
@@ -397,9 +397,9 @@ export default function AdminPage() {
                         <div className="flex items-center gap-2">
                           <span className="text-sm font-medium">{u.display_name || u.email}</span>
                           <span className={`text-[10px] px-2 py-0.5 rounded-full ${
-                            u.user_type === "sugar" ? "bg-accent/10 text-accent" : "bg-pink-500/10 text-pink-400"
+                            u.user_type === "established" ? "bg-accent/10 text-accent" : "bg-pink-500/10 text-pink-400"
                           }`}>
-                            {u.user_type === "sugar" ? "SD" : "SB"}
+                            {u.user_type === "established" ? "SD" : "SB"}
                           </span>
                           {u.is_photo_verified && <BadgeCheck size={14} className="text-accent" />}
                           {u.is_income_verified && <BadgeCheck size={14} className="text-success" />}
@@ -411,7 +411,7 @@ export default function AdminPage() {
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
-                        {!u.is_income_verified && u.user_type === "sugar" && (
+                        {!u.is_income_verified && u.user_type === "established" && (
                           <button
                             onClick={() => handleAction(`/api/admin/users/${u.id}/verify-income`, `income-${u.id}`)}
                             disabled={actionLoading === `income-${u.id}`}
@@ -609,9 +609,9 @@ export default function AdminPage() {
                     <div className="flex items-center gap-2">
                       <span className="text-sm">{u.display_name || "No profile"}</span>
                       <span className={`text-[10px] px-2 py-0.5 rounded-full ${
-                        u.user_type === "sugar" ? "bg-accent/10 text-accent" : "bg-pink-500/10 text-pink-400"
+                        u.user_type === "established" ? "bg-accent/10 text-accent" : "bg-pink-500/10 text-pink-400"
                       }`}>
-                        {u.user_type === "sugar" ? "SD" : "SB"}
+                        {u.user_type === "established" ? "SD" : "SB"}
                       </span>
                       {u.is_seed && <span className="text-[10px] px-2 py-0.5 rounded-full bg-muted-bg text-muted">Seed</span>}
                       {!u.is_active && <span className="text-[10px] px-2 py-0.5 rounded-full bg-danger/10 text-danger">Suspended</span>}
@@ -661,9 +661,9 @@ export default function AdminPage() {
                       <div className="flex items-center gap-2">
                         <span className="text-sm text-muted">{u.display_name || "No profile"}</span>
                         <span className={`text-[10px] px-2 py-0.5 rounded-full ${
-                          u.user_type === "sugar" ? "bg-accent/10 text-accent" : "bg-pink-500/10 text-pink-400"
+                          u.user_type === "established" ? "bg-accent/10 text-accent" : "bg-pink-500/10 text-pink-400"
                         }`}>
-                          {u.user_type === "sugar" ? "SD" : "SB"}
+                          {u.user_type === "established" ? "SD" : "SB"}
                         </span>
                       </div>
                       <span className="text-xs text-muted">{u.email}</span>
@@ -886,10 +886,10 @@ export default function AdminPage() {
               <div className="flex items-center justify-between mb-4">
                 <span className="text-sm font-medium">Real Profiles (newest first)</span>
                 <div className="flex gap-1">
-                  {([["", "All"], ["sugar", "Daddies"], ["attractive", "Babies"]] as const).map(([val, label]) => (
+                  {([["", "All"], ["established", "Established"], ["plus", "Plus"]] as const).map(([val, label]) => (
                     <button
                       key={val}
-                      onClick={() => setProfileFilter(val as "" | "sugar" | "attractive")}
+                      onClick={() => setProfileFilter(val as "" | "established" | "plus")}
                       className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                         profileFilter === val ? "bg-accent text-background" : "bg-muted-bg text-muted hover:text-foreground"
                       }`}
@@ -909,9 +909,9 @@ export default function AdminPage() {
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="font-medium text-sm">{p.display_name}</span>
                           <span className={`text-[10px] px-1.5 py-0.5 rounded ${
-                            p.user_type === "sugar" ? "bg-accent/10 text-accent" : "bg-success/10 text-success"
+                            p.user_type === "established" ? "bg-accent/10 text-accent" : "bg-success/10 text-success"
                           }`}>
-                            {p.user_type === "sugar" ? "Generous" : "Attractive"}
+                            {p.user_type === "established" ? "Generous" : "Attractive"}
                           </span>
                           {p.subscription_tier !== "free" && (
                             <span className="text-[10px] px-1.5 py-0.5 rounded bg-accent/20 text-accent font-bold">

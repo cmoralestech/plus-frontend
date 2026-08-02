@@ -164,7 +164,7 @@ export default function ProfilePage() {
     );
   }
 
-  const isSugar = profile.user_type === "sugar";
+  const isSugar = profile.user_type === "established";
   const apiBase = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
   const photo = profile.photos.find((p) => p.is_primary) || profile.photos[0];
 
@@ -917,11 +917,11 @@ export default function ProfilePage() {
       )}
 
       {/* Legacy document-upload verification prompt */}
-      {!editing && (!profile.is_photo_verified || (user?.user_type === "sugar" && !profile.is_income_verified)) && (
+      {!editing && (!profile.is_photo_verified || (user?.user_type === "established" && !profile.is_income_verified)) && (
         <VerificationSection
           isPhotoVerified={!!profile.is_photo_verified}
           isIncomeVerified={!!profile.is_income_verified}
-          isSugar={user?.user_type === "sugar" || false}
+          isSugar={user?.user_type === "established" || false}
         />
       )}
     </div>

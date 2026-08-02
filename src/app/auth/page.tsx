@@ -24,7 +24,7 @@ function AuthForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [userType, setUserType] = useState<"sugar" | "attractive">("attractive");
+  const [userType, setUserType] = useState<"established" | "plus">("plus");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [error, setError] = useState("");
@@ -265,10 +265,10 @@ function AuthForm() {
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       type="button"
-                      onClick={() => setUserType("sugar")}
-                      aria-pressed={userType === "sugar"}
+                      onClick={() => setUserType("established")}
+                      aria-pressed={userType === "established"}
                       className={`px-4 py-3.5 rounded-lg border-2 text-left transition-colors ${
-                        userType === "sugar"
+                        userType === "established"
                           ? "border-accent bg-accent/5"
                           : "border-card-border hover:border-muted"
                       }`}
@@ -280,10 +280,10 @@ function AuthForm() {
                     </button>
                     <button
                       type="button"
-                      onClick={() => setUserType("attractive")}
-                      aria-pressed={userType === "attractive"}
+                      onClick={() => setUserType("plus")}
+                      aria-pressed={userType === "plus"}
                       className={`px-4 py-3.5 rounded-lg border-2 text-left transition-colors ${
-                        userType === "attractive"
+                        userType === "plus"
                           ? "border-accent bg-accent/5"
                           : "border-card-border hover:border-muted"
                       }`}

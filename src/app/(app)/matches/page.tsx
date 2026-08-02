@@ -29,7 +29,7 @@ export default function MatchesPage() {
       }
       setLoading(false);
     })();
-    if (user?.user_type === "sugar") {
+    if (user?.user_type === "established") {
       (async () => {
         try {
           const { data } = await api.get("/api/subscription/");
@@ -59,7 +59,7 @@ export default function MatchesPage() {
         </p>
       </div>
 
-      {user?.user_type === "sugar" && subscriptionTier === "free" && matches.length > 0 && (
+      {user?.user_type === "established" && subscriptionTier === "free" && matches.length > 0 && (
         <div className="flex items-center justify-between gap-3 bg-accent/5 border border-accent/20 rounded-xl p-4 mb-4">
           <div className="flex items-center gap-2 min-w-0">
             <Crown size={16} className="text-accent flex-shrink-0" />
