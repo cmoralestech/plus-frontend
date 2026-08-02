@@ -474,7 +474,8 @@ function OnboardingForm() {
               {isSugar && (
                 <>
                   <fieldset>
-                    <legend className="block text-sm font-medium mb-2">Annual income</legend>
+                    <legend className="block text-sm font-medium mb-1">Annual income <span className="text-xs text-muted font-normal">(optional)</span></legend>
+                    <p className="text-[11px] text-muted mb-2">Private, and up to you — plenty of members skip this. Exact figures are never shown publicly.</p>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                       {incomeRanges.map((r) => (
                         <button key={r.value} type="button" onClick={() => update("income_range", r.value)}
@@ -486,7 +487,7 @@ function OnboardingForm() {
                   </fieldset>
 
                   <fieldset>
-                    <legend className="block text-sm font-medium mb-2">Net worth</legend>
+                    <legend className="block text-sm font-medium mb-2">Net worth <span className="text-xs text-muted font-normal">(optional)</span></legend>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                       {netWorthRanges.map((r) => (
                         <button key={r.value} type="button" onClick={() => update("net_worth_range", r.value)}
