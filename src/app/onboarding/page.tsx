@@ -27,13 +27,16 @@ const incomeRanges = [
   { value: "over_10m", label: "$10M+" },
 ];
 
+// Must match the NetWorthRange enum. These previously wrote to the free-text
+// `net_worth` column using a different set of bands, so the answer never
+// reached `net_worth_range` and financial qualification couldn't see it.
 const netWorthRanges = [
-  { value: "under_500k", label: "Under $500K" },
-  { value: "500k_1m", label: "$500K\u20131M" },
+  { value: "under_1m", label: "Under $1M" },
   { value: "1m_5m", label: "$1M\u20135M" },
   { value: "5m_10m", label: "$5M\u201310M" },
   { value: "10m_50m", label: "$10M\u201350M" },
-  { value: "over_50m", label: "$50M+" },
+  { value: "50m_100m", label: "$50M\u2013100M" },
+  { value: "over_100m", label: "$100M+" },
 ];
 
 const lifestyleOptions = [
@@ -111,7 +114,7 @@ function OnboardingForm() {
     bio: "",
     body_type: "",
     generosity: "",
-    net_worth: "",
+    net_worth_range: "",
     show_up_traits: [] as string[],
     plus_traits: [] as string[],
   });
@@ -194,7 +197,7 @@ function OnboardingForm() {
         show_up_traits: form.show_up_traits.length ? form.show_up_traits : null,
         plus_traits: form.plus_traits.length ? form.plus_traits : null,
         generosity: form.generosity || null,
-        net_worth: form.net_worth || null,
+        net_worth_range: form.net_worth_range || null,
       };
       if (isSugar && form.income_range) payload.income_range = form.income_range;
       if (form.lifestyle_expectation) payload.lifestyle_expectation = form.lifestyle_expectation;
@@ -456,9 +459,9 @@ function OnboardingForm() {
                     <legend className="block text-sm font-medium mb-2">Net worth</legend>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                       {netWorthRanges.map((r) => (
-                        <button key={r.value} type="button" onClick={() => update("net_worth", r.value)}
+                        <button key={r.value} type="button" onClick={() => update("net_worth_range", r.value)}
                           className={`px-3 py-2.5 rounded-lg border text-sm font-medium transition-colors ${
-                            form.net_worth === r.value ? "border-accent bg-accent/5 text-accent" : "border-card-border hover:border-muted"
+                            form.net_worth_range === r.value ? "border-accent bg-accent/5 text-accent" : "border-card-border hover:border-muted"
                           }`}>{r.label}</button>
                       ))}
                     </div>
