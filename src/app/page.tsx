@@ -236,8 +236,8 @@ export default function LandingPage() {
                 Success shouldn&apos;t be self-reported.
               </p>
               <p className="text-sm leading-relaxed" style={{ color: muted }}>
-                Established members complete financial verification before receiving
-                verified status. Exact financial information stays private.
+                Established members can verify income or assets if they want a second
+                badge. It&apos;s optional, and exact figures stay private either way.
               </p>
             </div>
             <div>
@@ -364,7 +364,7 @@ export default function LandingPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { step: "01", title: "Say what you want", desc: "Tell us what you're looking for, what you value, and what kind of relationship fits your life." },
-              { step: "02", title: "Get verified", desc: "Identity verification for members. Financial verification for established members." },
+              { step: "02", title: "Get verified", desc: "Identity verification for members. Financial verification is optional, and private if you do it." },
               { step: "03", title: "Discover your +", desc: "Browse freely. If someone interests you, say hello. No waiting for an algorithm to decide you're compatible." },
               { step: "04", title: "Going somewhere? +", desc: "Find someone worth taking with you. Art Week in Miami. F1 in Monaco. Cannes. Wimbledon. Ibiza. Aspen. Capri. Add where you're headed — or where you want to go — and find a + who wants to be there too." },
             ].map((s) => (

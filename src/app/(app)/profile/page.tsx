@@ -29,6 +29,7 @@ import {
 import CityAutocomplete from "@/components/CityAutocomplete";
 import PhotoUpload from "@/components/PhotoUpload";
 import ProfileCompleteness from "@/components/ProfileCompleteness";
+import VerificationPanel from "@/components/VerificationPanel";
 import { ProfileSkeleton } from "@/components/Skeleton";
 
 // Kept in sync with the same lists in onboarding.
@@ -426,22 +427,51 @@ export default function ProfilePage() {
                 </div>
               </div>
               {isSugar ? (
-                <div>
-                  <label className="block text-sm font-medium mb-1">Annual income</label>
-                  <select
-                    value={editForm.income_range}
-                    onChange={(e) => setEditForm((f: Record<string, any>) => ({ ...f, income_range: e.target.value }))}
-                    className="w-full px-4 py-2.5 bg-background border border-card-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/50"
-                  >
-                    <option value="">Select...</option>
-                    <option value="under_100k">Under $100K</option>
-                    <option value="100k_250k">$100K - $250K</option>
-                    <option value="250k_500k">$250K - $500K</option>
-                    <option value="500k_1m">$500K - $1M</option>
-                    <option value="1m_5m">$1M - $5M</option>
-                    <option value="5m_10m">$5M - $10M</option>
-                    <option value="over_10m">$10M+</option>
-                  </select>
+                <div className="rounded-xl border border-card-border p-4 space-y-3">
+                  <div>
+                    <p className="text-sm font-medium">
+                      Financial profile
+                      <span className="text-[11px] text-muted font-normal ml-1.5">(optional)</span>
+                    </p>
+                    <p className="text-[11px] text-muted mt-0.5 leading-relaxed">
+                      Private, and entirely up to you — plenty of members leave this
+                      blank. Your exact figures are never displayed publicly. If you
+                      do fill it in, income or assets counts on its own.
+                    </p>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Annual income</label>
+                    <select
+                      value={editForm.income_range}
+                      onChange={(e) => setEditForm((f: Record<string, any>) => ({ ...f, income_range: e.target.value }))}
+                      className="w-full px-4 py-2.5 bg-background border border-card-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/50"
+                    >
+                      <option value="">Select...</option>
+                      <option value="under_100k">Under $100K</option>
+                      <option value="100k_250k">$100K - $250K</option>
+                      <option value="250k_500k">$250K - $500K</option>
+                      <option value="500k_1m">$500K - $1M</option>
+                      <option value="1m_5m">$1M - $5M</option>
+                      <option value="5m_10m">$5M - $10M</option>
+                      <option value="over_10m">$10M+</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Net worth</label>
+                    <select
+                      value={editForm.net_worth_range}
+                      onChange={(e) => setEditForm((f: Record<string, any>) => ({ ...f, net_worth_range: e.target.value }))}
+                      className="w-full px-4 py-2.5 bg-background border border-card-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/50"
+                    >
+                      <option value="">Select...</option>
+                      <option value="under_1m">Under $1M</option>
+                      <option value="1m_5m">$1M - $5M</option>
+                      <option value="5m_10m">$5M - $10M</option>
+                      <option value="10m_50m">$10M - $50M</option>
+                      <option value="50m_100m">$50M - $100M</option>
+                      <option value="over_100m">$100M+</option>
+                    </select>
+                  </div>
                 </div>
               ) : (
                 <div>
@@ -879,7 +909,14 @@ export default function ProfilePage() {
         </div>
       )}
 
-      {/* Verification section */}
+      {/* Identity and financial verification */}
+      {!editing && (
+        <div className="max-w-lg mx-auto mt-4">
+          <VerificationPanel isEstablished={isSugar} />
+        </div>
+      )}
+
+      {/* Legacy document-upload verification prompt */}
       {!editing && (!profile.is_photo_verified || (user?.user_type === "sugar" && !profile.is_income_verified)) && (
         <VerificationSection
           isPhotoVerified={!!profile.is_photo_verified}

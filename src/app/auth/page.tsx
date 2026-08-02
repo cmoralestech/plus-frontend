@@ -275,7 +275,7 @@ function AuthForm() {
                     >
                       <span className="text-sm font-medium block">Established</span>
                       <span className="text-[11px] text-muted mt-0.5 block leading-snug">
-                        I&apos;ve built something. I&apos;ll complete financial verification.
+                        I&apos;ve built something. Looking for someone who adds to it.
                       </span>
                     </button>
                     <button
