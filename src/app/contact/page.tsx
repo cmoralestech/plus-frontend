@@ -207,6 +207,25 @@ export default function ContactPage() {
               </a>
             </div>
           </div>
+
+          {/* Already published in the email footer; stated here too so the
+              contact page stands on its own. */}
+          <div className="mt-8 pt-6 border-t border-card-border text-sm">
+            <p className="text-muted text-xs uppercase tracking-[0.1em] mb-1">Postal address</p>
+            <address className="not-italic text-muted leading-relaxed">
+              Plus
+              <br />
+              PO Box 911711
+              <br />
+              Houston, TX 77291
+              <br />
+              United States
+            </address>
+            <p className="text-xs text-muted mt-4">
+              Support is handled by email. We reply to most messages within one
+              business day, and to safety reports within hours.
+            </p>
+          </div>
         </div>
       </section>
 
