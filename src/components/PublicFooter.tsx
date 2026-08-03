@@ -38,6 +38,7 @@ export default function PublicFooter() {
               <li><Link href="/terms" className="text-muted hover:text-foreground transition-colors">Terms</Link></li>
               <li><Link href="/privacy" className="text-muted hover:text-foreground transition-colors">Privacy</Link></li>
               <li><Link href="/acceptable-use" className="text-muted hover:text-foreground transition-colors">Acceptable Use</Link></li>
+              <li><Link href="/law-enforcement" className="text-muted hover:text-foreground transition-colors">Law Enforcement</Link></li>
               <li><Link href="/privacy#ccpa" className="text-muted hover:text-foreground transition-colors">Do Not Sell My Info</Link></li>
               <li><a href="tel:1-888-373-7888" className="text-muted hover:text-foreground transition-colors">Report Trafficking</a></li>
             </ul>
