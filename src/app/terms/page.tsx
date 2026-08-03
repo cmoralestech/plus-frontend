@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PublicNav from "@/components/PublicNav";
 import PublicFooter from "@/components/PublicFooter";
 
@@ -99,7 +100,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-semibold text-foreground">9. Subscriptions and Payments</h2>
             <p>Plus offers free and paid subscription tiers. Paid subscriptions auto-renew unless cancelled before the renewal date. You may cancel at any time through your account settings or the applicable payment processor.</p>
-            <p>Refunds are handled according to the applicable payment processor policies. Prices may change with 30 days notice. All fees are in US dollars unless otherwise stated.</p>
+            <p>Refunds and cancellation are covered by our <Link href="/refunds" className="text-accent hover:underline">Refund &amp; Cancellation Policy</Link>. Prices may change with 30 days notice. All fees are in US dollars unless otherwise stated.</p>
           </section>
 
           <section>
