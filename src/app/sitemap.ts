@@ -120,6 +120,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
+    { url: `${base}/acceptable-use`, lastModified: CONTENT_UPDATED, changeFrequency: "yearly", priority: 0.4 },
     { url: `${base}/terms`, lastModified: SITE_LAUNCHED, changeFrequency: "yearly", priority: 0.3 },
     { url: `${base}/privacy`, lastModified: SITE_LAUNCHED, changeFrequency: "yearly", priority: 0.3 },
     { url: `${base}/quiz`, lastModified: CONTENT_UPDATED, changeFrequency: "monthly", priority: 0.6 },
